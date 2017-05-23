@@ -1,10 +1,10 @@
 <?php 
 /**
- * 文章类
+ * 联赛类
  * @author steven.allen <[<email address>]>
  * @date(2017.2.12)
  */
-class ArticleExt extends Article{
+class LeagueExt extends League{
 	/**
      * 定义关系
      */

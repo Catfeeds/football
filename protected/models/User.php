@@ -5,10 +5,14 @@
  *
  * The followings are the available columns in table 'user':
  * @property integer $id
+ * @property string $pwd
+ * @property string $wx
+ * @property integer $phone
  * @property string $name
- * @property string $phone
- * @property string $content
- * @property string $data_conf
+ * @property string $image
+ * @property integer $status
+ * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
@@ -30,14 +34,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('created', 'required'),
-			array('created, updated', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
-			array('phone', 'length', 'max'=>12),
-			array('content, data_conf', 'safe'),
+			array('pwd, name, created', 'required'),
+			array('phone, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('pwd, image', 'length', 'max'=>255),
+			array('wx, name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, phone, content, data_conf, created, updated', 'safe', 'on'=>'search'),
+			array('id, pwd, wx, phone, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,10 +62,14 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'pwd' => 'Pwd',
+			'wx' => 'Wx',
 			'phone' => 'Phone',
-			'content' => 'Content',
-			'data_conf' => 'Data Conf',
+			'name' => 'Name',
+			'image' => 'Image',
+			'status' => 'Status',
+			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -87,10 +94,14 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('pwd',$this->pwd,true);
+		$criteria->compare('wx',$this->wx,true);
+		$criteria->compare('phone',$this->phone);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('phone',$this->phone,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('data_conf',$this->data_conf,true);
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 

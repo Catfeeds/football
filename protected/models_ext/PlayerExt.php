@@ -1,17 +1,18 @@
 <?php 
 /**
- * 相册类
+ * 球员类
  * @author steven.allen <[<email address>]>
- * @date(2017.2.5)
+ * @date(2017.2.12)
  */
-class AhaExt extends Aha{
+class PlayerExt extends Player{
 	/**
      * 定义关系
      */
     public function relations()
     {
         return array(
-            // 'baike'=>array(self::BELONGS_TO, 'BaikeExt', 'bid'),
+            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
         );
     }
 
@@ -36,6 +37,9 @@ class AhaExt extends Aha{
 
     public function afterFind() {
         parent::afterFind();
+        // if(!$this->image){
+        //     $this->image = SiteExt::getAttr('qjpz','productNoPic');
+        // }
     }
 
     public function beforeValidate() {
@@ -55,10 +59,19 @@ class AhaExt extends Aha{
         $alias = $this->getTableAlias();
         return array(
             'sorted' => array(
-                'order' => 'sort desc',
-            )
+                'order' => "{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'normal' => array(
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
+                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'undeleted' => array(
+                'condition' => "{$alias}.deleted=0",
+                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
         );
     }
+
     /**
      * 绑定行为类
      */
@@ -72,4 +85,5 @@ class AhaExt extends Aha{
             'BaseBehavior'=>'application.behaviors.BaseBehavior',
         );
     }
+
 }

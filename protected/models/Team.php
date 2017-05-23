@@ -1,27 +1,28 @@
 <?php
 
 /**
- * This is the model class for table "album".
+ * This is the model class for table "team".
  *
- * The followings are the available columns in table 'album':
+ * The followings are the available columns in table 'team':
  * @property integer $id
- * @property integer $pid
- * @property integer $cover
- * @property integer $cid
- * @property string $url
+ * @property string $eng
+ * @property string $country
  * @property string $name
+ * @property string $image
+ * @property integer $status
+ * @property integer $deleted
  * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Album extends CActiveRecord
+class Team extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'album';
+		return 'team';
 	}
 
 	/**
@@ -33,11 +34,12 @@ class Album extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('pid, cover, cid, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('url, name', 'length', 'max'=>255),
+			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('eng, country, name', 'length', 'max'=>100),
+			array('image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, pid, cover, cid, url, name, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, country, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,11 +61,12 @@ class Album extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'pid' => 'Pid',
-			'cover' => '是否封面',
-			'cid' => 'Cid',
-			'url' => 'Url',
+			'eng' => 'Eng',
+			'country' => 'Country',
 			'name' => 'Name',
+			'image' => 'Image',
+			'status' => 'Status',
+			'deleted' => 'Deleted',
 			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
@@ -89,11 +92,12 @@ class Album extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('pid',$this->pid);
-		$criteria->compare('cover',$this->cover);
-		$criteria->compare('cid',$this->cid);
-		$criteria->compare('url',$this->url,true);
+		$criteria->compare('eng',$this->eng,true);
+		$criteria->compare('country',$this->country,true);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
@@ -107,7 +111,7 @@ class Album extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Album the static model class
+	 * @return Team the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

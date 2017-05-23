@@ -5,18 +5,18 @@
  *
  * The followings are the available columns in table 'article':
  * @property integer $id
- * @property string $title
- * @property string $sub_title
- * @property string $author
- * @property string $source
- * @property string $desc
  * @property string $image
- * @property string $content
+ * @property string $title
+ * @property integer $is_top_video
+ * @property integer $is_top
  * @property integer $cid
- * @property integer $sort
+ * @property string $author
+ * @property string $content
+ * @property string $desc
+ * @property integer $publish
  * @property integer $status
- * @property string $data_conf
  * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
@@ -39,12 +39,13 @@ class Article extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('cid, sort, status, deleted, created, updated', 'numerical', 'integerOnly'=>true),
-			array('title, sub_title, author, source, desc, image', 'length', 'max'=>255),
-			array('content, data_conf', 'safe'),
+			array('is_top_video, is_top, cid, publish, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('image, title, desc', 'length', 'max'=>255),
+			array('author', 'length', 'max'=>100),
+			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, sub_title, author, source, desc, image, content, cid, sort, status, data_conf, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, image, title, is_top_video, is_top, cid, author, content, desc, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,18 +67,18 @@ class Article extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'sub_title' => 'Sub Title',
-			'author' => 'Author',
-			'source' => 'Source',
-			'desc' => 'Desc',
 			'image' => 'Image',
-			'content' => 'Content',
+			'title' => 'Title',
+			'is_top_video' => 'Is Top Video',
+			'is_top' => 'Is Top',
 			'cid' => 'Cid',
-			'sort' => 'Sort',
+			'author' => 'Author',
+			'content' => 'Content',
+			'desc' => 'Desc',
+			'publish' => 'Publish',
 			'status' => 'Status',
-			'data_conf' => 'Data Conf',
 			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -102,18 +103,18 @@ class Article extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('sub_title',$this->sub_title,true);
-		$criteria->compare('author',$this->author,true);
-		$criteria->compare('source',$this->source,true);
-		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('image',$this->image,true);
-		$criteria->compare('content',$this->content,true);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('is_top_video',$this->is_top_video);
+		$criteria->compare('is_top',$this->is_top);
 		$criteria->compare('cid',$this->cid);
-		$criteria->compare('sort',$this->sort);
+		$criteria->compare('author',$this->author,true);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('desc',$this->desc,true);
+		$criteria->compare('publish',$this->publish);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('data_conf',$this->data_conf,true);
 		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 

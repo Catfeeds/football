@@ -1,30 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "product".
+ * This is the model class for table "player".
  *
- * The followings are the available columns in table 'product':
+ * The followings are the available columns in table 'player':
  * @property integer $id
+ * @property string $eng
+ * @property integer $assist
+ * @property integer $score
+ * @property integer $tid
  * @property string $name
- * @property integer $cid
  * @property string $image
- * @property string $cs
- * @property string $td
- * @property integer $sort
- * @property string $data_conf
  * @property integer $status
  * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Product extends CActiveRecord
+class Player extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'product';
+		return 'player';
 	}
 
 	/**
@@ -36,12 +36,12 @@ class Product extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('cid, sort, status, deleted, created, updated', 'numerical', 'integerOnly'=>true),
-			array('name, image', 'length', 'max'=>255),
-			array('cs, td, data_conf', 'safe'),
+			array('assist, score, tid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('eng, name', 'length', 'max'=>100),
+			array('image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, cid, image, cs, td, sort, data_conf, status, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, assist, score, tid, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,15 +63,15 @@ class Product extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'eng' => 'Eng',
+			'assist' => 'Assist',
+			'score' => 'Score',
+			'tid' => 'Tid',
 			'name' => 'Name',
-			'cid' => '类型',
 			'image' => 'Image',
-			'cs' => 'Cs',
-			'td' => 'Td',
-			'sort' => 'Sort',
-			'data_conf' => 'Data Conf',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -96,15 +96,15 @@ class Product extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('eng',$this->eng,true);
+		$criteria->compare('assist',$this->assist);
+		$criteria->compare('score',$this->score);
+		$criteria->compare('tid',$this->tid);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('cid',$this->cid);
 		$criteria->compare('image',$this->image,true);
-		$criteria->compare('cs',$this->cs,true);
-		$criteria->compare('td',$this->td,true);
-		$criteria->compare('sort',$this->sort);
-		$criteria->compare('data_conf',$this->data_conf,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -117,7 +117,7 @@ class Product extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Product the static model class
+	 * @return Player the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

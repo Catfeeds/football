@@ -1,24 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "article_tag_rel".
+ * This is the model class for table "report".
  *
- * The followings are the available columns in table 'article_tag_rel':
+ * The followings are the available columns in table 'report':
  * @property integer $id
- * @property integer $aid
- * @property integer $tid
- * @property string $tag_name
+ * @property integer $uid
+ * @property string $phone
+ * @property integer $type
+ * @property integer $report_id
+ * @property string $reason
+ * @property integer $status
+ * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class ArticleTagRel extends CActiveRecord
+class Report extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'article_tag_rel';
+		return 'report';
 	}
 
 	/**
@@ -30,11 +35,12 @@ class ArticleTagRel extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('aid, tid, created, updated', 'numerical', 'integerOnly'=>true),
-			array('tag_name', 'length', 'max'=>255),
+			array('uid, type, report_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('phone', 'length', 'max'=>12),
+			array('reason', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, aid, tid, tag_name, created, updated', 'safe', 'on'=>'search'),
+			array('id, uid, phone, type, report_id, reason, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,9 +62,14 @@ class ArticleTagRel extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'aid' => 'Aid',
-			'tid' => 'Tid',
-			'tag_name' => 'Tag Name',
+			'uid' => 'Uid',
+			'phone' => 'Phone',
+			'type' => 'Type',
+			'report_id' => 'Report',
+			'reason' => 'Reason',
+			'status' => 'Status',
+			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -83,9 +94,14 @@ class ArticleTagRel extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('aid',$this->aid);
-		$criteria->compare('tid',$this->tid);
-		$criteria->compare('tag_name',$this->tag_name,true);
+		$criteria->compare('uid',$this->uid);
+		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('type',$this->type);
+		$criteria->compare('report_id',$this->report_id);
+		$criteria->compare('reason',$this->reason,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -98,7 +114,7 @@ class ArticleTagRel extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ArticleTagRel the static model class
+	 * @return Report the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

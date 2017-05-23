@@ -1,31 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "plot_hx".
+ * This is the model class for table "league".
  *
- * The followings are the available columns in table 'plot_hx':
+ * The followings are the available columns in table 'league':
  * @property integer $id
- * @property integer $hid
- * @property string $title
+ * @property string $name
+ * @property string $eng
+ * @property string $country
+ * @property string $pinyin
  * @property string $image
- * @property integer $bedroom
- * @property integer $bathroom
- * @property integer $livingroom
- * @property string $sale_status
- * @property string $size
- * @property string $content
+ * @property integer $status
  * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class PlotHx extends CActiveRecord
+class League extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'plot_hx';
+		return 'league';
 	}
 
 	/**
@@ -36,15 +34,13 @@ class PlotHx extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('hid, created', 'required'),
-			array('hid, bedroom, bathroom, livingroom, deleted, created, updated', 'numerical', 'integerOnly'=>true),
-			array('title, image', 'length', 'max'=>255),
-			array('sale_status', 'length', 'max'=>100),
-			array('size', 'length', 'max'=>10),
-			array('content', 'safe'),
+			array('name, pinyin, created', 'required'),
+			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('name, eng, country, pinyin', 'length', 'max'=>100),
+			array('image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, hid, title, image, bedroom, bathroom, livingroom, sale_status, size, content, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, name, eng, country, pinyin, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,16 +62,14 @@ class PlotHx extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'hid' => 'Hid',
-			'title' => 'Title',
+			'name' => 'Name',
+			'eng' => 'Eng',
+			'country' => 'Country',
+			'pinyin' => 'Pinyin',
 			'image' => 'Image',
-			'bedroom' => 'Bedroom',
-			'bathroom' => 'Bathroom',
-			'livingroom' => 'Livingroom',
-			'sale_status' => 'Sale Status',
-			'size' => 'Size',
-			'content' => 'Content',
+			'status' => 'Status',
 			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -100,16 +94,14 @@ class PlotHx extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('hid',$this->hid);
-		$criteria->compare('title',$this->title,true);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('eng',$this->eng,true);
+		$criteria->compare('country',$this->country,true);
+		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('image',$this->image,true);
-		$criteria->compare('bedroom',$this->bedroom);
-		$criteria->compare('bathroom',$this->bathroom);
-		$criteria->compare('livingroom',$this->livingroom);
-		$criteria->compare('sale_status',$this->sale_status,true);
-		$criteria->compare('size',$this->size,true);
-		$criteria->compare('content',$this->content,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -122,7 +114,7 @@ class PlotHx extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PlotHx the static model class
+	 * @return League the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

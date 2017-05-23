@@ -1,10 +1,10 @@
 <?php 
 /**
- * 文章类
+ * 比赛类
  * @author steven.allen <[<email address>]>
  * @date(2017.2.12)
  */
-class ArticleExt extends Article{
+class MatchExt extends Match{
 	/**
      * 定义关系
      */

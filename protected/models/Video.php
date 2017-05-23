@@ -1,30 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "plot".
+ * This is the model class for table "video".
  *
- * The followings are the available columns in table 'plot':
+ * The followings are the available columns in table 'video':
  * @property integer $id
- * @property string $title
- * @property string $area
- * @property string $street
- * @property string $image
- * @property string $transit
- * @property string $peripheral
- * @property string $content
- * @property string $data_conf
+ * @property integer $mid
+ * @property string $link
+ * @property string $name
+ * @property integer $status
  * @property integer $deleted
+ * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Plot extends CActiveRecord
+class Video extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'plot';
+		return 'video';
 	}
 
 	/**
@@ -36,12 +33,11 @@ class Plot extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('deleted, created, updated', 'numerical', 'integerOnly'=>true),
-			array('title, area, street, image', 'length', 'max'=>255),
-			array('transit, peripheral, content, data_conf', 'safe'),
+			array('mid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('link, name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, area, street, image, transit, peripheral, content, data_conf, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, mid, link, name, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,15 +59,12 @@ class Plot extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'area' => 'Area',
-			'street' => 'Street',
-			'image' => 'Image',
-			'transit' => 'Transit',
-			'peripheral' => 'Peripheral',
-			'content' => 'Content',
-			'data_conf' => 'Data Conf',
+			'mid' => 'Mid',
+			'link' => 'Link',
+			'name' => 'Name',
+			'status' => 'Status',
 			'deleted' => 'Deleted',
+			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -96,15 +89,12 @@ class Plot extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('area',$this->area,true);
-		$criteria->compare('street',$this->street,true);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('transit',$this->transit,true);
-		$criteria->compare('peripheral',$this->peripheral,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('data_conf',$this->data_conf,true);
+		$criteria->compare('mid',$this->mid);
+		$criteria->compare('link',$this->link,true);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -117,7 +107,7 @@ class Plot extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Plot the static model class
+	 * @return Video the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

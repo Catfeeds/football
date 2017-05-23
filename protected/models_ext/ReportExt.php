@@ -1,39 +1,18 @@
 <?php 
 /**
- * 酒庄类
+ * 举报类
  * @author steven.allen <[<email address>]>
- * @date(2017.2.5)
+ * @date(2017.2.12)
  */
-class HouseExt extends House{
-    /**
-     * @var array 状态
-     */
-    static $status = array(
-        0 => '禁用',
-        1 => '启用',
-        2 => '回收站',
-    );
-
-    static $keywordsSwitch = array(
-        0 => '关闭',
-        1 => '开启',
-    );
-
-    /**
-     * @var array 状态按钮样式
-     */
-    static $statusStyle = array(
-        0 => 'btn btn-sm btn-warning',
-        1 => 'btn btn-sm btn-primary',
-        2 => 'btn btn-sm btn-danger'
-    );
-    /**
+class ReportExt extends Report{
+	/**
      * 定义关系
      */
     public function relations()
     {
         return array(
-            'products'=>array(self::HAS_MANY, 'ProductExt','house','condition'=>'products.status=1 and products.deleted=0', 'order'=>'products.sort desc,products.updated desc'),
+            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
         );
     }
 
@@ -58,9 +37,9 @@ class HouseExt extends House{
 
     public function afterFind() {
         parent::afterFind();
-        if(!$this->image){
-            $this->image = SiteExt::getAttr('qjpz','houseNoPic');
-        }
+        // if(!$this->image){
+        //     $this->image = SiteExt::getAttr('qjpz','productNoPic');
+        // }
     }
 
     public function beforeValidate() {
@@ -80,7 +59,15 @@ class HouseExt extends House{
         $alias = $this->getTableAlias();
         return array(
             'sorted' => array(
-                'order' => 'sort desc,eng asc',
+                'order' => "{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'normal' => array(
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
+                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'undeleted' => array(
+                'condition' => "{$alias}.deleted=0",
+                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
             ),
         );
     }
@@ -98,4 +85,5 @@ class HouseExt extends House{
             'BaseBehavior'=>'application.behaviors.BaseBehavior',
         );
     }
+
 }

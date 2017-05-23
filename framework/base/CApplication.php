@@ -134,9 +134,7 @@ abstract class CApplication extends CModule
 
 		// set basePath at early as possible to avoid trouble
 		if(is_string($config)) {
-
 			$config=require($config);
-			var_dump($config);exit;
 		}
 		// var_dump(33);exit;
 		if(isset($config['basePath']))
