@@ -5,6 +5,28 @@
  * @date(2017.2.12)
  */
 class ArticleExt extends Article{
+    /**
+     * @var array 状态
+     */
+    static $status = array(
+        0 => '禁用',
+        1 => '启用',
+        2 => '回收站',
+    );
+
+    static $keywordsSwitch = array(
+        0 => '否',
+        1 => '是',
+    );
+
+    /**
+     * @var array 状态按钮样式
+     */
+    static $statusStyle = array(
+        0 => 'btn btn-sm btn-warning',
+        1 => 'btn btn-sm btn-primary',
+        2 => 'btn btn-sm btn-danger'
+    );
 	/**
      * 定义关系
      */

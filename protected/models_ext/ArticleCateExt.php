@@ -86,4 +86,12 @@ class ArticleCateExt extends ArticleCate{
         );
     }
 
+    public function getNameById($id=0)
+    {
+        if($id && $model = self::model()->findByPk($id)) {
+            return $model->name;
+        } else {
+            return '暂无';
+        }
+    }
 }

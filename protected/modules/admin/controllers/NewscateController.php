@@ -1,22 +1,14 @@
 <?php
 /**
- * 资讯控制器
+ * 资讯分类控制器
  */
-class NewsController extends AdminController{
-	// 红酒类型
-	public $cates = [];
-
-	public function init()
-	{
-		parent::init();
-		$this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
-	}
+class NewscateController extends AdminController{
 	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
 	{
 		$criteria = new CDbCriteria;
 		if($value = trim($value))
             if ($type=='title') {
-                $criteria->addSearchCondition('title', $value);
+                $criteria->addSearchCondition('name', $value);
             } 
         //添加时间、刷新时间筛选
         if($time_type!='' && $time!='')
@@ -34,15 +26,15 @@ class NewsController extends AdminController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
-		$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
-		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
+		$infos = ArticleCateExt::model()->undeleted()->getList($criteria,20);
+		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
 	public function actionEdit($id='')
 	{
-		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
+		$info = $id ? ArticleCateExt::model()->findByPk($id) : new ArticleCateExt;
 		if(Yii::app()->request->getIsPostRequest()) {
-			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
+			$info->attributes = Yii::app()->request->getPost('ArticleCateExt',[]);
 
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);
@@ -50,6 +42,7 @@ class NewsController extends AdminController{
 				$this->setMessage(array_values($info->errors)[0][0],'error');
 			}
 		} 
-		$this->render('edit',['cates'=>$this->cates,'article'=>$info]);
+		$this->render('edit',['article'=>$info]);
 	}
+	
 }

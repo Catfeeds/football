@@ -133,9 +133,9 @@ Layout.init(); // init current layout
   Demo.init();
        // init background slide images
        $.backstretch([
-        "/static/admin/pages/media/bg/1.jpg",
-        "/static/admin/pages/media/bg/2.jpg",
-        "/static/admin/pages/media/bg/3.jpg",
+        // "/static/admin/pages/media/bg/1.jpg",
+        // "/static/admin/pages/media/bg/2.jpg",
+        // "/static/admin/pages/media/bg/3.jpg",
         ], {
           fade: 1000,
           duration: 3000

@@ -63,12 +63,18 @@ class AdminController extends Controller
     {
         return [
             ['label'=>'管理中心','icon'=>'icon-settings','url'=>'/admin/common/index','active'=>$this->route=='vip/common/index'],
-            ['label' => '文章管理','icon' => 'icon-speedometer', 'url' => ['/admin/news/list'],'active'=>$this->route=='vip/news/edit'||$this->route=='vip/news/list'],
-            ['label' => '产品管理', 'icon' => 'icon-speedometer', 'items' => [
-                ['label' => '发布产品', 'url' => ['/admin/product/edit']],
-                ['label' => '产品列表', 'url' => ['/admin/product/list']],
+            ['label' => '资讯管理', 'icon' => 'icon-speedometer', 'items' => [
+                ['label' => '资讯列表', 'url' => ['/admin/news/list'],'active'=>$this->route=='admin/news/edit'],
+                ['label' => '资讯分类', 'url' => ['/admin/newscate/list'],'active'=>$this->route=='admin/newscate/edit'],
             ]],
-            ['label' => '订单管理','icon' => 'icon-speedometer', 'url' => ['/admin/order/list'],'active'=>$this->route=='vip/order/edit'||$this->route=='vip/order/list'],
+            ['label'=>'联赛管理','icon'=>'icon-speedometer','url'=>['/admin/league/list'],'active'=>$this->route=='admin/league/edit'],
+            ['label'=>'球队管理','icon'=>'icon-speedometer','url'=>['/admin/team/list'],'active'=>$this->route=='admin/team/edit'],
+            ['label'=>'球员管理','icon'=>'icon-speedometer','url'=>['/admin/player/list'],'active'=>$this->route=='admin/player/edit'],
+            ['label'=>'比赛管理','icon'=>'icon-speedometer','url'=>['/admin/match/list'],'active'=>$this->route=='admin/match/edit'],
+            ['label'=>'直播管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
+            ['label'=>'评论管理','icon'=>'icon-speedometer','url'=>['/admin/comment/list'],'active'=>$this->route=='admin/comment/edit'],
+            ['label'=>'积分管理','icon'=>'icon-speedometer','url'=>['/admin/points/list'],'active'=>$this->route=='admin/points/edit'],
+            ['label'=>'举报管理','icon'=>'icon-speedometer','url'=>['/admin/report/list'],'active'=>$this->route=='admin/report/edit'],
             ['label'=>'标签管理','icon'=>'icon-speedometer','url'=>['/admin/tag/list'],'active'=>$this->route=='vip/tag/edit'],
             ['label'=>'用户采集','icon'=>'icon-speedometer','url'=>['/admin/user/list']],
             ['label'=>'站点配置','icon'=>'icon-speedometer','url'=>['/admin/site/list'],'active'=>$this->route=='vip/site/edit'||$this->route=='vip/site/list'],
@@ -94,6 +100,16 @@ class AdminController extends Controller
         $totalCanSaleNum = $userPubNum -$salingEsfNum - $salingZfNum - $salingQgNum - $salingQzNum;
         $totalCanSaleNum < 0 && $totalCanSaleNum = 0;
         return $totalCanSaleNum;
+    }
+
+    public function actions()
+    {
+        $alias = 'admin.controllers.common.';
+        return [
+            'del'=>$alias.'DelAction',
+            'changeStatus'=>$alias.'ChangeStatusAction',
+            'setSort'=>$alias.'SetSortAction',
+        ];
     }
 
 }
