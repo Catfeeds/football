@@ -5,6 +5,7 @@
  * @author tivon
  * @date 2017.04.12
  */
+use Qiniu\Auth;
 class CommonController extends AdminController
 {
     public function actionIndex()
@@ -208,7 +209,8 @@ class CommonController extends AdminController
 
     public function actionTest()
     {
-        
+        $obj = new Auth();
+        var_dump($obj);exit;
         $this->layout = '/layouts/modal_base';
         $this->render('test');
     }

@@ -78,7 +78,7 @@ $this->breadcrumbs = array($this->pageTitle);
         });
     }
     function set_sort(_this, id, sort){
-            $.getJSON('<?php echo $this->createUrl('/admin/news/setSort')?>',{id:id,sort:sort,class:'<?=get_class($infos[0])?>'},function(dt){
+            $.getJSON('<?php echo $this->createUrl('/admin/news/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
                 location.reload();
             });
         }

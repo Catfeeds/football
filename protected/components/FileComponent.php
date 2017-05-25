@@ -217,7 +217,6 @@ class FileComponent extends CApplicationComponent
         $filename = $this->getRandFileName();
         $ext = $file->extensionName;
         $key = $path . $filename .'.'. $ext;
-
         $auth = new Auth($this->accessKey, $this->secretKey);
         $token = $auth->uploadToken($this->bucket,null,$this->authExpire);
         $uploadMgr = New UploadManager();

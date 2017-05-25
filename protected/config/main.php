@@ -25,6 +25,7 @@ if (!function_exists('fatallog')) {
         }
     }
 }
+
 $config1 = array(
     'onEndRequest' => 'fatallog',
     'onBeginRequest' => ['DiyRules', 'generateNewRules'],
@@ -93,16 +94,6 @@ $config1 = array(
                 ];
 				}
 		),
-        //共享redis组件，只需配置前缀即可
-        'mRedis' => [
-            'class' => 'application.components.redis.HangjiaRedisConnection',
-            'redisConfig' => function() {
-                return Yii::app()->hangjiaRedisConfig;
-            },
-            'redisPrefix' => function() {
-                return 'facility';
-            }
-        ],
         //uc体系组件
 		'uc' => array(
 			'class' => 'application.components.hangjiauc.HangjiaUc_HjUc',

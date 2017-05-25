@@ -1,24 +1,18 @@
 <?php
 /**
- * 联赛控制器
+ * 资讯控制器
  */
-class LeagueController extends AdminController{
-	
+class NewsController extends AdminController{
+	// 红酒类型
 	public $cates = [];
-
-	public $controllerName = '';
-
-	public $modelName = 'LeagueExt';
 
 	public function init()
 	{
 		parent::init();
-		$this->controllerName = '联赛';
-		// $this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
+		$this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
 	}
 	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
 	{
-		$modelName = $this->modelName;
 		$criteria = new CDbCriteria;
 		if($value = trim($value))
             if ($type=='title') {
@@ -40,16 +34,15 @@ class LeagueController extends AdminController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
-		$infos = $modelName::model()->undeleted()->getList($criteria,20);
+		$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
 	public function actionEdit($id='')
 	{
-		$modelName = $this->modelName;
-		$info = $id ? $modelName::model()->findByPk($id) : new $modelName;
+		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
 		if(Yii::app()->request->getIsPostRequest()) {
-			$info->attributes = Yii::app()->request->getPost($modelName,[]);
+			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
 
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);

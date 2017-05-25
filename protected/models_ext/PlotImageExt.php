@@ -1,18 +1,17 @@
 <?php 
 /**
- * 球员类
+ * 楼盘相册类
  * @author steven.allen <[<email address>]>
- * @date(2017.2.12)
+ * @date(2017.2.14)
  */
-class PlayerExt extends Player{
+class PlotImageExt extends PlotImage{
 	/**
      * 定义关系
      */
     public function relations()
     {
         return array(
-            'team'=>array(self::BELONGS_TO, 'TeamExt', 'tid'),
-            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
+            // 'baike'=>array(self::BELONGS_TO, 'BaikeExt', 'bid'),
         );
     }
 
@@ -37,9 +36,6 @@ class PlayerExt extends Player{
 
     public function afterFind() {
         parent::afterFind();
-        // if(!$this->image){
-        //     $this->image = SiteExt::getAttr('qjpz','productNoPic');
-        // }
     }
 
     public function beforeValidate() {
@@ -58,20 +54,11 @@ class PlayerExt extends Player{
     {
         $alias = $this->getTableAlias();
         return array(
-            'sorted' => array(
-                'order' => "{$alias}.sort desc,{$alias}.updated desc",
-            ),
-            'normal' => array(
-                'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
-                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
-            ),
             'undeleted' => array(
-                'condition' => "{$alias}.deleted=0",
-                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
-            ),
+                'condition' => $alias.'.'.'deleted=0',
+            )
         );
     }
-
     /**
      * 绑定行为类
      */
@@ -85,5 +72,4 @@ class PlayerExt extends Player{
             'BaseBehavior'=>'application.behaviors.BaseBehavior',
         );
     }
-
 }

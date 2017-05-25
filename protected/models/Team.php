@@ -9,6 +9,7 @@
  * @property string $country
  * @property string $name
  * @property string $image
+ * @property string $desc
  * @property integer $status
  * @property integer $deleted
  * @property integer $sort
@@ -36,10 +37,10 @@ class Team extends CActiveRecord
 			array('created', 'required'),
 			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('eng, country, name', 'length', 'max'=>100),
-			array('image', 'length', 'max'=>255),
+			array('image, desc', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eng, country, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, country, name, image, desc, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,6 +66,7 @@ class Team extends CActiveRecord
 			'country' => 'Country',
 			'name' => 'Name',
 			'image' => 'Image',
+			'desc' => 'Desc',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
@@ -96,6 +98,7 @@ class Team extends CActiveRecord
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);

@@ -1,34 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "match".
+ * This is the model class for table "album".
  *
- * The followings are the available columns in table 'match':
+ * The followings are the available columns in table 'album':
  * @property integer $id
- * @property integer $visitor_score
- * @property integer $home_score
- * @property string $visitor_name
- * @property integer $visitor_id
- * @property string $ext
- * @property string $home_name
- * @property integer $home_id
- * @property integer $time
- * @property integer $lid
- * @property string $image
- * @property integer $status
- * @property integer $deleted
+ * @property integer $pid
+ * @property integer $cover
+ * @property integer $cid
+ * @property string $url
+ * @property string $name
  * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Match extends CActiveRecord
+class Album extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'match';
+		return 'album';
 	}
 
 	/**
@@ -40,11 +33,11 @@ class Match extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('visitor_score, home_score, visitor_id, home_id, time, lid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('visitor_name, ext, home_name, image', 'length', 'max'=>255),
+			array('pid, cover, cid, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('url, name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, visitor_score, home_score, visitor_name, visitor_id, ext, home_name, home_id, time, lid, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, pid, cover, cid, url, name, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,18 +59,11 @@ class Match extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'visitor_score' => 'Visitor Score',
-			'home_score' => 'Home Score',
-			'visitor_name' => 'Visitor Name',
-			'visitor_id' => 'Visitor',
-			'ext' => 'Ext',
-			'home_name' => 'Home Name',
-			'home_id' => 'Home',
-			'time' => 'Time',
-			'lid' => 'Lid',
-			'image' => 'Image',
-			'status' => 'Status',
-			'deleted' => 'Deleted',
+			'pid' => 'Pid',
+			'cover' => '是否封面',
+			'cid' => 'Cid',
+			'url' => 'Url',
+			'name' => 'Name',
 			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
@@ -103,18 +89,11 @@ class Match extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('visitor_score',$this->visitor_score);
-		$criteria->compare('home_score',$this->home_score);
-		$criteria->compare('visitor_name',$this->visitor_name,true);
-		$criteria->compare('visitor_id',$this->visitor_id);
-		$criteria->compare('ext',$this->ext,true);
-		$criteria->compare('home_name',$this->home_name,true);
-		$criteria->compare('home_id',$this->home_id);
-		$criteria->compare('time',$this->time);
-		$criteria->compare('lid',$this->lid);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('pid',$this->pid);
+		$criteria->compare('cover',$this->cover);
+		$criteria->compare('cid',$this->cid);
+		$criteria->compare('url',$this->url,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
@@ -128,7 +107,7 @@ class Match extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Match the static model class
+	 * @return Album the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

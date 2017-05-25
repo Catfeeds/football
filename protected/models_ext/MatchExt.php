@@ -11,7 +11,7 @@ class MatchExt extends Match{
     public function relations()
     {
         return array(
-            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            'league'=>array(self::BELONGS_TO, 'LeagueExt', 'lid'),
             // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
         );
     }
@@ -47,6 +47,11 @@ class MatchExt extends Match{
             $this->created = $this->updated = time();
         else
             $this->updated = time();
+        // var_dump($visitor_id);exit;
+        if($home_id = $this->home_id)
+            $this->home_name = TeamExt::model()->findByPk($home_id)->name;
+        if($visitor_id = $this->visitor_id)
+            $this->visitor_name = TeamExt::model()->findByPk($visitor_id)->name;
         return parent::beforeValidate();
     }
 

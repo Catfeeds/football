@@ -1,19 +1,19 @@
 <?php
 /**
- * 联赛控制器
+ * 球队控制器
  */
-class LeagueController extends AdminController{
+class TeamController extends AdminController{
 	
 	public $cates = [];
 
 	public $controllerName = '';
 
-	public $modelName = 'LeagueExt';
+	public $modelName = 'TeamExt';
 
 	public function init()
 	{
 		parent::init();
-		$this->controllerName = '联赛';
+		$this->controllerName = '球队';
 		// $this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
 	}
 	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')

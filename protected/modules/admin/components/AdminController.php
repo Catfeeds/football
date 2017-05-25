@@ -7,7 +7,7 @@
  */
 class AdminController extends Controller
 {
-
+    public $controlleName = '';
     /**
      * @var string 布局文件路径
      */

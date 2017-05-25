@@ -9,6 +9,7 @@
  * @property string $eng
  * @property string $country
  * @property string $pinyin
+ * @property string $desc
  * @property string $image
  * @property integer $status
  * @property integer $deleted
@@ -37,10 +38,10 @@ class League extends CActiveRecord
 			array('name, pinyin, created', 'required'),
 			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('name, eng, country, pinyin', 'length', 'max'=>100),
-			array('image', 'length', 'max'=>255),
+			array('desc, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, eng, country, pinyin, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, name, eng, country, pinyin, desc, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +67,7 @@ class League extends CActiveRecord
 			'eng' => 'Eng',
 			'country' => 'Country',
 			'pinyin' => 'Pinyin',
+			'desc' => 'Desc',
 			'image' => 'Image',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
@@ -98,6 +100,7 @@ class League extends CActiveRecord
 		$criteria->compare('eng',$this->eng,true);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
+		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);

@@ -92,13 +92,10 @@ $config2 = array(
     ),
     'params' => CMap::mergeArray($params, $config['params'])
 );
-if (isset($config['redis']) && $config['redis']) {
-    $config2['components']['hangjiaRedisConfig'] = array_merge(['class'=>'application.components.redis.HangjiaRedisConfig'], $config['redis']);
-}
+
 $cacheConfig['components']['cache'] = isset($config['cache']['host'])&&$config['cache']['host'] ? array('class'=>'CMemCache', 'servers'=>array($config['cache'])) : array('class'=>'CFileCache');
 $config2 = CMap::mergeArray($config2, $cacheConfig);
 $config = CMap::mergeArray($config1, $config2);
-
 // var_dump($config);die;
 return $config;
 ?>

@@ -1,34 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "match".
+ * This is the model class for table "plot".
  *
- * The followings are the available columns in table 'match':
+ * The followings are the available columns in table 'plot':
  * @property integer $id
- * @property integer $visitor_score
- * @property integer $home_score
- * @property string $visitor_name
- * @property integer $visitor_id
- * @property string $ext
- * @property string $home_name
- * @property integer $home_id
- * @property integer $time
- * @property integer $lid
+ * @property string $title
+ * @property string $area
+ * @property string $street
  * @property string $image
- * @property integer $status
+ * @property string $transit
+ * @property string $peripheral
+ * @property string $content
+ * @property string $data_conf
  * @property integer $deleted
- * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Match extends CActiveRecord
+class Plot extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'match';
+		return 'plot';
 	}
 
 	/**
@@ -40,11 +36,12 @@ class Match extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('visitor_score, home_score, visitor_id, home_id, time, lid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('visitor_name, ext, home_name, image', 'length', 'max'=>255),
+			array('deleted, created, updated', 'numerical', 'integerOnly'=>true),
+			array('title, area, street, image', 'length', 'max'=>255),
+			array('transit, peripheral, content, data_conf', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, visitor_score, home_score, visitor_name, visitor_id, ext, home_name, home_id, time, lid, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, title, area, street, image, transit, peripheral, content, data_conf, deleted, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,19 +63,15 @@ class Match extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'visitor_score' => 'Visitor Score',
-			'home_score' => 'Home Score',
-			'visitor_name' => 'Visitor Name',
-			'visitor_id' => 'Visitor',
-			'ext' => 'Ext',
-			'home_name' => 'Home Name',
-			'home_id' => 'Home',
-			'time' => 'Time',
-			'lid' => 'Lid',
+			'title' => 'Title',
+			'area' => 'Area',
+			'street' => 'Street',
 			'image' => 'Image',
-			'status' => 'Status',
+			'transit' => 'Transit',
+			'peripheral' => 'Peripheral',
+			'content' => 'Content',
+			'data_conf' => 'Data Conf',
 			'deleted' => 'Deleted',
-			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -103,19 +96,15 @@ class Match extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('visitor_score',$this->visitor_score);
-		$criteria->compare('home_score',$this->home_score);
-		$criteria->compare('visitor_name',$this->visitor_name,true);
-		$criteria->compare('visitor_id',$this->visitor_id);
-		$criteria->compare('ext',$this->ext,true);
-		$criteria->compare('home_name',$this->home_name,true);
-		$criteria->compare('home_id',$this->home_id);
-		$criteria->compare('time',$this->time);
-		$criteria->compare('lid',$this->lid);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('area',$this->area,true);
+		$criteria->compare('street',$this->street,true);
 		$criteria->compare('image',$this->image,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('transit',$this->transit,true);
+		$criteria->compare('peripheral',$this->peripheral,true);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('data_conf',$this->data_conf,true);
 		$criteria->compare('deleted',$this->deleted);
-		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -128,7 +117,7 @@ class Match extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Match the static model class
+	 * @return Plot the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
