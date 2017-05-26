@@ -1,22 +1,25 @@
 <?php
 /**
- * 球员控制器
+ * 积分控制器
  */
-class PlayerController extends AdminController{
+class PointsController extends AdminController{
 	
 	public $cates = [];
 
+	public $cates1 = [];
+
 	public $controllerName = '';
 
-	public $modelName = 'PlayerExt';
+	public $modelName = 'PointsExt';
 
 	public function init()
 	{
 		parent::init();
-		$this->controllerName = '球员';
-		$this->cates = CHtml::listData(TeamExt::model()->normal()->findAll(),'id','name');
+		$this->controllerName = '积分';
+		$this->cates = CHtml::listData(LeagueExt::model()->normal()->findAll(),'id','name');
+		$this->cates1 = CHtml::listData(TeamExt::model()->normal()->findAll(),'id','name');
 	}
-	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
+	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='',$cate1='')
 	{
 		$modelName = $this->modelName;
 		$criteria = new CDbCriteria;
@@ -37,11 +40,15 @@ class PlayerController extends AdminController{
 
         }
 		if($cate) {
-			$criteria->addCondition('cid=:cid');
+			$criteria->addCondition('lid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
+		if($cate1) {
+			$criteria->addCondition('tid=:cid');
+			$criteria->params[':cid'] = $cate1;
+		}
 		$infos = $modelName::model()->undeleted()->getList($criteria,20);
-		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
+		$this->render('list',['cate'=>$cate,'cate1'=>$cate1,'infos'=>$infos->data,'cates'=>$this->cates,'cates1'=>$this->cates1,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
 	public function actionEdit($id='')
@@ -57,6 +64,6 @@ class PlayerController extends AdminController{
 				$this->setMessage(array_values($info->errors)[0][0],'error');
 			}
 		} 
-		$this->render('edit',['cates'=>$this->cates,'article'=>$info]);
+		$this->render('edit',['cates'=>$this->cates,'article'=>$info,'cates1'=>$this->cates1,]);
 	}
 }

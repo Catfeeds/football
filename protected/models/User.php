@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $pwd
  * @property string $wx
- * @property integer $phone
+ * @property string $phone
  * @property string $name
  * @property string $image
  * @property integer $status
@@ -35,9 +35,10 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('pwd, name, created', 'required'),
-			array('phone, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('pwd, image', 'length', 'max'=>255),
 			array('wx, name', 'length', 'max'=>100),
+			array('phone', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, pwd, wx, phone, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
@@ -96,7 +97,7 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('pwd',$this->pwd,true);
 		$criteria->compare('wx',$this->wx,true);
-		$criteria->compare('phone',$this->phone);
+		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('status',$this->status);

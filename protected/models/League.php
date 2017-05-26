@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'league':
  * @property integer $id
+ * @property string $full_name
  * @property string $name
  * @property string $eng
  * @property string $country
@@ -37,11 +38,11 @@ class League extends CActiveRecord
 		return array(
 			array('name, pinyin, created', 'required'),
 			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('full_name, desc, image', 'length', 'max'=>255),
 			array('name, eng, country, pinyin', 'length', 'max'=>100),
-			array('desc, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, eng, country, pinyin, desc, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, full_name, name, eng, country, pinyin, desc, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +64,7 @@ class League extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'full_name' => 'Full Name',
 			'name' => 'Name',
 			'eng' => 'Eng',
 			'country' => 'Country',
@@ -96,6 +98,7 @@ class League extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('eng',$this->eng,true);
 		$criteria->compare('country',$this->country,true);

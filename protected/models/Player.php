@@ -9,6 +9,7 @@
  * @property integer $assist
  * @property integer $score
  * @property integer $tid
+ * @property string $full_name
  * @property string $name
  * @property string $image
  * @property integer $status
@@ -38,10 +39,10 @@ class Player extends CActiveRecord
 			array('created', 'required'),
 			array('assist, score, tid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('eng, name', 'length', 'max'=>100),
-			array('image', 'length', 'max'=>255),
+			array('full_name, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eng, assist, score, tid, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, assist, score, tid, full_name, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +68,7 @@ class Player extends CActiveRecord
 			'assist' => 'Assist',
 			'score' => 'Score',
 			'tid' => 'Tid',
+			'full_name' => 'Full Name',
 			'name' => 'Name',
 			'image' => 'Image',
 			'status' => 'Status',
@@ -100,6 +102,7 @@ class Player extends CActiveRecord
 		$criteria->compare('assist',$this->assist);
 		$criteria->compare('score',$this->score);
 		$criteria->compare('tid',$this->tid);
+		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('status',$this->status);

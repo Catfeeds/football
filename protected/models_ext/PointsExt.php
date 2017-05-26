@@ -1,18 +1,18 @@
 <?php 
 /**
- * 评论类 type 1 资讯
+ * 积分类
  * @author steven.allen <[<email address>]>
  * @date(2017.2.12)
  */
-class CommentExt extends Comment{
+class PointsExt extends Points{
 	/**
      * 定义关系
      */
     public function relations()
     {
         return array(
-            'news'=>array(self::BELONGS_TO, 'ArticleExt', ['major_id'=>'id']),
-            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
+            'league'=>array(self::BELONGS_TO, 'LeagueExt', 'lid'),
+            'team'=>array(self::BELONGS_TO, 'TeamExt', 'tid'),
         );
     }
 
@@ -84,18 +84,6 @@ class CommentExt extends Comment{
             ),
             'BaseBehavior'=>'application.behaviors.BaseBehavior',
         );
-    }
-
-    public function getMajorInfo()
-    {
-        if($this->type==1) {
-            return $this->news;
-        }
-    }
-
-    public function getObj()
-    {
-        return self::model()->findByPk($this->comment_id);
     }
 
 }

@@ -1,22 +1,29 @@
 <?php
 /**
- * 资讯控制器
+ * 评论控制器
  */
-class NewsController extends AdminController{
-	// 红酒类型
+class CommentController extends AdminController{
+	
 	public $cates = [];
+
+	public $controllerName = '';
+
+	public $modelName = 'CommentExt';
 
 	public function init()
 	{
 		parent::init();
-		$this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
+		$this->controllerName = '评论';
+		// $this->cates = CHtml::listData(TeamExt::model()->normal()->findAll(),'id','name');
 	}
-	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
+	public function actionList($type='news',$value='',$time_type='created',$time='',$cate='')
 	{
+		$modelName = $this->modelName;
 		$criteria = new CDbCriteria;
 		if($value = trim($value))
-            if ($type=='title') {
-                $criteria->addSearchCondition('title', $value);
+            if ($type=='news') {
+            	$criteria->with = 'news';
+                $criteria->addSearchCondition('news.title', $value);
             } 
         //添加时间、刷新时间筛选
         if($time_type!='' && $time!='')
@@ -24,25 +31,26 @@ class NewsController extends AdminController{
             list($beginTime, $endTime) = explode('-', $time);
             $beginTime = (int)strtotime(trim($beginTime));
             $endTime = (int)strtotime(trim($endTime));
-            $criteria->addCondition("{$time_type}>=:beginTime");
-            $criteria->addCondition("{$time_type}<:endTime");
+            $criteria->addCondition("t.{$time_type}>=:beginTime");
+            $criteria->addCondition("t.{$time_type}<:endTime");
             $criteria->params[':beginTime'] = TimeTools::getDayBeginTime($beginTime);
             $criteria->params[':endTime'] = TimeTools::getDayEndTime($endTime);
 
         }
 		if($cate) {
-			$criteria->addCondition('cid=:cid');
+			$criteria->addCondition('t.cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
-		$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
+		$infos = $modelName::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
 	public function actionEdit($id='')
 	{
-		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
+		$modelName = $this->modelName;
+		$info = $id ? $modelName::model()->findByPk($id) : new $modelName;
 		if(Yii::app()->request->getIsPostRequest()) {
-			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
+			$info->attributes = Yii::app()->request->getPost($modelName,[]);
 
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);

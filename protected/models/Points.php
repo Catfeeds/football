@@ -1,30 +1,34 @@
 <?php
 
 /**
- * This is the model class for table "team".
+ * This is the model class for table "points".
  *
- * The followings are the available columns in table 'team':
+ * The followings are the available columns in table 'points':
  * @property integer $id
- * @property string $eng
- * @property string $country
- * @property string $full_name
- * @property string $name
- * @property string $image
- * @property string $desc
+ * @property string $points
+ * @property integer $lose_ball
+ * @property integer $score_ball
+ * @property integer $lose
+ * @property integer $same
+ * @property integer $win
+ * @property string $round
+ * @property string $year
+ * @property integer $lid
+ * @property integer $tid
  * @property integer $status
  * @property integer $deleted
  * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class Team extends CActiveRecord
+class Points extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'team';
+		return 'points';
 	}
 
 	/**
@@ -36,12 +40,11 @@ class Team extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('eng, country, name', 'length', 'max'=>100),
-			array('full_name, image, desc', 'length', 'max'=>255),
+			array('lose_ball, score_ball, lose, same, win, lid, tid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('points, round, year', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eng, country, full_name, name, image, desc, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, points, lose_ball, score_ball, lose, same, win, round, year, lid, tid, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,12 +66,16 @@ class Team extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'eng' => 'Eng',
-			'country' => 'Country',
-			'full_name' => 'Full Name',
-			'name' => 'Name',
-			'image' => 'Image',
-			'desc' => 'Desc',
+			'points' => 'Points',
+			'lose_ball' => 'Lose Ball',
+			'score_ball' => 'Score Ball',
+			'lose' => 'Lose',
+			'same' => 'Same',
+			'win' => 'Win',
+			'round' => 'Round',
+			'year' => 'Year',
+			'lid' => 'Lid',
+			'tid' => 'Tid',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
@@ -96,12 +103,16 @@ class Team extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('eng',$this->eng,true);
-		$criteria->compare('country',$this->country,true);
-		$criteria->compare('full_name',$this->full_name,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('desc',$this->desc,true);
+		$criteria->compare('points',$this->points,true);
+		$criteria->compare('lose_ball',$this->lose_ball);
+		$criteria->compare('score_ball',$this->score_ball);
+		$criteria->compare('lose',$this->lose);
+		$criteria->compare('same',$this->same);
+		$criteria->compare('win',$this->win);
+		$criteria->compare('round',$this->round,true);
+		$criteria->compare('year',$this->year,true);
+		$criteria->compare('lid',$this->lid);
+		$criteria->compare('tid',$this->tid);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
@@ -117,7 +128,7 @@ class Team extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Team the static model class
+	 * @return Points the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

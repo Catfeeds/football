@@ -17,7 +17,7 @@ class AdminIdentity extends CUserIdentity
 		{
 			$this->errorCode = self::ERROR_NONE;
 			$this->setState('id',1);
-			$this->setState('username','admin');
+			$this->setState('username','管理员');
 			$this->setState('avatar','');
 			return $this->errorCode;
 		}

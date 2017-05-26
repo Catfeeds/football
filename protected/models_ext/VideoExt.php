@@ -11,7 +11,7 @@ class VideoExt extends Video{
     public function relations()
     {
         return array(
-            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            'match'=>array(self::BELONGS_TO, 'MatchExt', 'mid'),
             // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
         );
     }

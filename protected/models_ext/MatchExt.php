@@ -68,11 +68,14 @@ class MatchExt extends Match{
             ),
             'normal' => array(
                 'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
-                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+                'order'=>"{$alias}.sort desc,{$alias}.time asc,{$alias}.updated desc",
             ),
             'undeleted' => array(
-                'condition' => "{$alias}.deleted=0",
-                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+                'condition' => "{$alias}.deleted=0"
+                ),
+                // 昨天至未来
+            'video'=>array(
+                'condition' => "{$alias}.time>".time()-24*86400,
             ),
         );
     }

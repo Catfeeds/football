@@ -26,7 +26,7 @@ class MatchController extends AdminController{
 		$criteria = new CDbCriteria;
 		if($value = trim($value))
             if ($type=='title') {
-                $criteria->addSearchCondition('title', $value);
+                // $criteria->addSearchCondition('title', $value);
             } 
         //添加时间、刷新时间筛选
         if($time_type!='' && $time!='')
