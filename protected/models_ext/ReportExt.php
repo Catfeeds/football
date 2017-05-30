@@ -5,6 +5,11 @@
  * @date(2017.2.12)
  */
 class ReportExt extends Report{
+    public static $statusArr = [0=>'未处理',1=>'已处理'];
+
+    public static $objArr = [1=>'评论',2=>'资讯'];
+
+    public static $objModelArr = [1=>['class'=>'CommentExt','field'=>'content'],2=>['class'=>'ArticleExt','field'=>'title']];
 	/**
      * 定义关系
      */
@@ -84,6 +89,18 @@ class ReportExt extends Report{
             ),
             'BaseBehavior'=>'application.behaviors.BaseBehavior',
         );
+    }
+
+    public function getReportObj()
+    {
+        $model = self::$objModelArr[$this->type]['class'];
+        $field = self::$objModelArr[$this->type]['field'];
+        $info = $model::model()->findByPk($this->report_id);
+        if($info) {
+            return ['id'=>$info->id,'name'=>$info->$field];
+        } else {
+            return [];
+        }
     }
 
 }

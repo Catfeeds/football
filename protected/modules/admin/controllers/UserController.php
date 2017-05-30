@@ -1,20 +1,29 @@
 <?php
 /**
- * 中介二手房管理，包括发布、上下架二手房和交互的相应操作
- * @author steven.allen <[<email address>]>
- * @date 2016.09.02
+ * 用户控制器
  */
-class UserController extends AdminController
-{
-	public function actionList($type='name',$value='',$time_type='created',$time='',$buy='')
-	{
-		$criteria = new CDbCriteria;
-		if($value = trim($value))
-            if ($type=='name') {
+class UserController extends AdminController{
+    
+    public $cates = [];
+
+    public $controllerName = '';
+
+    public $modelName = 'UserExt';
+
+    public function init()
+    {
+        parent::init();
+        $this->controllerName = '用户';
+        // $this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
+    }
+    public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
+    {
+        $modelName = $this->modelName;
+        $criteria = new CDbCriteria;
+        if($value = trim($value))
+            if ($type=='title') {
                 $criteria->addSearchCondition('name', $value);
-            } elseif ($type=='phone') {
-            	$criteria->addSearchCondition('phone', $value);
-            }
+            } 
         //添加时间、刷新时间筛选
         if($time_type!='' && $time!='')
         {
@@ -27,17 +36,27 @@ class UserController extends AdminController
             $criteria->params[':endTime'] = TimeTools::getDayEndTime($endTime);
 
         }
-		$criteria->order = 'updated desc';
-		if(is_numeric($buy)) 
-			if($buy>0) {
-				$criteria->addCondition('pid>0');
-			}else{
-				$criteria->addCondition('pid=0');
-			}
-		$dts = GuestExt::model()->getList($criteria);
-		$this->render('list',['infos'=>$dts->data,'pager'=>$dts->pagination,'buy'=>$buy,'type' => $type,
-            'value' => $value,
-            'time' => $time,
-            'time_type' => $time_type]);
-	}
+        if($cate) {
+            $criteria->addCondition('cid=:cid');
+            $criteria->params[':cid'] = $cate;
+        }
+        $infos = $modelName::model()->undeleted()->getList($criteria,20);
+        $this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
+    }
+
+    public function actionEdit($id='')
+    {
+        $modelName = $this->modelName;
+        $info = $id ? $modelName::model()->findByPk($id) : new $modelName;
+        if(Yii::app()->request->getIsPostRequest()) {
+            $info->attributes = Yii::app()->request->getPost($modelName,[]);
+
+            if($info->save()) {
+                $this->setMessage('操作成功','success',['list']);
+            } else {
+                $this->setMessage(array_values($info->errors)[0][0],'error');
+            }
+        } 
+        $this->render('edit',['cates'=>$this->cates,'article'=>$info]);
+    }
 }
