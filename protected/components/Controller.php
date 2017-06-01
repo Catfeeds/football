@@ -21,14 +21,14 @@ class Controller extends CController
 		parent::init();
 		//判断使用主题
 		Yii::app()->theme = 'v2';
-		if($this->redirectWap()&&$this->module->id=='home'&&$this->id!='error')
-		{
-			if(Yii::app()->request->getUrl() == '/')
-				$this->redirect('/wap');
-			else
-				$this->redirect(str_replace('/home','/wap',Yii::app()->request->getUrl()));
-			Yii::app()->end();
-		}
+		// if($this->redirectWap()&&$this->module->id=='home'&&$this->id!='error')
+		// {
+		// 	if(Yii::app()->request->getUrl() == '/')
+		// 		$this->redirect('/wap');
+		// 	else
+		// 		$this->redirect(str_replace('/home','/wap',Yii::app()->request->getUrl()));
+		// 	Yii::app()->end();
+		// }
 	}
 
 	/**

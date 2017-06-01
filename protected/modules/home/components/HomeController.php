@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     public function getKeyword(){
         if($this->keyword === null){
-            $this->keyword = '里奥哈葡萄酒,进口红酒,西班牙红酒,里奥哈酒庄,进口顶级红酒';
+            $this->keyword = '懂球帝，足球专业资讯网站';
         }
         return $this->keyword;
     }
@@ -92,7 +92,7 @@ class HomeController extends Controller
 
     public function getDescription(){
         if($this->description === null){
-            $this->description = '马德里公馆主营西班牙进口红酒,介绍西班牙里奥哈葡萄酒历史、文化和知识。为追求品质吃喝的你带来高价值的红酒及橄榄油科普,提供全国线下产品体验中心。';
+            $this->description = '懂球帝，足球专业资讯网站的介绍';
         }
         return $this->description;
     }
@@ -116,6 +116,23 @@ class HomeController extends Controller
         if(Yii::app()->uc->user->hasFlash('synloginHtml')){
             $output .= Yii::app()->uc->user->getFlash('synloginHtml');
         }
+    }
+
+    public function getHomeMenu()
+    {
+        if(Yii::app()->user->getIsGuest()) {
+            $username = '登录';
+        } else {
+            $username = Yii::app()->user->username;
+        }
+        return [
+            ['name'=>'首页','url'=>'home/index/index','active'=>['']],
+            ['name'=>'比赛','url'=>'home/match/index'],
+            ['name'=>'资讯','url'=>'home/news/list','active'=>['home/news/info']],
+            ['name'=>'直播','url'=>'home/video/list','active'=>['home/video/info']],
+            ['name'=>'数据','url'=>'home/data/index'],
+            ['name'=>$username,'url'=>'home/user/index'],
+        ];
     }
 
 }
