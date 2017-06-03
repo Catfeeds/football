@@ -11,10 +11,10 @@
             <div class="content">
                 <div class="slick_bor">
                     <script src="<?=Yii::app()->theme->baseUrl?>/static/home/js/responsiveslides.min.js"></script>
-                    <ul class="slick" style="height:390px">
+                    <ul class="slick" style="<?=$this->imgstyle?>">
                     <?php $imgs = SiteExt::getAttr('qjpz','pcIndexImages');if($imgs) foreach ($imgs as $key => $value) {?>
                         <li>
-                            <a href=""><img style="height:390px" class="img_855x300" src="<?=ImageTools::fixImage($value,855,400)?>" alt=""><span></span></a>
+                            <a href=""><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($value,855,390)?>" alt=""><span></span></a>
                         </li>
                     <?php } ?>
                     </ul>
