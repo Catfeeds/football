@@ -11,6 +11,7 @@
  * @property integer $is_top
  * @property integer $cid
  * @property integer $uid
+ * @property integer $hits
  * @property string $author
  * @property string $content
  * @property string $desc
@@ -40,13 +41,13 @@ class Article extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('is_top_video, is_top, cid, uid, publish, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('is_top_video, is_top, cid, uid, hits, publish, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('image, title, desc', 'length', 'max'=>255),
 			array('author', 'length', 'max'=>100),
 			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, image, title, is_top_video, is_top, cid, uid, author, content, desc, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, image, title, is_top_video, is_top, cid, uid, hits, author, content, desc, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +75,7 @@ class Article extends CActiveRecord
 			'is_top' => 'Is Top',
 			'cid' => 'Cid',
 			'uid' => 'Uid',
+			'hits' => 'Hits',
 			'author' => 'Author',
 			'content' => 'Content',
 			'desc' => 'Desc',
@@ -111,6 +113,7 @@ class Article extends CActiveRecord
 		$criteria->compare('is_top',$this->is_top);
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('uid',$this->uid);
+		$criteria->compare('hits',$this->hits);
 		$criteria->compare('author',$this->author,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('desc',$this->desc,true);

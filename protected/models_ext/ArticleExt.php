@@ -34,7 +34,7 @@ class ArticleExt extends Article{
     {
         return array(
             // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
-            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
+            'comment_num'=>array(self::STAT, 'CommentExt', 'major_id'),
         );
     }
 

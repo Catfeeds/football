@@ -1,10 +1,23 @@
 <?php
 class IndexController extends HomeController
 {
-    public function actionIndex()
+    public function actionIndex($cid=0)
     {
+        // 三场比赛
         $matchs = MatchExt::model()->normal()->findAll(['limit'=>3]);
-        $this->render('index',['matchs'=>$matchs]);
+        // 所有分类
+        $cates = ArticleCateExt::model()->normal()->findAll();
+        $criteria = new CDbCriteria;
+        $criteria->limit = 20;
+        if(!$cid) {
+            isset($cates[0]) && $cid = $cates[0]['id'];
+        }
+        if($cid) {
+            $criteria->addCondition('cid=:cid');
+            $criteria->params[':cid'] = $cid;
+        }
+        $news = ArticleExt::model()->normal()->findAll($criteria);
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news]);
     }
 
     public function actionAbout()

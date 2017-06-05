@@ -83,19 +83,33 @@
                         </li>
                     </ul>
                 </div>
+                <style type="text/css">
+                    .catew1{
+                        color: #999;
+                        font-family: 微软雅黑;
+                    }
+                    .wactive{
+                        color: #007046;
+                    }
+                </style>
                 <header class="archive-header">
-                    <h1>最新发布</h1></header>
-                <article class="excerpt">
+                    <h3>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
+                        <a class="catew1 <?=$value->id==$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index',['cid'=>$value->id])?>"><?=$value->name?></a>&nbsp;
+                    <?php } ?></h3></header>
+                    <?php if($news) foreach ($news as $key => $value) {?>
+                        <article class="excerpt">
                     <div class="focus">
-                        <a target="_blank" href="http://demo7.ledkongzhiqi.com/mysql/119.html"><img class="thumb" src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://www.cuizl.com/wp-content/uploads/2016/03/2016030103410612.jpg&h=150&w=220&q=90&zc=1&ct=1" alt="DTCC 2016:MySQL中国组主席谈DBA的炼成" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image,200,123)?>" alt="<?=$value->title?>" /></a>
                     </div>
-                    <header><a class="label label-important" href="http://demo7.ledkongzhiqi.com/category/mysql">mysql<i class="label-arrow"></i></a>
-                        <h2><a target="_blank" href="http://demo7.ledkongzhiqi.com/mysql/119.html" title="DTCC 2016:MySQL中国组主席谈DBA的炼成">DTCC 2016:MySQL中国组主席谈DBA的炼成  </a></h2>
+                    <header>
+                        <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>
                     </header>
                     <p class="auth-span">
-                        <span class="muted"><i class="fa fa-clock-o"></i> 2016-02-25</span> <span class="muted"><i class="fa fa-eye"></i> 2606℃</span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://demo7.ledkongzhiqi.com/mysql/119.html#comments">2评论</a></span></p>
-                    <span class="note"> 【IT168 专稿】高速发展的互联网推动着大数据云计算的成熟以及行业变革，而互联网的发展少不了MySQL的支撑，作为市场占有率排名前三的数据库，MySQL随着WEB2.0的兴起而...</span>
+                        <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->publish)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
+                    <span class="note"><?=Tools::u8_title_substr($value->desc,200)?></span>
                 </article>
+                   <?php } ?>
+                
                
                 <div class="pagination">
                     <ul>
@@ -173,11 +187,11 @@
                     </span>
                 </li>
             </div> -->
-            <div class="widget d_banner">
+            <!-- <div class="widget d_banner">
                 <div class="d_banner_inner">
                     <a href="http://www.cuizl.com/bokezhuti/1761.html#5566" target="_blank" title="垂直自媒体wordpress博客主题：Geek"><img src="http://www.cuizl.com/wp-content/uploads/2016/04/2016050208553249.jpg" alt="棕红色响应式垂直自媒体wordpress博客主题：Geek"><span></span></a>
                 </div>
-            </div>
+            </div> -->
             <div class="widget d_postlist">
                 <div class="title">
                     <h2><sapn class="title_span">热门推荐</span></h2></div>
@@ -211,7 +225,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="widget d_banner">
+           <!--  <div class="widget d_banner">
                 <div class="d_banner_inner"><img class="alignnone size-full wp-image-516" src="http://demo5.ledkongzhiqi.com/wp-content/uploads/2016/02/t01605ab9200e1b43f8.jpg" alt="ddy" width="308"></div>
             </div>
             <div class="widget d_tag">
@@ -229,7 +243,7 @@
                     <input type="email" name="to" class="rsstxt" placeholder="your@email.com" value="" required />
                     <input type="submit" class="rssbutton" value="订阅" />
                 </form>
-            </div>
+            </div> -->
             <div class="widget d_comment">
                 <div class="title">
                     <h2><sapn class="title_span">最新评论</span></h2></div>
