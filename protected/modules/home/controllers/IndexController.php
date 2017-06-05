@@ -16,8 +16,12 @@ class IndexController extends HomeController
             $criteria->addCondition('cid=:cid');
             $criteria->params[':cid'] = $cid;
         }
+        // 精品导读
+        $jpdds = RecomExt::getObjFromCate(1,4);
+        // 热门推荐
+        $rmtjs = RecomExt::getObjFromCate(2,6);
         $news = ArticleExt::model()->normal()->findAll($criteria);
-        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news]);
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rmtjs'=>$rmtjs]);
     }
 
     public function actionAbout()

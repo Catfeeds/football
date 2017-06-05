@@ -209,9 +209,7 @@ class CommonController extends AdminController
 
     public function actionTest()
     {
-        $obj = new Auth();
-        var_dump($obj);exit;
-        $this->layout = '/layouts/modal_base';
+        $this->layout = '/layouts/none';
         $this->render('test');
     }
 }

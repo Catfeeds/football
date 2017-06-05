@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = '资讯列表';
+$this->pageTitle = $this->controllerName.'列表';
 $this->breadcrumbs = array($this->pageTitle);
 ?>
 <div class="table-toolbar">
@@ -14,28 +14,29 @@ $this->breadcrumbs = array($this->pageTitle);
             <div class="form-group">
                 <?php echo CHtml::dropDownList('time_type',$time_type,array('created'=>'添加时间','updated'=>'修改时间'),array('class'=>'form-control','encode'=>false)); ?>
             </div>
+             
             <?php Yii::app()->controller->widget("DaterangepickerWidget",['time'=>$time,'params'=>['class'=>'form-control chose_text']]);?>
-            <div class="form-group">
-                <?php echo CHtml::dropDownList('cate',$cate,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择栏目--')); ?>
+             <div class="form-group">
+                <?php echo CHtml::dropDownList('cate',$cate,Yii::app()->params['recomCate'],array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择推荐位--')); ?>
             </div>
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>
         </form>
     </div>
-    <div class="pull-right">
+    <!-- <div class="pull-right">
         <a href="<?php echo $this->createAbsoluteUrl('edit') ?>" class="btn blue">
-            添加列表 <i class="fa fa-plus"></i>
+            添加<?=$this->controllerName?> <i class="fa fa-plus"></i>
         </a>
-    </div>
+    </div> -->
 </div>
    <table class="table table-bordered table-striped table-condensed flip-content table-hover">
     <thead class="flip-content">
     <tr>
         <th class="text-center">排序</th>
         <th class="text-center">ID</th>
-        <th class="text-center">标题</th>
-        <th class="text-center">作者</th>
-        <th class="text-center">栏目</th>
+        <th class="text-center">推荐标题</th>
+        <th class="text-center">推荐类型</th>
+        <th class="text-center">推荐位</th>
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
         <th class="text-center">状态</th>
@@ -48,17 +49,17 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><?=$v->title?></td>
-            <td class="text-center"><?=$v->author?></td>
-            <td class="text-center"><?=ArticleCateExt::getNameById($v->cid)?></td>            
+            <td class="text-center"><?=$v->getObj()->title?></td>
+            <td class="text-center"><?=Yii::app()->params['recomType'][$v->type]?></td>
+            <td class="text-center"><?=Yii::app()->params['recomCate'][$v->cid]?></td> 
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>
 
             <td style="text-align:center;vertical-align: middle">
-                <a href="<?php echo $this->createUrl('/admin/news/edit',array('id'=>$v->id)); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a>
+                <!-- <a href="<?php echo $this->createUrl('edit',array('id'=>$v->id)); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a> -->
                 <?php echo CHtml::htmlButton('删除', array('data-toggle'=>'confirmation', 'class'=>'btn btn-xs red', 'data-title'=>'确认删除？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true,'ajax'=>array('url'=>$this->createUrl('del'),'type'=>'get','success'=>'function(data){location.reload()}','data'=>array('id'=>$v->id,'class'=>get_class($v)))));?>
-                <a class="btn btn-xs blue" href="<?=$this->createUrl('/admin/recom/edit',['rid'=>$v->id,'type'=>1])?>">推荐</a>
+
 
             </td>
         </tr>
@@ -83,7 +84,7 @@ $this->breadcrumbs = array($this->pageTitle);
         });
     }
     function set_sort(_this, id, sort){
-            $.getJSON('<?php echo $this->createUrl('/admin/news/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
+            $.getJSON('<?php echo $this->createUrl('/admin/league/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
                 location.reload();
             });
         }

@@ -4,7 +4,7 @@
 <section class="container">
         <div class="speedbar" style="height: 25px;line-height: 25px">
             <div class="top-tip">
-                <strong class="text-success"><i class="fa fa-volume-up"></i> </strong>球布斯新版上线啦！欢迎关注！！
+                <strong class="text-success"><i class="fa fa-volume-up"></i> </strong><?=SiteExt::getAttr('qjpz','pcIndexGun')?>
             </div>
         </div>
         <div class="content-wrap">
@@ -39,63 +39,35 @@
                         <h4>精选导读</h4>
                     </div>
                     <ul class="dd-list">
+                    <?php if($jpdds) foreach ($jpdds as $key => $value) { $value = $value->getObj();?>
                         <li>
                             <figure class="dd-img">
-                                <a title="Google Chrome终于支持CSS Variables了！" target="_blank" href="http://demo7.ledkongzhiqi.com/css/105.html">
-                                    <img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/02/28-1.jpg&q=90&zc=1&ct=1&h=112&w=168" style="display: inline;" alt="Google Chrome终于支持CSS Variables了！" /> </a>
+                                <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
+                                    <img src="<?=ImageTools::fixImage($value->image,168,112)?>" style="display: inline;" /> </a>
                             </figure>
                             <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="Google Chrome终于支持CSS Variables了！" href="http://demo7.ledkongzhiqi.com/css/105.html">Google Chrome终于支持CSS Variables了！</a> </h2>
+                                <h2 class="dd-title"> <a rel="bookmark" title="<?=$value->title?>" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,60)?></a> </h2>
                                 <div class="dd-site xs-hidden">
-                                    这篇文章要报道的并不是“新闻”，因为W3C早已开始着手CSS变量（又称 自定义...</div>
+                                    <?=Tools::u8_title_substr($value->descpt,60)?></div>
                             </div>
                         </li>
-                        <li>
-                            <figure class="dd-img">
-                                <a title="CSS代码重构与优化之路" target="_blank" href="http://demo7.ledkongzhiqi.com/zhuti/91.html">
-                                    <img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/01/QQ截图20160403161243.jpg&q=90&zc=1&ct=1&h=112&w=168" style="display: inline;" alt="CSS代码重构与优化之路" /> </a>
-                            </figure>
-                            <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="CSS代码重构与优化之路" href="http://demo7.ledkongzhiqi.com/zhuti/91.html">CSS代码重构与优化之路</a> </h2>
-                                <div class="dd-site xs-hidden">写CSS的同学们往往会体会到，随着项目规模的增加，项目中的CSS代码也会越来越多...</div>
-                            </div>
-                        </li>
-                        <li>
-                            <figure class="dd-img">
-                                <a title="如何选择html5 移动开发公司" target="_blank" href="http://demo7.ledkongzhiqi.com/zhuti/75.html">
-                                    <img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/02/38dbb6fd5266d01608d37e4e902bd40734fa3589.jpg&q=90&zc=1&ct=1&h=112&w=168" style="display: inline;" alt="如何选择html5 移动开发公司" /> </a>
-                            </figure>
-                            <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="如何选择html5 移动开发公司" href="http://demo7.ledkongzhiqi.com/zhuti/75.html">如何选择html5 移动开发公司</a> </h2>
-                                <div class="dd-site xs-hidden">
-                                    随着移动设备越来越先进，对html5 移动开发的支持度越来越高，我们进军移动领...</div>
-                            </div>
-                        </li>
-                        <li>
-                            <figure class="dd-img">
-                                <a title="如何看待HTML5抓住微信应用号千亿级市场！" target="_blank" href="http://demo7.ledkongzhiqi.com/zhuti/73.html">
-                                    <img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/01/193812552249-1.jpg&q=90&zc=1&ct=1&h=112&w=168" style="display: inline;" alt="如何看待HTML5抓住微信应用号千亿级市场！" /> </a>
-                            </figure>
-                            <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="如何看待HTML5抓住微信应用号千亿级市场！" href="http://demo7.ledkongzhiqi.com/zhuti/73.html">如何看待HTML5抓住微信应用号千亿级市场！</a> </h2>
-                                <div class="dd-site xs-hidden">不久前，“微信之父”张小龙轻描淡写的宣布了计划推出“应用号”的消息，激起了千层浪...</div>
-                            </div>
-                        </li>
+                   <?php } ?>
+                        
                     </ul>
                 </div>
                 <style type="text/css">
                     .catew1{
                         color: #999;
-                        font-family: 微软雅黑;
+                        font-family: 黑体;
                     }
                     .wactive{
-                        color: #007046;
+                        color: rgb(128,201,165);
                     }
                 </style>
                 <header class="archive-header">
-                    <h3>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
+                    <h4>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
                         <a class="catew1 <?=$value->id==$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index',['cid'=>$value->id])?>"><?=$value->name?></a>&nbsp;
-                    <?php } ?></h3></header>
+                    <?php } ?></h4></header>
                     <?php if($news) foreach ($news as $key => $value) {?>
                         <article class="excerpt">
                     <div class="focus">
@@ -105,27 +77,22 @@
                         <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>
                     </header>
                     <p class="auth-span">
-                        <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->publish)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
-                    <span class="note"><?=Tools::u8_title_substr($value->desc,200)?></span>
+                        <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
+                    <span class="note"><?=Tools::u8_title_substr($value->descpt,200)?></span>
                 </article>
                    <?php } ?>
-                
-               
-                <div class="pagination">
-                    <ul>
-                        <li class="prev-page"></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href='http://demo7.ledkongzhiqi.com/page/2'>2</a></li>
-                        <li class="next-page"><a href="http://demo7.ledkongzhiqi.com/page/2">下一页</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
         <aside class="sidebar">
             <div class="widget widget_text">
                 <div class="textwidget">
                     <div class="social">
-                        <a href="000" rel="external nofollow" title="新浪微博" target="_blank"><i class="sinaweibo fa fa-weibo"></i></a><a href="" rel="external nofollow" title="腾讯微博" target="_blank"><i class="tencentweibo fa fa-tencent-weibo"></i></a><a class="weixin"><i class="weixins fa fa-weixin"></i><div class="weixin-popover"><div class="popover bottom in"><div class="arrow"></div><div class="popover-title">订阅号“0000”</div><div class="popover-content"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/img/weixin.gif" ></div></div></div></a><a href="tencent://message/?uin=458940846&Site=&Menu=yes" rel="external nofollow" title="联系QQ" target="_blank"><i class="qq fa fa-qq"></i></a><a href="" rel="external nofollow" target="_blank" title="订阅本站"><i class="rss fa fa-rss"></i></a></div>
+                    <style type="text/css">
+                        .fa{
+                                line-height: initial;
+                        }
+                    </style>
+                        <a href="http://service.weibo.com/share/share.php?appkey=3206975293&" rel="external nofollow" title="新浪微博" target="_blank"><i class="sinaweibo fa fa-weibo"></i></a><a href="" rel="external nofollow" title="腾讯微博" target="_blank"><i class="tencentweibo fa fa-tencent-weibo"></i></a><a class="weixin"><i class="weixins fa fa-weixin"></i><div class="weixin-popover"><div class="popover bottom in"><div class="arrow"></div><div class="popover-title">微信公众号：<?=SiteExt::getAttr('qjpz','wxgzh')?></div><div class="popover-content"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','wx_img'),224,224)?>" ></div></div></div></a><a href="tencent://message/?uin=<?=SiteExt::getAttr('qjpz','qq')?>&Site=&Menu=yes" rel="external nofollow" title="联系QQ" target="_blank"><i class="qq fa fa-qq"></i></a><a href="" rel="external nofollow" target="_blank" title="订阅本站"><i class="rss fa fa-rss"></i></a></div>
                 </div>
             </div>
             <div class="widget d_textbanner"><a class="style01" href="http://www.cuizl.com/bokezhuti/1822.html#6677"><strong>近期比赛</strong>
@@ -196,34 +163,67 @@
                 <div class="title">
                     <h2><sapn class="title_span">热门推荐</span></h2></div>
                 <ul>
-                    <li><a href="http://demo7.ledkongzhiqi.com/mysql/119.html" title="DTCC 2016:MySQL中国组主席谈DBA的炼成"><span class="thumbnail"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://www.cuizl.com/wp-content/uploads/2016/03/2016030103410612.jpg&h=86&w=125&q=90&zc=1&ct=1" alt="DTCC 2016:MySQL中国组主席谈DBA的炼成" /></span><span class="text">DTCC 2016:MySQL中国组主席谈DBA的炼成</span><span class="muted">2016-02-25</span><span class="muted_1">2评论</span></a></li>
-                    <li><a href="http://demo7.ledkongzhiqi.com/html/53.html" title="WordPress页面链接添加.html后缀"><span class="thumbnail"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/02/2016-07-0754.jpg&h=86&w=125&q=90&zc=1&ct=1" alt="WordPress页面链接添加.html后缀" /></span><span class="text">WordPress页面链接添加.html后缀</span><span class="muted">2016-01-18</span><span class="muted_1">1评论</span></a></li>
-                    <li><a href="http://demo7.ledkongzhiqi.com/zhuti/77.html" title="HTML5响应式网站给我们的生活带来哪些改变"><span class="thumbnail"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/01/193812552249-1.jpg&h=86&w=125&q=90&zc=1&ct=1" alt="HTML5响应式网站给我们的生活带来哪些改变" /></span><span class="text">HTML5响应式网站给我们的生活带来哪些改变</span><span class="muted">2016-01-26</span><span class="muted_1">1评论</span></a></li>
-                    <li><a href="http://demo7.ledkongzhiqi.com/css/105.html" title="Google Chrome终于支持CSS Variables了！"><span class="thumbnail"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/02/28-1.jpg&h=86&w=125&q=90&zc=1&ct=1" alt="Google Chrome终于支持CSS Variables了！" /></span><span class="text">Google Chrome终于支持CSS Variables了！</span><span class="muted">2016-02-25</span><span class="muted_1">1评论</span></a></li>
-                    <li><a href="http://demo7.ledkongzhiqi.com/zhuti/93.html" title="避免使用复杂的选择器，层级越少越好"><span class="thumbnail"><img src="http://demo7.ledkongzhiqi.com/wp-content/themes/sky1.0/timthumb.php?src=http://demo7.ledkongzhiqi.com/wp-content/uploads/2016/02/28-1.jpg&h=86&w=125&q=90&zc=1&ct=1" alt="避免使用复杂的选择器，层级越少越好" /></span><span class="text">避免使用复杂的选择器，层级越少越好</span><span class="muted">2016-02-17</span><span class="muted_1">1评论</span></a></li>
+                <?php if($rmtjs) foreach ($rmtjs as $key => $value) { $value = $value->getObj();?>
+                   <li><a href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image,93,64)?>" /></span><span class="text"><?=$value->title?></span><span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span></a></li>
+                <?php } ?>
                 </ul>
             </div>
             <div class="widget widget_categories">
-                <div class="title">
-                    <h2><sapn class="title_span">分类目录</span></h2></div>
-                <ul>
-                    <li class="cat-item cat-item-3"><a href="http://demo7.ledkongzhiqi.com/category/css">css</a>
-                    </li>
-                    <li class="cat-item cat-item-2"><a href="http://demo7.ledkongzhiqi.com/category/html">html</a>
-                    </li>
-                    <li class="cat-item cat-item-4"><a href="http://demo7.ledkongzhiqi.com/category/javascript">JavaScript</a>
-                    </li>
-                    <li class="cat-item cat-item-5"><a href="http://demo7.ledkongzhiqi.com/category/jquery">jquery</a>
-                    </li>
-                    <li class="cat-item cat-item-7"><a href="http://demo7.ledkongzhiqi.com/category/mysql">mysql</a>
-                    </li>
-                    <li class="cat-item cat-item-6"><a href="http://demo7.ledkongzhiqi.com/category/php">php</a>
-                    </li>
-                    <li class="cat-item cat-item-1"><a href="http://demo7.ledkongzhiqi.com/category/zhuti">wordpress主题</a>
-                    </li>
-                    <li class="cat-item cat-item-8"><a href="http://demo7.ledkongzhiqi.com/category/qianduan">前端开发</a>
-                    </li>
-                </ul>
+               <div class="row" style="width: 80%;margin:0 auto">
+                   <style type="text/css">
+                       .tabli1{
+                        width: 80px !important;
+                       }
+                       .tab1{
+                        width: 60px;
+                        padding-right: 0px !important;
+                        padding-left: 20px !important;
+                        margin-left: 0 !important;
+                        border: none !important;
+                       }
+                   </style>
+                   <ul class="nav nav-tabs" style="    margin-bottom: 0px;">
+                   <?php ?>
+                                    <li class="active tabli1">
+                                        <a class="tab1" href="#tab_1_1" data-toggle="tab">
+                                        积分榜 </a>
+                                    </li>
+                                    <li class=" tabli1">
+                                        <a class="tab1" href="#tab_1_2" data-toggle="tab">
+                                        射手榜 </a>
+                                    </li>
+                                    <li class=" tabli1">
+                                        <a class="tab1" href="#tab_1_2" data-toggle="tab">
+                                        助攻榜 </a>
+                                    </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="tab_1_1">
+
+                <table class="table table-striped table-hover" style="margin-top: -1px">
+                                
+                                <tr>
+                                    <td>asssss</td>
+                                    <td>胜3负4</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>asssss</td>
+                                    <td>胜3负4</td>
+                                    <td>11</td>
+                                </tr><tr>
+                                    <td>asssss</td>
+                                    <td>胜3负4</td>
+                                    <td>11</td>
+                                </tr>
+                            </table>
+        </div>
+        <div class="tab-pane fade" id="tab_1_2">
+        </div>
+        <div class="tab-pane fade" id="tab_1_3">
+        </div>
+    </div>
+               </div>
             </div>
            <!--  <div class="widget d_banner">
                 <div class="d_banner_inner"><img class="alignnone size-full wp-image-516" src="http://demo5.ledkongzhiqi.com/wp-content/uploads/2016/02/t01605ab9200e1b43f8.jpg" alt="ddy" width="308"></div>

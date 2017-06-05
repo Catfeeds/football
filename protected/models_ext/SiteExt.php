@@ -43,6 +43,12 @@ class SiteExt extends Site{
         'fwgs'=>'0',
         // 成立年份
         'clnf'=>'0',
+        // 微信公众号
+        'wxgzh'=>'',
+        // 微信公众号
+        'wx_img'=>'',
+        // pc首页小喇叭
+        'pcIndexGun'=>''
 
     ];
     public static $cateName = [
@@ -57,12 +63,13 @@ class SiteExt extends Site{
             'sitePhone'=>['type'=>'text','name'=>'站点客服'],
             'qq'=>['type'=>'text','name'=>'联系qq'],
             'mail'=>['type'=>'text','name'=>'邮箱'],
-            // 'khs'=>['type'=>'text','name'=>'客户数'],
+            'pcIndexGun'=>['type'=>'text','name'=>'pc首页小喇叭'],
+
+            'wxgzh'=>['type'=>'text','name'=>'微信公众号'],
             // 'xmgs'=>['type'=>'text','name'=>'项目个数'],
-            // 'fwgs'=>['type'=>'text','name'=>'服务个数'],
             // 'clnf'=>['type'=>'text','name'=>'成立年份'],
             // 'pcContact'=>['type'=>'image','max'=>1,'name'=>'pc联系我们头图'],
-            // 'pcImage'=>['type'=>'image','max'=>1,'name'=>'pc头图'],
+            'wx_img'=>['type'=>'image','max'=>1,'name'=>'微信公众号二维码'],
             // 'pcGsjs'=>['type'=>'image','max'=>1,'name'=>'pc公司介绍头图'],
             // 'pcLxwm'=>['type'=>'image','max'=>1,'name'=>'pc联系我们广告图'],
             // 'pcIndexAbout'=>['type'=>'image','max'=>1,'name'=>'pc首页关于背景图'],

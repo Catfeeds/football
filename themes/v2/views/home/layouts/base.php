@@ -8,6 +8,10 @@
     <title><?=$this->pageTitle?></title>
     <meta name="keywords" content="<?=$this->keyword?>" />
     <meta name="description" content="<?=$this->description?>" />
+    
+    <link href="/static/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel='stylesheet' id='um-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/um.css?ver=4.5.9' type='text/css' media='all' />
     <link rel='stylesheet' id='fa-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/font-awesome.css?ver=4.5.9' type='text/css' media='all' />
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/style.css?ver=1.0' type='text/css' media='all' />
