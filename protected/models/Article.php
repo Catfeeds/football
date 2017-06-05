@@ -14,7 +14,7 @@
  * @property integer $hits
  * @property string $author
  * @property string $content
- * @property string $desc
+ * @property string $descpt
  * @property integer $publish
  * @property integer $status
  * @property integer $deleted
@@ -42,12 +42,12 @@ class Article extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('is_top_video, is_top, cid, uid, hits, publish, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('image, title, desc', 'length', 'max'=>255),
+			array('image, title, descpt', 'length', 'max'=>255),
 			array('author', 'length', 'max'=>100),
 			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, image, title, is_top_video, is_top, cid, uid, hits, author, content, desc, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, image, title, is_top_video, is_top, cid, uid, hits, author, content, descpt, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,7 +78,7 @@ class Article extends CActiveRecord
 			'hits' => 'Hits',
 			'author' => 'Author',
 			'content' => 'Content',
-			'desc' => 'Desc',
+			'descpt' => 'Descpt',
 			'publish' => 'Publish',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
@@ -116,7 +116,7 @@ class Article extends CActiveRecord
 		$criteria->compare('hits',$this->hits);
 		$criteria->compare('author',$this->author,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('desc',$this->desc,true);
+		$criteria->compare('descpt',$this->descpt,true);
 		$criteria->compare('publish',$this->publish);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);

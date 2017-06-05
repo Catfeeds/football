@@ -45,9 +45,9 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
 <div class="form-group">
     <label class="col-md-2 control-label">简介</label>
     <div class="col-md-8">
-        <?php echo $form->textArea($article, 'desc', array('class' => 'form-control')); ?>
+        <?php echo $form->textArea($article, 'descpt', array('class' => 'form-control')); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'desc') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'descpt') ?></div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label text-nowrap">图标</label>
