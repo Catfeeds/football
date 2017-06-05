@@ -4,17 +4,17 @@
 <section class="container">
         <div class="speedbar" style="height: 25px;line-height: 25px">
             <div class="top-tip">
-                <strong class="text-success"><i class="fa fa-volume-up"></i> </strong>懂球帝新版上线啦！
+                <strong class="text-success"><i class="fa fa-volume-up"></i> </strong>球布斯新版上线啦！欢迎关注！！
             </div>
         </div>
         <div class="content-wrap">
             <div class="content">
                 <div class="slick_bor">
                     <script src="<?=Yii::app()->theme->baseUrl?>/static/home/js/responsiveslides.min.js"></script>
-                    <ul class="slick">
+                    <ul class="slick" style="<?=$this->imgstyle?>">
                     <?php $imgs = SiteExt::getAttr('qjpz','pcIndexImages');if($imgs) foreach ($imgs as $key => $value) {?>
                         <li>
-                            <a href=""><img class="img_855x300" src="<?=ImageTools::fixImage($value,855,300)?>" alt=""><span></span></a>
+                            <a href=""><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($value,855,390)?>" alt=""><span></span></a>
                         </li>
                     <?php } ?>
                     </ul>
@@ -116,7 +116,56 @@
             </div>
             <div class="widget d_textbanner"><a class="style01" href="http://www.cuizl.com/bokezhuti/1822.html#6677"><strong>近期比赛</strong>
             <!-- <h2>放点数据</h2> -->
-            <p>SKY wordpress主题是翠竹林当前使用的主题，是翠竹林积累多年wordpress主题经验设计而成，更加扁平的风格和干净，白色的架构会让网站显得内涵而出色..SKY wordpress主题是翠竹林当前使用的主题，是翠竹林积累多年wordpress主题经验设计而成，更加扁平的风格和干净，白色的架构会让网站显得内涵而出色...</p>
+            <div>
+                <ul>
+                <?php if($matchs) foreach ($matchs as $key => $value) {?>
+                    <li>
+                        <div style="display: inline-flex;width: 100%">
+                        <style type="text/css">
+                            .c1{
+                                width: 40%;
+                                margin-left:20px;
+                                margin-top:10px;
+                                margin-right:10px;
+                            }
+                            .im1{
+                                padding-left: 15px;
+                                height: 60px;
+                            }
+                            .c2{
+                                width: 100px;
+                                padding-top: 20px
+                            }
+                            .p1{
+                                padding-left: 0 !important;
+                                padding-right: 0 !important
+                            }
+                        </style>
+                            <div class="c1">
+                                <div class="match-img">
+                                    <img class="im1" src="<?=ImageTools::fixImage($value->home_team->image)?>">
+                                    <center><span><?=$value->home_name?></span></center>
+                                </div>
+                            </div>
+                            <div class="c2">
+                            <center>
+                            <p class="p1" style="padding-bottom: 5px">
+                                <span><?=$value->league->name?></span>
+                                </p>
+                                <p class="p1">
+                                <span style="font-size: 30px"><?=$value->home_score.':'.$value->visitor_score?></span>
+                                </p>
+                                </center>
+                            </div>
+                            <div class="c1"><img class="im1" src="<?=ImageTools::fixImage($value->visit_team->image)?>">
+                            <center><span><?=$value->visitor_name?></span></center></div>
+                        </div>
+                    </li>
+                    <?php if($key<count($matchs)-1):?>
+                    <hr style="margin-top: 5px;margin-bottom: 5px"><?php endif;?>
+                <?php } ?>
+                </ul>
+            </div>
             </a></div>
             <!-- <div class="widget widget_umucenter form-inline">
                 <li><span class="local-account"><a data-sign="0" class="btn btn-primary user-login"><i class="fa fa-wordpress"></i>本地帐号</a></span><span class="other-sign"><a class="qqlogin btn" href="http://demo7.ledkongzhiqi.com/?connect=qq&action=login&redirect=http%3A%2F%2Fdemo7.ledkongzhiqi.com%2Fcategory%2Fcss"><i class="fa fa-qq"></i><span>QQ 登 录</span></a>

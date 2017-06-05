@@ -3,7 +3,8 @@ class IndexController extends HomeController
 {
     public function actionIndex()
     {
-        $this->render('index');
+        $matchs = MatchExt::model()->normal()->findAll(['limit'=>3]);
+        $this->render('index',['matchs'=>$matchs]);
     }
 
     public function actionAbout()

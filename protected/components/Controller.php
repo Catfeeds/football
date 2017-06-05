@@ -13,6 +13,8 @@ class Controller extends CController
 	 */
 	public $siteTag,$siteArea,$siteStreet;
 
+	public $imgstyle = 'height:390px';
+
 	/**
 	 * 初始化操作
 	 */
@@ -21,14 +23,15 @@ class Controller extends CController
 		parent::init();
 		//判断使用主题
 		Yii::app()->theme = 'v2';
-		// if($this->redirectWap()&&$this->module->id=='home'&&$this->id!='error')
-		// {
+		if($this->redirectWap())
+		{
+			$this->imgstyle = '';
 		// 	if(Yii::app()->request->getUrl() == '/')
 		// 		$this->redirect('/wap');
 		// 	else
 		// 		$this->redirect(str_replace('/home','/wap',Yii::app()->request->getUrl()));
 		// 	Yii::app()->end();
-		// }
+		}
 	}
 
 	/**
