@@ -54,7 +54,7 @@ class SiteExt extends Site{
         // 联赛调用接口地址
         'leagueApi'=>'',
         // 球队调用接口地址
-        'teamApi'=>''
+        'teamApi'=>'',
         // 球员调用接口地址
         'playerApi'=>''
 
