@@ -1,0 +1,80 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "\u7403\u5e03\u65af\u6570\u636e\u63a5\u53e3",
+        "version": "0.1"
+    },
+    "paths": {
+        "\u8054\u8d5b\u63a5\u53e3\u6570\u636e\u7ed3\u6784": {
+            "get": {
+                "tags": [
+                    "\u8054\u8d5b"
+                ],
+                "summary": "\u8054\u8d5b\u63a5\u53e3\u6570\u636e\u7ed3\u6784",
+                "description": "\u8054\u8d5b\u63a5\u53e3\u6570\u636e\u7ed3\u6784",
+                "operationId": "placeOrder",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "\u8054\u8d5b\u7b80\u79f0",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "full_name",
+                        "in": "path",
+                        "description": "\u8054\u8d5b\u5168\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eng",
+                        "in": "path",
+                        "description": "\u82f1\u6587\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "\u56fd\u5bb6",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pinyin",
+                        "in": "path",
+                        "description": "\u62fc\u97f3",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "descpt",
+                        "in": "path",
+                        "description": "\u7b80\u4ecb",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "path",
+                        "description": "\u56fe\u7247\u5730\u5740",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid Order"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
