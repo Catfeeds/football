@@ -37,9 +37,9 @@ class UserExt extends User{
 
     public function afterFind() {
         parent::afterFind();
-        // if(!$this->image){
-        //     $this->image = SiteExt::getAttr('qjpz','productNoPic');
-        // }
+        if(!$this->image){
+            $this->image = SiteExt::getAttr('qjpz','userImg');
+        }
     }
 
     public function beforeValidate() {

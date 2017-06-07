@@ -91,14 +91,22 @@
                         .fa{
                                 line-height: initial;
                         }
+                        .str1{
+                            color: #fff;
+                            display: inline-block;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: -1px 0 0;
+                            padding: 4px 15px;background-color: #428bca;
+                        }
                     </style>
                         <a href="http://service.weibo.com/share/share.php?appkey=3206975293&" rel="external nofollow" title="新浪微博" target="_blank"><i class="sinaweibo fa fa-weibo"></i></a><a href="" rel="external nofollow" title="腾讯微博" target="_blank"><i class="tencentweibo fa fa-tencent-weibo"></i></a><a class="weixin"><i class="weixins fa fa-weixin"></i><div class="weixin-popover"><div class="popover bottom in"><div class="arrow"></div><div class="popover-title">微信公众号：<?=SiteExt::getAttr('qjpz','wxgzh')?></div><div class="popover-content"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','wx_img'),224,224)?>" ></div></div></div></a><a href="tencent://message/?uin=<?=SiteExt::getAttr('qjpz','qq')?>&Site=&Menu=yes" rel="external nofollow" title="联系QQ" target="_blank"><i class="qq fa fa-qq"></i></a><a href="" rel="external nofollow" target="_blank" title="订阅本站"><i class="rss fa fa-rss"></i></a></div>
                 </div>
             </div>
-            <div class="widget d_textbanner"><a class="style01" href="http://www.cuizl.com/bokezhuti/1822.html#6677"><strong>近期比赛</strong>
+            <div class="widget d_textbanner" style="    height: 337px;"><strong class="str1">近期比赛</strong>
             <!-- <h2>放点数据</h2> -->
             <div>
-                <ul>
+                <ul style="margin-top: 20px">
                 <?php if($matchs) foreach ($matchs as $key => $value) {?>
                     <li>
                         <div style="display: inline-flex;width: 100%">
@@ -110,12 +118,12 @@
                                 margin-right:10px;
                             }
                             .im1{
-                                padding-left: 15px;
-                                height: 60px;
+                                padding-left: 26px;
+                                height: 48px;
                             }
                             .c2{
                                 width: 100px;
-                                padding-top: 20px
+                                padding-top: 10px
                             }
                             .p1{
                                 padding-left: 0 !important;
@@ -125,7 +133,7 @@
                             <div class="c1">
                                 <div class="match-img">
                                     <img class="im1" src="<?=ImageTools::fixImage($value->home_team->image)?>">
-                                    <center><span><?=$value->home_name?></span></center>
+                                    <center><span style="font-size: 12px"><?=$value->home_name?></span></center>
                                 </div>
                             </div>
                             <div class="c2">
@@ -139,7 +147,7 @@
                                 </center>
                             </div>
                             <div class="c1"><img class="im1" src="<?=ImageTools::fixImage($value->visit_team->image)?>">
-                            <center><span><?=$value->visitor_name?></span></center></div>
+                            <center><span style="font-size: 12px"><?=$value->visitor_name?></span></center></div>
                         </div>
                     </li>
                     <?php if($key<count($matchs)-1):?>
@@ -147,7 +155,7 @@
                 <?php } ?>
                 </ul>
             </div>
-            </a></div>
+            </div>
             <!-- <div class="widget widget_umucenter form-inline">
                 <li><span class="local-account"><a data-sign="0" class="btn btn-primary user-login"><i class="fa fa-wordpress"></i>本地帐号</a></span><span class="other-sign"><a class="qqlogin btn" href="http://demo7.ledkongzhiqi.com/?connect=qq&action=login&redirect=http%3A%2F%2Fdemo7.ledkongzhiqi.com%2Fcategory%2Fcss"><i class="fa fa-qq"></i><span>QQ 登 录</span></a>
                     </span><span class="other-sign"><a class="weibologin btn" href="http://demo7.ledkongzhiqi.com/?connect=weibo&action=login&redirect=http%3A%2F%2Fdemo7.ledkongzhiqi.com%2Fcategory%2Fcss"><i class="fa fa-weibo"></i><span>微博登录</span></a>
@@ -168,61 +176,41 @@
                 <?php } ?>
                 </ul>
             </div>
-            <div class="widget widget_categories">
-               <div class="row" style="width: 80%;margin:0 auto">
-                   <style type="text/css">
+            <style type="text/css">
                        .tabli1{
-                        width: 80px !important;
+                        width: 33% !important;
                        }
                        .tab1{
-                        width: 60px;
-                        padding-right: 0px !important;
-                        padding-left: 20px !important;
-                        margin-left: 0 !important;
                         border: none !important;
                        }
                    </style>
-                   <ul class="nav nav-tabs" style="    margin-bottom: 0px;">
-                   <?php ?>
-                                    <li class="active tabli1">
-                                        <a class="tab1" href="#tab_1_1" data-toggle="tab">
-                                        积分榜 </a>
-                                    </li>
-                                    <li class=" tabli1">
-                                        <a class="tab1" href="#tab_1_2" data-toggle="tab">
-                                        射手榜 </a>
-                                    </li>
-                                    <li class=" tabli1">
-                                        <a class="tab1" href="#tab_1_2" data-toggle="tab">
-                                        助攻榜 </a>
-                                    </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="tab_1_1">
-
-                <table class="table table-striped table-hover" style="margin-top: -1px">
-                                
-                                <tr>
-                                    <td>asssss</td>
-                                    <td>胜3负4</td>
-                                    <td>11</td>
-                                </tr>
-                                <tr>
-                                    <td>asssss</td>
-                                    <td>胜3负4</td>
-                                    <td>11</td>
-                                </tr><tr>
-                                    <td>asssss</td>
-                                    <td>胜3负4</td>
-                                    <td>11</td>
-                                </tr>
-                            </table>
-        </div>
-        <div class="tab-pane fade" id="tab_1_2">
-        </div>
-        <div class="tab-pane fade" id="tab_1_3">
-        </div>
-    </div>
+            <div class="widget widget_categories d_textbanner"><strong class="str1">积分榜</strong>
+               <div class="row" style="width: 90%;margin:0 auto">
+                   <ul class="nav nav-tabs" style="margin-bottom: 0px;">
+                   <?php if($leas) foreach ($leas as $key => $value) {?>
+                       <li class="<?=$key==0?'active':''?> tabli1">
+                            <a class="tab1" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
+                            <?=$value->name?> </a>
+                        </li>
+                  <?php  } ?>
+                    </ul>
+                    <div class="tab-content">
+                    <?php foreach ($points as $key => $value) {?>
+                        <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
+                        <?php if($value): ?>
+                            <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
+                                <?php foreach ($value as $v) {?>
+                                    <tr>
+                                            <td align='center' style="width: 40%"><?=Tools::u8_title_substr($v->team->name,12) ?></td>
+                                            <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
+                                            <td align='center'><?=$v->points?></td>
+                                        </tr>
+                                <?php } ?>
+                                    </table>
+                                <?php endif; ?>
+                        </div>
+                    <?php } ?>
+                    </div>
                </div>
             </div>
            <!--  <div class="widget d_banner">
@@ -248,36 +236,26 @@
                 <div class="title">
                     <h2><sapn class="title_span">最新评论</span></h2></div>
                 <ul>
-                    <li>
-                        <a href="http://demo7.ledkongzhiqi.com/php/114.html#comment-576" title="PHP 7.0.2正式版发布：WordPress速度提升3倍！上的评论"><img alt='' data-original='http://demo7.ledkongzhiqi.com/avatar/36*b1ba69f855c62a7033283fbb625b9950.jpg' srcset='http://demo7.ledkongzhiqi.com/avatar/72*b1ba69f855c62a7033283fbb625b9950.jpg' class='avatar avatar-36 photo' height='36' width='36' />
-                            <div class="muted"><i>不错</i>&nbsp;&nbsp;9个月前 (08-28)说：
-                                <br/>很简介的wordpress主题</div>
+                <?php if($comms) foreach ($comms as $key => $value) { $user = $value->user?>
+                <li>
+                        <a href="#" ><img alt='' src='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-36 pehoto'  height='36' width='36' />
+                            <div class="muted"><i><?=$user->name?></i>&nbsp;&nbsp;于 <?=Tools::friendlyDate($value->created)?> 说：
+                                <br/><?=Tools::u8_title_substr($value->content,40) ?></div>
                         </a>
                     </li>
-                    <li>
-                        <a href="http://demo7.ledkongzhiqi.com/zhuti/93.html#comment-574" title="避免使用复杂的选择器，层级越少越好上的评论"><img alt='' data-original='http://demo7.ledkongzhiqi.com/avatar/36*f7ae1a9208bf91d706c76e2bf022a992.jpg' srcset='http://demo7.ledkongzhiqi.com/avatar/72*f7ae1a9208bf91d706c76e2bf022a992.jpg' class='avatar avatar-36 photo' height='36' width='36' />
-                            <div class="muted"><i>翠竹林</i>&nbsp;&nbsp;9个月前 (08-26)说：
-                                <br/>顶一下</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://demo7.ledkongzhiqi.com/mysql/119.html#comment-573" title="DTCC 2016:MySQL中国组主席谈DBA的炼成上的评论"><img alt='' data-original='http://demo7.ledkongzhiqi.com/avatar/36*f7ae1a9208bf91d706c76e2bf022a992.jpg' srcset='http://demo7.ledkongzhiqi.com/avatar/72*f7ae1a9208bf91d706c76e2bf022a992.jpg' class='avatar avatar-36 photo' height='36' width='36' />
-                            <div class="muted"><i>翠竹林</i>&nbsp;&nbsp;10个月前 (08-15)说：
-                                <br/>顶一下</div>
-                        </a>
-                    </li>
+               <?php } ?>
                 </ul>
             </div>
-            <div class="widget widget_text">
+            <!-- <div class="widget widget_text">
                 <div class="title">
                     <h2><sapn class="title_span">友情链接</span></h2></div>
                 <div class="textwidget">
                     <div class="d_tags_1"> <a target="_blank" href="http://www.cuizl.com/">翠竹林wordpress主题</a> <a target="_blank" href="http://www.zhixin99.com/">知新SEO</a> </div>
                 </div>
-            </div>
+            </div> -->
         </aside>
     </section>
-    <div class="branding branding-black">
+  <!--   <div class="branding branding-black">
         <div class="container_f">
             <h2>高效，专业，符合SEO</h2><a class="btn btn-lg" href="tencent://message/?uin=458940846&Site=&Menu=yes" target="_blank">联系我们</a> </div>
-    </div>
+    </div> -->

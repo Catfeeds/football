@@ -48,7 +48,15 @@ class SiteExt extends Site{
         // 微信公众号
         'wx_img'=>'',
         // pc首页小喇叭
-        'pcIndexGun'=>''
+        'pcIndexGun'=>'',
+        // 用户默认头像
+        'userImg'=>'',
+        // 联赛调用接口地址
+        'leagueApi'=>'',
+        // 球队调用接口地址
+        'teamApi'=>''
+        // 球员调用接口地址
+        'playerApi'=>''
 
     ];
     public static $cateName = [
@@ -70,13 +78,16 @@ class SiteExt extends Site{
             // 'clnf'=>['type'=>'text','name'=>'成立年份'],
             // 'pcContact'=>['type'=>'image','max'=>1,'name'=>'pc联系我们头图'],
             'wx_img'=>['type'=>'image','max'=>1,'name'=>'微信公众号二维码'],
+            'leagueApi'=>['type'=>'text','name'=>'联赛调用接口地址'],
+            'teamApi'=>['type'=>'text','name'=>'球队调用接口地址'],
+            'playerApi'=>['type'=>'text','name'=>'球员调用接口地址'],
             // 'pcGsjs'=>['type'=>'image','max'=>1,'name'=>'pc公司介绍头图'],
             // 'pcLxwm'=>['type'=>'image','max'=>1,'name'=>'pc联系我们广告图'],
             // 'pcIndexAbout'=>['type'=>'image','max'=>1,'name'=>'pc首页关于背景图'],
             // 'pcIndexServe'=>['type'=>'image','max'=>1,'name'=>'pc首页服务背景图'],
             // 'pcNewsTop'=>['type'=>'image','max'=>1,'name'=>'pc资讯列表头图'],
             // 'pcContactTop'=>['type'=>'image','max'=>1,'name'=>'pc联系列表头图'],
-            // 'pcServeTop'=>['type'=>'image','max'=>1,'name'=>'pc服务列表头图'],
+            'userImg'=>['type'=>'image','max'=>1,'name'=>'用户默认头像'],
             // 'pcTeamTop'=>['type'=>'image','max'=>1,'name'=>'pc团队列表头图'],
             // 'productNoPic'=>['type'=>'image','max'=>1,'name'=>'产品默认图'],
             // 'houseNoPic'=>['type'=>'image','max'=>1,'name'=>'酒庄默认图'],

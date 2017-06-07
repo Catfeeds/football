@@ -12,7 +12,7 @@ class CommentExt extends Comment{
     {
         return array(
             'news'=>array(self::BELONGS_TO, 'ArticleExt', ['major_id'=>'id']),
-            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
+            'user'=>array(self::BELONGS_TO, 'UserExt', 'uid'),
         );
     }
 

@@ -9,6 +9,7 @@ class ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd
     public static $files = array (
         '841780ea2e1d6545ea3a253239d59c05' => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu/functions.php',
         '04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
+        '0ccdf99b8f62f02c52cba55802e0c2e7' => __DIR__ . '/..' . '/zircote/swagger-php/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,9 +17,18 @@ class ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd
         array (
             'hightman\\xunsearch\\' => 19,
         ),
+        'S' => 
+        array (
+            'Symfony\\Component\\Finder\\' => 25,
+            'Swagger\\' => 8,
+        ),
         'Q' => 
         array (
             'Qiniu\\' => 6,
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Annotations\\' => 28,
         ),
     );
 
@@ -27,9 +37,31 @@ class ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd
         array (
             0 => __DIR__ . '/..' . '/hightman/xunsearch/wrapper/yii2-ext',
         ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
+        'Swagger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zircote/swagger-php/src',
+        ),
         'Qiniu\\' => 
         array (
             0 => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'D' => 
+        array (
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
         ),
     );
 
@@ -306,6 +338,7 @@ class ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit895b606a4d1ff0ced946f2f559a6fddd::$classMap;
 
         }, null, ClassLoader::class);

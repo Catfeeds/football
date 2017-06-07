@@ -20,8 +20,26 @@ class IndexController extends HomeController
         $jpdds = RecomExt::getObjFromCate(1,4);
         // 热门推荐
         $rmtjs = RecomExt::getObjFromCate(2,6);
+        
         $news = ArticleExt::model()->normal()->findAll($criteria);
-        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rmtjs'=>$rmtjs]);
+        // 三个联赛
+        $leas = LeagueExt::model()->normal()->findAll(['limit'=>3]);
+        // 积分
+        $points = [];
+        if($leas) {
+            foreach ($leas as $key => $value) {
+                $criteria = new CDbCriteria;
+                $criteria->addCondition('lid=:lid');
+                $criteria->params[':lid'] = $value->id;
+                $criteria->order = 'points desc';
+                $criteria->limit = 10;
+                $points[] = PointsExt::model()->findAll($criteria);
+
+            }
+        }
+        // 十个评论
+        $comms = CommentExt::model()->normal()->findAll(['limit'=>10]);
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rmtjs'=>$rmtjs,'leas'=>$leas,'points'=>$points,'comms'=>$comms]);
     }
 
     public function actionAbout()
