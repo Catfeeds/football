@@ -10,13 +10,12 @@ class HomeLinkPager extends CLinkPager
 	{
 		parent::init();
 
-		$this->htmlOptions['id'] = 'm-page m-page-rt my-m-page-rt f-fr';
 		// $this->htmlOptions['style'] = 'display:inline-block';
 		$this->selectedPageCssClass = 'active';
-		$this->prevPageLabel = '&lt;';
-		$this->nextPageLabel = '&gt;';
-		$this->firstPageLabel = '<<';
-		$this->lastPageLabel = '>>';
+		$this->prevPageLabel = '上一页';
+		$this->nextPageLabel = '下一页';
+		$this->firstPageLabel = '首页';
+		$this->lastPageLabel = '尾页';
 		$this->header = '共'.$this->pageCount.'页,'.$this->itemCount.'条记录,每页'.$this->pageSize.'条';
 		$this->internalPageCssClass = '';
 	}
@@ -27,14 +26,14 @@ class HomeLinkPager extends CLinkPager
 		$buttons=$this->createPageButtons();
 		if(empty($buttons))
 			return;
-		echo '<div id="pages">';
+		echo '<div class="pagination" style="width:100%"><ul>';
 		// echo '<span class="tip">'.$this->header.'</span>';
 		if($buttons)
 			foreach ($buttons as $key => $value) {
 				echo $value;
 			}
 		echo $this->footer;
-		echo '</div>';
+		echo '</ul></div>';
 	}
 
 	/**
@@ -54,9 +53,9 @@ class HomeLinkPager extends CLinkPager
 		$buttons[]=$this->createPageButton($this->firstPageLabel,0,$this->firstPageCssClass,$currentPage<=0,false);
 
 		// prev page
-		if(($page=$currentPage-1)<0)
-			$page=0;
-		$buttons[]=$this->createPageButton($this->prevPageLabel,$page,$this->previousPageCssClass,$currentPage<=0,false);
+		// if(($page=$currentPage-1)<0)
+		// 	$page=0;
+		// $buttons[]=$this->createPageButton($this->prevPageLabel,$page,$this->previousPageCssClass,$currentPage<=0,false);
 
 		// internal pages
 		for($i=$beginPage;$i<=$endPage;++$i)
@@ -79,6 +78,9 @@ class HomeLinkPager extends CLinkPager
 			$class = $this->selectedPageCssClass;
 		else
 			$class = '';
-		return CHtml::link($label,$this->createPageUrl($page),['class'=>$class]);
+		if($class) {
+			return '<li class="'.$class.'"><span>'.$label.'</span></li>';
+		}
+		return '<li class="'.$class.'">'.CHtml::link($label,$this->createPageUrl($page)).'</li>';
 	}
 }

@@ -16,6 +16,7 @@ class HomeNavWidget extends CWidget
 		$menus = $this->owner->getHomeMenu();
 		$html = "";
 		foreach ($menus as $key => $value) {
+			// var_dump($path);exit;
 			!isset($value['active']) && $value['active'] = [$value['url']];
 			$url = $this->owner->createUrl('/'.$value['url']);
 			if(in_array($path, $value['active']))

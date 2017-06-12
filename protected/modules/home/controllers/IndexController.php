@@ -39,7 +39,8 @@ class IndexController extends HomeController
         }
         // 十个评论
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10]);
-        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rmtjs'=>$rmtjs,'leas'=>$leas,'points'=>$points,'comms'=>$comms]);
+        $rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights]);
     }
 
     public function actionAbout()
