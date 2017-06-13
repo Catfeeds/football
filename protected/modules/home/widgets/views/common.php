@@ -7,6 +7,20 @@
                 <?php } ?>
                 </ul>
             </div>
+            
+            <style type="text/css">
+                        .fa{
+                                line-height: initial;
+                        }
+                        .str1{
+                            color: #fff;
+                            display: inline-block;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: -1px 0 0;
+                            padding: 4px 15px;background-color: #428bca;
+                        }
+                    </style>
             <style type="text/css">
                        .tabli1{
                         width: 33% !important;

@@ -12,6 +12,7 @@ class HomeController extends Controller
     //描述
     private $description;
     public $banner = 'nobanner';
+    public $user;
     /**
      * @var string 页面底部
      */
@@ -38,6 +39,14 @@ class HomeController extends Controller
 
     protected function beforeAction($action) {
         return parent::beforeAction($action);
+    }
+
+    public function init()
+    {
+        parent::init();
+        // $user = Yii::app()->user;
+        // if(!$user->getIsGuest())
+        $this->user  = UserExt::model()->find(1);
     }
 
     /**
@@ -120,10 +129,10 @@ class HomeController extends Controller
 
     public function getHomeMenu()
     {
-        if(Yii::app()->user->getIsGuest()) {
+        if(!$this->user) {
             $username = '登录';
         } else {
-            $username = Yii::app()->user->username;
+            $username = $this->user->name;
         }
         return [
             ['name'=>'首页','url'=>'home/index/index','active'=>['']],

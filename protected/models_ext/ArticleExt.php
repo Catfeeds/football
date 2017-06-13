@@ -33,7 +33,7 @@ class ArticleExt extends Article{
     public function relations()
     {
         return array(
-            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            'cate'=>array(self::BELONGS_TO, 'ArticleCateExt', 'cid'),
             'comment_num'=>array(self::STAT, 'CommentExt', 'major_id'),
         );
     }

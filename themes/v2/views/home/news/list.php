@@ -5,7 +5,7 @@
             <div class="content-wrap">
                 <div class="content">
                     <div class="archive-header">
-                        <ol class="breadcrumb container" style="width: 95%">
+                        <ol class="breadcrumb container" style="width: 96%">
                         <style type="text/css">
                             .active a{
                                 color: #999 !important;
@@ -37,19 +37,6 @@
                 <?php $this->widget('HomeLinkPager',['pages'=>$pager])?>    
                 </div>
             </div>
-            <style type="text/css">
-                        .fa{
-                                line-height: initial;
-                        }
-                        .str1{
-                            color: #fff;
-                            display: inline-block;
-                            font-size: 14px;
-                            font-weight: normal;
-                            margin: -1px 0 0;
-                            padding: 4px 15px;background-color: #428bca;
-                        }
-                    </style>
             <aside class="sidebar">
             <?php $this->widget('CommonRightWidget',$rights)?>
             </aside>
