@@ -34,7 +34,8 @@ class ArticleExt extends Article{
     {
         return array(
             'cate'=>array(self::BELONGS_TO, 'ArticleCateExt', 'cid'),
-            'comment_num'=>array(self::STAT, 'CommentExt', 'major_id'),
+            'comment_num'=>array(self::STAT, 'CommentExt', 'major_id','condition'=>'t.status=1'),
+            'comments'=>array(self::HAS_MANY, 'CommentExt', ['major_id'=>'id'],'condition'=>'comments.status=1','order'=>'comments.created asc'),
         );
     }
 

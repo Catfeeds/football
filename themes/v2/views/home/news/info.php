@@ -73,12 +73,12 @@
                                 <a id="cancel-comment-reply-link" class="pull-right" href="javascript:;">取消评论</a>
                             </div>
                             <div class="comt">
-                                <div class="comt-box">
+                                <div class="comt-box" onclick="check_uid()">
                                     <textarea placeholder="写点什么..." class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                                     <div class="comt-ctrl">
                                         <button class="btn btn-primary pull-right" type="submit" name="submit" id="submit" tabindex="5"><i class="fa fa-check-square-o"></i> 提交评论</button>
                                         <div class="comt-tips pull-right">
-                                            <input type='hidden' name='comment_post_ID' value='95' id='comment_post_ID' />
+                                            <input type='hidden' name='comment_post_ID' value='<?=$info->id?>' id='comment_post_ID' />
                                             <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                                             <p style="display: none;">
                                                 <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1c0ce1ceba" />
@@ -110,23 +110,24 @@
                     </div>
                     <div id="postcomments">
                         <div id="comments">
-                            <i class="fa fa-comments-o"></i> <b> (2)</b>个小伙伴在吐槽
+                            <i class="fa fa-comments-o"></i> <b> (<?=$info->comment_num?>)</b>个小伙伴在吐槽
                         </div>
                         <ol class="commentlist">
-                            <li class="comment even thread-even depth-1" id="comment-569">
-                                <div class="c-avatar"><img alt='' data-original='http://demo3.ledkongzhiqi.com/avatar/54*70ca4911ad6f602be5a4e4d834adb883.jpg' srcset='http://demo3.ledkongzhiqi.com/avatar/108*70ca4911ad6f602be5a4e4d834adb883.jpg' class='avatar avatar-54 photo' height='54' width='54' />
-                                    <div class="c-main" id="div-comment-569">短发短发
-                                        <div class="c-meta"><span class="c-author"><a href='http://dfsdf.com' rel='external nofollow' class='url'>史蒂夫</a></span>2016-07-01 09:19 <a rel='nofollow' class='comment-reply-link' href='http://demo3.ledkongzhiqi.com/zhuti/95.html?replytocom=569#respond' onclick='return addComment.moveForm( "div-comment-569", "569", "respond", "95" )' aria-label='回复给史蒂夫'>回复</a></div>
+                        <?php foreach ($info->comments as $key => $value) { $user = $value->user ?>
+                            <li class="comment even thread-even depth-2" id="comment-<?=$value->id?>">
+                                <div class="c-avatar"><img alt='' srcset='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-54 photo' height='54' width='54' />
+                                    <div class="c-main" id="div-comment-<?=$value->id?>"><?=$value->content?>
+                                        <?php if($obj = $value->getObj()):?>
+                                        <div style="    margin-left: 20px;background-color: #eee;padding-left: 10px;padding-top: 5px;color: #999;font-size: small">
+                                            <?=$obj->content?>
+                                            <div class=""><span class="c-author"><?=$obj->user->name?></span><?=Tools::friendlyDate($obj->created)?> </div>
+                                        </div>
+                                        <?php endif;?>
+                                        <div class="c-meta"><span class="c-author"><a href='' rel='external nofollow' class='url'><?=$user->name?></a></span><?=Tools::friendlyDate($value->created)?> <a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "div-comment-<?=$value->id?>", "<?=$value->id?>", "respond", "<?=$info->id?>" )'>回复</a></div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="comment byuser comment-author-cui bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-571">
-                                <div class="c-avatar"><img alt='' data-original='http://demo3.ledkongzhiqi.com/avatar/54*f7ae1a9208bf91d706c76e2bf022a992.jpg' srcset='http://demo3.ledkongzhiqi.com/avatar/108*f7ae1a9208bf91d706c76e2bf022a992.jpg' class='avatar avatar-54 photo' height='54' width='54' />
-                                    <div class="c-main" id="div-comment-571">最新评论
-                                        <div class="c-meta"><span class="c-author">翠竹林</span>2016-07-21 10:10 <a rel='nofollow' class='comment-reply-link' href='http://demo3.ledkongzhiqi.com/zhuti/95.html?replytocom=571#respond' onclick='return addComment.moveForm( "div-comment-571", "571", "respond", "95" )' aria-label='回复给翠竹林'>回复</a></div>
-                                    </div>
-                                </div>
-                            </li>
+                        <?php } ?>
                         </ol>
                         <div class="commentnav">
                         </div>
@@ -137,3 +138,12 @@
                 <?php $this->widget('CommonRightWidget',$rights)?>
             </aside>
         </section>
+        <script type="text/javascript">
+        function check_uid() {
+            <?php if($this->user->id==1):?>
+                alert('请先登录！');
+                $('textarea').attr('disabled','disabled');
+            <?php endif;?>
+        }
+            
+        </script>
