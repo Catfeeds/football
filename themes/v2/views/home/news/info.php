@@ -140,7 +140,7 @@
         </section>
         <script type="text/javascript">
         function check_uid() {
-            <?php if($this->user->id==1):?>
+            <?php if(!$this->user):?>
                 alert('请先登录！');
                 $('textarea').attr('disabled','disabled');
             <?php endif;?>

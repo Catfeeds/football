@@ -10,7 +10,7 @@ class HomeNavWidget extends CWidget
 
 	public function run()
 	{
-		$path = Yii::app()->request->getUrl();
+		$path = Yii::app()->request->getPathInfo();
 		// var_dump($path);exit;
 		$path = ltrim($path,'/');
 		$menus = $this->owner->getHomeMenu();

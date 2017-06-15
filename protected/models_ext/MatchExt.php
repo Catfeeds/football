@@ -14,6 +14,7 @@ class MatchExt extends Match{
             'league'=>array(self::BELONGS_TO, 'LeagueExt', 'lid'),
             'home_team'=>array(self::HAS_ONE, 'TeamExt', ['id'=>'home_id']),
             'visit_team'=>array(self::HAS_ONE, 'TeamExt', ['id'=>'visitor_id']),
+            'videos'=>array(self::HAS_MANY, 'VideoExt', 'mid'),
         );
     }
 
