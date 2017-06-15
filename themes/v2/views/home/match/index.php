@@ -7,7 +7,7 @@
         <div class="recom-wrap wrap">
             <div class="recom-border">
                 <div class="recom-content" style="padding-top: 20px">
-                    <div style="height: 22px"><form method="get"><input style="    background-color: #2f889a;float: right;border: none;color: white;" type="submit" value="搜索"></input><input style="height:20px;border:none;float: right;width: 140px" type="date" name="time" value="<?=$time?date('Y-m-d',$time):''?>" ><?=CHtml::dropDownList('lid',$lid,CHtml::listData(leagueExt::model()->normal()->findAll(),'id','name'),['style'=>'float:right;height:20px;width:100px;border:none','empty'=>'选择联赛'])?></form></div><br>
+                    <div style="height: 22px"><form method="get"><input style="    background-color: #2f889a;float: right;border: none;color: white;" type="submit" value="搜索"></input><input style="height:20px;border:none;float: right;width: 140px" type="date" name="time" value="<?=$time?date('Y-m-d',$time):''?>" ><?=CHtml::dropDownList('lid',$lid,CHtml::listData(LeagueExt::model()->normal()->findAll(),'id','name'),['style'=>'float:right;height:20px;width:100px;border:none','empty'=>'选择联赛'])?></form></div><br>
                     <p class="time">今天是：<?=date('Y-m-d',time())?><a style="float: right" href="<?=$this->createUrl('/home/match/index')?>" class="btn blue">所有比赛</a><a style="float: right" href="<?=$this->createUrl('/home/match/index',['time'=>date('Y-m-d',time())])?>" class="btn blue">今日比赛</a></p>
                     <div class="recom-list">
                         <div class="compet-list">
