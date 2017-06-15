@@ -60,7 +60,7 @@
         </nav> -->
         <div id="nav-header">
             <div id="top-menu">
-                <div id="top-menu_1"><span class="nav-search"><i class="fa fa-search"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
+                <div id="top-menu_1"><span class="nav-search"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
                     <hgroup class="logo-site">
                         <h1 class="site-title"> <a href="/"><img src="http://okwfe8mj2.bkt.clouddn.com/2017/0601/1496322204731234802.PNG" style="height:50px" alt="" /></a></h1>
                     </hgroup>
