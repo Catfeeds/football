@@ -1,10 +1,16 @@
 <div class="widget d_postlist">
+<?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
                 <div class="title">
                     <h2><sapn class="title_span">热门推荐</span></h2></div>
                 <ul>
-                <?php if($rmtjs) foreach ($rmtjs as $key => $value) { $value = $value->getObj();?>
-                   <li><a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image,93,64)?>" /></span><span class="text"><?=$value->title?></span><span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span></a></li>
-                <?php } ?>
+                <?php if($rmtjs) foreach ($rmtjs as $key => $v) {  $value = $v->getObj();  if($value): ?>
+                   <li>
+                   <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>">
+                   <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,93,64)?>" /></span>
+                   <span class="text"><?=$value->title?></span>
+                   <span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span>
+                   </a></li>
+                <?php endif; } ?>
                 </ul>
             </div>
             

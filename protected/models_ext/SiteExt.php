@@ -51,6 +51,8 @@ class SiteExt extends Site{
         'pcIndexGun'=>'',
         // 用户默认头像
         'userImg'=>'',
+        // 资讯默认头像
+        'newsImg'=>'',
         // 联赛调用接口地址
         'leagueApi'=>'',
         // 球队调用接口地址
@@ -88,6 +90,7 @@ class SiteExt extends Site{
             // 'pcNewsTop'=>['type'=>'image','max'=>1,'name'=>'pc资讯列表头图'],
             // 'pcContactTop'=>['type'=>'image','max'=>1,'name'=>'pc联系列表头图'],
             'userImg'=>['type'=>'image','max'=>1,'name'=>'用户默认头像'],
+            'newsImg'=>['type'=>'image','max'=>1,'name'=>'资讯默认封面图'],
             // 'pcTeamTop'=>['type'=>'image','max'=>1,'name'=>'pc团队列表头图'],
             // 'productNoPic'=>['type'=>'image','max'=>1,'name'=>'产品默认图'],
             // 'houseNoPic'=>['type'=>'image','max'=>1,'name'=>'酒庄默认图'],

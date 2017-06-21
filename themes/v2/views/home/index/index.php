@@ -7,6 +7,7 @@
                 <strong class="text-success"><i class="fa fa-volume-up"></i> </strong><?=SiteExt::getAttr('qjpz','pcIndexGun')?>
             </div>
         </div>
+        <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
         <div class="content-wrap">
             <div class="content">
                 <div class="slick_bor">
@@ -43,7 +44,7 @@
                         <li>
                             <figure class="dd-img">
                                 <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
-                                    <img src="<?=ImageTools::fixImage($value->image,168,112)?>" style="display: inline;" /> </a>
+                                    <img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,168,112)?>" style="display: inline;" /> </a>
                             </figure>
                             <div class="dd-content">
                                 <h2 class="dd-title"> <a rel="bookmark" title="<?=$value->title?>" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,60)?></a> </h2>
@@ -71,7 +72,7 @@
                     <?php if($news) foreach ($news as $key => $value) {?>
                         <article class="excerpt">
                     <div class="focus">
-                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image,200,123)?>" alt="<?=$value->title?>" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
                     </div>
                     <header>
                         <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>

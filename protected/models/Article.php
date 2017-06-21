@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'article':
  * @property integer $id
  * @property string $image
+ * @property string $video
  * @property string $title
  * @property integer $is_top_video
  * @property integer $is_top
@@ -42,12 +43,12 @@ class Article extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('is_top_video, is_top, cid, uid, hits, publish, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('image, title, descpt', 'length', 'max'=>255),
+			array('image, video, title, descpt', 'length', 'max'=>255),
 			array('author', 'length', 'max'=>100),
 			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, image, title, is_top_video, is_top, cid, uid, hits, author, content, descpt, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, image, video, title, is_top_video, is_top, cid, uid, hits, author, content, descpt, publish, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +71,7 @@ class Article extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'image' => 'Image',
+			'video' => 'Video',
 			'title' => 'Title',
 			'is_top_video' => 'Is Top Video',
 			'is_top' => 'Is Top',
@@ -108,6 +110,7 @@ class Article extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('video',$this->video,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('is_top_video',$this->is_top_video);
 		$criteria->compare('is_top',$this->is_top);

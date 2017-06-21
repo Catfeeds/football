@@ -98,7 +98,7 @@ class RecomExt extends Recom{
                 break;
         }
         if($model) {
-            $info = $model::model()->normal()->findByPk($this->related_id);
+            $info = $model::model()->findByPk($this->related_id);
         }
         return $info;
     }

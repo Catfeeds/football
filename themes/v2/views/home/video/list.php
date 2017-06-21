@@ -12,10 +12,8 @@
                                 color: #999 !important;
                             }
                         </style>
-                            <li class="home"> <a href="<?=$this->createUrl('list')?>">&nbsp;全部&nbsp;</a></li>
-                            <?php if($cates) foreach ($cates as $key => $value) {?>
-                                <li class="<?=$cid==$key?'active':''?>"><a href="<?=$this->createUrl('list',['cid'=>$key])?>">&nbsp;<?=$value?>&nbsp;</a></li>
-                            <?php } ?>
+                            <li class="home"> <a href="<?=$this->createUrl('/home/index/index')?>">&nbsp;球布斯&nbsp;</a></li>
+                            <li class=""><a href="<?=$this->createUrl('list')?>">&nbsp;<?='视频'?>&nbsp;</a></li>
                         </ol>
                     </div>
                     
@@ -39,6 +37,7 @@
                 </div>
             </div>
             <aside class="sidebar">
+
             <?php $this->widget('CommonRightWidget',$rights)?>
             </aside>
         </section>
