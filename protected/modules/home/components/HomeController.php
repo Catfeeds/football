@@ -10,6 +10,8 @@ class HomeController extends Controller
     private $keyword;
     //关键字
     private $pageTitle;
+    //关键字
+    private $kw;
 
     //描述
     private $description;
@@ -116,6 +118,14 @@ class HomeController extends Controller
 
     public function setPageTitle($value){
         $this->pageTitle = $value;
+    }
+
+    public function setKw($value){
+        $this->kw = $value;
+    }
+
+    public function getKw(){
+        return $this->kw ;
     }
 
     public function setDescription($value){

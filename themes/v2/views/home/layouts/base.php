@@ -81,10 +81,10 @@
             </ul>
         </nav>
     </header>
-    <div id="search-main">
+    <div id="search-main" style="display: <?=isset($this->kw)?'block':'none'?>">
         <div id="searchbar">
-            <form id="searchform" action="/" method="get">
-                <input id="s" type="text" required placeholder="输入搜索内容" name="s" value="">
+            <form id="searchform" action="<?=$this->createUrl('/home/news/list')?>" method="get">
+                <input id="s" type="text" required placeholder="<?=isset($this->kw)?$this->kw:'输入搜索内容'?>" name="kw" value="">
                 <button id="searchsubmit" type="submit">搜索</button>
             </form>
         </div>

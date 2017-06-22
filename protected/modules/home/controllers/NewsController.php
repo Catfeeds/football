@@ -5,6 +5,8 @@ class NewsController extends HomeController{
 
 	public $rights = [];
 
+	// public $kw = '';
+
 	public function init()
 	{
 		parent::init();
@@ -30,9 +32,13 @@ class NewsController extends HomeController{
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10]);
         $this->rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
 	}
-	public function actionList($cid='')
+	public function actionList($cid='',$kw='')
 	{
 		$criteria = new CDbCriteria;
+		if($kw) {
+			$criteria->addSearchCondition('title',$kw);
+			$this->kw = $kw;
+		}
 		if($cid) {
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cid;
