@@ -35,7 +35,11 @@ class DataController extends ApiController
 						continue;
 					} 
 					$league = new LeagueExt;
-					$league->attributes = $value;
+					$league->old_id = $value['no'];
+					foreach (['id','name','country'] as $v) {
+						$league->$v = $value[$v];
+					}
+					// $league->attributes = $value;
 					$league->save();
 				}
 			}else {

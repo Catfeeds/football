@@ -13,6 +13,7 @@
  * @property string $rule
  * @property string $descpt
  * @property string $image
+ * @property integer $old_id
  * @property integer $status
  * @property integer $deleted
  * @property integer $sort
@@ -37,14 +38,14 @@ class League extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, pinyin, created', 'required'),
-			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('name, created', 'required'),
+			array('old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('full_name, descpt, image', 'length', 'max'=>255),
 			array('name, eng, country, pinyin', 'length', 'max'=>100),
 			array('rule', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, full_name, name, eng, country, pinyin, rule, descpt, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, full_name, name, eng, country, pinyin, rule, descpt, image, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +75,7 @@ class League extends CActiveRecord
 			'rule' => 'Rule',
 			'descpt' => 'Descpt',
 			'image' => 'Image',
+			'old_id' => 'Old',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
@@ -109,6 +111,7 @@ class League extends CActiveRecord
 		$criteria->compare('rule',$this->rule,true);
 		$criteria->compare('descpt',$this->descpt,true);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('old_id',$this->old_id);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);

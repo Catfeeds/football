@@ -6,12 +6,11 @@
  * The followings are the available columns in table 'player':
  * @property integer $id
  * @property string $eng
- * @property integer $assist
- * @property integer $score
  * @property integer $tid
  * @property string $full_name
  * @property string $name
  * @property string $image
+ * @property integer $old_id
  * @property integer $status
  * @property integer $deleted
  * @property integer $sort
@@ -37,12 +36,12 @@ class Player extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('assist, score, tid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('tid, old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('eng, name', 'length', 'max'=>100),
 			array('full_name, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eng, assist, score, tid, full_name, name, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, tid, full_name, name, image, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,12 +64,11 @@ class Player extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'eng' => 'Eng',
-			'assist' => 'Assist',
-			'score' => 'Score',
 			'tid' => 'Tid',
 			'full_name' => 'Full Name',
 			'name' => 'Name',
 			'image' => 'Image',
+			'old_id' => 'Old',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
@@ -99,12 +97,11 @@ class Player extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('eng',$this->eng,true);
-		$criteria->compare('assist',$this->assist);
-		$criteria->compare('score',$this->score);
 		$criteria->compare('tid',$this->tid);
 		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('old_id',$this->old_id);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);

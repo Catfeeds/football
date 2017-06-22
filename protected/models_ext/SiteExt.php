@@ -58,11 +58,36 @@ class SiteExt extends Site{
         // 球队调用接口地址
         'teamApi'=>'',
         // 球员调用接口地址
-        'playerApi'=>''
+        'playerApi'=>'',
+        'title'=>'',
+        'desc'=>'',
+        'keyword'=>'',
+        'home_index_index_title'=>'',
+        'home_index_index_desc'=>'',
+        'home_index_index_keyword'=>'',
+        'home_news_list_title'=>'',
+        'home_news_list_desc'=>'',
+        'home_news_list_keyword'=>'',
+        'home_news_info_title'=>'',
+        'home_news_info_desc'=>'',
+        'home_news_info_keyword'=>'',
+        'home_video_list_title'=>'',
+        'home_video_list_desc'=>'',
+        'home_video_list_keyword'=>'',
+        'home_video_info_title'=>'',
+        'home_video_info_desc'=>'',
+        'home_video_info_keyword'=>'',
+        'home_match_index_title'=>'',
+        'home_match_index_desc'=>'',
+        'home_match_index_keyword'=>'',
+        'home_data_index_title'=>'',
+        'home_data_index_desc'=>'',
+        'home_data_index_keyword'=>'',
 
     ];
     public static $cateName = [
         'qjpz' => '全局配置',
+        'seo'=>'seo配置',
     ];
 
     // 属性分类
@@ -95,6 +120,34 @@ class SiteExt extends Site{
             // 'productNoPic'=>['type'=>'image','max'=>1,'name'=>'产品默认图'],
             // 'houseNoPic'=>['type'=>'image','max'=>1,'name'=>'酒庄默认图'],
             ],
+        'seo'=>[
+            'title'=>['type'=>'text','name'=>'默认标题'],
+            'desc'=>['type'=>'text','name'=>'默认简介'],
+            'keyword'=>['type'=>'text','name'=>'默认关键词'],
+            'home_index_index_title'=>['type'=>'text','name'=>'首页标题'],
+            'home_index_index_desc'=>['type'=>'text','name'=>'首页简介'],
+            'home_index_index_keyword'=>['type'=>'text','name'=>'首页关键词'],
+            'home_news_list_title'=>['type'=>'text','name'=>'资讯列表标题'],
+            'home_news_list_desc'=>['type'=>'text','name'=>'资讯列表简介'],
+            'home_news_list_keyword'=>['type'=>'text','name'=>'资讯列表关键词'],
+            'home_news_info_title'=>['type'=>'text','name'=>'资讯详情标题'],
+            'home_news_info_desc'=>['type'=>'text','name'=>'资讯详情简介'],
+            'home_news_info_keyword'=>['type'=>'text','name'=>'资讯详情关键词'],
+            'home_video_list_title'=>['type'=>'text','name'=>'视频列表标题'],
+            'home_video_list_desc'=>['type'=>'text','name'=>'视频列表简介'],
+            'home_video_list_keyword'=>['type'=>'text','name'=>'视频列表关键词'],
+            'home_video_info_title'=>['type'=>'text','name'=>'视频详情标题'],
+            'home_video_info_desc'=>['type'=>'text','name'=>'视频详情简介'],
+            'home_video_info_keyword'=>['type'=>'text','name'=>'视频详情关键词'],
+            'home_match_index_title'=>['type'=>'text','name'=>'比赛标题'],
+            'home_match_index_desc'=>['type'=>'text','name'=>'比赛简介'],
+            'home_match_index_keyword'=>['type'=>'text','name'=>'比赛关键词'],
+            'home_data_index_title'=>['type'=>'text','name'=>'数据标题'],
+            'home_data_index_desc'=>['type'=>'text','name'=>'数据简介'],
+            'home_data_index_keyword'=>['type'=>'text','name'=>'数据关键词'],
+            // 'home/index/index_title'=>['type'=>'text','name'=>'首页标题'],
+            // 'home/index/index_title'=>['type'=>'text','name'=>'首页标题'],
+        ],
     ];
 
 	/**

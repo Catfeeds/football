@@ -8,6 +8,8 @@ class HomeController extends Controller
 {
     //关键字
     private $keyword;
+    //关键字
+    private $pageTitle;
 
     //描述
     private $description;
@@ -44,6 +46,16 @@ class HomeController extends Controller
     public function init()
     {
         parent::init();
+        $path = trim(Yii::app()->request->getPathInfo(),'/');
+        if(!$path)
+            $path = 'home/index/index';
+        $path = str_replace('/', '_', $path);
+        $t = SiteExt::getAttr('seo',$path.'_title');
+        $k = SiteExt::getAttr('seo',$path.'_keyword');
+        $d = SiteExt::getAttr('seo',$path.'_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
         // $user = Yii::app()->user;
         // if(!$user->getIsGuest())
         $this->user  = UserExt::model()->find(1);
@@ -86,7 +98,7 @@ class HomeController extends Controller
 
     public function getKeyword(){
         if($this->keyword === null){
-            $this->keyword = '懂球帝，足球专业资讯网站';
+            $this->keyword = SiteExt::getAttr('seo','keyword');
         }
         return $this->keyword;
     }
@@ -95,13 +107,24 @@ class HomeController extends Controller
         $this->keyword = $value;
     }
 
+    public function getPageTitle(){
+        if($this->pageTitle === null){
+            $this->pageTitle = SiteExt::getAttr('seo','title');
+        }
+        return $this->pageTitle;
+    }
+
+    public function setPageTitle($value){
+        $this->pageTitle = $value;
+    }
+
     public function setDescription($value){
         $this->description = $value;
     }
 
     public function getDescription(){
         if($this->description === null){
-            $this->description = '懂球帝，足球专业资讯网站的介绍';
+            $this->description = SiteExt::getAttr('seo','desc');
         }
         return $this->description;
     }

@@ -24,7 +24,7 @@
                             font-size: 14px;
                             font-weight: normal;
                             margin: -1px 0 0;
-                            padding: 4px 15px;background-color: #428bca;
+                            padding: 4px 15px;background-color: #2eb398;
                         }
                     </style>
             <style type="text/css">
@@ -32,6 +32,9 @@
                         width: 33% !important;
                        }
                        .tab1{
+                        margin-left: 0!important;
+                        padding-right: 0!important;
+                        padding-left: 0!important;
                         border: none !important;
                        }
                    </style>
@@ -41,7 +44,7 @@
                    <?php if($leas) foreach ($leas as $key => $value) {?>
                        <li class="<?=$key==0?'active':''?> tabli1">
                             <a class="tab1" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
-                            <?=$value->name?> </a>
+                            <center><?=$value->name?> </center></a>
                         </li>
                   <?php  } ?>
                     </ul>
@@ -50,8 +53,9 @@
                         <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
                         <?php if($value): ?>
                             <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
-                                <?php foreach ($value as $v) {?>
+                                <?php foreach ($value as $r => $v) {?>
                                     <tr>
+                                            <td align='center'><?=$r+1?></td>
                                             <td align='center' style="width: 40%"><?=Tools::u8_title_substr($v->team->name,12) ?></td>
                                             <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
                                             <td align='center'><?=$v->points?></td>
