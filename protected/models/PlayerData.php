@@ -1,32 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "league".
+ * This is the model class for table "player_data".
  *
- * The followings are the available columns in table 'league':
+ * The followings are the available columns in table 'player_data':
  * @property integer $id
- * @property string $full_name
- * @property string $name
- * @property string $eng
- * @property string $country
- * @property string $pinyin
- * @property string $rule
- * @property string $descpt
- * @property string $image
+ * @property integer $pid
+ * @property integer $lid
+ * @property integer $tid
+ * @property integer $score
+ * @property integer $assist
+ * @property integer $sort
  * @property integer $status
  * @property integer $deleted
- * @property integer $sort
  * @property integer $created
  * @property integer $updated
  */
-class League extends CActiveRecord
+class PlayerData extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'league';
+		return 'player_data';
 	}
 
 	/**
@@ -37,14 +34,11 @@ class League extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, pinyin, created', 'required'),
-			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('full_name, descpt, image', 'length', 'max'=>255),
-			array('name, eng, country, pinyin', 'length', 'max'=>100),
-			array('rule', 'safe'),
+			array('pid, created', 'required'),
+			array('pid, lid, tid, score, assist, sort, status, deleted, created, updated', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, full_name, name, eng, country, pinyin, rule, descpt, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, pid, lid, tid, score, assist, sort, status, deleted, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,17 +60,14 @@ class League extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'full_name' => 'Full Name',
-			'name' => 'Name',
-			'eng' => 'Eng',
-			'country' => 'Country',
-			'pinyin' => 'Pinyin',
-			'rule' => 'Rule',
-			'descpt' => 'Descpt',
-			'image' => 'Image',
+			'pid' => 'Pid',
+			'lid' => 'Lid',
+			'tid' => 'Tid',
+			'score' => 'Score',
+			'assist' => 'Assist',
+			'sort' => 'Sort',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
-			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -101,17 +92,14 @@ class League extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('full_name',$this->full_name,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('eng',$this->eng,true);
-		$criteria->compare('country',$this->country,true);
-		$criteria->compare('pinyin',$this->pinyin,true);
-		$criteria->compare('rule',$this->rule,true);
-		$criteria->compare('descpt',$this->descpt,true);
-		$criteria->compare('image',$this->image,true);
+		$criteria->compare('pid',$this->pid);
+		$criteria->compare('lid',$this->lid);
+		$criteria->compare('tid',$this->tid);
+		$criteria->compare('score',$this->score);
+		$criteria->compare('assist',$this->assist);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
-		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 
@@ -124,7 +112,7 @@ class League extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return League the static model class
+	 * @return PlayerData the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

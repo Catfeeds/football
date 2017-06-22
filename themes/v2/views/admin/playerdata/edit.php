@@ -15,39 +15,33 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
         'print','preview','searchreplace']]")); ?>
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
 <div class="form-group">
-    <label class="col-md-2 control-label">名称<span class="required" aria-required="true">*</span></label>
+    <label class="col-md-2 control-label">联赛</label>
     <div class="col-md-4">
-        <?php echo $form->textField($article, 'name', array('class' => 'form-control')); ?>
+        <?php echo $form->dropDownList($article, 'lid', CHtml::listData(LeagueExt::model()->normal()->findAll(),'id','name'), array('class' => 'form-control', 'encode' => false)); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'name') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'lid') ?></div>
 </div>
 <div class="form-group">
-    <label class="col-md-2 control-label">全称<span class="required" aria-required="true">*</span></label>
+    <label class="col-md-2 control-label">球员</label>
     <div class="col-md-4">
-        <?php echo $form->textField($article, 'full_name', array('class' => 'form-control')); ?>
+        <?php echo $form->dropDownList($article, 'pid', CHtml::listData(PlayerExt::model()->normal()->findAll(),'id','name'), array('class' => 'form-control', 'encode' => false)); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'full_name') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'pid') ?></div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-2 control-label">得分</label>
+    <div class="col-md-4">
+        <?php echo $form->textField($article, 'score', array('class' => 'form-control')); ?>
+    </div>
+    <div class="col-md-2"><?php echo $form->error($article, 'score') ?></div>
 </div>
 <div class="form-group">
-    <label class="col-md-2 control-label">英文名<span class="required" aria-required="true">*</span></label>
+    <label class="col-md-2 control-label">助攻</label>
     <div class="col-md-4">
-        <?php echo $form->textField($article, 'eng', array('class' => 'form-control')); ?>
+        <?php echo $form->textField($article, 'assist', array('class' => 'form-control')); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'eng') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">球队</label>
-    <div class="col-md-4">
-        <?php echo $form->dropDownList($article, 'tid', $cates, array('class' => 'form-control', 'encode' => false)); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'tid') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label text-nowrap">头像</label>
-    <div class="col-md-8">
-        <?php $this->widget('FileUpload',array('model'=>$article,'attribute'=>'image','inputName'=>'img','width'=>400,'height'=>300)); ?>
-        <span class="help-block">建议尺寸：430*230</span> 
-    </div>
+    <div class="col-md-2"><?php echo $form->error($article, 'assist') ?></div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>

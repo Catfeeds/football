@@ -17,15 +17,25 @@ class DataController extends HomeController{
 				$criteria->order = 'points desc';
 				$points = PointsExt::model()->normal()->findAll($criteria);
 				break;
-			// case 's':
-			// 	$points = PlayExt::model()->normal()->findAll($criteria);
-			// 	break;
-			// case 'p':
-			// 	$points = PointsExt::model()->normal()->findAll($criteria);
-			// 	break;
-			// case 'p':
-			// 	$points = PointsExt::model()->normal()->findAll($criteria);
-			// 	break;
+			case 's':
+				if($lid) {
+					$criteria->addCondition('t.lid=:lid');
+					$criteria->params[':lid'] = $lid;
+				}
+				$criteria->order = 't.score desc';
+				$points = PlayerDataExt::model()->with('player')->normal()->findAll($criteria);
+				break;
+			case 'a':
+				if($lid) {
+					$criteria->addCondition('t.lid=:lid');
+					$criteria->params[':lid'] = $lid;
+				}
+				$criteria->order = 't.assist desc';
+				$points = PlayerDataExt::model()->with('player')->normal()->findAll($criteria);
+				break;
+			case 't':
+				$points = LeagueExt::model()->findByPk($lid);
+				break;
 			
 			default:
 				# code...

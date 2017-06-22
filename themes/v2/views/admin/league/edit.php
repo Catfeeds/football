@@ -57,6 +57,13 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
     <div class="col-md-2"><?php echo $form->error($article, 'descpt') ?></div>
 </div>
 <div class="form-group">
+    <label class="col-md-2 control-label">赛制</label>
+    <div class="col-md-8">
+        <?php echo $form->textArea($article, 'rule', array('class' => '','id'=>'ArticleExt_content')); ?>
+    </div>
+    <div class="col-md-2"><?php echo $form->error($article, 'rule') ?></div>
+</div>
+<div class="form-group">
     <label class="col-md-2 control-label text-nowrap">图标</label>
     <div class="col-md-8">
         <?php $this->widget('FileUpload',array('model'=>$article,'attribute'=>'image','inputName'=>'img','width'=>400,'height'=>300)); ?>

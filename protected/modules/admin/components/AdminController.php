@@ -69,7 +69,11 @@ class AdminController extends Controller
             ]],
             ['label'=>'联赛管理','icon'=>'icon-speedometer','url'=>['/admin/league/list'],'active'=>$this->route=='admin/league/edit'],
             ['label'=>'球队管理','icon'=>'icon-speedometer','url'=>['/admin/team/list'],'active'=>$this->route=='admin/team/edit'],
-            ['label'=>'球员管理','icon'=>'icon-speedometer','url'=>['/admin/player/list'],'active'=>$this->route=='admin/player/edit'],
+            ['label' => '球员管理', 'icon' => 'icon-speedometer', 'items' => [
+                ['label'=>'信息管理','url'=>['/admin/player/list'],'active'=>$this->route=='admin/player/edit'],
+                ['label' => '数据管理', 'url' => ['/admin/playerdata/list'],'active'=>$this->route=='admin/playerdata/edit'],
+            ]],
+            // ['label'=>'球员管理','icon'=>'icon-speedometer','url'=>['/admin/player/list'],'active'=>$this->route=='admin/player/edit'],
             ['label'=>'比赛管理','icon'=>'icon-speedometer','url'=>['/admin/match/list'],'active'=>$this->route=='admin/match/edit'],
             ['label'=>'直播管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
             ['label'=>'评论管理','icon'=>'icon-speedometer','url'=>['/admin/comment/list'],'active'=>$this->route=='admin/comment/edit'],

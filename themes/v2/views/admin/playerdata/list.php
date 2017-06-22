@@ -34,7 +34,7 @@ $this->breadcrumbs = array($this->pageTitle);
         <th class="text-center">排序</th>
         <th class="text-center">ID</th>
         <th class="text-center">名称</th>
-        <th class="text-center">英文名</th>
+        <th class="text-center">得分/助攻</th>
         <th class="text-center">球队</th>
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
@@ -48,9 +48,9 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><?=$v->name?></td>
-            <td class="text-center"><?=$v->eng?></td>
-            <td class="text-center"><?=$v->team?$v->team->name:'-'?></td>          
+            <td class="text-center"><?=$v->player->name?></td>
+            <td class="text-center"><?=$v->score.'/'.$v->assist?></td>   
+            <td class="text-center"><?=$v->player->team?$v->player->team->name:'-'?></td>          
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>
