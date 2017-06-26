@@ -11,7 +11,7 @@ Yii::app()->clientScript->registerScriptFile('/static/global/plugins/webuploader
 
 <div id="uploader<?php echo $this->id; ?>" class="wu-example">
     <div class="btns">
-        <div id="picker<?php echo $this->id; ?>" onmousemove="$(window).resize();" class="webuploader-container">选择文件</div>
+        <div id="picker<?php echo $this->id; ?>" style="<?=$style?>" onmousemove="$(window).resize();" class="webuploader-container"><?=$words?></div>
     </div>
 </div>
 <div id="singlePic<?php echo $this->id; ?>" style="float:left; width:auto; height:auto" class="btn-group">

@@ -104,6 +104,9 @@ $config1 = array(
                 return Yii::app()->params['urmHost'];
             },
 		),
+        'mns'=>array(
+            'class' => 'application.components.AliMns',
+        ),
 		//uc体系使用的user组件
 		'ucUser' => array(
 			'class' => 'CWebUser',

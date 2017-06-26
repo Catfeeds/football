@@ -56,4 +56,9 @@ class IndexController extends HomeController
         // var_dump($info->attributes);exit;
         $this->render('contact',['info'=>$info]);
     }
+    public function actionTest()
+    {
+        // var_dump(Yii::app()->mns);exit;
+        var_dump(Yii::app()->mns->run('13861242596','1234'));exit;
+    }
 }

@@ -65,6 +65,8 @@ class FileUpload extends CWidget
 	 * @var boolean
 	 */
 	public $preview = true;
+	public $words = '选择文件';
+	public $style = '';
 	/**
 	 * 初始化小物件
 	 */
@@ -109,7 +111,7 @@ class FileUpload extends CWidget
 	public function run()
 	{
 		//为兼容IE浏览器，不使用第一个模板了
-		$this->render('fileupload');
+		$this->render('fileupload',['words'=>$this->words,'style'=>$this->style]);
 	}
 
 	public function getRemoveButtonHtml()

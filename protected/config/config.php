@@ -89,6 +89,9 @@ $config2 = array(
             ),
         ),
         'file' => array('class' => 'application.components.FileComponent') + $config['file'],
+        'mns'=>array(
+            'class' => 'application.components.AliMns',
+        ) + $config['mns'],
     ),
     'params' => CMap::mergeArray($params, $config['params'])
 );
