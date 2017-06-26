@@ -58,9 +58,9 @@ class HomeController extends Controller
         $t && $this->pageTitle = $t;
         $k && $this->keyword = $k;
         $d && $this->description = $d;
-        // $user = Yii::app()->user;
-        // if(!$user->getIsGuest())
-        $this->user  = UserExt::model()->find(1);
+        $user = Yii::app()->user;
+        if(!$user->getIsGuest())
+            $this->user  = UserExt::model()->find($user->id);
     }
 
     /**
