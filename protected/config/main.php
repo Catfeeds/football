@@ -32,6 +32,7 @@ $config1 = array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
     'language' => 'zh_cn',
     'name'=>'house',
+    'id'=>'qbs',
     'timeZone' => 'Asia/Shanghai',
     'defaultController' => 'site',
     'preload'=>array('log'),
@@ -104,9 +105,6 @@ $config1 = array(
                 return Yii::app()->params['urmHost'];
             },
 		),
-        'mns'=>array(
-            'class' => 'application.components.AliMns',
-        ),
 		//uc体系使用的user组件
 		'ucUser' => array(
 			'class' => 'CWebUser',

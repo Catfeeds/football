@@ -1,41 +1,18 @@
 <?php 
 /**
- * 文章类
+ * 点赞类
  * @author steven.allen <[<email address>]>
  * @date(2017.2.12)
  */
-class ArticleExt extends Article{
-    /**
-     * @var array 状态
-     */
-    static $status = array(
-        0 => '禁用',
-        1 => '启用',
-        2 => '回收站',
-    );
-
-    static $keywordsSwitch = array(
-        0 => '否',
-        1 => '是',
-    );
-
-    /**
-     * @var array 状态按钮样式
-     */
-    static $statusStyle = array(
-        0 => 'btn btn-sm btn-warning',
-        1 => 'btn btn-sm btn-primary',
-        2 => 'btn btn-sm btn-danger'
-    );
+class PraiseExt extends Praise{
 	/**
      * 定义关系
      */
     public function relations()
     {
         return array(
-            'cate'=>array(self::BELONGS_TO, 'ArticleCateExt', 'cid'),
-            'comment_num'=>array(self::STAT, 'CommentExt', 'major_id','condition'=>'t.status=1'),
-            'comments'=>array(self::HAS_MANY, 'CommentExt', ['major_id'=>'id'],'condition'=>'comments.status=1','order'=>'comments.praise desc,comments.created asc'),
+            // 'houseInfo'=>array(self::BELONGS_TO, 'HouseExt', 'house'),
+            // 'images'=>array(self::HAS_MANY, 'AlbumExt', 'pid'),
         );
     }
 
@@ -85,16 +62,12 @@ class ArticleExt extends Article{
                 'order' => "{$alias}.sort desc,{$alias}.updated desc",
             ),
             'normal' => array(
-                'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_top_video=0",
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
                 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
             ),
             'undeleted' => array(
                 'condition' => "{$alias}.deleted=0",
                 // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
-            ),
-            'isvideo'=>array(
-                'condition' => "{$alias}.status=1 and {$alias}.is_top_video=1 and {$alias}.deleted=0",
-                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
             ),
         );
     }

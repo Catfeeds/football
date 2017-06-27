@@ -38,7 +38,7 @@ class IndexController extends HomeController
             }
         }
         // 十个评论
-        $comms = CommentExt::model()->normal()->findAll(['limit'=>10]);
+        $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
         $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights]);
     }
@@ -58,7 +58,6 @@ class IndexController extends HomeController
     }
     public function actionTest()
     {
-        // var_dump(Yii::app()->mns);exit;
         var_dump(Yii::app()->mns->run('13861242596','1234'));exit;
     }
 }

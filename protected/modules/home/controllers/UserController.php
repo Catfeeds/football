@@ -10,7 +10,31 @@ class UserController extends HomeController{
 		if(!$this->user) {
 			$this->redirect('login');
 		}
-		$this->render('index',['type'=>$type]);
+		$info = $this->user;
+		if(Yii::app()->request->getIsPostRequest()) {
+			$infos = Yii::app()->request->getPost('UserExt');
+			$info->attributes = $infos;
+			$info->save();
+			if(isset($infos['pwd'])) {
+				Yii::app()->user->logout();
+				$this->redirect('index');
+			}
+		}
+		switch ($type) {
+			case 'info':
+				$this->render('index',['type'=>$type]);
+				break;
+			case 'pwd':
+				$this->render('editPwd',['type'=>$type]);
+				break;
+			case 'phone':
+				$this->render('editPhone',['type'=>$type]);
+				break;
+			default:
+				# code...
+				break;
+		}
+		
 	}
 	public function actionLogin()
 	{
@@ -22,8 +46,9 @@ class UserController extends HomeController{
 			$model = new HomeLoginForm();
 			$model->username = $phone;
 			$model->password = $pwd;
-			if($model->login())
+			if($model->login()) {
 				$this->redirect('/home/index/index');
+			}
 			else {
 				$wrong = 1;
 			}
@@ -36,5 +61,82 @@ class UserController extends HomeController{
 	{
 		Yii::app()->user->logout();
 		$this->redirect('/home/index/index');
+	}
+	public function actionCheckOld($pwd='')
+	{
+		if($pwd) {
+			if($this->user->pwd==md5($pwd)) {
+				echo json_encode(['s'=>'success']);
+			} else {
+				echo json_encode(['s'=>'wrong']);
+			}
+		} else {
+			echo json_encode(['s'=>'wrong']);
+		}
+	}
+
+	public function actionMsg($type='news')
+	{
+
+		$infos = [];
+		switch ($type) {
+			case 'news':
+				// $infos = $this->user->news;
+				$criteria = new CDbCriteria;
+				$criteria->addCondition('uid='.$this->user->id);
+				$infos = ArticleExt::model()->normal()->getList($criteria,20);
+				$this->render('news',['infos'=>$infos->data,'pager'=>$infos->pagination,'type'=>$type]);
+				break;
+			case 'comments':
+				$comments = $this->user->comments;
+				$ids = [];
+				if($comments) {
+					foreach ($comments as $key => $value) {
+						$ids[] = $value->major_id;
+					}
+					$criteria = new CDbCriteria;
+					$criteria->addInCondition('id',$ids);
+					$infos = ArticleExt::model()->normal()->getList($criteria,20);
+				}
+				$this->render('news',['infos'=>$infos->data,'pager'=>$infos->pagination,'type'=>$type]);
+				break;
+			default:
+				# code...
+				break;
+		}
+	}
+
+	public function actionRegis()
+	{
+		if(Yii::app()->request->getIsPostRequest()) {
+			$infos = Yii::app()->request->getPost('UserExt');
+			// var_dump($infos);exit;
+			// $pwd = $this->cleanXss(Yii::app()->request->getPost('pwd'));
+			$model = new UserExt;
+			$model->attributes = $infos;
+			// $model->password = $pwd;
+			if($model->save())
+				$this->redirect('/home/user/login');
+		}
+		$this->render('regis');
+	}
+
+	public function actionAddOne($phone='')
+	{
+		return SmsExt::addOne($phone);
+	}
+
+	public function actioncheckCode($phone='',$code='')
+	{
+		return SmsExt::checkPhone($phone,$code);
+	}
+
+	public function actionCheckPhone($phone='')
+	{
+		if(Yii::app()->db->createCommand("select id from user where phone='$phone' and deleted=0 ")->queryScalar()){
+			echo json_encode(['s'=>'error']);
+		} else {
+			echo json_encode(['s'=>'success']);
+		}
 	}
 }

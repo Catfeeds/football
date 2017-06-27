@@ -129,7 +129,7 @@ class CWebUser extends CApplicationComponent implements IWebUser
 	 */
 	public $loginRequiredAjaxResponse;
 
-	private $_keyPrefix;
+	private $_keyPrefix = '_ppt';
 	private $_access=array();
 
 	/**

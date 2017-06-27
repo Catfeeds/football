@@ -100,7 +100,8 @@ class SmsExt extends Sms{
             $model->phone = $phone;
             $model->code = $code;
             if($model->save()) {
-                Yii::app()->mns->run($phone,$code);
+                Yii::app()->mns->run((string)$phone,(string)$code);
+                // Yii::app()->mns->run($phone,$code);
                 echo json_encode(['s'=>'success']);
             } else {
                 echo json_encode(['s'=>'error']);
@@ -111,7 +112,11 @@ class SmsExt extends Sms{
     public static function checkPhone($phone='',$code='')
     {
         if((int)$phone && $code) {
-            $info = SmsExt::model()->find("phone='$phone'");
+            $criteria = new CDbCriteria;
+            $criteria->addCondition("phone='$phone'");
+            $criteria->order = 'created desc';
+            $info = SmsExt::model()->find($criteria);
+            // var_dump(15*60);exit;
             if(!$info) {
                 echo json_encode(['s'=>'error']);
                 // 15分钟有效

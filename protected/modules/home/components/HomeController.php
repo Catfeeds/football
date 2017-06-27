@@ -16,7 +16,7 @@ class HomeController extends Controller
     //描述
     private $description;
     public $banner = 'nobanner';
-    public $user;
+    public $user = [];
     /**
      * @var string 页面底部
      */
@@ -58,9 +58,12 @@ class HomeController extends Controller
         $t && $this->pageTitle = $t;
         $k && $this->keyword = $k;
         $d && $this->description = $d;
+
         $user = Yii::app()->user;
-        if(!$user->getIsGuest())
-            $this->user  = UserExt::model()->find($user->id);
+        // var_dump($user->id);exit;
+        if(!$user->getIsGuest()) 
+            $this->user = UserExt::model()->findByPk($user->id);
+        // var_dump( $this->user);exit;
     }
 
     /**

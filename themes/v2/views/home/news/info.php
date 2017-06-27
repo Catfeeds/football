@@ -123,7 +123,7 @@
                                             <div class=""><span class="c-author"><?=$obj->user->name?></span><?=Tools::friendlyDate($obj->created)?> </div>
                                         </div>
                                         <?php endif;?>
-                                        <div class="c-meta"><span class="c-author"><a href='' rel='external nofollow' class='url'><?=$user->name?></a></span><?=Tools::friendlyDate($value->created)?> <a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "div-comment-<?=$value->id?>", "<?=$value->id?>", "respond", "<?=$info->id?>" )'>回复</a></div>
+                                        <div class="c-meta"><span class="c-author"><a href='' rel='external nofollow' class='url'><?=$user->name?></a></span><?=Tools::friendlyDate($value->created)?> <a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "div-comment-<?=$value->id?>", "<?=$value->id?>", "respond", "<?=$info->id?>" )'>回复</a><span style="float: right"><a data-id="<?=$value->id?>" onclick="setp(this)">点赞</a>(<span><?=$value->praise?></span>)</span></div>
                                     </div>
                                 </div>
                             </li>
@@ -144,6 +144,22 @@
                 alert('请先登录！');
                 $('textarea').attr('disabled','disabled');
             <?php endif;?>
+        }
+        function setp(obj) {
+            var id = $(obj).data('id');
+            $.ajax({
+                'type':'get',
+                'url':'setPraise',
+                'dataType':'json',
+                'data':{'id':id},
+                'success':function(e) {
+                    if(e.s=='success') {
+                        $(obj).next().html(e.num);
+                    } else {
+                        alert(e.msg);
+                    }
+                }
+            });
         }
             
         </script>

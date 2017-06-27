@@ -29,7 +29,7 @@ class NewsController extends HomeController{
             }
         }
         // 十个评论
-        $comms = CommentExt::model()->normal()->findAll(['limit'=>10]);
+        $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $this->rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
 	}
 	public function actionList($cid='',$kw='')
@@ -58,5 +58,26 @@ class NewsController extends HomeController{
 		$info->hits += 1;
 		$info->save();
 		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
+	}
+
+	public function actionSetPraise($id='')
+	{
+		if(!$this->user) {
+			echo json_encode(['msg'=>'请登陆后操作','s'=>'error']);
+		} else {
+			$uid = $this->user->id;
+			if(Yii::app()->db->createCommand("select id from praise where uid=$uid and cid=$id")->queryScalar()) {
+				echo json_encode(['msg'=>'您已点过赞','s'=>'error']);
+			} else {
+				$praise = new PraiseExt;
+				$praise->uid = $uid;
+				$praise->cid = $id;
+				$praise->save();
+				$info = CommentExt::model()->findByPk($id);
+				$info->praise += 1;
+				$info->save();
+				echo json_encode(['num'=>$info->praise,'s'=>'success']);
+			}
+		}
 	}
 }

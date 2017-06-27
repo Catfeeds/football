@@ -4,7 +4,9 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-left.css");
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-set.css");
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
+    // Yii::app()->clientScript->registerJs("/themes/v2/static/home/js/md5.js");
 ?>
+<script src="/themes/v2/static/home/js/md5.js"></script>
 <section class="container" >
 <div class="clearfix-row m-t-55 m-b-55">
     <div class="content">
@@ -32,35 +34,27 @@
                     
                     <div class="bottom" style="line-height: 20px">
                     <form id="fm1" method="post">
-                        <div class="clearfix-row text-a-c m-t-50 m-b-30">
-                            <div class="user-panel" style="">
-                            	<!-- <div > -->
-                            		<?php $this->widget('FileUpload',array('model'=>$this->user,'attribute'=>'image','inputName'=>'img','width'=>200,'height'=>200,'words'=>'修改头像','style'=>'width:200px')); ?>
-                            	<!-- </div> -->
-                            </div>
-                            <script>
-                            	$('.removebutton').click(function(){
-                            		$('#singlePicyw0').empty();
-                            		$('#singlePicyw0').append('<input id="im1" type="hidden" value="" name="UserExt[image]">');
-                            	});
-                            </script>
-                        </div>
                         <div class="clearfix-row text-a-c">
-                            <div class="display-i-b w-340 text-a-l">
-                            	<div class="clearfix-row">
-                                    <div class="float-left">昵称</div>
+                            <div class="display-i-b w-500 text-a-l">
+                            	<div class="clearfix-row" style="margin-top: 30px">
+                                    <div class="float-left" style="    width: 60px;">原密码</div>
                                     <div class="float-left m-l-20">
-                                        <input id="name" readonly="readonly" value="<?=$this->user->name?>" name="UserExt[name]" type="text" class="text-type w-250">
+                                        <input id="old" onblur="ckpw()" type="password" class="text-type w-250">
                                     </div>
                                 </div>
                                 <div class="clearfix-row">
-                                    <div class="float-left">微信</div>
+                                    <div class="float-left" style="    width: 60px;">新密码</div>
                                     <div class="float-left m-l-20">
-                                        <input id="wx" value="<?=$this->user->wx?>" name="UserExt[wx]" type="text" class="text-type w-250">
-                                        <input type="hidden" value="<?=$this->user->id?>" name="UserExt[id]">
+                                        <input id="new" onblur="cknew()" type="password" class="text-type w-250">
                                     </div>
                                 </div>
-                                <div class="clearfix-row m-t-30 m-b-100 text-a-c"><a class="button w-60" onclick="alert('保存成功！');document.getElementById('fm1').submit()">保存</a></div>
+                                <div class="clearfix-row">
+                                    <div class="float-left" style="    width: 60px;">确认密码</div>
+                                    <div class="float-left m-l-20">
+                                        <input id="new2" onblur="cknew2()" name="UserExt[pwd]" type="password" class="text-type w-250">
+                                    </div>
+                                </div>
+                                <div class="clearfix-row m-t-30 m-b-100 text-a-c"><a class="button w-60" onclick="ckfm()">保存</a></div>
                             </div>
                         </div>
                     </div>
@@ -71,3 +65,49 @@
     </div>
 </div>
 </section>
+<script>
+    function ckpw() {
+        $('#oldafter').remove();
+        var old = $('#old').val();
+        $.ajax({
+            'type':'get',
+            'url':'checkOld',
+            'dataType':'json',
+            'data':{'pwd':old},
+            'success':function(e) {
+                if(e.s=='success') {
+                    $('#oldafter').remove();
+                } else {
+                    $('#old').after('<span id="oldafter" class="bad" style="margin-left:20px;color:red">原密码错误</span>');
+                    $('#old').focus();
+                }
+            }
+        });
+    }
+    function cknew() {
+        $('#newafter').remove();
+        var newpwd = $('#new').val();
+        if(newpwd.length < 6 || newpwd.length > 16 ) {
+            $('#new').after('<span id="newafter" class="bad" style="margin-left:20px;color:red">长度为6-16</span>');
+            // $('#new').focus();
+        }
+    }
+    function cknew2() {
+        $('#new2after').remove();
+        var newpwd2 = $('#new2').val();
+        if(newpwd2!=$('#new').val()) {
+            $('#new2').after('<span id="new2after" class="bad" style="margin-left:20px;color:red">两次密码不一</span>');
+            // $('#new2').focus();
+        }
+    }
+    function ckfm() {
+        var newp = $('#new2').val();
+        if($('.bad').length > 0) {
+            alert('密码输入有误，请修正');
+        } else {
+            alert('修改成功');
+            $('#new2').val(hex_md5(newp));
+            $('form').submit();
+        }
+    }
+</script>

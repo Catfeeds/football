@@ -22,7 +22,7 @@ class HomeIdentity extends CUserIdentity
 		// }
 		// var_dump(2);exit;
 		if($info = UserExt::model()->find("phone='{$this->username}'")) {
-			// var_dump($info->pwd,md5($pwd),$pwd);exit;
+
 			if($info->pwd!=md5($this->password)) {
 				$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 			} else {
@@ -36,6 +36,7 @@ class HomeIdentity extends CUserIdentity
 		}
 
 		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
+		exit;
 		return $this->errorCode;
 	}
 

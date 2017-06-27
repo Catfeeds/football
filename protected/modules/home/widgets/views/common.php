@@ -70,11 +70,11 @@
             </div>
             <div class="widget d_comment">
                 <div class="title">
-                    <h2><sapn class="title_span">最新评论</span></h2></div>
+                    <h2><sapn class="title_span">热门评论</span></h2></div>
                 <ul>
                 <?php if($comms) foreach ($comms as $key => $value) { $user = $value->user?>
                 <li>
-                        <a href="#" ><img alt='' src='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-36 pehoto'  height='36' width='36' />
+                        <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->major_id])?>" ><img alt='' src='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-36 pehoto'  height='36' width='36' />
                             <div class="muted"><i><?=$user->name?></i>&nbsp;&nbsp;于 <?=Tools::friendlyDate($value->created)?> 说：
                                 <br/><?=Tools::u8_title_substr($value->content,40) ?></div>
                         </a>
