@@ -1,5 +1,5 @@
 <?php
-require_once(Yii::app()->baseUrl.'/protected/vendor/mns/mns-autoloader.php');
+require_once(dirname(__FILE__) .'/../../protected/vendor/mns/mns-autoloader.php');
 use AliyunMNS\Client;
 use AliyunMNS\Topic;
 use AliyunMNS\Constants;
