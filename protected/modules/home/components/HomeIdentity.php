@@ -36,7 +36,7 @@ class HomeIdentity extends CUserIdentity
 		}
 
 		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
-		exit;
+		// exit;
 		return $this->errorCode;
 	}
 

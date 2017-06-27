@@ -31,7 +31,7 @@
                 <div class="lab-left"><span class="line-h-40">密码：</span></div>
                 <div class="lab-right">
                     <div class="text-box">
-                        <input class="text w-308" onkeydown="clearit()" id="pwd" value="<?=$pwd?>" name="pwd" type="password" placeholder=""><?php if($wrong):?><span id="pwdspan" style="margin-left:20px;color:red">用户名或密码错误！</span><?php endif;?>
+                        <input class="text w-308" onkeydown="clearit()" id="pwd" value="<?=$pwd?>" name="pwd" type="password" placeholder=""><?php if($wrong):?><span id="pwdspan" style="margin-left:20px;color:red">手机号或密码错误！</span><?php endif;?>
                     </div>
                 </div>
             </div>
