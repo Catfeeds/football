@@ -51,4 +51,33 @@ class DataController extends ApiController
 		echo '成功！';
 	}
 
+	public function actionNews()
+	{
+		$page = 0;
+		$url = SiteExt::getAttr('qjpz','leagueApi');
+		do{
+			$res = HttpHelper::get($url,['page'=>$page]);
+			if(isset($res['content']) && $data = json_decode($res['content'],true)) {
+				foreach ($data as $key => $value) {
+					$name = $value['name'];
+					if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
+						continue;
+					} 
+					$league = new LeagueExt;
+					$league->old_id = $value['no'];
+					foreach (['id','name','country'] as $v) {
+						$league->$v = $value[$v];
+					}
+					// $league->attributes = $value;
+					$league->save();
+				}
+			}else {
+				$data = [];
+			}
+			$page++;
+		}while($data);
+		
+		echo '成功！';
+	}
+
 }

@@ -66,8 +66,12 @@ class ArticleExt extends Article{
     }
 
     public function beforeValidate() {
-        if($this->getIsNewRecord())
-            $this->created = $this->updated = time();
+        if($this->getIsNewRecord()) {
+            if($this->created) {
+                $this->updated = $this->created;
+            } else
+                $this->created = $this->updated = time();
+        }
         else
             $this->updated = time();
         return parent::beforeValidate();
