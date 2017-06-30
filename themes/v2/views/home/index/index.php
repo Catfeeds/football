@@ -35,6 +35,7 @@
                     </script>
                     <div class="ws_shadow"></div>
                 </div>
+                <?php if($jpdds):?>
                 <div class="daodu clr">
                     <div class="tip">
                         <h4>精选导读</h4>
@@ -56,6 +57,7 @@
                         
                     </ul>
                 </div>
+            <?php endif;?>
                 <style type="text/css">
                     .catew1{
                         color: #999;
@@ -66,7 +68,7 @@
                     }
                 </style>
                 <header class="archive-header">
-                    <h4>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
+                    <h4><a class="catew1 <?=!$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index')?>"><?='全部'?></a>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
                         <a class="catew1 <?=$value->id==$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index',['cid'=>$value->id])?>"><?=$value->name?></a>&nbsp;
                     <?php } ?></h4></header>
                     <?php if($news) foreach ($news as $key => $value) {?>

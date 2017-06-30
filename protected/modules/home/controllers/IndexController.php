@@ -9,9 +9,9 @@ class IndexController extends HomeController
         $cates = ArticleCateExt::model()->normal()->findAll();
         $criteria = new CDbCriteria;
         $criteria->limit = 20;
-        if(!$cid) {
-            isset($cates[0]) && $cid = $cates[0]['id'];
-        }
+        // if(!$cid) {
+        //     isset($cates[0]) && $cid = $cates[0]['id'];
+        // }
         if($cid) {
             $criteria->addCondition('cid=:cid');
             $criteria->params[':cid'] = $cid;
