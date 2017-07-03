@@ -6,53 +6,51 @@
  */
 class DataCommand extends CConsoleCommand
 {
-	public function actionLeague($id=0)
+	public function actionLeague($id=0,$page=0)
 	{
+		begin:
+
 		$url = SiteExt::getAttr('qjpz','leagueApi');
-		if($id)
-			$res = HttpHelper::get($url.'?id='.$id);
-		else
-			$res = HttpHelper::get($url);
+		// if($id)
+		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page);
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
-			$count = count($data);
-			for ($i=0; $i < $count/200 + 1; $i++) { 
-				$arr = array_slice($data, $i*200,200);
-				if($arr) {
-					foreach ($arr as $key => $value) {
-						// var_dump($value);exit;
-						$name = $value['name'];
-						// if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
-						// 	continue;
-						// } 
-						$league = new LeagueExt;
-						$league->old_id = $value['no'];
-						foreach (['id','name','country','image'] as $v) {
-							$league->$v = $value[$v];
-						}
-						// $league->attributes = $value;
-						if(!$league->save()) {
-							echo current(current($league->getErrors()));
-						}
+			if($data) {
+				foreach ($data as $key => $value) {
+					// var_dump($value);exit;
+					$name = $value['name'];
+					// if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
+					// 	continue;
+					// } 
+					$league = new LeagueExt;
+					$league->old_id = $value['no'];
+					foreach (['id','name','country','image','land'] as $v) {
+						$league->$v = $value[$v];
+					}
+					// $league->attributes = $value;
+					if(!$league->save()) {
+						echo current(current($league->getErrors()));
 					}
 				}
-				$finished = ($i+1)*200;
-				echo "finished $finished/$count==============\n";
 			}
+			echo "finishing 100*$page=============\n";
+			$page++;
+			goto begin;
+		} else {
+			echo "finished==================\n";
 		}
-		echo "finished all \n";
 	}
 
-	public function actionNews($id=1,$date='')
+	public function actionNews($id=0,$date='')
 	{
-		$page = 1;
+		$page = 0;
 		if(!$date) {
 			$date = date('Ymd',time());
 		}
 		begin:
 
 		$url = SiteExt::getAttr('qjpz','newsApi');
-		if($id)
-			$res = HttpHelper::get($url.'?id='.$id.'&page='.$page.'&time='.$date);
+		// if($id)
+		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page.'&time='.$date);
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
 			// $count = count($data);
 			// for ($i=0; $i < $count/200 + 1; $i++) { 

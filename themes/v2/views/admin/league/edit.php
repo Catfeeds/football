@@ -43,6 +43,13 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
     <div class="col-md-2"><?php echo $form->error($article, 'pinyin') ?></div>
 </div>
 <div class="form-group">
+    <label class="col-md-2 control-label">洲<span class="required" aria-required="true">*</span></label>
+    <div class="col-md-4">
+        <?php echo $form->textField($article, 'land', array('class' => 'form-control')); ?>
+    </div>
+    <div class="col-md-2"><?php echo $form->error($article, 'land') ?></div>
+</div>
+<div class="form-group">
     <label class="col-md-2 control-label">国家<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
         <?php echo $form->textField($article, 'country', array('class' => 'form-control')); ?>

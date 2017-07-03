@@ -8,6 +8,7 @@
  * @property string $full_name
  * @property string $name
  * @property string $eng
+ * @property string $land
  * @property string $country
  * @property string $pinyin
  * @property string $rule
@@ -41,11 +42,11 @@ class League extends CActiveRecord
 			array('name, created', 'required'),
 			array('old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('full_name, descpt, image', 'length', 'max'=>255),
-			array('name, eng, country, pinyin', 'length', 'max'=>100),
+			array('name, eng, land, country, pinyin', 'length', 'max'=>100),
 			array('rule', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, full_name, name, eng, country, pinyin, rule, descpt, image, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, full_name, name, eng, land, country, pinyin, rule, descpt, image, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +71,7 @@ class League extends CActiveRecord
 			'full_name' => 'Full Name',
 			'name' => 'Name',
 			'eng' => 'Eng',
+			'land' => 'Land',
 			'country' => 'Country',
 			'pinyin' => 'Pinyin',
 			'rule' => 'Rule',
@@ -106,6 +108,7 @@ class League extends CActiveRecord
 		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('eng',$this->eng,true);
+		$criteria->compare('land',$this->land,true);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('rule',$this->rule,true);

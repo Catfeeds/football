@@ -161,7 +161,31 @@
     </div>
     <div class="content-right">
         <div class="side-nav">
-            <p class="side-title"><i class="icon-icon_datum"></i>联赛数据中心</p>
+        <?php $lans = Yii::app()->db->createCommand("select land from league where status=1 and deleted=0 group by land")->queryAll();
+        $lands = [];
+        if($lans) foreach ($lans as $key => $value) {
+            $lands[] = $value['land'];
+        } ?>
+        <style>
+            .o1{
+                font-size: 14px
+            }
+            #s1{
+                font-size: 14px;
+                height: 20px
+            }
+        </style>
+            <p class="side-title"><i class="icon-icon_datum"></i>联赛数据中心 &nbsp;&nbsp;&nbsp;&nbsp;
+            <?php if($lands):?>
+            <select id="s1" style="border: none">
+                <option class="o1" <?=!$land?'selected':''?> value=""><?='全部大洲'?></option>
+            <?php foreach ($lands as $key => $value) {?>
+                <option class="o1" <?=$value==$land?'selected':''?> value="<?=$value?>"><?=$value?></option>
+            <?php } ?>
+              
+            </select>
+        <?php endif;?>
+            </p>
             <ul>
             <?php $get = $_GET;unset( $get['lid']); if($leas) foreach ($leas as $key => $value) {  ?>
                 <li class="<?=$lid==$value['id']?'active':''?>"><i class="icon-icon_datum_n"></i><a href="<?=$this->createUrl('/home/data/index',['lid'=>$value->id]+$get)?>"><?=$value->name?></a></li>
@@ -172,3 +196,19 @@
     </div>
 </div>
 </section>
+<script>
+    $('#s1').change(function() {
+        var val1 = $('#s1').val();
+        <?php $get = $_GET;unset($get['land']); ?>
+        var url1 = '<?=$this->createUrl('index',$get)?>';
+        // alert(url1.indexOf('?'));
+        if(url1.indexOf('?') >= 0) {
+            url1 = url1 + '&land=' + val1;
+        } else {
+            url1 = url1 + '?land=' + val1;
+        }
+        location.href = url1;
+        // alert(url1);
+    });
+</script>
+
