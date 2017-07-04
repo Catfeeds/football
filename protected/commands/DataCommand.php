@@ -96,4 +96,45 @@ class DataCommand extends CConsoleCommand
 		}
 		// $this->end();
 	}
+
+	public function actionTeam($id=0,$page=0)
+	{
+		begin:
+
+		$url = SiteExt::getAttr('qjpz','teamApi');
+		// if($id)
+		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page);
+		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
+			if($data) {
+				foreach ($data as $key => $value) {
+					// var_dump($value);exit;
+					// $name = $value['name'];
+					// if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
+					// 	continue;
+					// } 
+					$team = new TeamExt;
+					$team->old_id = $value['no'];
+					foreach (['name','city','coach','image'] as $v) {
+						$team->$v = $value[$v];
+					}
+					if($team->save()) {
+						$tid = $team->id;
+						$points = new PointsExt;
+						foreach (['lose_ball'=>'lose','image'=>'coverPhoto','content'=>'content','title'=>'title','created'=>'createtime','descpt'=>'intruduction'] as $k => $v) {
+							$league->$k = $value[$v];
+						}
+					}
+					// $league->attributes = $value;
+					if(!$league->save()) {
+						echo current(current($league->getErrors()));
+					}
+				}
+			}
+			echo "finishing 100*$page=============\n";
+			$page++;
+			goto begin;
+		} else {
+			echo "finished==================\n";
+		}
+	}
 }

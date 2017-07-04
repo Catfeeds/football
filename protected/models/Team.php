@@ -6,6 +6,8 @@
  * The followings are the available columns in table 'team':
  * @property integer $id
  * @property string $eng
+ * @property string $coach
+ * @property string $city
  * @property string $country
  * @property string $full_name
  * @property string $name
@@ -38,11 +40,11 @@ class Team extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('eng, country, name', 'length', 'max'=>100),
+			array('eng, coach, city, country, name', 'length', 'max'=>100),
 			array('full_name, image, descpt', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eng, country, full_name, name, image, descpt, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, eng, coach, city, country, full_name, name, image, descpt, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,6 +67,8 @@ class Team extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'eng' => 'Eng',
+			'coach' => 'Coach',
+			'city' => 'City',
 			'country' => 'Country',
 			'full_name' => 'Full Name',
 			'name' => 'Name',
@@ -99,6 +103,8 @@ class Team extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('eng',$this->eng,true);
+		$criteria->compare('coach',$this->coach,true);
+		$criteria->compare('city',$this->city,true);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('name',$this->name,true);
