@@ -44,7 +44,7 @@ class NewsController extends AdminController{
 		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
 		if(Yii::app()->request->getIsPostRequest()) {
 			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
-
+			$info->updated = time();
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);
 			} else {
