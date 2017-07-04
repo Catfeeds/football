@@ -120,13 +120,16 @@ class DataCommand extends CConsoleCommand
 					if($team->save()) {
 						$tid = $team->id;
 						$points = new PointsExt;
-						foreach (['lose_ball'=>'lose','image'=>'coverPhoto','content'=>'content','title'=>'title','created'=>'createtime','descpt'=>'intruduction'] as $k => $v) {
-							$league->$k = $value[$v];
+						foreach (['lose_ball'=>'goal','score_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw'] as $k => $v) {
+							$points->$k = $value[$v];
 						}
-					}
-					// $league->attributes = $value;
-					if(!$league->save()) {
-						echo current(current($league->getErrors()));
+						$points->lid = $value['league'];
+						$points->tid = $tid;
+						if(!$points->save()) {
+							echo current(current($points->getErrors()));
+						}
+					} else {
+						echo current(current($team->getErrors()));
 					}
 				}
 			}

@@ -21,6 +21,7 @@
  * @property integer $deleted
  * @property integer $sort
  * @property integer $old_id
+ * @property integer $day
  * @property integer $created
  * @property integer $updated
  */
@@ -43,13 +44,13 @@ class Article extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('is_top_video, is_top, cid, uid, hits, publish, status, deleted, sort, old_id, created, updated', 'numerical', 'integerOnly'=>true),
+			array('is_top_video, is_top, cid, uid, hits, publish, status, deleted, sort, old_id, day, created, updated', 'numerical', 'integerOnly'=>true),
 			array('image, video, title, descpt', 'length', 'max'=>255),
 			array('author', 'length', 'max'=>100),
 			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, image, video, title, is_top_video, is_top, cid, uid, hits, author, content, descpt, publish, status, deleted, sort, old_id, created, updated', 'safe', 'on'=>'search'),
+			array('id, image, video, title, is_top_video, is_top, cid, uid, hits, author, content, descpt, publish, status, deleted, sort, old_id, day, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -87,6 +88,7 @@ class Article extends CActiveRecord
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
 			'old_id' => 'Old',
+			'day' => 'Day',
 			'created' => 'Created',
 			'updated' => 'Updated',
 		);
@@ -127,6 +129,7 @@ class Article extends CActiveRecord
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('old_id',$this->old_id);
+		$criteria->compare('day',$this->day);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
 

@@ -72,6 +72,9 @@ class ArticleExt extends Article{
             } else
                 $this->created = $this->updated = time();
         }
+        if(!$this->day) {
+            $this->day = TimeTools::getDayBeginTime($this->updated);
+        }
         // else
         //     $this->updated = time();
         return parent::beforeValidate();
@@ -90,7 +93,7 @@ class ArticleExt extends Article{
             ),
             'normal' => array(
                 'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_top_video=0",
-                'order'=>"{$alias}.updated desc,{$alias}.sort desc",
+                'order'=>"{$alias}.day desc,{$alias}.sort desc",
             ),
             'undeleted' => array(
                 'condition' => "{$alias}.deleted=0",
@@ -98,7 +101,7 @@ class ArticleExt extends Article{
             ),
             'isvideo'=>array(
                 'condition' => "{$alias}.status=1 and {$alias}.is_top_video=1 and {$alias}.deleted=0",
-                'order'=>"{$alias}.updated desc,{$alias}.sort desc",
+                'order'=>"{$alias}.day desc,{$alias}.sort desc",
             ),
         );
     }
