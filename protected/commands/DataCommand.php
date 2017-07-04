@@ -67,8 +67,6 @@ class DataCommand extends CConsoleCommand
 						$catemodel->status = 1;
 						$catemodel->save();
 						$cid = $catemodel->id;
-					} else {
-						$cid = 0;
 					}
 
 					$no =  $value['no'];
@@ -82,7 +80,7 @@ class DataCommand extends CConsoleCommand
 					$league->created = strtotime($league->created);
 					$league->status = 1;
 					// var_dump($cid);exit;
-					$league->cid = $cid;
+					$cid && $league->cid = $cid;
 					// var_dump($league->attributes);exit;
 					// $league->attributes = $value;
 					if(!$league->save()) {
