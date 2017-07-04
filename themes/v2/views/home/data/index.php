@@ -39,7 +39,7 @@
                             <!--排名-->
                             <td class="rank"><?=$key+1?></td>
                             <!--球队-->
-                            <td class="red name"><a href="#"><?=$value->team->name?></a></td>
+                            <td class="<?=$key<3?'red':''?> name"><a href="#"><?=$value->team->name?></a></td>
                             <td><?=$value->win+$value->same+$value->lose?></td>
                             <td><?=$value->win?></td>
                             <td><?=$value->same?></td>

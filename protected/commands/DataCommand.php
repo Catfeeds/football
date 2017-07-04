@@ -108,10 +108,10 @@ class DataCommand extends CConsoleCommand
 			if($data) {
 				foreach ($data as $key => $value) {
 					// var_dump($value);exit;
-					// $name = $value['name'];
-					// if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
-					// 	continue;
-					// } 
+					$name = $value['name'];
+					if(Yii::app()->db->createCommand("select id from team where name='$name'")->queryScalar()) {
+						continue;
+					} 
 					$team = new TeamExt;
 					$team->old_id = $value['no'];
 					foreach (['name','city','coach','image'] as $v) {
@@ -123,8 +123,10 @@ class DataCommand extends CConsoleCommand
 						foreach (['lose_ball'=>'goal','score_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw'] as $k => $v) {
 							$points->$k = $value[$v];
 						}
-						$points->lid = $value['league'];
+						$oldlid = $value['league'];
+						$points->lid = Yii::app()->db->createCommand("select id from league where old_id=$oldlid")->queryScalar();
 						$points->tid = $tid;
+						// var_dump($points->attributes);exit;
 						if(!$points->save()) {
 							echo current(current($points->getErrors()));
 						}
