@@ -39,14 +39,14 @@ class NewsController extends AdminController{
 		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
-	public function actionEdit($id='')
+	public function actionEdit($id='',$page='')
 	{
 		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
 		if(Yii::app()->request->getIsPostRequest()) {
 			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
 			$info->updated = time();
 			if($info->save()) {
-				$this->setMessage('操作成功','success',['list']);
+				$this->setMessage('操作成功','success',['list?page='.$page]);
 			} else {
 				$this->setMessage(array_values($info->errors)[0][0],'error');
 			}
