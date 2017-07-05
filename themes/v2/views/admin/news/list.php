@@ -26,6 +26,7 @@ $this->breadcrumbs = array($this->pageTitle);
         <a href="<?php echo $this->createAbsoluteUrl('edit') ?>" class="btn blue">
             添加列表 <i class="fa fa-plus"></i>
         </a>
+        <?php echo CHtml::ajaxLink('获取资讯',$this->createUrl('getNews'), array('type'=>'get', 'success'=>'function(data){location.reload()}'), array('class'=>'btn yellow')); ?>
     </div>
 </div>
    <table class="table table-bordered table-striped table-condensed flip-content table-hover">

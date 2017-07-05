@@ -53,4 +53,15 @@ class NewsController extends AdminController{
 		} 
 		$this->render('edit',['cates'=>$this->cates,'article'=>$info]);
 	}
+
+	public function actionGetNews()
+	{
+		Yii::import('application.commands.DataCommand');
+        $runner = new CConsoleCommandRunner;
+        $v2 = new DataCommand('',$runner);
+        $v2->actionNews();
+        $this->redirect('list');
+        $this->setMessage('操作成功','success');
+        // return ;
+	}
 }
