@@ -9,6 +9,7 @@
  * @property integer $cid
  * @property integer $related_id
  * @property integer $sort
+ * @property string $image
  * @property integer $status
  * @property integer $deleted
  * @property integer $created
@@ -34,9 +35,10 @@ class Recom extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('type, cid, related_id, sort, status, deleted, created, updated', 'numerical', 'integerOnly'=>true),
+			array('image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, cid, related_id, sort, status, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, type, cid, related_id, sort, image, status, deleted, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class Recom extends CActiveRecord
 			'cid' => 'Cid',
 			'related_id' => 'Related',
 			'sort' => 'Sort',
+			'image' => 'Image',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'created' => 'Created',
@@ -92,6 +95,7 @@ class Recom extends CActiveRecord
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('related_id',$this->related_id);
 		$criteria->compare('sort',$this->sort);
+		$criteria->compare('image',$this->image,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('created',$this->created);

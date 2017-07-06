@@ -37,6 +37,7 @@ $this->breadcrumbs = array($this->pageTitle);
         <th class="text-center">推荐标题</th>
         <th class="text-center">推荐类型</th>
         <th class="text-center">推荐位</th>
+        <!-- <th class="text-center">推荐图片</th> -->
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
         <th class="text-center">状态</th>
@@ -52,12 +53,13 @@ $this->breadcrumbs = array($this->pageTitle);
             <td class="text-center"><?=$v->getObj()->title?></td>
             <td class="text-center"><?=Yii::app()->params['recomType'][$v->type]?></td>
             <td class="text-center"><?=Yii::app()->params['recomCate'][$v->cid]?></td> 
+            <!-- <td class="text-center"><?php if($v->image): ?><img src="<?=ImageTools::fixImage($v->image,180,150)?>" alt=""><?php else:?>-<?php endif;?></td>  -->
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>
 
             <td style="text-align:center;vertical-align: middle">
-                <!-- <a href="<?php echo $this->createUrl('edit',array('id'=>$v->id)); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a> -->
+                <a href="<?php echo $this->createUrl('edit',array('id'=>$v->id,'type'=>1,'rid'=>$v->related_id)); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a>
                 <?php echo CHtml::htmlButton('删除', array('data-toggle'=>'confirmation', 'class'=>'btn btn-xs red', 'data-title'=>'确认删除？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true,'ajax'=>array('url'=>$this->createUrl('del'),'type'=>'get','success'=>'function(data){location.reload()}','data'=>array('id'=>$v->id,'class'=>get_class($v)))));?>
 
 

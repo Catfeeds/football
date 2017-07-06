@@ -13,9 +13,9 @@
                 <div class="slick_bor">
                     <script src="<?=Yii::app()->theme->baseUrl?>/static/home/js/responsiveslides.min.js"></script>
                     <ul class="slick" style="<?=$this->imgstyle?>">
-                    <?php $objs = RecomExt::getObjFromCate('3','3');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); ?>
+                    <?php $objs = RecomExt::getObjFromCate('3','3');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image;?>
                         <li>
-                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($obj->image,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: 0px;font: 700 20px/40px 'Microsoft Yahei';"><?=$obj->title?></span>
+                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: 0px;font: 700 20px/40px 'Microsoft Yahei';"><?=$obj->title?></span>
                         </li>
                     <?php } ?>
                     </ul>
@@ -41,16 +41,16 @@
                         <h4>精选导读</h4>
                     </div>
                     <ul class="dd-list">
-                    <?php if($jpdds) foreach ($jpdds as $key => $value) { $value = $value->getObj();?>
+                    <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
                         <li>
                             <figure class="dd-img">
-                                <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
-                                    <img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,168,112)?>" style="display: inline;" /> </a>
+                                <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
+                                    <img src="<?=ImageTools::fixImage($img?$img:$nopic,168,112)?>" style="display: inline;" /> </a>
                             </figure>
                             <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="<?=$value->title?>" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,60)?></a> </h2>
+                                <h2 class="dd-title"> <a rel="bookmark" title="<?=$obj->title?>" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><?=Tools::u8_title_substr($obj->title,60)?></a> </h2>
                                 <div class="dd-site xs-hidden">
-                                    <?=Tools::u8_title_substr($value->descpt,60)?></div>
+                                    <?=Tools::u8_title_substr($obj->descpt,60)?></div>
                             </div>
                         </li>
                    <?php } ?>

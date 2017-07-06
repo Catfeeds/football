@@ -14,6 +14,7 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
         'horizontal','inserttable','|',
         'print','preview','searchreplace']]")); ?>
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
+<!-- <h2></h2> -->
 <div class="form-group">
     <label class="col-md-2 control-label">推荐位</label>
     <div class="col-md-4">
@@ -22,6 +23,13 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
         <?php echo $form->textField($article, 'type',  array('class' => 'form-control', 'encode' => false,'style'=>'display:none','value'=>$type)); ?>
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'cid') ?></div>
+</div>
+<div class="form-group">
+    <label class="col-md-2 control-label text-nowrap">图片</label>
+    <div class="col-md-4">
+        <?php $this->widget('FileUpload',array('model'=>$article,'attribute'=>'image','inputName'=>'img','width'=>400,'height'=>300)); ?>
+        <!-- <span class="help-block">建议尺寸：430*230</span>  -->
+    </div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
