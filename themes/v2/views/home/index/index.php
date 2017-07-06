@@ -74,7 +74,7 @@
                     <?php if($news) foreach ($news as $key => $value) {?>
                         <article class="excerpt">
                     <div class="focus">
-                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 200px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
                     </div>
                     <header>
                         <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>
