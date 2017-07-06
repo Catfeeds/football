@@ -166,6 +166,7 @@ return array(
     'recomCate'=>[
     1=>'首页精品导读',
     2=>'首页热门推荐',
+    3=>'首页banner'
     ],
     'recomType'=>[
     1=>'资讯',

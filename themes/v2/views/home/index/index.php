@@ -13,9 +13,9 @@
                 <div class="slick_bor">
                     <script src="<?=Yii::app()->theme->baseUrl?>/static/home/js/responsiveslides.min.js"></script>
                     <ul class="slick" style="<?=$this->imgstyle?>">
-                    <?php $imgs = SiteExt::getAttr('qjpz','pcIndexImages');if($imgs) foreach ($imgs as $key => $value) {?>
+                    <?php $objs = RecomExt::getObjFromCate('3','3');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); ?>
                         <li>
-                            <a href=""><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($value,855,390)?>" alt=""><span></span></a>
+                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($obj->image,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: 0px;font: 700 20px/30px 'Microsoft Yahei';"><?=$obj->title?></span>
                         </li>
                     <?php } ?>
                     </ul>
@@ -74,7 +74,7 @@
                     <?php if($news) foreach ($news as $key => $value) {?>
                         <article class="excerpt">
                     <div class="focus">
-                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 200px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
                     </div>
                     <header>
                         <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>

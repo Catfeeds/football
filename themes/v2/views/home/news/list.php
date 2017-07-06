@@ -25,7 +25,7 @@
                             <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,56)?></a></h2>
                         </header>
                         <div class="focus">
-                            <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
+                            <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 200px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
                         </div>
                         <span class="note"> <?=Tools::u8_title_substr($value->descpt,280)?></span>
                         <p class="auth-span">
