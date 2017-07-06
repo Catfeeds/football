@@ -47,6 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
+
 <!-- BEGIN LOGO -->
 <div class="logo">
     	<!-- <img src="/static/admin/layout/img/logo-hj.png" alt=""/> -->
