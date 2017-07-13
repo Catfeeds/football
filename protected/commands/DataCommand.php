@@ -18,12 +18,12 @@ class DataCommand extends CConsoleCommand
 				foreach ($data as $key => $value) {
 					// var_dump($value);exit;
 					$name = $value['name'];
-					// if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
-					// 	continue;
-					// } 
+					if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
+						continue;
+					} 
 					$league = new LeagueExt;
 					$league->old_id = $value['no'];
-					foreach (['id','name','country','image','land'] as $v) {
+					foreach (['name','country','image','land'] as $v) {
 						$league->$v = $value[$v];
 					}
 					// $league->attributes = $value;
@@ -57,6 +57,8 @@ class DataCommand extends CConsoleCommand
 				foreach ($data as $key => $value) {
 					// var_dump($url.'?id='.$id.'&page='.$page.'&time='.date('Ymd',time()),$value);exit;
 					// $name = $value['name'];
+					if(!$value)
+						continue;
 					$cname = $value['league'];
 					
 					$cid = Yii::app()->db->createCommand("select id from article_cate where name='$cname' and status=1 and deleted=0")->queryScalar();
@@ -70,7 +72,9 @@ class DataCommand extends CConsoleCommand
 					}
 
 					$no =  $value['no'];
-					if($oldo = Yii::app()->db->createCommand("select id from article where old_id=$no")->queryScalar())
+					if(Yii::app()->db->createCommand("select id from article where old_id=$no")->queryScalar())
+						continue;
+					if(Yii::app()->db->createCommand("select id from article where title='".$value['title']."'")->queryScalar())
 						continue;
 					$league = new ArticleExt;
 					$league->old_id = $value['no'];
