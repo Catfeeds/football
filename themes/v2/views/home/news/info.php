@@ -19,13 +19,17 @@
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <span class="muted"><i class="fa fa-comments-o"></i> <a href="http://demo3.ledkongzhiqi.com/php/114.html#respond"><?=$info->comment_num?>评论</a></span> </div>
                     </header>
+                    <style type="text/css">
+                    .article-content a {
+                            color: #2eb398 !important; 
+                        }</style>
                     <article class="article-content" id="content_img">
                     <?=$info->content?>
                     <style>
                     .article-content a {
     color: white;
 }
-                    </style>
+                    </style> 
                     <span style="font-size: 10px;color: gray">
                         <center> 严禁商业机构或公司转载，违者必究；球迷转载请注明来源“球布斯”</center> 
                         <div class="article-social">
