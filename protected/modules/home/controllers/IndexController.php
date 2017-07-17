@@ -8,7 +8,7 @@ class IndexController extends HomeController
         // 所有分类
         $cates = ArticleCateExt::model()->normal()->findAll();
         $criteria = new CDbCriteria;
-        $criteria->limit = 20;
+        $criteria->limit = 3;
         // if(!$cid) {
         //     isset($cates[0]) && $cid = $cates[0]['id'];
         // }
@@ -17,7 +17,7 @@ class IndexController extends HomeController
             $criteria->params[':cid'] = $cid;
         }
         // 精品导读
-        $jpdds = RecomExt::getObjFromCate(1,4);
+        $jpdds = RecomExt::getObjFromCate(1,2);
         // 热门推荐
         $rmtjs = RecomExt::getObjFromCate(2,6);
         

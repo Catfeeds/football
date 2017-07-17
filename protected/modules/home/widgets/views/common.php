@@ -1,4 +1,4 @@
-<div class="widget d_postlist">
+<!-- <div class="widget d_postlist">
 <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
                 <div class="title">
                     <h2><sapn class="title_span">热门推荐</span></h2></div>
@@ -12,7 +12,7 @@
                    </a></li>
                 <?php endif; } ?>
                 </ul>
-            </div>
+            </div> -->
             
             <style type="text/css">
                         .fa{

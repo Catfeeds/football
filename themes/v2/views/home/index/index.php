@@ -38,24 +38,59 @@
                 <?php if($jpdds):?>
                 <div class="daodu clr">
                     <div class="tip">
-                        <h4>精选导读</h4>
+                        <h4>热门<span style="font-size: 16px"> NEWS</span> <span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/news/list')?>">更多资讯 ></a></span></h4>
+
                     </div>
                     <ul class="dd-list">
                     <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
-                        <li>
+                        <li style="width:98%">
                             <figure class="dd-img">
                                 <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-                                    <img src="<?=ImageTools::fixImage($img?$img:$nopic,168,112)?>" style="display: inline;" /> </a>
+                                    <img src="<?=ImageTools::fixImage($img?$img:$nopic,200,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
-                            <div class="dd-content">
-                                <h2 class="dd-title"> <a rel="bookmark" title="<?=$obj->title?>" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><?=Tools::u8_title_substr($obj->title,60)?></a> </h2>
-                                <div class="dd-site xs-hidden">
-                                    <?=Tools::u8_title_substr($obj->descpt,60)?></div>
-                            </div>
+                            <span style="    margin-bottom: -114px;
+    margin-top: 0;
+    margin-left: -270px;
+    background-color: rgba(0,0,0,0.5);
+    height: 40px;
+    bottom: -150px;
+    font: 700 15px/40px 'Microsoft Yahei';
+    position: relative;
+    color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
                         </li>
                    <?php } ?>
                         
                     </ul>
+                    <div style="       height: 400px;
+    width: 400px;
+    margin-left: 290px;
+    margin-top: -400px;">
+    <style type="text/css">
+        .l11{
+            height: 34px;
+        }
+        .l11 a {
+            font-size: 16px
+        }
+    </style>
+                        <?php $criteria = new CDbCriteria;
+                        $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
+                        $criteria->params[':be'] = TimeTools::getDayBeginTime(time()-86400*7);
+                        $criteria->params[':en'] = time();
+
+                        $criteria->order = 'hits desc';
+                        $criteria->limit = 10;
+                         $nowInfos = ArticleExt::model()->findAll($criteria); if($nowInfos) {?>
+                         <ul style="margin-top: 18px">
+                         <?php  foreach ($nowInfos as $key => $value) {?>
+                         <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
+                             </li><?php else:?>
+                             <li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
+                             </li><?php endif;?>
+                        <?php  } ?>
+                        </ul>
+                        <?php } ?>
+                    </div>
                 </div>
             <?php endif;?>
                 <style type="text/css">
@@ -68,7 +103,7 @@
                     }
                 </style>
                 <header class="archive-header">
-                    <h4><a class="catew1 <?=!$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index')?>"><?='全部'?></a>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
+                    <h4><a style="margin-left: 10px" class="catew1 <?=!$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index')?>"><?='全部'?></a>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
                         <a class="catew1 <?=$value->id==$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index',['cid'=>$value->id])?>"><?=$value->name?></a>&nbsp;
                     <?php } ?></h4></header>
                     <?php if($news) foreach ($news as $key => $value) {?>
@@ -84,8 +119,15 @@
                     <span class="note"><?=Tools::u8_title_substr($value->descpt,200)?></span>
                 </article>
                    <?php } ?>
+                   <header class="archive-header">
+                    <h4><span style="color:#2eb398;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
+                    </h4></header>
+                    <ul class="dd-list">
+                        <li></li>
+                    </ul>
             </div>
         </div>
+
         <aside class="sidebar">
             <div class="widget widget_text">
                 <div class="textwidget">
