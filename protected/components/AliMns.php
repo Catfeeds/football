@@ -44,7 +44,7 @@ class AliMns extends CComponent
         // 3.1 设置发送短信的签名（SMSSignName）和模板（SMSTemplateCode）
         $batchSmsAttributes = new BatchSmsAttributes(Yii::app()->mns->signName, Yii::app()->mns->templateCode);
         // 3.2 （如果在短信模板中定义了参数）指定短信模板中对应参数的值
-        $batchSmsAttributes->addReceiver($phone, array("code" => $code));
+        $batchSmsAttributes->addReceiver($phone, array("yzm" => $code));
         // $batchSmsAttributes->addReceiver("YourReceiverPhoneNumber2", array("YourSMSTemplateParamKey1" => "value1"));
         $messageAttributes = new MessageAttributes(array($batchSmsAttributes));
         /**
