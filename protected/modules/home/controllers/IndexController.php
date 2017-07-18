@@ -24,6 +24,8 @@ class IndexController extends HomeController
         $news = ArticleExt::model()->normal()->findAll($criteria);
         // 三个联赛
         $leas = LeagueExt::model()->normal()->findAll(['limit'=>3]);
+        // 三个视频
+        $videos = ArticleExt::model()->isvideo()->findAll(['limit'=>3]);
         // 积分
         $points = [];
         if($leas) {
@@ -40,7 +42,7 @@ class IndexController extends HomeController
         // 十个评论
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
-        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights]);
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights,'videos'=>$videos]);
     }
 
     public function actionAbout()

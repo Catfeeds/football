@@ -48,31 +48,20 @@
                                 <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
                                     <img src="<?=ImageTools::fixImage($img?$img:$nopic,200,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
-                            <span style="    margin-bottom: -114px;
-    margin-top: 0;
-    margin-left: -270px;
-    background-color: rgba(0,0,0,0.5);
-    height: 40px;
-    bottom: -150px;
-    font: 700 15px/40px 'Microsoft Yahei';
-    position: relative;
-    color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -270px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
                         </li>
                    <?php } ?>
                         
                     </ul>
-                    <div style="       height: 400px;
-    width: 400px;
-    margin-left: 290px;
-    margin-top: -400px;">
-    <style type="text/css">
-        .l11{
-            height: 34px;
-        }
-        .l11 a {
-            font-size: 16px
-        }
-    </style>
+                    <div style="height: 400px;width: 400px;margin-left: 290px;margin-top: -400px;">
+                        <style type="text/css">
+                            .l11{
+                                height: 34px;
+                            }
+                            .l11 a {
+                                font-size: 16px
+                            }
+                        </style>
                         <?php $criteria = new CDbCriteria;
                         $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
                         $criteria->params[':be'] = TimeTools::getDayBeginTime(time()-86400*7);
@@ -122,8 +111,16 @@
                    <header class="archive-header">
                     <h4><span style="color:#2eb398;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
                     </h4></header>
-                    <ul class="dd-list">
-                        <li></li>
+                    <ul class="dd-list" style="background-color: white">
+                    <?php if($videos) foreach ($videos as $key => $value) {?>
+                        <li style="float: left;margin-left: 3px;margin-top: 10px">
+                            <figure class="dd-img">
+                                <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
+                                    <img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,250,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
+                            </figure>
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:225px;margin-left: 5px"><?=Tools::u8_title_substr($value->title,28)?></label></span>
+                        </li>
+                    <?php } ?>
                     </ul>
             </div>
         </div>

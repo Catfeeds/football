@@ -26,8 +26,8 @@
                     <article class="article-content" id="content_img">
                     <?=$info->content?>
                     <style>
-                    .article-content a {
-    color: white;
+                    .popover-content a {
+    color: white !important;
 }
                     </style> 
                     <span style="font-size: 10px;color: gray">
