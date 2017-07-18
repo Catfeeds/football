@@ -6,7 +6,7 @@
                 <div class="content">
                     <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
-                        <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">视频列表</a> &gt; <?=$info->title?></li>
+                        <li class="active"> <a href="<?=$this->createUrl('/home/video/list')?>">视频列表</a> &gt; <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
                         <h1 class="article-title"><a href=""><?=$info->title?></a></h1>

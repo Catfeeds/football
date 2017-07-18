@@ -5,11 +5,8 @@
  *
  * The followings are the available columns in table 'album':
  * @property integer $id
- * @property integer $pid
- * @property integer $cover
- * @property integer $cid
+ * @property integer $aid
  * @property string $url
- * @property string $name
  * @property integer $sort
  * @property integer $created
  * @property integer $updated
@@ -33,11 +30,11 @@ class Album extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('pid, cover, cid, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('url, name', 'length', 'max'=>255),
+			array('aid, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('url', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, pid, cover, cid, url, name, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, aid, url, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,11 +56,8 @@ class Album extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'pid' => 'Pid',
-			'cover' => '是否封面',
-			'cid' => 'Cid',
+			'aid' => 'Aid',
 			'url' => 'Url',
-			'name' => 'Name',
 			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
@@ -89,11 +83,8 @@ class Album extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('pid',$this->pid);
-		$criteria->compare('cover',$this->cover);
-		$criteria->compare('cid',$this->cid);
+		$criteria->compare('aid',$this->aid);
 		$criteria->compare('url',$this->url,true);
-		$criteria->compare('name',$this->name,true);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);

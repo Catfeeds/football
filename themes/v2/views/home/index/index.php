@@ -53,13 +53,16 @@
                    <?php } ?>
                         
                     </ul>
-                    <div style="height: 400px;width: 400px;margin-left: 290px;margin-top: -400px;">
+                    <div style="height: 400px;width: 460px;margin-left: 290px;margin-top: -400px;">
                         <style type="text/css">
                             .l11{
                                 height: 34px;
                             }
                             .l11 a {
                                 font-size: 16px
+                            }
+                            .lia:hover{
+                                color: #2eb398 !important;
                             }
                         </style>
                         <?php $criteria = new CDbCriteria;
@@ -74,7 +77,7 @@
                          <?php  foreach ($nowInfos as $key => $value) {?>
                          <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
                              </li><?php else:?>
-                             <li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
+                             <li class="l11"><a style="color: #848484;" class="lia" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,46).'&nbsp;&nbsp;<span style="font-size:12px;color:#bbb">阅读量('.$value->hits.')</span>'?></a>
                              </li><?php endif;?>
                         <?php  } ?>
                         </ul>

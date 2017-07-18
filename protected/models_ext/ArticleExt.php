@@ -36,6 +36,7 @@ class ArticleExt extends Article{
             'cate'=>array(self::BELONGS_TO, 'ArticleCateExt', 'cid'),
             'comment_num'=>array(self::STAT, 'CommentExt', 'major_id','condition'=>'t.status=1'),
             'comments'=>array(self::HAS_MANY, 'CommentExt', ['major_id'=>'id'],'condition'=>'comments.status=1','order'=>'comments.praise desc,comments.created asc'),
+            'album'=>array(self::HAS_MANY, 'AlbumExt', ['aid'=>'id']),
         );
     }
 
@@ -92,17 +93,26 @@ class ArticleExt extends Article{
                 'order' => "{$alias}.sort desc,{$alias}.updated desc",
             ),
             'normal' => array(
-                'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_top_video=0",
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_album=0 and {$alias}.is_top_video=0",
                 'order'=>"{$alias}.day desc,{$alias}.sort desc",
             ),
             'undeleted' => array(
-                'condition' => "{$alias}.deleted=0",
+                'condition' => "{$alias}.deleted=0 and {$alias}.is_album=0",
                 // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
             ),
             'isvideo'=>array(
-                'condition' => "{$alias}.status=1 and {$alias}.is_top_video=1 and {$alias}.deleted=0",
+                'condition' => "{$alias}.status=1 and {$alias}.is_top_video=1 and {$alias}.deleted=0 and {$alias}.is_album=0",
                 'order'=>"{$alias}.day desc,{$alias}.sort desc",
             ),
+            'album_undeleted' => array(
+                'condition' => "{$alias}.deleted=0 and {$alias}.is_album=1",
+                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'album_normal' => array(
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_album=1",
+                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
+
         );
     }
 
