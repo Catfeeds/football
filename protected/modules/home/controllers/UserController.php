@@ -139,4 +139,19 @@ class UserController extends HomeController{
 			echo json_encode(['s'=>'success']);
 		}
 	}
+
+	public function actionFindpwd()
+	{
+		if(Yii::app()->request->getIsPostRequest()) {
+			$phone = $this->cleanXss(Yii::app()->request->getPost('phone',''));
+			$pwd = Yii::app()->request->getPost('pwd','');
+			if($phone && $pwd) {
+				$user = UserExt::model()->find('phone=:phone',[':phone'=>$phone]);
+				$user->pwd = md5($pwd);
+				if($user->save())
+					$this->redirect('/home/user/login');
+			}	
+		}
+		$this->render('findpwd');
+	}
 }

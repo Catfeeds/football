@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix-row m-t-16 text-a-c m-b-50"><a class="botton btn-border active submit line-h-35 w-120" onclick="ckfm()">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=$this->createUrl('regis')?>" style="color:gray">立即注册</a></div>
+            <div class="clearfix-row m-t-16 text-a-c m-b-50"><a class="botton btn-border active submit line-h-35 w-120" onclick="ckfm()">登录</a>&nbsp;&nbsp;&nbsp;<a href="<?=$this->createUrl('regis')?>" style="color:gray">立即注册</a>&nbsp;&nbsp;&nbsp;<a href="<?=$this->createUrl('findpwd')?>" style="color:gray">找回密码</a></div>
         </div>
     </div>
     </form>
