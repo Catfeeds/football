@@ -34,7 +34,7 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
 <?php $this->widget('FileUpload',array('inputName'=>'img','multi'=>true,'callback'=>'function(data){callback(data);}')); ?>
                     <div class="form-group images-place" style="margin-left: 0">
                   <?php if($article->album) foreach ($article->album as $key => $v) {?>
-                      <div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;'><i class='fa fa-trash'></i></a><img src='<?=ImageTools::fixImage($v->url)?>' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='ArticleExt[album][]' value='<?=$v->url?>'></input></div>
+                      <div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;'><i class='fa fa-trash'></i></a><img src='<?=ImageTools::fixImage($v->url)?>' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='TkExt[album][]' value='<?=$v->url?>'></input></div>
                   <?php }?>
                 </div>
                 </div></div>
@@ -161,7 +161,7 @@ Yii::app()->clientScript->registerScriptFile('/static/global/plugins/bootbox/boo
         } else {
             // 指定区域出现图片
             var html = "";
-            image_html = "<div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;margin-left: 94px;'><i class='fa fa-trash'></i></a><img src='"+data.msg.url+"' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='ArticleExt[album][]' value='"+data.msg.pic+"'></input></div>";
+            image_html = "<div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;margin-left: 94px;'><i class='fa fa-trash'></i></a><img src='"+data.msg.url+"' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='TkExt[album][]' value='"+data.msg.pic+"'></input></div>";
             $('.images-place').append(image_html);
         }
     }

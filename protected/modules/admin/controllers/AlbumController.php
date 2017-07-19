@@ -8,7 +8,7 @@ class AlbumController extends AdminController{
 
 	public $controllerName = '';
 
-	public $modelName = 'ArticleExt';
+	public $modelName = 'TkExt';
 
 	public function init()
 	{
@@ -40,7 +40,7 @@ class AlbumController extends AdminController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
-		$infos = $modelName::model()->album_undeleted()->getList($criteria,20);
+		$infos = $modelName::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['infos'=>$infos->data,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
 
@@ -54,7 +54,7 @@ class AlbumController extends AdminController{
 			$album = $values['album'];
 			unset($values['album']);
 			$info->attributes = $values;
-			$info->is_album = 1;
+			// $info->is_album = 1;
 			// var_dump($album);exit;
 			if($info->save()) {
 				AlbumExt::model()->deleteAllByAttributes(['aid'=>$info->id]);
