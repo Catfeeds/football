@@ -1,6 +1,6 @@
 <?php
-$this->pageTitle = $this->controllerName.'新建/编辑';
-$this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
+$this->pageTitle = '资讯分类新建/编辑';
+$this->breadcrumbs = array('资讯分类管理', $this->pageTitle);
 ?>
 <?php $this->widget('ext.ueditor.UeditorWidget',array('id'=>'ArticleExt_content','options'=>"toolbars:[['fullscreen','source','undo','redo','|','customstyle','paragraph','fontfamily','fontsize'],
         ['bold','italic','underline','fontborder','strikethrough','superscript','subscript','removeformat',
@@ -15,36 +15,12 @@ $this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
         'print','preview','searchreplace']]")); ?>
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
 <div class="form-group">
-    <label class="col-md-2 control-label">标题<span class="required" aria-required="true">*</span></label>
+    <label class="col-md-2 control-label">名称<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
-        <?php echo $form->textField($article, 'title', array('class' => 'form-control')); ?>
+        <?php echo $form->textField($article, 'name', array('class' => 'form-control')); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'title') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'name') ?></div>
 </div>
-<div class="form-group">
-    <label class="col-md-2 control-label">简介<span class="required" aria-required="true">*</span></label>
-    <div class="col-md-4">
-        <?php echo $form->textField($article, 'descpt', array('class' => 'form-control')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'descpt') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">分类</label>
-    <div class="col-md-4">
-        <?php echo $form->dropDownList($article, 'cid', $cates, array('class' => 'form-control', 'encode' => false)); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'cid') ?></div>
-</div>
-<div class="form-group">
-<div class="col-md-2  control-label">选择图片</div>
-<div class="col-md-4">
-<?php $this->widget('FileUpload',array('inputName'=>'img','multi'=>true,'callback'=>'function(data){callback(data);}')); ?>
-                    <div class="form-group images-place" style="margin-left: 0">
-                  <?php if($article->album) foreach ($article->album as $key => $v) {?>
-                      <div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;'><i class='fa fa-trash'></i></a><img src='<?=ImageTools::fixImage($v->url)?>' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='TkExt[album][]' value='<?=$v->url?>'></input></div>
-                  <?php }?>
-                </div>
-                </div></div>
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
     <div class="col-md-4">
@@ -160,26 +136,3 @@ Yii::app()->clientScript->registerScriptFile('/static/global/plugins/bootstrap-d
 Yii::app()->clientScript->registerScriptFile('/static/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js', CClientScript::POS_END, array('charset'=> 'utf-8'));
 Yii::app()->clientScript->registerScriptFile('/static/global/plugins/bootbox/bootbox.min.js', CClientScript::POS_END);
 ?>
-<script type="text/javascript">
-    <?php Tools::startJs()?>
-    function callback(data){
-        if($('.image-div').length >= 30) {
-            alert('最多选择30张图片');
-        } else {
-            // 指定区域出现图片
-            var html = "";
-            image_html = "<div class='image-div' style='width: 150px;display:inline-table;height:180px'><a onclick='del_img(this)' class='btn red btn-xs' style='position: absolute;margin-left: 94px;'><i class='fa fa-trash'></i></a><img src='"+data.msg.url+"' style='width: 150px;height: 120px'><input type='hidden' class='trans_img' name='TkExt[album][]' value='"+data.msg.pic+"'></input></div>";
-            $('.images-place').append(image_html);
-        }
-    }
-    //删除图片
-    function del_img(obj)
-    {
-        //将已选择的图片重设为可以选择
-        img = $(obj).parent().find('img').attr('src');
-        $('.xqtp').find('img[src="'+img+'"]').parent().find('.ch_img').html('<a onclick="ch_img(this)" >点击选择</a>');
-        $(obj).parent().remove();
-
-    }
-    <?php Tools::endJs('js')?>
-</script>

@@ -14,7 +14,7 @@ class AlbumController extends AdminController{
 	{
 		parent::init();
 		$this->controllerName = '图库';
-		// $this->cates = CHtml::listData(TeamExt::model()->normal()->findAll(),'id','name');
+		$this->cates = CHtml::listData(TkCateExt::model()->normal()->findAll(),'id','name');
 	}
 	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
 	{
@@ -41,7 +41,7 @@ class AlbumController extends AdminController{
 			$criteria->params[':cid'] = $cate;
 		}
 		$infos = $modelName::model()->undeleted()->getList($criteria,20);
-		$this->render('list',['infos'=>$infos->data,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
+		$this->render('list',['infos'=>$infos->data,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,'cates'=>$this->cates,'cate'=>$cate]);
 	}
 
 	public function actionEdit($id='')

@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'album':
  * @property integer $id
  * @property integer $aid
+ * @property string $name
  * @property string $url
  * @property integer $sort
  * @property integer $created
@@ -31,10 +32,10 @@ class Album extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('aid, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('url', 'length', 'max'=>255),
+			array('name, url', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, aid, url, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, aid, name, url, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,6 +58,7 @@ class Album extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'aid' => 'Aid',
+			'name' => 'Name',
 			'url' => 'Url',
 			'sort' => 'Sort',
 			'created' => 'Created',
@@ -84,6 +86,7 @@ class Album extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('aid',$this->aid);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);

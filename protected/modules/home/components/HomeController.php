@@ -175,6 +175,7 @@ class HomeController extends Controller
             ['name'=>'比赛','url'=>'home/match/index'],
             ['name'=>'资讯','url'=>'home/news/list','active'=>['home/news/info','home/news/list']],
             ['name'=>'视频','url'=>'home/video/list','active'=>['home/video/list','home/video/info']],
+            ['name'=>'图库','url'=>'home/album/list','active'=>['home/album/list','home/album/info']],
             ['name'=>'数据','url'=>'home/data/index','active'=>['home/data/index']],
             ['name'=>$username,'url'=>'home/user/index'],
         ];

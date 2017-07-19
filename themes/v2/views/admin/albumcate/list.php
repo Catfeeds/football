@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = $this->controllerName.'列表';
+$this->pageTitle = '资讯列表';
 $this->breadcrumbs = array($this->pageTitle);
 ?>
 <div class="table-toolbar">
@@ -16,7 +16,6 @@ $this->breadcrumbs = array($this->pageTitle);
             </div>
             <?php Yii::app()->controller->widget("DaterangepickerWidget",['time'=>$time,'params'=>['class'=>'form-control chose_text']]);?>
             <div class="form-group">
-                <?php echo CHtml::dropDownList('cate',$cate,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择分类--')); ?>
             </div>
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>
@@ -24,7 +23,7 @@ $this->breadcrumbs = array($this->pageTitle);
     </div>
     <div class="pull-right">
         <a href="<?php echo $this->createAbsoluteUrl('edit') ?>" class="btn blue">
-            添加<?=$this->controllerName?> <i class="fa fa-plus"></i>
+            添加分类 <i class="fa fa-plus"></i>
         </a>
     </div>
 </div>
@@ -33,8 +32,7 @@ $this->breadcrumbs = array($this->pageTitle);
     <tr>
         <th class="text-center">排序</th>
         <th class="text-center">ID</th>
-        <th class="text-center">标题</th>
-        <th class="text-center">分类</th>
+        <th class="text-center">名字</th>
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
         <th class="text-center">状态</th>
@@ -47,8 +45,7 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><?=$v->title?></td> 
-            <td class="text-center"><?=$v->cid?$v->cate->name:'-'?></td>  
+            <td class="text-center"><?=$v->name?></td>
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>
@@ -81,7 +78,7 @@ $this->breadcrumbs = array($this->pageTitle);
         });
     }
     function set_sort(_this, id, sort){
-            $.getJSON('<?php echo $this->createUrl('/admin/league/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
+            $.getJSON('<?php echo $this->createUrl('/admin/news/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
                 location.reload();
             });
         }

@@ -67,7 +67,10 @@ class AdminController extends Controller
                 ['label' => '资讯列表', 'url' => ['/admin/news/list'],'active'=>$this->route=='admin/news/edit'],
                 ['label' => '资讯分类', 'url' => ['/admin/newscate/list'],'active'=>$this->route=='admin/newscate/edit'],
             ]],
-            ['label'=>'图库管理','icon'=>'icon-speedometer','url'=>['/admin/album/list'],'active'=>$this->route=='admin/album/edit'],
+            ['label' => '图库管理', 'icon' => 'icon-speedometer', 'items' => [
+                ['label' => '图库列表', 'url' => ['/admin/album/list'],'active'=>$this->route=='admin/album/edit'],
+                ['label' => '图库分类', 'url' => ['/admin/albumcate/list'],'active'=>$this->route=='admin/albumcate/edit'],
+            ]],
             ['label'=>'联赛管理','icon'=>'icon-speedometer','url'=>['/admin/league/list'],'active'=>$this->route=='admin/league/edit'],
             ['label'=>'球队管理','icon'=>'icon-speedometer','url'=>['/admin/team/list'],'active'=>$this->route=='admin/team/edit'],
             ['label' => '球员管理', 'icon' => 'icon-speedometer', 'items' => [
