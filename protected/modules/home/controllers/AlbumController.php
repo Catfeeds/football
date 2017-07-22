@@ -43,7 +43,7 @@ class AlbumController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cid;
 		}
-		$datas = TkExt::model()->normal()->getList($criteria,20);
+		$datas = TkExt::model()->normal()->getList($criteria,4);
 		$infos = $datas->data;
 		$pager = $datas->pagination;
 		

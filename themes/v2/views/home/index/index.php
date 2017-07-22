@@ -64,6 +64,28 @@
                             .lia:hover{
                                 color: #2eb398 !important;
                             }
+                            ul.pic-list {
+    display: block;
+    width: 1080px;
+    height: 450px;
+    overflow: hidden;
+    float: right;
+    margin-bottom: 15px;
+    width: 100%
+}
+ul.pic-list li {
+    display: block;
+    width: 372px;
+    height: 212px;
+    float: left;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.dd-img {
+    width: 250px;
+    margin-right: 0px
+}
                         </style>
                         <?php $criteria = new CDbCriteria;
                         $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
@@ -121,9 +143,25 @@
                                 <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
                                     <img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,250,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
-                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:225px;margin-left: 5px"><?=Tools::u8_title_substr($value->title,28)?></label></span>
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:244px;margin-left: 5px"><?=Tools::u8_title_substr($value->title,30)?></label></span>
                         </li>
                     <?php } ?>
+                    </ul>
+                    <header class="archive-header" style="margin-top: 210px">
+                    <h4><span style="color:#2eb398;margin-left: 10px">精彩</span><span>图库</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
+                    </h4></header>
+                    <ul class="pic-list">
+                    <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
+                    <?php if($album) foreach ($album as $key => $value) {?>
+                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><img src="<?=ImageTools::fixImage($value->album[0]['url'],372,212)?>" alt="">
+                            <a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>" target="_blank">
+                                <h3><?=Tools::u8_title_substr($value->title,40)?></h3>
+                                <h4><?=$value->descpt?></h4>
+                                <i class="line-h"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                        
                     </ul>
             </div>
         </div>
