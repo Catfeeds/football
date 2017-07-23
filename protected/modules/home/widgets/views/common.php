@@ -1,5 +1,5 @@
 <!-- <div class="widget d_postlist">
-<?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
+
                 <div class="title">
                     <h2><sapn class="title_span">热门推荐</span></h2></div>
                 <ul>
@@ -13,6 +13,58 @@
                 <?php endif; } ?>
                 </ul>
             </div> -->
+            <div class="widget d_textbanner"><a class="style01" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong>近期比赛</strong>
+            <div>
+                <ul>
+                <?php if($matchs) foreach ($matchs as $key => $value) {?>
+                    <li>
+                        <div style="display: inline-flex;width: 100%">
+                        <style type="text/css">
+                            .c1{
+                                width: 40%;
+                                margin-left:20px;
+                                margin-top:10px;
+                                margin-right:10px;
+                            }
+                            .im1{
+                                height: 60px;
+                            }
+                            .c2{
+                                width: 100px;
+                                padding-top: 20px
+                            }
+                            .p1{
+                                padding-left: 0 !important;
+                                padding-right: 0 !important
+                            }
+                        </style>
+                            <div class="c1">
+                                <div class="match-img">
+                                    <center><img class="im1" src="<?=ImageTools::fixImage($value->home_team->image)?>">
+                                    <span><?=$value->home_name?></span></center>
+                                </div>
+                            </div>
+                            <div class="c2">
+                            <center>
+                            <p class="p1" style="padding-bottom: 5px">
+                                <span><?=$value->league->name?></span>
+                                </p>
+                                <p class="p1">
+                                <span style="font-size: 30px"><?=$value->home_score.' : '.$value->visitor_score?></span>
+                                </p>
+                                </center>
+                            </div>
+                            <div class="c1"><center><img class="im1" src="<?=ImageTools::fixImage($value->visit_team->image)?>">
+                            <span><?=$value->visitor_name?></span></center></div>
+                        </div>
+                    </li>
+                    <?php if($key<count($matchs)-1):?>
+                    <hr style="margin-top: 5px;margin-bottom: 5px"><?php endif;?>
+                <?php } ?>
+                </ul>
+            </div>
+            </a></div>
+<?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
             
             <style type="text/css">
                         .fa{

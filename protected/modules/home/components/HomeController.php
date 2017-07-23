@@ -6,6 +6,7 @@
  */
 class HomeController extends Controller
 {
+    public $styleowner = 1;
     //关键字
     private $keyword;
     //关键字

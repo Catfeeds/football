@@ -48,7 +48,7 @@
                                 <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
                                     <img src="<?=ImageTools::fixImage($img?$img:$nopic,200,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
-                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -270px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
                         </li>
                    <?php } ?>
                         
@@ -153,12 +153,8 @@ ul.pic-list li {
                     <ul class="pic-list">
                     <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
                     <?php if($album) foreach ($album as $key => $value) {?>
-                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><img src="<?=ImageTools::fixImage($value->album[0]['url'],372,212)?>" alt="">
-                            <a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>" target="_blank">
-                                <h3><?=Tools::u8_title_substr($value->title,40)?></h3>
-                                <h4><?=$value->descpt?></h4>
-                                <i class="line-h"></i>
-                            </a>
+                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>"><img src="<?=ImageTools::fixImage($value->album[0]['url'],372,212)?>" alt="">
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: 0;background-color: rgba(0,0,0,0.5);height: 52px;bottom: 40px;font: 700 20px/54px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:100%;margin-left: 5px"><?=Tools::u8_title_substr($value->title,30)?></label></span></a>
                         </li>
                     <?php } ?>
                         

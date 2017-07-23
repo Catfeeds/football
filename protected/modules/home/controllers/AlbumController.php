@@ -43,7 +43,7 @@ class AlbumController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cid;
 		}
-		$datas = TkExt::model()->normal()->getList($criteria,4);
+		$datas = TkExt::model()->normal()->getList($criteria,20);
 		$infos = $datas->data;
 		$pager = $datas->pagination;
 		
@@ -53,9 +53,9 @@ class AlbumController extends HomeController{
 
 	public function actionInfo($id='')
 	{
+		$this->styleowner = 0;
 		// var_dump($this->user);exit;
-		$info = ArticleExt::model()->findByPk($id);
-		$info->hits += 1;
+		$info = TkExt::model()->findByPk($id);
 		$info->save();
 		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
 	}
