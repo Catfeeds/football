@@ -13,12 +13,13 @@
                 <?php endif; } ?>
                 </ul>
             </div> -->
+            <?php if($matchs): ?>
             <div class="widget d_textbanner"><a class="style01" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong>近期比赛</strong>
-            <div>
+            <div style="margin-bottom: 11px">
                 <ul>
-                <?php if($matchs) foreach ($matchs as $key => $value) {?>
+                <?php foreach ($matchs as $key => $value) {?>
                     <li>
-                        <div style="display: inline-flex;width: 100%">
+                        <div style="display: inline-flex;width: 100%;">
                         <style type="text/css">
                             .c1{
                                 width: 40%;
@@ -27,7 +28,8 @@
                                 margin-right:10px;
                             }
                             .im1{
-                                height: 60px;
+                                height: 50px;
+                                width: 50px
                             }
                             .c2{
                                 width: 100px;
@@ -35,11 +37,12 @@
                             }
                             .p1{
                                 padding-left: 0 !important;
-                                padding-right: 0 !important
+                                padding-right: 0 !important;
+                                font-family: -webkit-pictograph;
                             }
                         </style>
                             <div class="c1">
-                                <div class="match-img">
+                                <div class="match-img" style="width: 60px">
                                     <center><img class="im1" src="<?=ImageTools::fixImage($value->home_team->image)?>">
                                     <span><?=$value->home_name?></span></center>
                                 </div>
@@ -54,8 +57,8 @@
                                 </p>
                                 </center>
                             </div>
-                            <div class="c1"><center><img class="im1" src="<?=ImageTools::fixImage($value->visit_team->image)?>">
-                            <span><?=$value->visitor_name?></span></center></div>
+                            <div class="c1"><div class="match-img" style="width: 60px"><center><img class="im1" src="<?=ImageTools::fixImage($value->visit_team->image)?>">
+                            <span><?=$value->visitor_name?></span></center></div></div>
                         </div>
                     </li>
                     <?php if($key<count($matchs)-1):?>
@@ -63,7 +66,7 @@
                 <?php } ?>
                 </ul>
             </div>
-            </a></div>
+            </a></div><?php endif;?>
 <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
             
             <style type="text/css">
@@ -76,6 +79,7 @@
                             font-size: 14px;
                             font-weight: normal;
                             margin: -1px 0 0;
+                            margin-left: 15px;
                             padding: 4px 15px;background-color: #2eb398;
                         }
                     </style>
