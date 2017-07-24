@@ -98,13 +98,13 @@
     color: #FFF;
 }
 .indexnav   .nav a:hover{
-    background-color: #16b13a;
+    background-color: #00b7ee;
     width: 100px;
     transform: skew(0deg) !important;
     position: relative;
 }
 .indexnav .headMenuNow {
-    background-color: #16b13a;
+    background-color: #00b7ee;
     width: 100px;
     transform: skew(0deg) !important;
     position: relative;
