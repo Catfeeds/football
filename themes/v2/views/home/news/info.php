@@ -2,9 +2,9 @@
     Yii::app()->clientScript->registerCssFile("/wp-content/themes/sky1.0/share.css");
 ?>
 <section class="container">
-            <div class="speedbar">
+           <!--  <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
-            </div>
+            </div> -->
             <div class="content-wrap">
                 <div class="content">
                     <ol class="breadcrumb container" style="width: 96%;">

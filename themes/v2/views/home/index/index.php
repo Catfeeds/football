@@ -2,11 +2,11 @@
   $this->pageTitle = '首页';
 ?>
 <section class="container">
-        <div class="speedbar" style="height: 25px;line-height: 25px">
+        <!-- <div class="speedbar" style="height: 25px;line-height: 25px">
             <div class="top-tip">
                 <strong class="text-success"><i class="fa fa-volume-up"></i> </strong><?=SiteExt::getAttr('qjpz','pcIndexGun')?>
             </div>
-        </div>
+        </div> -->
         <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
         <div class="content-wrap">
             <div class="content">
@@ -65,27 +65,27 @@
                                 color: #2eb398 !important;
                             }
                             ul.pic-list {
-    display: block;
-    width: 1080px;
-    height: 450px;
-    overflow: hidden;
-    float: right;
-    margin-bottom: 15px;
-    width: 100%
-}
-ul.pic-list li {
-    display: block;
-    width: 372px;
-    height: 212px;
-    float: left;
-    margin-top: 15px;
-    position: relative;
-    overflow: hidden;
-}
-.dd-img {
-    width: 250px;
-    margin-right: 0px
-}
+                                display: block;
+                                width: 1080px;
+                                height: 450px;
+                                overflow: hidden;
+                                float: right;
+                                margin-bottom: 15px;
+                                width: 100%
+                            }
+                            ul.pic-list li {
+                                display: block;
+                                width: 372px;
+                                height: 212px;
+                                float: left;
+                                margin-top: 15px;
+                                position: relative;
+                                overflow: hidden;
+                            }
+                            .dd-img {
+                                width: 250px;
+                                margin-right: 0px
+                            }
                         </style>
                         <?php $criteria = new CDbCriteria;
                         $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
@@ -115,11 +115,35 @@ ul.pic-list li {
                     .wactive{
                         color: rgb(128,201,165);
                     }
+                    .zixun1 {
+                        width: 100%;
+                        height: 50px;
+                        background-color: #f2f2f2;
+                        border-top: 1px #009944 solid;
+                    }
+                    .zixun1 a {
+                        width: 90px;
+                        color: #000;
+                        height: 47px;
+                        line-height: 45px;
+                        float: left;
+                        text-align: center;
+                        font-size: 18px;
+                    }
+                    .zixun1 a:hover{
+                        background-color: #fff;
+                        border-top: 3px #009944 solid;
+                    }
+                    .zixun_sk {
+                        background-color: #fff;
+                        border-top: 3px #009944 solid;
+                    }
                 </style>
-                <header class="archive-header">
-                    <h4><a style="margin-left: 10px" class="catew1 <?=!$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index')?>"><?='全部'?></a>&nbsp;<?php if($cates) foreach ($cates as $key => $value) {?>
-                        <a class="catew1 <?=$value->id==$cid?'wactive':''?>" href="<?=$this->createUrl('/home/index/index',['cid'=>$value->id])?>"><?=$value->name?></a>&nbsp;
-                    <?php } ?></h4></header>
+                <div class="zixun1">
+                <?php if($cates) foreach ($cates as $key => $value) {?>
+                   <a href="<?=$this->createUrl('/home/news/list',['cid'=>$value->id])?>" class="<?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
+                <?php } ?>
+                    </div>
                     <?php if($news) foreach ($news as $key => $value) {?>
                         <article class="excerpt">
                     <div class="focus">

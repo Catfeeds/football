@@ -20,14 +20,19 @@ class HomeNavWidget extends CWidget
 			!isset($value['active']) && $value['active'] = [$value['url']];
 			$url = $this->owner->createUrl('/'.$value['url']);
 			if(in_array($path, $value['active']))
-				$active = 'current-menu-item ';
+				// $active = 'current-menu-item ';
+				$active = 'headMenuNow';
 			else
 				$active = '';
 			$name = $value['name'];
-			if($this->type == 'home')
-				$html .= '<li id="menu-item-'.$key.'" class="menu-item menu-item-type-custom menu-item-object-custom '.$active.' menu-item-home menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
-			else
-				$html .= '<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
+			// if($this->type == 'home')
+			// 	$html .= '<li class="nav_menu-item">'.$name.'</a></li>';
+			// else
+				$html .= '<li class="nav_menu-item"><a class="'.$active.'" href="'.$url.'"><p>'.$name.'</p></a></li>';
+			// if($this->type == 'home')
+			// 	$html .= '<li id="menu-item-'.$key.'" class="menu-item menu-item-type-custom menu-item-object-custom '.$active.' menu-item-home menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
+			// else
+			// 	$html .= '<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
 		}
 		echo $html;
 	}

@@ -45,22 +45,104 @@
     </script>
 </head>
 <body class="home blog">
-    <header id="masthead" class="site-header">
-        <!-- <nav id="top-header">
-            <div class="top-nav">
-                <div id="user-profile">
-                    <span class="nav-set"><span class="nav-login">
-                    <a href="http://demo7.ledkongzhiqi.com/wp-login.php" class="signin-loader">Hi, 请登录</a>&nbsp; &nbsp; <a href="/wp-login.php?action=register" class="signup-loader">我要注册</a>
-                </span> </span>
-                </div>
-                <div class="menu-container">
-                    <ul id="menu-%e5%a4%b4%e9%83%a8" class="top-menu">
-                        <a target="_blank" href="http://www.cuizl.com/aboutus">关于我们</a> | <a target="_blank" href="http://www.cuizl.com/aboutus">联系我们</a> </ul>
+<style>
+    .indexnav .nav {
+    width: 700px;
+    height: 50px;
+    margin-bottom: 10px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+.indexnav #top {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 50px;
+}
+.indexnav .top {
+    min-width: 1280px;
+    font-size: 16px;
+    height: 50px;
+    margin-top: 0px;
+    background-color: #1d9b58;
+}
+.kj {
+    width: 100%;
+    height: 50px
+}
+.indexnav .fl {
+    float: left;
+}
+.indexnav .nav_menu {
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.indexnav .nav_menu-item {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100px;
+    text-align: center;
+}
+.indexnav .headMenuNow p {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 999;
+}
+.indexnav .nav a {
+    line-height: inherit;
+    color: #FFF;
+}
+.indexnav   .nav a:hover{
+    background-color: #128247;
+    width: 100px;
+    transform: skew(0deg) !important;
+    position: relative;
+}
+.indexnav .headMenuNow {
+    background-color: #128247;
+    width: 100px;
+    transform: skew(0deg) !important;
+    position: relative;
+}
+.indexnav a{
+        color: #5e5e5e;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    background-color: transparent;
+}
+.indexnav .nav_menu {
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.indexnav .nav a {
+    line-height: inherit;
+    color: #FFF;
+}
+.indexnav p{
+    height: 35px;
+    padding-top: 15px
+}
+</style>
+<div class="content indexnav kj">
+        <div class="top">
+            <div id="top">
+                <img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" alt="" />
+                <div class="nav fl">
+                    <ul class="nav_menu">
+                        <?php $this->widget('HomeNavWidget')?>
+                    </ul>
                 </div>
             </div>
-        </nav> -->
-        <div id="nav-header">
-            <div id="top-menu">
+        </div>
+    </div>
+    <header id="masthead" class="site-header">
+        <div id="nav-header" style="height: 0;">
+            <!-- <div id="top-menu">
                 <div id="top-menu_1"><span class="nav-search"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
                     <hgroup class="logo-site">
                         <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:50px" alt="" /></a></h1>
@@ -75,7 +157,7 @@
                         </nav>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <nav>
             <ul class="nav_sj" style="margin-top: 0" id="nav-search_1"><?php $this->widget('HomeNavWidget',['type'=>'wap'])?>

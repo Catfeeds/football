@@ -6,7 +6,7 @@ class IndexController extends HomeController
         // 三场比赛
         $matchs = MatchExt::model()->normal()->findAll(['limit'=>3]);
         // 所有分类
-        $cates = ArticleCateExt::model()->normal()->findAll();
+        $cates = ArticleCateExt::model()->normal()->findAll(['limit'=>8]);
         $criteria = new CDbCriteria;
         $criteria->limit = 3;
         // if(!$cid) {
