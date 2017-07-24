@@ -17,6 +17,7 @@
     <link rel='stylesheet' id='fa-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/font-awesome.css?ver=4.5.9' type='text/css' media='all' />
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/style.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/style_1.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/index.css' type='text/css' media='all' />
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/jquery.min.js?ver=1.0'></script>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/jquery.js?ver=1.0'></script>
     <script>
@@ -46,92 +47,7 @@
 </head>
 <body class="home blog">
 <style>
-    .indexnav .nav {
-    width: 700px;
-    height: 50px;
-    margin-bottom: 10px;
-    line-height: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-}
-.indexnav #top {
-    width: 1000px;
-    margin: 0 auto;
-    padding: 0 30px;
-    height: 50px;
-}
-.indexnav .top {
-    min-width: 1280px;
-    font-size: 16px;
-    height: 50px;
-    margin-top: 0px;
-    background-color: white;
-}
-.kj {
-    width: 100%;
-    height: 50px
-}
-.indexnav .fl {
-    float: left;
-}
-.indexnav .nav_menu {
-    line-height: 50px;
-    text-transform: uppercase;
-}
-.indexnav .nav_menu-item {
-    display: inline-block;
-    position: relative;
-    float: left;
-    width: 100px;
-    text-align: center;
-}
-.indexnav .headMenuNow p {
-    position: relative;
-    font-weight: bold;
-    font-size: 16px;
-    z-index: 999;
-    color: white;
-}
-.indexnav .nav a {
-    line-height: inherit;
-    color: #FFF;
-}
-.indexnav   .nav a:hover{
-    background-color: #00b7ee;
-    width: 100px;
-    transform: skew(0deg) !important;
-    position: relative;
-}
-.indexnav .headMenuNow {
-    background-color: #00b7ee;
-    width: 100px;
-    transform: skew(0deg) !important;
-    position: relative;
-}
-.indexnav a{
-        color: #5e5e5e;
-    text-decoration: none;
-    cursor: pointer;
-    display: block;
-    background-color: transparent;
-}
-.indexnav .nav_menu {
-    line-height: 50px;
-    text-transform: uppercase;
-}
-.indexnav .nav a {
-    line-height: inherit;
-    color: #FFF;
-}
-.indexnav p{
-    color: #7a6f6f;
-    height: 35px;
-    padding-top: 15px
-}
-.indexnav p:hover{
-    color: white;
-}
+
 </style>
 <div class="content indexnav kj">
         <div class="top">

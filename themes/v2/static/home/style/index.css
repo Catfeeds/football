@@ -1,0 +1,109 @@
+.indexnav .nav {
+    width: 700px;
+    height: 50px;
+    margin-bottom: 10px;
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+.indexnav #top {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 50px;
+}
+.indexnav .top {
+    min-width: 1280px;
+    font-size: 16px;
+    height: 50px;
+    margin-top: 0px;
+    background-color: white;
+}
+.kj {
+    width: 100%;
+    height: 50px
+}
+.indexnav .fl {
+    float: left;
+}
+.indexnav .nav_menu {
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.indexnav .nav_menu-item {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100px;
+    text-align: center;
+}
+.indexnav .headMenuNow p {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 999;
+    color: white;
+}
+.indexnav .nav a {
+    line-height: inherit;
+    color: #FFF;
+}
+.indexnav   .nav a:hover{
+    background-color: #00b7ee;
+    width: 100px;
+    transform: skew(0deg) !important;
+    position: relative;
+}
+.indexnav .headMenuNow {
+    background-color: #00b7ee;
+    width: 100px;
+    transform: skew(0deg) !important;
+    position: relative;
+}
+.indexnav a{
+        color: #5e5e5e;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    background-color: transparent;
+}
+.indexnav .nav_menu {
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.indexnav .nav a {
+    line-height: inherit;
+    color: #FFF;
+}
+.indexnav p{
+    color: #7a6f6f;
+    height: 35px;
+    padding-top: 15px
+}
+.indexnav p:hover{
+    color: white;
+}
+.excerpt img{
+    width: 180px;
+    height: 120px
+}
+.dd-img img{
+    width: 250px;
+    height: 200px
+}
+
+.dd-img img:hover{
+    -webkit-transform:scale(1.1);-moz-transform:scale(1.1);-ms-transform:scale(1.1);-o-transform:scale(1.1);transform:scale(1.1);
+
+    -webkit-transition: -webkit-transform .3s linear;
+    -moz-transition: -moz-transform .3s linear;
+    -o-transition: -o-transform .3s linear;
+    transition: transform .3s linear;
+}
+.pic-list img:hover{
+    -webkit-transform:scale(1.1);-moz-transform:scale(1.1);-ms-transform:scale(1.1);-o-transform:scale(1.1);transform:scale(1.1);
+        -webkit-transition: -webkit-transform .3s linear;
+            -moz-transition: -moz-transform .3s linear;
+    -o-transition: -o-transform .3s linear;
+}
