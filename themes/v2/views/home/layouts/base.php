@@ -147,9 +147,9 @@
     </div>
     <header id="masthead" class="site-header">
         <div id="nav-header" style="height: 0;">
-            <!-- <div id="top-menu">
-                <div id="top-menu_1"><span class="nav-search"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
-                    <hgroup class="logo-site">
+            <div id="top-menu">
+                <div id="top-menu_1"><span class="nav-search" style="    margin-top: -36px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
+                    <!-- <hgroup class="logo-site">
                         <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:50px" alt="" /></a></h1>
                     </hgroup>
                     <div id="site-nav-wrap">
@@ -160,9 +160,9 @@
                                 </ul>
                             </div>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
-            </div> -->
+            </div>
         </div>
         <nav>
             <ul class="nav_sj" style="margin-top: 0" id="nav-search_1"><?php $this->widget('HomeNavWidget',['type'=>'wap'])?>
