@@ -14,7 +14,7 @@
                 </ul>
             </div> -->
             <?php if($matchs): ?>
-            <div class="widget d_textbanner"><a class="style01" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong>近期比赛</strong>
+            <div class="widget d_textbanner"><a class="style01" style="color: #00b7ee" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong style="background-color:#00b7ee ">近期比赛</strong>
             <div style="margin-bottom: 11px">
                 <ul>
                 <?php foreach ($matchs as $key => $value) {?>
