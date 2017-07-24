@@ -80,7 +80,7 @@
                             font-weight: normal;
                             margin: -1px 0 0;
                             margin-left: 15px;
-                            padding: 4px 15px;background-color: #2eb398;
+                            padding: 4px 15px;background-color: #16b13a;
                         }
                     </style>
             <style type="text/css">
