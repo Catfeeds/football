@@ -21,7 +21,7 @@
                     </header>
                     <style type="text/css">
                     .article-content a {
-                            color: #2eb398 !important; 
+                            color: #16b13a !important; 
                         }</style>
                     <article class="article-content" id="content_img">
                     <?=$info->content?>

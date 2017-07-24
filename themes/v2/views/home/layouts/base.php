@@ -66,7 +66,7 @@
     font-size: 16px;
     height: 50px;
     margin-top: 0px;
-    background-color: #1d9b58;
+    background-color: white;
 }
 .kj {
     width: 100%;
@@ -91,19 +91,20 @@
     font-weight: bold;
     font-size: 16px;
     z-index: 999;
+    color: white;
 }
 .indexnav .nav a {
     line-height: inherit;
     color: #FFF;
 }
 .indexnav   .nav a:hover{
-    background-color: #128247;
+    background-color: #16b13a;
     width: 100px;
     transform: skew(0deg) !important;
     position: relative;
 }
 .indexnav .headMenuNow {
-    background-color: #128247;
+    background-color: #16b13a;
     width: 100px;
     transform: skew(0deg) !important;
     position: relative;
@@ -124,8 +125,12 @@
     color: #FFF;
 }
 .indexnav p{
+    color: #7a6f6f;
     height: 35px;
     padding-top: 15px
+}
+.indexnav p:hover{
+    color: white;
 }
 </style>
 <div class="content indexnav kj">

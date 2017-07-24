@@ -62,7 +62,7 @@
                                 font-size: 16px
                             }
                             .lia:hover{
-                                color: #2eb398 !important;
+                                color: #16b13a !important;
                             }
                             ul.pic-list {
                                 display: block;
@@ -119,7 +119,7 @@
                         width: 100%;
                         height: 50px;
                         background-color: #f2f2f2;
-                        border-top: 1px #009944 solid;
+                        border-top: 1px #16b13a solid;
                     }
                     .zixun1 a {
                         width: 90px;
@@ -132,11 +132,11 @@
                     }
                     .zixun1 a:hover{
                         background-color: #fff;
-                        border-top: 3px #009944 solid;
+                        border-top: 3px #16b13a solid;
                     }
                     .zixun_sk {
                         background-color: #fff;
-                        border-top: 3px #009944 solid;
+                        border-top: 3px #16b13a solid;
                     }
                 </style>
                 <div class="zixun1">
@@ -158,7 +158,7 @@
                 </article>
                    <?php } ?>
                    <header class="archive-header">
-                    <h4><span style="color:#2eb398;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
+                    <h4><span style="color:#16b13a;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
                     </h4></header>
                     <ul class="dd-list" style="background-color: white">
                     <?php if($videos) foreach ($videos as $key => $value) {?>
@@ -172,7 +172,7 @@
                     <?php } ?>
                     </ul>
                     <header class="archive-header" style="margin-top: 210px">
-                    <h4><span style="color:#2eb398;margin-left: 10px">精彩</span><span>图库</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
+                    <h4><span style="color:#16b13a;margin-left: 10px">精彩</span><span>图库</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
                     </h4></header>
                     <ul class="pic-list">
                     <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
