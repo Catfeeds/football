@@ -7,21 +7,28 @@ class IndexController extends HomeController
         $matchs = MatchExt::model()->normal()->findAll(['limit'=>3]);
         // 所有分类
         $cates = ArticleCateExt::model()->normal()->findAll(['limit'=>8]);
-        $criteria = new CDbCriteria;
-        $criteria->limit = 3;
+        
         // if(!$cid) {
         //     isset($cates[0]) && $cid = $cates[0]['id'];
-        // }
-        if($cid) {
-            $criteria->addCondition('cid=:cid');
-            $criteria->params[':cid'] = $cid;
+        // }\
+        $news = [];
+        if($cates) {
+            foreach ($cates as $key => $value) {
+                $criteria = new CDbCriteria;
+                $criteria->limit = 3;
+                $criteria->addCondition('cid=:cid');
+                $criteria->params[':cid'] = $value['id'];
+                if($infos = ArticleExt::model()->normal()->findAll($criteria))
+                    $news[$value->id] = $infos;
+            }
+            
         }
         // 精品导读
         $jpdds = RecomExt::getObjFromCate(1,2);
         // 热门推荐
         $rmtjs = RecomExt::getObjFromCate(2,6);
         
-        $news = ArticleExt::model()->normal()->findAll($criteria);
+        // $news = ArticleExt::model()->normal()->findAll($criteria);
         // 三个联赛
         $leas = LeagueExt::model()->normal()->findAll(['limit'=>3]);
         // 三个视频
