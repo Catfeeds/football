@@ -124,7 +124,7 @@
                     </div>
                </div>
             </div>
-            <div class="widget d_comment">
+            <!-- <div class="widget d_comment">
                 <div class="title">
                     <h2><sapn class="title_span">热门评论</span></h2></div>
                 <ul>
@@ -137,4 +137,4 @@
                     </li>
                <?php } ?>
                 </ul>
-            </div>
+            </div> -->
