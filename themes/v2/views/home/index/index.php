@@ -162,9 +162,11 @@
                         <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
                     <span class="note">
                     <?php if(!$value->descpt) {
-                        preg_match_all('/\<p\>.+/u', $value->content, $res);
-                        if(isset($res[0][0]) && $res = $res[0][0]) {
-                            $wd = $res;
+                        $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->content);
+                        if($html) {
+                            $html = preg_replace("/\<\/[a-z]+\>/","",$html);
+                            // var_dump($html);exit;
+                            $wd = $html;
                         }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,200)?>
                             
                         </span>
