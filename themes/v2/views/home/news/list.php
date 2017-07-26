@@ -22,10 +22,10 @@
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
                         <header>
-                            <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,56)?></a></h2>
+                            <h2><a target="_blank" href="<?=$this->createUrl('/cms/'.$value->id.'.html')?>" ><?=Tools::u8_title_substr($value->title,56)?></a></h2>
                         </header>
                         <div class="focus">
-                            <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
+                            <a target="_blank" href="<?=$this->createUrl('/cms/'.$value->id.'.html')?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
                         </div>
                         <span class="note">
                     <?php if(!$value->descpt) {
@@ -40,7 +40,7 @@
                         <p class="auth-span">
                             <span class="muted"><i class="fa fa-clock-o"></i><?=Tools::friendlyDate($value->created)?></span>
                             <span class="muted"><i class="fa fa-eye"></i><?=$value->hits?> </span>
-                            <span class="muted"><i class="fa fa-comments-o"></i><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>#respond"><?=$value->comment_num?>评论</a> </span>
+                            <span class="muted"><i class="fa fa-comments-o"></i><a target="_blank" href="<?=$this->createUrl('/cms/'.$value->id.'.html')?>#respond"><?=$value->comment_num?>评论</a> </span>
                         </p>
                         </article>
                     <?php } ?>

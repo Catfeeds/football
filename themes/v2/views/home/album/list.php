@@ -22,7 +22,7 @@
         <div id="listing" class="container-fluid masonry" style="position: relative; height: 1403px;">
         <?php if($infos) foreach ($infos as $key => $value) {?>
             <div class="post masonry-brick" style="width: 250px">
-                    <a href="<?=$this->createUrl('info',['id'=>$value->id])?>"> <img src="<?=ImageTools::fixImage($value->album[0]['url'],250,166)?>" alt=""></a>
+                    <a href="<?=$this->createUrl('/cms/'.$value->id.'.html')?>"> <img src="<?=ImageTools::fixImage($value->album[0]['url'],250,166)?>" alt=""></a>
                     <div class="textarea">
                         <h3><a href="javascript:;"><?=Tools::u8_title_substr($value->title,28)?></a></h3>
                         <p><?=Tools::u8_title_substr($value->descpt,40)?>                        </p>

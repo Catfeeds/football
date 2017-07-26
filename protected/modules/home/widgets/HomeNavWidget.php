@@ -17,13 +17,17 @@ class HomeNavWidget extends CWidget
 		$html = "";
 		foreach ($menus as $key => $value) {
 			// var_dump($path);exit;
-			!isset($value['active']) && $value['active'] = [$value['url']];
+			!isset($value['active']) && $value['active'] = '';
 			$url = $this->owner->createUrl('/'.$value['url']);
-			if(in_array($path, $value['active']))
-				// $active = 'current-menu-item ';
-				$active = 'headMenuNow';
-			else
+			if($value['active']) {
+				if(strstr($path, $value['active']))
+					// $active = 'current-menu-item ';
+					$active = 'headMenuNow';
+				else
+					$active = '';
+			}else
 				$active = '';
+				
 			$name = $value['name'];
 			// if($this->type == 'home')
 			// 	$html .= '<li class="nav_menu-item">'.$name.'</a></li>';

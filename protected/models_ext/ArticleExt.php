@@ -37,6 +37,7 @@ class ArticleExt extends Article{
             'comment_num'=>array(self::STAT, 'CommentExt', 'major_id','condition'=>'t.status=1'),
             'comments'=>array(self::HAS_MANY, 'CommentExt', ['major_id'=>'id'],'condition'=>'comments.status=1','order'=>'comments.praise desc,comments.created asc'),
             'album'=>array(self::HAS_MANY, 'AlbumExt', ['aid'=>'id']),
+            'tags'=>array(self::HAS_MANY, 'ArticleTagExt', ['aid'=>'id']),
         );
     }
 
@@ -61,9 +62,11 @@ class ArticleExt extends Article{
 
     public function afterFind() {
         parent::afterFind();
-        // if(!$this->image){
-        //     $this->image = SiteExt::getAttr('qjpz','productNoPic');
-        // }
+        if(!$this->image){
+            preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$this->content,$match);
+            // var_dump($match);exit;   
+            $this->image = isset($match[1])?$match[1]:'';
+        }
     }
 
     public function beforeValidate() {

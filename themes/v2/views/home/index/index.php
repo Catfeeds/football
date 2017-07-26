@@ -1,6 +1,10 @@
 <?php
   $this->pageTitle = '首页';
 ?>
+<?php 
+    Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-index.css");
+    // Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/match-common.css");
+?>
 <section class="container">
         <!-- <div class="speedbar" style="height: 25px;line-height: 25px">
             <div class="top-tip">
@@ -54,39 +58,6 @@
                         
                     </ul>
                     <div style="height: 400px;width: 460px;margin-left: 290px;margin-top: -400px;">
-                        <style type="text/css">
-                            .l11{
-                                height: 34px;
-                            }
-                            .l11 a {
-                                font-size: 16px
-                            }
-                            .lia:hover{
-                                color: #00b7ee !important;
-                            }
-                            ul.pic-list {
-                                display: block;
-                                width: 1080px;
-                                height: 450px;
-                                overflow: hidden;
-                                float: right;
-                                margin-bottom: 15px;
-                                width: 100%
-                            }
-                            ul.pic-list li {
-                                display: block;
-                                width: 372px;
-                                height: 212px;
-                                float: left;
-                                margin-top: 15px;
-                                position: relative;
-                                overflow: hidden;
-                            }
-                            .dd-img {
-                                width: 250px;
-                                margin-right: 0px
-                            }
-                        </style>
                         <?php $criteria = new CDbCriteria;
                         $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
                         $criteria->params[':be'] = TimeTools::getDayBeginTime(time()-86400*7);
@@ -107,44 +78,6 @@
                     </div>
                 </div>
             <?php endif;?>
-                <style type="text/css">
-                    .catew1{
-                        color: #999;
-                        font-family: 黑体;
-                    }
-                    .wactive{
-                        color: rgb(128,201,165);
-                    }
-                    .zixun1 {
-                        width: 100%;
-                        height: 50px;
-                        background-color: #f2f2f2;
-                        border-top: 1px #00b7ee solid;
-                    }
-                    .zixun1 a {
-                        width: 90px;
-                        color: #000;
-                        height: 47px;
-                        line-height: 45px;
-                        float: left;
-                        text-align: center;
-                        font-size: 18px;
-                    }
-                    .zixun1 a:hover{
-                        background-color: #fff;
-                        border-top: 3px #00b7ee solid;
-                    }
-                    .zixun_sk {
-                        background-color: #fff;
-                        border-top: 3px #00b7ee solid;
-                    }
-                    .show{
-                        display: block;
-                    }
-                    .noshow{
-                        display: none;
-                    }
-                </style>
                 <div class="zixun1">
                 <?php if($cates) foreach ($cates as $key => $value) {?>
                    <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->id])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
@@ -153,7 +86,7 @@
                     <?php if($news) foreach ($news as $key => $values) { if($values) foreach ($values as $k => $value) {?>
                         <article class="excerpt <?=isset($cates[0])&&$key==$cates[0]['id']?'show':'noshow'?>" data-cid="<?=$key?>">
                     <div class="focus">
-                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" alt="<?=$value->title?>" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" alt="<?=$value->title?>" /></a>
                     </div>
                     <header>
                         <h2><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></h2>
@@ -181,7 +114,7 @@
                     <?php if($videos) foreach ($videos as $key => $value) {?>
                         <li style="float: left;margin-left: 3px;margin-top: 10px">
                             <figure class="dd-img">
-                                <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>">
+                                <a title="<?=$value->title?>" target="_blank" href="<?=$this->createUrl('/home/video/info',['id'=>$value->id])?>">
                                     <img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,250,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
                             <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:244px;margin-left: 5px"><?=Tools::u8_title_substr($value->title,30)?></label></span>

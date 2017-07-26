@@ -1,0 +1,67 @@
+.l11{
+    height: 34px;
+}
+.l11 a {
+    font-size: 16px
+}
+.lia:hover{
+    color: #00b7ee !important;
+}
+ul.pic-list {
+    display: block;
+    width: 1080px;
+    height: 450px;
+    overflow: hidden;
+    float: right;
+    margin-bottom: 15px;
+    width: 100%
+}
+ul.pic-list li {
+    display: block;
+    width: 372px;
+    height: 212px;
+    float: left;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.dd-img {
+    width: 250px !important;
+    margin-right: 0px !important
+}
+.catew1{
+    color: #999;
+    font-family: 黑体;
+}
+.wactive{
+    color: rgb(128,201,165);
+}
+.zixun1 {
+    width: 100%;
+    height: 50px;
+    background-color: #f2f2f2;
+    border-top: 1px #00b7ee solid;
+}
+.zixun1 a {
+    width: 90px;
+    color: #000;
+    height: 47px;
+    line-height: 45px;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+}
+.zixun1 a:hover{
+    background-color: #fff;
+    border-top: 3px #00b7ee solid;
+}
+.zixun_sk {
+    background-color: #fff;
+    border-top: 3px #00b7ee solid;
+}
+.show{
+    display: block;
+}
+.noshow{
+    display: none;
+}

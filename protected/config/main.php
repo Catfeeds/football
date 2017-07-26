@@ -173,94 +173,13 @@ $config1 = array(
                 //买房顾问
                 'maifangguwen' => 'home/adviser/index',
                 //前台资讯
-                'cms/<articleid:\d+>.html'=>'home/news/detail',
-                'cmslist/<cateid:\d+>'=>'home/news/index',
-                'cmslist'=>'home/news/index',
-               //前台学区房
-                'xuequ/<pinyin:[a-zA-Z]+>'=>'home/school/school',
-                'xuequ/<id:\d+>'=>'home/school/area',
-                'xuequ'=>'home/school/index',
-                //前台问答
-                'wenda/detail-<id:\d+>'=>'home/wenda/detail',
-                'wendalist/<cid:\d+>'=>'home/wenda/index',
-                'wenda'=>'home/wenda/index',
-                //前台团购
-                'tuan'=>'home/special/tuan',
-                'trade'=>'home/special/trade',
-                //前台看房团
-                'kan'=>'home/tuan/index',
-                'kanhuigu'=>'home/tuan/back',
-                //邻校房
-                'wap/school/<a:\w+>'=>'wap/school/<a>',
-                //wap找楼盘
-                'wap/plot'=>'wap/plot/list',
-                'wap/plot/building/<hid:\d+>'=>'wap/plot/building',
-                'wap/plot/ask'=>'wap/plot/PlotAsk',
-                'wap/plot/<a:\w+>'=>'wap/plot/<a>',
-                //wap周边信息
-                'wap/plot/around/<hid:\d+>'=>'wap/plot/around',
-                //wap首页
-                'wap' => 'wap/index/index',
-                'wap/nav' => 'wap/index/nav',
-                'wap/pc' => 'wap/index/redirectPc',
-                //买房顾问
-                'wap/maifangguwen' => 'wap/adviser/index',
-                //wap看房团
-                'wap/kan'=>'wap/tuan/index',
-                //wap特惠房
-                'wap/tuan'=>'wap/purchase/index',
-                'wap/purchase/<a:\w+>' => 'wap/purchase/<a>',
-                //wap特价房
-                'wap/trade'=>'wap/special/index',
-                'wap/trade/<id:\d+>'=>'wap/special/detail',
-                'wap/addmore'=>'wap/special/addMore',
-                'wap/special/<a:\w+>' => 'wap/special/<a>',
-                //wap学区房
-                'wap/xuequ'=>'/wap/school/index',
-                'wap/xuequ/school/<id:\d+>'=>'/wap/school/detail',
-                //wap地图iframe
-                'wap/ditu' => 'wap/map/index',
-                'wap/map/<a:\w+>' => 'wap/map/<a>',
-                'wap/survey' => 'wap/survey/index',
-                'wap/addprice'=>'/wap/plot/addPrice',
-
-                'staff' => 'wap/staff/index',
-
-                //知识库
-                'wap/baike'=>'wap/baike/index',
-                'wap/baike/l<cid>'=>'wap/baike/list',
-                'wap/baike/<_m>'=>'wap/baike/<_m>',
-
-                //wap计算器
-                'wap/calculator'=>'wap/calculator/index',
-
-                //wap问答
-                'wap/wenda/<id:\d+>' => 'wap/wenda/detail',
-                //'wap/wendalisttwo/<id:\d+>' => 'wap/wenda/index',
-                //'wap/wendalistone/<fl:\d+>' => 'wap/wenda/index',
-                //'wap/wendalist/<px:\w+>' => 'wap/wenda/index',
-                'wap/wendalist'=>'/wap/wenda/index',
-                'wap/wenda/AjaxGetWendas'=>'wap/wenda/AjaxGetWendas',
-                'wap/ask' => 'wap/wenda/ask',
-                'wap/ask/r<result:\w+>' => 'wap/wenda/result',
-                'wap/wenda/<a:\w+>' => 'wap/wenda/<a>',
-
-                //wap资讯
-                'wap/cmslist/<kw:\w+>'=>'wap/news/index',
-                'wap/cmslist/<kw:\w+>/<cid:\w+>'=>'wap/news/index',
-                'wap/cmslist'=>'wap/news/index',
-                'wap/cms/<id:\d+>.html'=>'wap/news/detail',
-                'wap/news/AjaxGetNewsList'=>'wap/news/AjaxGetNewsList',
-
-                //买房顾问
-                'wap/adviser'=>'wap/adviser/index',
-                'wap/daikanjilu/<sid:\d+>'=>'wap/adviser/record',
-                'wap/adviser/<a:\w+>' => 'wap/adviser/<a>',
-                //管家
-                'wap/staff' => 'wap/staff/index',
-                'wap/staff/<a:\w+>' => 'wap/staff/<a>',
-                //wap表单
-                'wap/order/<a:\w+>' => 'wap/order/<a>',
+                'cms/<id:\d+>.html'=>'home/news/info',
+                'cmslist/<cid:\d+>'=>'home/news/list',
+                'cmslist'=>'home/news/list',
+                //前台资讯
+                'video/<id:\d+>.html'=>'home/video/info',
+                'videos/<cid:\d+>'=>'home/video/list',
+                'videos'=>'home/video/list',
 
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
