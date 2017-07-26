@@ -27,11 +27,16 @@
                         <div class="focus">
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
                         </div>
-                        <span class="note"> <?php if(!$value->descpt) {
-                        preg_match_all('/\<p\>.+/u', $value->content, $res);
-                        if(isset($res[0][0]) && $res = $res[0][0]) {
-                            $wd = $res;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,280)?></span>
+                        <span class="note">
+                    <?php if(!$value->descpt) {
+                        $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->content);
+                        if($html) {
+                            $html = preg_replace("/\<\/[a-z]+\>/","",$html);
+                            // var_dump($html);exit;
+                            $wd = $html;
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,200)?>
+                            
+                        </span>
                         <p class="auth-span">
                             <span class="muted"><i class="fa fa-clock-o"></i><?=Tools::friendlyDate($value->created)?></span>
                             <span class="muted"><i class="fa fa-eye"></i><?=$value->hits?> </span>
