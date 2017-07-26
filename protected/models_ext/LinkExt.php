@@ -1,10 +1,10 @@
 <?php 
 /**
- * 文章标签类
+ * 友情链接类
  * @author steven.allen <[<email address>]>
  * @date(2017.2.12)
  */
-class ArticleTagExt extends ArticleTag{
+class LinkExt extends Link{
 	/**
      * 定义关系
      */
@@ -43,17 +43,6 @@ class ArticleTagExt extends ArticleTag{
     }
 
     public function beforeValidate() {
-        if(($name = $this->name) && !$this->tid) {
-            
-            if($tid = Yii::app()->db->createCommand("select id from tag where name='$name'")->queryScalar()) {
-                $this->tid = $tid;
-            } else {
-                $tag = New TagExt;
-                $tag->name = $this->name;
-                $tag->save();
-                $this->tid = $tag->id;
-            }
-        }
         if($this->getIsNewRecord())
             $this->created = $this->updated = time();
         else
@@ -69,17 +58,17 @@ class ArticleTagExt extends ArticleTag{
     {
         $alias = $this->getTableAlias();
         return array(
-            // 'sorted' => array(
-            //     'order' => "{$alias}.sort desc,{$alias}.updated desc",
-            // ),
-            // 'normal' => array(
-            //     'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
-            //     'order'=>"{$alias}.sort desc,{$alias}.updated desc",
-            // ),
-            // 'undeleted' => array(
-            //     'condition' => "{$alias}.deleted=0",
-            //     // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
-            // ),
+            'sorted' => array(
+                'order' => "{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'normal' => array(
+                'condition' => "{$alias}.status=1 and {$alias}.deleted=0",
+                'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
+            'undeleted' => array(
+                'condition' => "{$alias}.deleted=0",
+                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+            ),
         );
     }
 
@@ -97,25 +86,4 @@ class ArticleTagExt extends ArticleTag{
         );
     }
 
-    /**
-     * [findNewsByTag 根据标签找文章 返回带有分页]
-     * @param  string  $tag   [description]
-     * @param  integer $limit [description]
-     * @return [type]         [description]
-     */
-    public static function findNewsByTag($tag='',$limit=20)
-    {
-        $aids = [];
-        $ids = Yii::app()->db->createCommand("select aid from article_tag where tid=$tag")->queryAll();
-        if($ids) {
-            foreach ($ids as $key => $value) {
-                $aids[] = $value['aid'];
-            }
-            $criteria = new CDbCriteria;
-            $criteria->addInCondition('id',$aids);
-            return ArticleExt::model()->normal()->getList($criteria,$limit);
-        } else {
-            return [];
-        }
-    }
 }

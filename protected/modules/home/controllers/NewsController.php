@@ -32,7 +32,7 @@ class NewsController extends HomeController{
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $this->rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
 	}
-	public function actionList($cid='',$kw='')
+	public function actionList($cid='',$kw='',$tag='')
 	{
 		$criteria = new CDbCriteria;
 		if($kw) {
@@ -43,7 +43,11 @@ class NewsController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cid;
 		}
-		$datas = ArticleExt::model()->normal()->getList($criteria,20);
+		if($tag) {
+			$datas = ArticleTagExt::findNewsByTag($tag,20);
+		} else {
+			$datas = ArticleExt::model()->normal()->getList($criteria,20);
+		}
 		$infos = $datas->data;
 		$pager = $datas->pagination;
 		

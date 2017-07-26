@@ -133,4 +133,44 @@ class ArticleExt extends Article{
         );
     }
 
+    public function getTagString()
+    {
+        $res = '';
+        $tags = $this->tags;
+        if($tags) {
+            foreach ($tags as $key => $value) {
+                $res .= $value['name'].' ';
+            }
+        }
+        return trim($res);
+    }
+
+    public function getRelNews()
+    {
+        $tags = $this->tags;
+        if($tags) {
+            foreach ($tags as $key => $value) {
+                $arr[] = $value['tid'];
+            }
+            $criteria = new CDbCriteria;
+            $criteria->select = 'aid,count(aid) as ct';
+            $criteria->addInCondition('tid',$arr);
+            $criteria->addCondition('aid<>'.$this->id);
+            $criteria->group = 'aid';
+            $ress = ArticleTagExt::model()->findAll($criteria);
+
+            if($ress) {
+                $ress = array_slice($ress, 0,8);
+                $aids = [];
+                foreach ($ress as $key => $value) {
+                    $aids[] = $value['aid'];
+                }
+                $criteria = new CDbCriteria;
+                $criteria->addInCondition('id',$aids);
+                return self::model()->normal()->findAll($criteria);
+            }
+        }
+        return [];
+    }
+
 }

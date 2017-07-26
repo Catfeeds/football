@@ -9,10 +9,11 @@
                 <div class="content">
                     <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
-                        <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt; <?=$info->title?></li>
+                        <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/news/list',['cid'=>$cate->id])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
-                        <h1 class="article-title"><a href=""><?=$info->title?></a></h1>
+                        <h1 class="article-title"><?=$info->title?></h1>
+                        <br>
                         <div class="meta">
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <a href=""><?=$info->author?></a></span><?php endif;?>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
@@ -25,6 +26,11 @@
                         }</style>
                     <article class="article-content" id="content_img">
                     <?=$info->content?>
+                    <p>
+                        当前标签：<span><?php if($tags = $info->tags):  foreach ($tags as $key => $value) {?>
+                            <?='<a href="'.$this->createUrl('list',['tag'=>$value->id]).'">'.$value->name.'</a> '?>
+                       <?php  } else :?>暂无<?php endif;?></span>      
+                    </p>
                     <style>
                     .popover-content a {
     color: white !important;
@@ -36,7 +42,22 @@
           <span class="action action-share bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1499305983388"><i class="fa fa-share-alt"></i>分享 <div class="action-popover"><div class="popover top in"><div class="arrow"></div><div class="popover-content"><a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a><a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a><a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a><a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a><a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a><a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a><a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a></div><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></div></div></span>   
 </div></span>
                     </article>
-                    
+                    <?php if($rels = $info->getRelNews()) {?>
+                    <div class="related_top">
+            <div class="related_posts"><ul class="related_img">
+    <h2>相关文章</h2>
+
+    <?php foreach ($rels as $key => $value) {?>
+       <li class="related_box">
+        <a href="<?=$this->createUrl('info',['id'=>$value->id])?>" title="<?=$value->title?>" target="_blank">
+        <img src="<?=ImageTools::fixImage($value->image)?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
+        </li>
+    <?php }?>
+    </ul>
+</div>      </div>
+   <?php  }?>
+    
+    
                     
                     <div id="respond" class="no_webshot">
                         <form action="" method="post" id="commentform">
@@ -110,7 +131,7 @@
                 </div>
             </div>
             <aside class="sidebar">
-                <?php $this->widget('CommonRightWidget',$rights)?>
+                <?php $this->widget('NewsRightWidget',['cid'=>$info->cid,'infoid'=>$info->id])?>
             </aside>
         </section>
         <script type="text/javascript">

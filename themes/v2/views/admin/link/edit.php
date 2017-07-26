@@ -1,6 +1,6 @@
 <?php
-$this->pageTitle = '资讯新建/编辑';
-$this->breadcrumbs = array('资讯管理', $this->pageTitle);
+$this->pageTitle = $this->controllerName.'新建/编辑';
+$this->breadcrumbs = array($this->controllerName.'管理', $this->pageTitle);
 ?>
 <?php $this->widget('ext.ueditor.UeditorWidget',array('id'=>'ArticleExt_content','options'=>"toolbars:[['fullscreen','source','undo','redo','|','customstyle','paragraph','fontfamily','fontsize'],
         ['bold','italic','underline','fontborder','strikethrough','superscript','subscript','removeformat',
@@ -15,75 +15,18 @@ $this->breadcrumbs = array('资讯管理', $this->pageTitle);
         'print','preview','searchreplace']]")); ?>
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
 <div class="form-group">
-    <label class="col-md-2 control-label">标题<span class="required" aria-required="true">*</span></label>
+    <label class="col-md-2 control-label">名称<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
-        <?php echo $form->textField($article, 'title', array('class' => 'form-control')); ?>
+        <?php echo $form->textField($article, 'name', array('class' => 'form-control')); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'title') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'name') ?></div>
 </div>
 <div class="form-group">
-    <label class="col-md-2 control-label">分类</label>
+    <label class="col-md-2 control-label">链接<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
-        <?php echo $form->dropDownList($article, 'cid', $cates, array('class' => 'form-control', 'encode' => false)); ?>
+        <?php echo $form->textField($article, 'url', array('class' => 'form-control')); ?>
     </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'cid') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">作者<span class="required" aria-required="true">*</span></label>
-    <div class="col-md-4">
-        <?php echo $form->textField($article, 'author', array('class' => 'form-control')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'author') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">文章摘要</label>
-    <div class="col-md-8">
-        <?php echo $form->textArea($article, 'descpt', array('class' => 'form-control')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'descpt') ?></div>
-</div>
-
-<div class="form-group">
-    <label class="col-md-2 control-label">文章内容</label>
-    <div class="col-md-8">
-        <?php echo $form->textArea($article, 'content', array('id'=>'ArticleExt_content')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'content')  ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label text-nowrap">封面图</label>
-    <div class="col-md-8">
-        <?php $this->widget('FileUpload',array('model'=>$article,'attribute'=>'image','inputName'=>'img','width'=>400,'height'=>300)); ?>
-        <span class="help-block">建议尺寸：430*230</span> 
-    </div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">视频地址<span class="required" aria-required="true">*</span></label>
-    <div class="col-md-4">
-        <?php echo $form->textField($article, 'video', array('class' => 'form-control')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'video') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">标签<span class="required" aria-required="true">*</span></label>
-    <div class="col-md-4">
-        <input type="text" name="ArticleExt[tags]" class="form-control" value="<?=$article->getTagString()?>">
-    </div>
-    <div class="col-md-2"><span class="help-inline">多个请用空格隔开</span></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">是否头条</label>
-    <div class="col-md-4">
-        <?php echo $form->radioButtonList($article, 'is_top', ArticleExt::$keywordsSwitch, array('separator' => '')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'is_top') ?></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 control-label">是否视频</label>
-    <div class="col-md-4">
-        <?php echo $form->radioButtonList($article, 'is_top_video', ArticleExt::$keywordsSwitch, array('separator' => '')); ?>
-    </div>
-    <div class="col-md-2"><?php echo $form->error($article, 'is_top_video') ?></div>
+    <div class="col-md-2"><?php echo $form->error($article, 'url') ?></div>
 </div>
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
@@ -152,20 +95,20 @@ $js = "
               allowClear: true
            });
 
-				var houses_edit = $('#plot');
-				var data = {};
-				if( houses_edit.length && houses_edit.data('houses') ){
-					data = eval(houses_edit.data('houses'));
-				}
+        var houses_edit = $('#plot');
+        var data = {};
+        if( houses_edit.length && houses_edit.data('houses') ){
+          data = eval(houses_edit.data('houses'));
+        }
 
-				$('#plot').select2({
-					multiple:true,
-					ajax: getHousesAjax,
-					language: 'zh-CN',
-					initSelection: function(element, callback){
-						callback(data);
-					}
-				});
+        $('#plot').select2({
+          multiple:true,
+          ajax: getHousesAjax,
+          language: 'zh-CN',
+          initSelection: function(element, callback){
+            callback(data);
+          }
+        });
 
              $('.form_datetime').datetimepicker({
                  autoclose: true,

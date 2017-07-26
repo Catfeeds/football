@@ -175,12 +175,15 @@ $config1 = array(
                 //前台资讯
                 'cms/<id:\d+>.html'=>'home/news/info',
                 'cmslist/<cid:\d+>'=>'home/news/list',
+                'cmslist/tag/<tag:\d+>'=>'home/news/list',
                 'cmslist'=>'home/news/list',
                 //前台资讯
                 'video/<id:\d+>.html'=>'home/video/info',
                 'videos/<cid:\d+>'=>'home/video/list',
                 'videos'=>'home/video/list',
-
+                'albums'=>'home/album/list',
+                'album/<id:\d+>.html'=>'home/album/info',
+                'album/<cid:\d+>'=>'home/album/list',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
 

@@ -18,7 +18,13 @@
                             <?php } ?>
                         </ol>
                     </div>
-                    
+                    <?php if(isset($_GET['tag']) &&  ($tag = TagExt::model()->findByPk($_GET['tag'])->name )) {?>
+                       <span style="margin-top: 10px">相关标签： <a href="<?=$this->createUrl('list')?>" style="    width: auto;opacity: .70;filter: alpha(opacity=80);color: #fff;background-color: #09a8c5;display: inline-block;margin: 6px 5px 5px 0;padding: 2px 6px;line-height: 24px;">
+                            <?=$tag.' x'?>
+                        </a></span>
+                    <?php }
+
+                    ?>
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
                         <header>
@@ -48,6 +54,6 @@
                 </div>
             </div>
             <aside class="sidebar">
-            <?php $this->widget('CommonRightWidget',$rights)?>
+            <?php $this->widget('NewsRightWidget')?>
             </aside>
         </section>

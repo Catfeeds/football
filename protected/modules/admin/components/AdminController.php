@@ -82,6 +82,7 @@ class AdminController extends Controller
             ['label'=>'直播管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
             ['label'=>'评论管理','icon'=>'icon-speedometer','url'=>['/admin/comment/list'],'active'=>$this->route=='admin/comment/edit'],
             ['label'=>'积分管理','icon'=>'icon-speedometer','url'=>['/admin/points/list'],'active'=>$this->route=='admin/points/edit'],
+            ['label'=>'友链管理','icon'=>'icon-speedometer','url'=>['/admin/link/list'],'active'=>$this->route=='admin/link/edit'],
             ['label'=>'举报管理','icon'=>'icon-speedometer','url'=>['/admin/report/list'],'active'=>$this->route=='admin/report/edit'],
             ['label'=>'推荐管理','icon'=>'icon-speedometer','url'=>['/admin/recom/list'],'active'=>$this->route=='vip/recom/edit'],
             ['label'=>'标签管理','icon'=>'icon-speedometer','url'=>['/admin/tag/list'],'active'=>$this->route=='vip/tag/edit'],

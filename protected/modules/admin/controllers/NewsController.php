@@ -43,9 +43,24 @@ class NewsController extends AdminController{
 	{
 		$info = $id ? ArticleExt::model()->findByPk($id) : new ArticleExt;
 		if(Yii::app()->request->getIsPostRequest()) {
-			$info->attributes = Yii::app()->request->getPost('ArticleExt',[]);
+			$values = Yii::app()->request->getPost('ArticleExt',[]);
+			$tags = $values['tags'];
+			unset($values['tags']);
+			$info->attributes = $values;
 			$info->updated = time();
 			if($info->save()) {
+				if($tags) {
+					ArticleTagExt::model()->deleteAllByAttributes(['aid'=>$info->id]);
+					$tags = explode(' ', $tags);
+					foreach ($tags as $key => $value) {
+						$tag = New ArticleTagExt;
+						$tag->name = $value;
+						$tag->aid = $info->id;
+						$tag->save();
+					}
+				} else {
+					ArticleTagExt::model()->deleteAllByAttributes(['aid'=>$info->id]);
+				}
 				$this->setMessage('操作成功','success',['list?page='.$page]);
 			} else {
 				$this->setMessage(array_values($info->errors)[0][0],'error');

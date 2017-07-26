@@ -138,6 +138,16 @@
 
         <aside class="sidebar">
         <?php $this->widget('CommonRightWidget',$rights)?>
+        <div class="widget widget_text">
+                <div class="title">
+                    <h2><sapn class="title_span">友情链接</span></h2></div>
+                <div class="textwidget" style="margin-top: 10px"><div class="d_tags_1">
+                <?php $links = LinkExt::model()->normal()->findAll(['limit'=>10]); if($links) foreach ($links as $key => $value) {?>
+                   <a target="_blank" href="<?=$value['url']?>"><?=$value['name']?></a>
+               <?php  } ?>
+                     </div>
+                </div>
+            </div>
         </aside>
     </section>
     <script type="text/javascript">
