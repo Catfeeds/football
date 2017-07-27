@@ -26,7 +26,7 @@
                     <h2><sapn class="title_span">热门搜索</span></h2></div>
                 <div class="d_tags"m  style="width: 86%">
                 <?php if($tags) foreach ($tags as $key => $value) {?>
-                    <a title="<?=$value['ct']?>个话题" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>$value['tid']])?>"><?=$value['name']?> (<?=$value['ct']?>)</a>
+                    <a title="<?=$value['ct']?>个话题" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?> (<?=$value['ct']?>)</a>
                 <?php } ?> 
                 </div>
             </div>

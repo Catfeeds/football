@@ -33,6 +33,12 @@ class VideoController extends HomeController{
 	}
 	public function actionList($cid='')
 	{
+		$t = SiteExt::getAttr('seo','home_video_list_title');
+        $k = SiteExt::getAttr('seo','home_video_list_keyword');
+        $d = SiteExt::getAttr('seo','home_video_list_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($cid) {
 			$criteria->addCondition('cid=:cid');
@@ -48,6 +54,12 @@ class VideoController extends HomeController{
 
 	public function actionInfo($id='')
 	{
+		$t = SiteExt::getAttr('seo','home_video_info_title');
+        $k = SiteExt::getAttr('seo','home_video_info_keyword');
+        $d = SiteExt::getAttr('seo','home_video_info_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		// var_dump($this->user);exit;
 		$info = ArticleExt::model()->findByPk($id);
 		$info->hits += 1;

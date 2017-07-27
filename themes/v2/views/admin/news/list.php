@@ -18,6 +18,9 @@ $this->breadcrumbs = array($this->pageTitle);
             <div class="form-group">
                 <?php echo CHtml::dropDownList('cate',$cate,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择栏目--')); ?>
             </div>
+            <div class="form-group">
+                <?php echo CHtml::dropDownList('tag',$tagName,$tags,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择标签--')); ?>
+            </div>
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>
         </form>
@@ -37,6 +40,7 @@ $this->breadcrumbs = array($this->pageTitle);
         <th class="text-center">标题</th>
         <th class="text-center">作者</th>
         <th class="text-center">栏目</th>
+        <th class="text-center">标签</th>
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
         <th class="text-center">状态</th>
@@ -51,7 +55,8 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
             <td class="text-center"><?=$v->title?></td>
             <td class="text-center"><?=$v->author?></td>
-            <td class="text-center"><?=$v->cid?$v->cate->name:'-'?></td>            
+            <td class="text-center"><?=$v->cid?$v->cate->name:'-'?></td> 
+            <td class="text-center"><?=$v->getTagString()?></td>            
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>

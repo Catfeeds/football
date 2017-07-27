@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <?php if(isset($this->obj) && get_class($this->obj)=='ArticleExt') {
+        foreach (['{site}'=>'球布斯','{title}'=>$this->obj->title,'{tag}'=>$this->obj->getTagString(),'{descpt}'=>$this->obj->descpt,'{cate}'=>isset($this->obj->cate->name)?$this->obj->cate->name:''] as $key => $value) {
+            // if(isset($value)) {
+                $this->pageTitle = str_replace($key, $value, $this->pageTitle);
+                $this->keyword = str_replace($key, $value, $this->keyword);
+                $this->description = str_replace($key, $value, $this->description);
+            // }
+        }
+        
+        } else {
+            foreach (['{site}'=>'球布斯'] as $key => $value) {
+            // if(isset($value)) {
+                $this->pageTitle = str_replace($key, $value, $this->pageTitle);
+                $this->keyword = str_replace($key, $value, $this->keyword);
+                $this->description = str_replace($key, $value, $this->description);
+            // }
+        }
+            }?>
     <title><?=$this->pageTitle?></title>
     <meta name="keywords" content="<?=$this->keyword?>" />
     <meta name="description" content="<?=$this->description?>" />

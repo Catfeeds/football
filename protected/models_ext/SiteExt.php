@@ -85,6 +85,12 @@ class SiteExt extends Site{
         'home_data_index_title'=>'',
         'home_data_index_desc'=>'',
         'home_data_index_keyword'=>'',
+        'home_album_list_title'=>'',
+        'home_album_list_desc'=>'',
+        'home_album_list_keyword'=>'',
+        'home_album_info_title'=>'',
+        'home_album_info_desc'=>'',
+        'home_album_info_keyword'=>'',
 
     ];
     public static $cateName = [
@@ -148,6 +154,12 @@ class SiteExt extends Site{
             'home_data_index_title'=>['type'=>'text','name'=>'数据标题'],
             'home_data_index_desc'=>['type'=>'text','name'=>'数据简介'],
             'home_data_index_keyword'=>['type'=>'text','name'=>'数据关键词'],
+            'home_album_list_title'=>['type'=>'text','name'=>'图库列表标题'],
+            'home_album_list_desc'=>['type'=>'text','name'=>'图库列表简介'],
+            'home_album_list_keyword'=>['type'=>'text','name'=>'图库列表关键词'],
+            'home_album_info_title'=>['type'=>'text','name'=>'图库详情标题'],
+            'home_album_info_desc'=>['type'=>'text','name'=>'图库详情简介'],
+            'home_album_info_keyword'=>['type'=>'text','name'=>'图库详情关键词'],
             // 'home/index/index_title'=>['type'=>'text','name'=>'首页标题'],
             // 'home/index/index_title'=>['type'=>'text','name'=>'首页标题'],
         ],

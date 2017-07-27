@@ -3,6 +3,12 @@ class IndexController extends HomeController
 {
     public function actionIndex($cid=0)
     {
+        $t = SiteExt::getAttr('seo','home_index_index_title');
+        $k = SiteExt::getAttr('seo','home_index_index_keyword');
+        $d = SiteExt::getAttr('seo','home_index_index_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
         // 三场比赛
         $matchs = MatchExt::model()->normal()->findAll(['limit'=>3]);
         // 所有分类
@@ -15,7 +21,7 @@ class IndexController extends HomeController
         if($cates) {
             foreach ($cates as $key => $value) {
                 $criteria = new CDbCriteria;
-                $criteria->limit = 3;
+                $criteria->limit = 5;
                 $criteria->addCondition('cid=:cid');
                 $criteria->params[':cid'] = $value['id'];
                 if($infos = ArticleExt::model()->normal()->findAll($criteria))

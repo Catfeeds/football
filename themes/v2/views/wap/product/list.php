@@ -20,7 +20,7 @@
             <div class="wrapper plr5">
             <?php if($infos) foreach ($infos as $key => $value) {?>
             <div class="projectitem wow fadeIn">
-                    <a href="<?=$this->createUrl('/cms/'.$value->id.'.html')?>">
+                    <a href="<?=$this->createUrl('info',['id'=>$value->id])?>">
                         <div class="project_img"><img src="<?=ImageTools::fixImage($value->image,200,150)?>" width="200" height="150" /></div>
                         <div class="project_info">
                             <div>

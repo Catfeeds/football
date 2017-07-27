@@ -2,6 +2,12 @@
 class DataController extends HomeController{
 	public function actionIndex($lid='',$type='',$land='')
 	{
+		$t = SiteExt::getAttr('seo','home_data_index_title');
+        $k = SiteExt::getAttr('seo','home_data_index_keyword');
+        $d = SiteExt::getAttr('seo','home_data_index_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$liarr = ['p'=>'积分榜','s'=>'射手榜','a'=>'助攻榜','t'=>'联赛赛制'];
 		$criteria = new CDbCriteria;
 		if($land) {

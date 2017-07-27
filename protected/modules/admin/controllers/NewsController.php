@@ -11,8 +11,10 @@ class NewsController extends AdminController{
 		parent::init();
 		$this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
 	}
-	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='')
+	public function actionList($type='title',$value='',$time_type='created',$time='',$cate='',$tag='')
 	{
+		$tagArr = [];
+		$tagName = '';
 		$criteria = new CDbCriteria;
 		if($value = trim($value))
             if ($type=='title') {
@@ -35,8 +37,21 @@ class NewsController extends AdminController{
 			$criteria->params[':cid'] = $cate;
 		}
 		$criteria->order = 'day desc,sort desc';
-		$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
-		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
+		if($tag) {
+			$tagName = TagExt::model()->findByPk($tag)->name;
+			// $tag = TagExt::getIdByPinyin($tag);
+			$infos = ArticleTagExt::findNewsByTag($tag,20);
+		} else {
+			$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
+		}
+		// $infos = ArticleExt::model()->undeleted()->getList($criteria,20);
+		$tags = Yii::app()->db->createCommand("select tid,name,count(tid) as ct from article_tag group by tid")->queryAll();
+		if($tags){
+			foreach ($tags as $k => $v) {
+				$tagArr[$v['tid']] = $v['name'];
+			}
+		}
+		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,'tags'=>$tagArr,'tagName'=>$tagName]);
 	}
 
 	public function actionEdit($id='',$page='')
@@ -47,6 +62,16 @@ class NewsController extends AdminController{
 			$tags = $values['tags'];
 			unset($values['tags']);
 			$info->attributes = $values;
+			if(strstr($info->content,'<img')) {
+				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
+				// var_dump($match);exit;
+				if(isset($match[1]) && $match[1]) {
+					foreach ($match[1] as $key => $value) {
+						$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+					}
+					
+				}
+			}
 			$info->updated = time();
 			if($info->save()) {
 				if($tags) {

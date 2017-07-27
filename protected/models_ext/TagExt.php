@@ -15,7 +15,7 @@ class TagExt extends Tag
         'direct' => [
             'wzlm' => '文章栏目',
             // 'xcfl' => '相册分类',
-            'hjlx' => '产品类型',
+            // 'hjlx' => '产品类型',
             // 'ptpz' => '葡萄品种',
             // 'hjxl' => '红酒系列',
             // 'jzdq' => '酒庄地区',
@@ -109,6 +109,8 @@ class TagExt extends Tag
      */
     public function beforeValidate()
     {
+        $this->name && $this->pinyin = Pinyin::get($this->name);
+        $this->cate = 'wzlm';
         if($this->getIsNewRecord())
             $this->created = $this->updated = time();
         else
@@ -283,5 +285,10 @@ class TagExt extends Tag
             $tagArray[$tag->id]=$tag->name;
         }
         return $tagArray;
+    }
+
+    public static function getIdByPinyin($value='')
+    {
+        return TagExt::model()->find("pinyin='$value'")->id;
     }
 }

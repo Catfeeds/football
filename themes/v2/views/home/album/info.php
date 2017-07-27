@@ -2,8 +2,8 @@
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/album-inner.css");
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-common.css");
 ?>
-<div class="inner-main" style="margin-left: 250px">
-<div class="left-con">
+<div class="inner-main" style="margin:0 auto">
+<div class="left-con" style="width: 100%">
         <div class="swp-wrap">
         <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
@@ -53,8 +53,8 @@
                     </div>
                 </div>
             </div>
-            <div class="share-box" style="height: auto">
-           		<p><?=$info->descpt?></p>
+            <div class="share-box" style="height: auto;width: 100%">
+           		<p style="padding-left: 10px"><?=$info->descpt?></p>
                 
             </div>
         </div>

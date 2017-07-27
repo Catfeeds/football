@@ -43,6 +43,7 @@ class ArticleCateExt extends ArticleCate{
     }
 
     public function beforeValidate() {
+        $this->name && $this->pinyin = Pinyin::get($this->name);
         if($this->getIsNewRecord())
             $this->created = $this->updated = time();
         else
@@ -93,5 +94,10 @@ class ArticleCateExt extends ArticleCate{
         } else {
             return '暂无';
         }
+    }
+
+    public static function getIdByPinyin($value='')
+    {
+        return ArticleCateExt::model()->find("pinyin='$value'")->id;
     }
 }

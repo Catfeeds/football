@@ -9,7 +9,7 @@
                         <li class="active"> <a href="<?=$this->createUrl('/home/video/list')?>">视频列表</a> &gt; <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
-                        <h1 class="article-title"><a href=""><?=$info->title?></a></h1>
+                        <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
                         <div class="meta">
                             <span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <a href=""><?=$info->author?></a></span>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>

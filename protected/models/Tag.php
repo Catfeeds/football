@@ -8,6 +8,7 @@
  * @property string $name
  * @property string $cate
  * @property string $desc
+ * @property string $pinyin
  * @property integer $parent
  * @property integer $sort
  * @property integer $status
@@ -34,10 +35,10 @@ class Tag extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('parent, sort, status, created, updated', 'numerical', 'integerOnly'=>true),
-			array('name, cate, desc', 'length', 'max'=>255),
+			array('name, cate, desc, pinyin', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, cate, desc, parent, sort, status, created, updated', 'safe', 'on'=>'search'),
+			array('id, name, cate, desc, pinyin, parent, sort, status, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +63,7 @@ class Tag extends CActiveRecord
 			'name' => 'Name',
 			'cate' => 'Cate',
 			'desc' => 'Desc',
+			'pinyin' => 'Pinyin',
 			'parent' => 'Parent',
 			'sort' => 'Sort',
 			'status' => 'Status',
@@ -92,6 +94,7 @@ class Tag extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('cate',$this->cate,true);
 		$criteria->compare('desc',$this->desc,true);
+		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('parent',$this->parent);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('status',$this->status);

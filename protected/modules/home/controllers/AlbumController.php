@@ -9,6 +9,7 @@ class AlbumController extends HomeController{
 
 	public function init()
 	{
+
 		parent::init();
 		$this->cates = CHtml::listData(TkCateExt::model()->normal()->findAll(),'id','name');
 		// 热门推荐
@@ -34,6 +35,12 @@ class AlbumController extends HomeController{
 	}
 	public function actionList($cid='',$kw='')
 	{
+		$t = SiteExt::getAttr('seo','home_album_list_title');
+        $k = SiteExt::getAttr('seo','home_album_list_keyword');
+        $d = SiteExt::getAttr('seo','home_album_list_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($kw) {
 			$criteria->addSearchCondition('title',$kw);
@@ -53,6 +60,12 @@ class AlbumController extends HomeController{
 
 	public function actionInfo($id='')
 	{
+		$t = SiteExt::getAttr('seo','home_album_info_title');
+        $k = SiteExt::getAttr('seo','home_album_info_keyword');
+        $d = SiteExt::getAttr('seo','home_album_info_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$this->styleowner = 0;
 		// var_dump($this->user);exit;
 		$info = TkExt::model()->findByPk($id);

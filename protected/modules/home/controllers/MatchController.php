@@ -2,6 +2,12 @@
 class MatchController extends HomeController{
 	public function actionIndex($time='',$lid='')
 	{
+		$t = SiteExt::getAttr('seo','home_match_index_title');
+        $k = SiteExt::getAttr('seo','home_match_index_keyword');
+        $d = SiteExt::getAttr('seo','home_match_index_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($time) {
 			$time = strtotime($time);

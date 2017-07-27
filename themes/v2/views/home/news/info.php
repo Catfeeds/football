@@ -12,7 +12,7 @@
                         <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/news/list',['cid'=>$cate->id])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
-                        <h1 class="article-title"><?=$info->title?></h1>
+                        <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
                         <br>
                         <div class="meta">
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <a href=""><?=$info->author?></a></span><?php endif;?>

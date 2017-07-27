@@ -13,6 +13,8 @@ class HomeController extends Controller
     private $pageTitle;
     //关键字
     private $kw;
+    //实体 详细页用
+    public $obj;
 
     //描述
     private $description;
@@ -49,16 +51,17 @@ class HomeController extends Controller
     public function init()
     {
         parent::init();
-        $path = trim(Yii::app()->request->getPathInfo(),'/');
-        if(!$path)
-            $path = 'home/index/index';
-        $path = str_replace('/', '_', $path);
-        $t = SiteExt::getAttr('seo',$path.'_title');
-        $k = SiteExt::getAttr('seo',$path.'_keyword');
-        $d = SiteExt::getAttr('seo',$path.'_desc');
-        $t && $this->pageTitle = $t;
-        $k && $this->keyword = $k;
-        $d && $this->description = $d;
+        // $path = trim(Yii::app()->request->getRequestUri(),'/');
+        // if(!$path)
+        //     $path = 'home/index/index';
+        // $path = str_replace('/', '_', $path);
+        // var_dump($path);exit;
+        // $t = SiteExt::getAttr('seo',$path.'_title');
+        // $k = SiteExt::getAttr('seo',$path.'_keyword');
+        // $d = SiteExt::getAttr('seo',$path.'_desc');
+        // $t && $this->pageTitle = $t;
+        // $k && $this->keyword = $k;
+        // $d && $this->description = $d;
 
         $user = Yii::app()->user;
         // var_dump($user->id);exit;
@@ -173,11 +176,11 @@ class HomeController extends Controller
         }
         return [
             ['name'=>'首页','url'=>'home/index/index','active'=>''],
-            ['name'=>'比赛','url'=>'match'],
-            ['name'=>'资讯','url'=>'cmslist','active'=>'cms'],
+            ['name'=>'比赛','url'=>'match','active'=>'match'],
+            ['name'=>'资讯','url'=>'news','active'=>'news'],
             ['name'=>'视频','url'=>'videos','active'=>'video'],
-            ['name'=>'图库','url'=>'albums','active'=>'album'],
-            ['name'=>'数据','url'=>'home/data/index','active'=>'data'],
+            ['name'=>'图库','url'=>'image','active'=>'image'],
+            ['name'=>'数据','url'=>'data','active'=>'data'],
             ['name'=>$username,'url'=>'home/user/index'],
         ];
     }

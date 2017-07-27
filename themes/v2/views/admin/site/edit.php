@@ -13,7 +13,20 @@ $this->breadcrumbs = array('站点配置', $this->pageTitle);
         'insertcode','|',
         'horizontal','inserttable','|',
         'print','preview','searchreplace']]")); ?>
+
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
+<?php if($_GET['type']=='seo'):?>
+    <div class="form-group">
+        <label class="col-md-2 control-label text-nowrap">可选列表</label>
+        <div class="clearfix">
+            <a href="javascript:;" onclick="setDe(this)" data-name='site' class="btn default">站点名</a>
+            <a href="javascript:;" onclick="setDe(this)" data-name='cate' class="btn default">栏目名</a>
+            <a href="javascript:;" onclick="setDe(this)" data-name='title' class="btn default">文章名</a>
+            <a href="javascript:;" onclick="setDe(this)" data-name='tag' class="btn default">文章标签</a>
+            <a href="javascript:;" onclick="setDe(this)" data-name='descpt' class="btn default">文章摘要</a>
+        </div>
+    </div>
+<?php endif;?>
 <?php foreach (SiteExt::$cateTag[$cate] as $key => $value) {?>
     <div class="form-group">
         <label class="col-md-2 control-label text-nowrap"><?=$value['name']?></label>
@@ -28,7 +41,7 @@ $this->breadcrumbs = array('站点配置', $this->pageTitle);
                   <?php }?>
                 </div>
         <?php elseif($value['type'] == 'text'):?>
-            <?php echo $form->textField($model, $key, array('class' => 'form-control')); ?>
+            <?php echo $form->textField($model, $key, array('class' => 'form-control fi','onfocus'=>'setFocus(this)')); ?>
 
         <?php endif;?>
         </div>
@@ -38,7 +51,7 @@ $this->breadcrumbs = array('站点配置', $this->pageTitle);
     <div class="row">
         <div class="col-md-offset-3 col-md-9">
             <button type="submit" class="btn green">保存</button>
-            <?php echo CHtml::link('返回',$this->createUrl('list'), array('class' => 'btn default')) ?>
+            <?php echo CHtml::link('返回',$this->createUrl('/admin/site/list'), array('class' => 'btn default')) ?>
         </div>
     </div>
 </div>
@@ -64,6 +77,16 @@ $this->breadcrumbs = array('站点配置', $this->pageTitle);
         $('.xqtp').find('img[src="'+img+'"]').parent().find('.ch_img').html('<a onclick="ch_img(this)" >点击选择</a>');
         $(obj).parent().remove();
 
+    }
+    function setDe(obj) {
+        var name = $(obj).data('name');
+        var html = $('.now').val();
+        $('.now').val(html+'{'+name+'}');
+        $('.now').focus();
+    }
+    function setFocus(obj) {
+         $('.fi').attr('class','form-control fi');
+        $(obj).attr('class','fi form-control now');
     }
     <?php Tools::endJs('js')?>
 </script>

@@ -34,16 +34,24 @@ class NewsController extends HomeController{
 	}
 	public function actionList($cid='',$kw='',$tag='')
 	{
+		$t = SiteExt::getAttr('seo','home_news_list_title');
+        $k = SiteExt::getAttr('seo','home_news_list_keyword');
+        $d = SiteExt::getAttr('seo','home_news_list_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($kw) {
 			$criteria->addSearchCondition('title',$kw);
 			$this->kw = $kw;
 		}
 		if($cid) {
+			$cid = ArticleCateExt::getIdByPinyin($cid);
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cid;
 		}
 		if($tag) {
+			$tag = TagExt::getIdByPinyin($tag);
 			$datas = ArticleTagExt::findNewsByTag($tag,20);
 		} else {
 			$datas = ArticleExt::model()->normal()->getList($criteria,20);
@@ -57,8 +65,16 @@ class NewsController extends HomeController{
 
 	public function actionInfo($id='')
 	{
-		// var_dump($this->user);exit;
 		$info = ArticleExt::model()->findByPk($id);
+		$this->obj = $info;
+		$t = SiteExt::getAttr('seo','home_news_info_title');
+        $k = SiteExt::getAttr('seo','home_news_info_keyword');
+        $d = SiteExt::getAttr('seo','home_news_info_desc');
+        $t && $this->pageTitle = $t;
+        $k && $this->keyword = $k;
+        $d && $this->description = $d;
+		// var_dump($this->user);exit;
+		
 		$info->hits += 1;
 		$info->save();
 		$this->render('info',['info'=>$info,'rights'=>$this->rights]);

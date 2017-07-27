@@ -80,7 +80,7 @@
             <?php endif;?>
                 <div class="zixun1">
                 <?php if($cates) foreach ($cates as $key => $value) {?>
-                   <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->id])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
+                   <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
                 <?php } ?>
                     </div>
                     <?php if($news) foreach ($news as $key => $values) { if($values) foreach ($values as $k => $value) {?>

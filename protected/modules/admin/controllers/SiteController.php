@@ -34,7 +34,7 @@ class SiteController extends AdminController
 					$this->setMessage(array_values($model->errors)[0][0],'error');
 			}
 			$this->setMessage('操作成功！','success');
-			$this->redirect('list');
+			$this->redirect('/admin/site/list');
 			Yii::app()->end();
 		}
 

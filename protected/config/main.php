@@ -173,17 +173,19 @@ $config1 = array(
                 //买房顾问
                 'maifangguwen' => 'home/adviser/index',
                 //前台资讯
-                'cms/<id:\d+>.html'=>'home/news/info',
-                'cmslist/<cid:\d+>'=>'home/news/list',
-                'cmslist/tag/<tag:\d+>'=>'home/news/list',
-                'cmslist'=>'home/news/list',
+                'news/<id:\d+>.html'=>'home/news/info',
+                'news/<cid:\w+>'=>'home/news/list',
+                'news/tag/<tag:\w+>'=>'home/news/list',
+                'news'=>'home/news/list',
+                'match'=>'home/match/index',
+                'data'=>'home/data/index',
                 //前台资讯
                 'video/<id:\d+>.html'=>'home/video/info',
                 'videos/<cid:\d+>'=>'home/video/list',
                 'videos'=>'home/video/list',
-                'albums'=>'home/album/list',
-                'album/<id:\d+>.html'=>'home/album/info',
-                'album/<cid:\d+>'=>'home/album/list',
+                'image'=>'home/album/list',
+                'image/<id:\d+>.html'=>'home/album/info',
+                'image/<cid:\d+>'=>'home/album/list',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
 
@@ -206,18 +208,18 @@ $config1 = array(
                 'wap/<py:[a-z0-9]+>/dianping' => 'wap/plot/comment',//v2临时改造
                 'wap/<py:[a-z0-9]+>/<_a:\w+>' => 'wap/plot/<_a>',
 
-                //PC楼盘
-                '<py:[a-z0-9]+>' => 'home/plot/index',
-                '<py:[a-z0-9]+>/album/<t:\d+>' => 'home/plot/album',
-                '<py:[a-z0-9]+>/huxing/<t:\d+>' => 'home/plot/huxing',
-                '<py:[a-z0-9]+>/img/<pid:\d+>_<offset:\d+>' => 'home/plot/image',
-                '<py:[a-z0-9]+>/img/<pid:\d+>' => 'home/plot/image',
-                '<py:[a-z0-9]+>/hx/<pid:\d+>_<offset:\d+>' => 'home/plot/hximg',
-                '<py:[a-z0-9]+>/hx/<pid:\d+>' => 'home/plot/hximg',
-                '<py:[a-z0-9]+>/pingce' => 'home/plot/evaluate',
-                '<py:[a-z0-9]+>/dianping' => 'home/plot/comment',
-                '<py:[a-z0-9]+>/<_a:\w+>' => 'home/plot/<_a>',
-                '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
+                // //PC楼盘
+                // '<py:[a-z0-9]+>' => 'home/plot/index',
+                // '<py:[a-z0-9]+>/album/<t:\d+>' => 'home/plot/album',
+                // '<py:[a-z0-9]+>/huxing/<t:\d+>' => 'home/plot/huxing',
+                // '<py:[a-z0-9]+>/img/<pid:\d+>_<offset:\d+>' => 'home/plot/image',
+                // '<py:[a-z0-9]+>/img/<pid:\d+>' => 'home/plot/image',
+                // '<py:[a-z0-9]+>/hx/<pid:\d+>_<offset:\d+>' => 'home/plot/hximg',
+                // '<py:[a-z0-9]+>/hx/<pid:\d+>' => 'home/plot/hximg',
+                // '<py:[a-z0-9]+>/pingce' => 'home/plot/evaluate',
+                // '<py:[a-z0-9]+>/dianping' => 'home/plot/comment',
+                // '<py:[a-z0-9]+>/<_a:\w+>' => 'home/plot/<_a>',
+                // '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
             ),
         ),
         //迅搜
