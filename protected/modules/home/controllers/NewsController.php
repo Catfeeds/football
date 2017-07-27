@@ -58,7 +58,13 @@ class NewsController extends HomeController{
 		}
 		$infos = $datas->data;
 		$pager = $datas->pagination;
-		
+		if($infos) {
+			$ids = '';
+			foreach ($infos as $key => $value) {
+				$ids .= $value->id.',';
+			}
+			setCookie('news_list_ids',trim($ids));
+		}
         // var_dump($this->cates);exit;
 		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
 	}
@@ -77,7 +83,18 @@ class NewsController extends HomeController{
 		
 		$info->hits += 1;
 		$info->save();
-		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
+		$nextid = $preid = '';
+		$lists = $_COOKIE['news_list_ids'];
+		if(isset($lists) && $lists) {
+			$lists = explode(',', $lists);
+			foreach ($lists as $key => $value) {
+				if($id==$value) {
+					isset($lists[$key+1]) && $nextid = $lists[$key+1];
+					isset($lists[$key-1]) && $preid = $lists[$key-1];
+				}
+			}
+		}
+		$this->render('info',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
 	}
 
 	public function actionSetPraise($id='')
