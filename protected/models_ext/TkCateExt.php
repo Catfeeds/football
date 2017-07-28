@@ -43,6 +43,7 @@ class TkCateExt extends TkCate{
     }
 
     public function beforeValidate() {
+        $this->name && $this->pinyin = Pinyin::get($this->name);
         if($this->getIsNewRecord())
             $this->created = $this->updated = time();
         else
@@ -93,5 +94,9 @@ class TkCateExt extends TkCate{
         } else {
             return '暂无';
         }
+    }
+    public static function getIdByPinyin($value='')
+    {
+        return TkCateExt::model()->find("pinyin='$value'")->id;
     }
 }

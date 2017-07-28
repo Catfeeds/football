@@ -7,6 +7,8 @@
  * @property integer $id
  * @property string $name
  * @property integer $status
+ * @property string $pinyin
+ * @property string $seo
  * @property integer $deleted
  * @property integer $sort
  * @property integer $created
@@ -32,10 +34,11 @@ class TkCate extends CActiveRecord
 		return array(
 			array('created', 'required'),
 			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('name, pinyin', 'length', 'max'=>255),
+			array('seo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, name, status, pinyin, seo, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +62,8 @@ class TkCate extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'status' => 'Status',
+			'pinyin' => 'Pinyin',
+			'seo' => 'Seo',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
 			'created' => 'Created',
@@ -87,6 +92,8 @@ class TkCate extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('pinyin',$this->pinyin,true);
+		$criteria->compare('seo',$this->seo,true);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);

@@ -2,17 +2,21 @@
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/album-inner.css");
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-common.css");
 ?>
-<div class="inner-main" style="margin:0 auto">
+<section class="container">
+<div class="content-wrap">
+
+<div class="inner-main" style="margin-left: 0;width: 760px;padding-right: 10px">
 <div class="left-con" style="width: 100%">
         <div class="swp-wrap">
         <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
-                        <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt; <?=$info->title?></li>
+                        <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;</li>
+                        <li class="active"> <a href="<?=$this->createUrl('/image/'.Pinyin::get($info->cate->name))?>"><?=$info->cate->name?></a> &gt; <?=$info->title?></li>
                     </ol>
             <div class="main" style="background-color: white">
                 <!--图片特效内容开始-->
                 <div class="piccontext">
-                    <h2> <?=$info->title?> </h2>
+                    <center>  <h1 style="font-size: 26px"> <?=$info->title?> </h1></center>
                     <div class="source">
                         <div class="source_left"> 发布时间:<span><?=date('Y-m-d H:i:s',$info->updated)?></span> </div>
                         <div class="source_right">
@@ -61,3 +65,8 @@
     </div>
 
     </div>
+    </div>
+    <aside class="sidebar">
+                <?php $this->widget('NewsRightWidget')?>
+            </aside>
+    </section>

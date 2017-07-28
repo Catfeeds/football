@@ -35,24 +35,34 @@ class AlbumController extends HomeController{
 	}
 	public function actionList($cid='',$kw='')
 	{
-		$t = SiteExt::getAttr('seo','home_album_list_title');
-        $k = SiteExt::getAttr('seo','home_album_list_keyword');
-        $d = SiteExt::getAttr('seo','home_album_list_desc');
-        $t && $this->pageTitle = $t;
-        $k && $this->keyword = $k;
-        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($kw) {
 			$criteria->addSearchCondition('title',$kw);
 			$this->kw = $kw;
 		}
 		if($cid) {
+			$cate = TkCateExt::model()->find(['condition'=>"pinyin='$cid'"]);
+			$seo = json_decode($cate->seo,true);
+			if(isset($seo['t']) && $seo['t'])
+				$this->pageTitle = $seo['t'];
+			if(isset($seo['d']) && $seo['d'])
+				$this->description = $seo['d'];
+			if(isset($seo['k']) && $seo['k'])
+				$this->keyword = $seo['k'];
 			$criteria->addCondition('cid=:cid');
-			$criteria->params[':cid'] = $cid;
+			$criteria->params[':cid'] = $cate->id;
+			$cid = $cate->id;
 		}
-		$datas = TkExt::model()->normal()->getList($criteria,20);
+		$datas = TkExt::model()->normal()->getList($criteria,18);
 		$infos = $datas->data;
 		$pager = $datas->pagination;
+		if($infos) {
+			$ids = '';
+			foreach ($infos as $key => $value) {
+				$ids .= $value->id.',';
+			}
+			setCookie('album_list_ids',trim($ids));
+		}
 		
         // var_dump($this->cates);exit;
 		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
@@ -69,8 +79,20 @@ class AlbumController extends HomeController{
 		$this->styleowner = 0;
 		// var_dump($this->user);exit;
 		$info = TkExt::model()->findByPk($id);
-		$info->save();
-		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
+		// $info->save();
+		$nextid = $preid = '';
+		$lists = $_COOKIE['album_list_ids'];
+		if(isset($lists) && $lists) {
+			$lists = explode(',', $lists);
+			foreach ($lists as $key => $value) {
+				if($id==$value) {
+					isset($lists[$key+1]) && $nextid = $lists[$key+1];
+					isset($lists[$key-1]) && $preid = $lists[$key-1];
+				}
+			}
+		}
+		// $this->render('info',['info'=>$info,'rights'=>$this->rights]);
+		$this->render('imageinfo',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
 	}
 
 	public function actionSetPraise($id='')

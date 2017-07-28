@@ -130,4 +130,12 @@ class TkExt extends Tk{
         );
     }
 
+    public function getRelAlbum()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('id<>'.$this->id.' and cid='.$this->cid);
+        $criteria->limit = 8;
+        return self::model()->normal()->findAll($criteria);
+    }
+
 }

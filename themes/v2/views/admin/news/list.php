@@ -35,6 +35,7 @@ $this->breadcrumbs = array($this->pageTitle);
    <table class="table table-bordered table-striped table-condensed flip-content table-hover">
     <thead class="flip-content">
     <tr>
+        <th></th>
         <th class="text-center">排序</th>
         <th class="text-center">ID</th>
         <th class="text-center">标题</th>
@@ -50,6 +51,8 @@ $this->breadcrumbs = array($this->pageTitle);
     <tbody>
     <?php foreach($infos as $k=>$v): ?>
         <tr>
+            <td style="text-align:center;vertical-align: middle"><input type="checkbox" name="item[]" value="<?php echo $v['id'] ?>"
+                                           class="checkboxes"></td>
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
@@ -71,6 +74,10 @@ $this->breadcrumbs = array($this->pageTitle);
     <?php endforeach;?>
     </tbody>
 </table>
+<div class="form-group">
+    <button type="button" class="btn btn-success btn-sm group-checkable" data-set=".checkboxes">全选/反选</button>
+    <?php echo CHtml::ajaxButton('删除所选', $this->createUrl('del'), array('data' => array('id' => 'js:getChecked()','class'=>'ArticleExt'), 'type' => 'post', 'success' => 'function(data){location.reload()}', 'beforeSend' => 'function(){if(!getChecked()){toastr.error("请至少选择一项！");return false;}}'), array('class' => 'btn btn-success btn-sm')); ?>
+</div>
 <?php $this->widget('VipLinkPager', array('pages'=>$pager)); ?>
 
 <script>

@@ -1,3 +1,6 @@
+<?php 
+    Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-newslist.css");
+?>
 <section class="container">
             <!-- <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
@@ -6,22 +9,21 @@
             <div class="content-wrap">
                 <div class="content">
                     <div class="archive-header">
-                        <ol class="breadcrumb container" style="width: 96%">
-                        <style type="text/css">
-                            .active a{
-                                color: #999 !important;
-                            }
-                        </style>
-                            <li class="home"> <a href="<?=$this->createUrl('list')?>">&nbsp;全部&nbsp;</a></li>
+                        <div class="dao_nav">
+                            <div class="dao_nav1">
+                            <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px"><?=$cid?ArticleCateExt::model()->findByPk($cid)->name:'资讯列表'?></h1></div>
+                            <div class="dao_nav1_r fr"><span>
                             <?php if($cates) foreach ($cates as $key => $value) {?>
-                                <li class="<?=$cid==$key?'active':''?>"><a href="<?=$this->createUrl('list',['cid'=>Pinyin::get($value)])?>">&nbsp;<?=$value?>&nbsp;</a></li>
+                                <?php if($key!=$cid):?><a href="<?=$this->createUrl('list',['cid'=>Pinyin::get($value)])?>"><?=$value?></a> | <?php endif;?>
                             <?php } ?>
-                        </ol>
+                            </span></div>
+                            </div>
+                        </div>
                     </div>
                     <?php if(isset($_GET['tag']) &&  ($tag = TagExt::model()->find("pinyin='".$_GET['tag']."'")->name )) {?>
-                       <span style="margin-top: 10px">相关标签： <h5 href="" style="    width: auto;opacity: .70;filter: alpha(opacity=80);color: #fff;background-color: #09a8c5;display: inline-block;margin: 6px 5px 5px 0;padding: 2px 6px;line-height: 24px;">
+                       <span style="margin-top: 10px">相关标签： <h1 style="font-size:16px;width: auto;opacity: .70;filter: alpha(opacity=80);color: #fff;background-color: #09a8c5;display: inline-block;margin: 6px 5px 5px 0;padding: 2px 6px;line-height: 24px;">
                             <?=$tag?>
-                        </h5></span>
+                        </h1></span>
                     <?php }
 
                     ?>
@@ -43,6 +45,19 @@
                         }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,200)?>
                             
                         </span>
+                        <br><br>
+                        <div class="detail_title_nav_r ">
+                        
+                            <?php if($tags = $value->getTagString()) {?>
+                                <span class="note">标签：
+                                <?php $tags = explode(' ', $tags);
+                                foreach ($tags as $k => $v) {?>
+                                    <a class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
+                                <?php }?>
+                                </span>
+                                <?php }?>
+                           
+                        </div>
                         <p class="auth-span">
                             <span class="muted"><i class="fa fa-clock-o"></i><?=Tools::friendlyDate($value->created)?></span>
                             <span class="muted"><i class="fa fa-eye"></i><?=$value->hits?> </span>

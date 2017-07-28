@@ -62,6 +62,16 @@ class ArticleExt extends Article{
 
     public function afterFind() {
         parent::afterFind();
+
+        if(!$this->descpt) {
+            $html = preg_replace("/<([a-z]+)[^>]*>/i","",$this->content);
+            if($html) {
+                $html = preg_replace("/\<\/[a-z]+\>/","",$html);
+                // var_dump($html);exit;
+                $wd = $html;
+            }
+            $this->descpt = substr($wd, 0,400);
+        }  
         if(!$this->image){
             preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$this->content,$match);
             // var_dump($match);exit;   

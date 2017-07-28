@@ -8,6 +8,7 @@
  * @property string $name
  * @property string $pinyin
  * @property integer $status
+ * @property string $seo
  * @property integer $deleted
  * @property integer $sort
  * @property integer $created
@@ -34,9 +35,10 @@ class ArticleCate extends CActiveRecord
 			array('created', 'required'),
 			array('status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('name, pinyin', 'length', 'max'=>255),
+			array('seo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, pinyin, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, status, seo, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +63,7 @@ class ArticleCate extends CActiveRecord
 			'name' => 'Name',
 			'pinyin' => 'Pinyin',
 			'status' => 'Status',
+			'seo' => 'Seo',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
 			'created' => 'Created',
@@ -90,6 +93,7 @@ class ArticleCate extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('seo',$this->seo,true);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);

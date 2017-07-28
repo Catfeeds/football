@@ -175,7 +175,7 @@ $config1 = array(
                 //前台资讯
                 'news/<id:\d+>.html'=>'home/news/info',
                 'news/<cid:\w+>'=>'home/news/list',
-                'news/tag/<tag:\w+>'=>'home/news/list',
+                'tag/<tag:\w+>'=>'home/news/list',
                 'news'=>'home/news/list',
                 'match'=>'home/match/index',
                 'data'=>'home/data/index',
@@ -185,7 +185,7 @@ $config1 = array(
                 'videos'=>'home/video/list',
                 'image'=>'home/album/list',
                 'image/<id:\d+>.html'=>'home/album/info',
-                'image/<cid:\d+>'=>'home/album/list',
+                'image/<cid:\w+>'=>'home/album/list',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
 

@@ -52,7 +52,9 @@ class AlbumController extends AdminController{
 			
 			$values = Yii::app()->request->getPost($modelName,[]);
 			$album = $values['album'];
+			$des = $values['image_des'];
 			unset($values['album']);
+			unset($values['image_des']);
 			$info->attributes = $values;
 			// $info->is_album = 1;
 			// var_dump($album);exit;
@@ -62,6 +64,7 @@ class AlbumController extends AdminController{
 					foreach ($album as $key => $value) {
 						$albu = new AlbumExt;
 						$albu->aid = $info->id;
+						$albu->name = isset($des[$key]) && $des[$key]?$des[$key]:'';
 						$albu->url = $value;
 						$albu->save();
 					}

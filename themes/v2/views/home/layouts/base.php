@@ -8,18 +8,18 @@
     <?php if(isset($this->obj) && get_class($this->obj)=='ArticleExt') {
         foreach (['{site}'=>'球布斯','{title}'=>$this->obj->title,'{tag}'=>$this->obj->getTagString(),'{descpt}'=>$this->obj->descpt,'{cate}'=>isset($this->obj->cate->name)?$this->obj->cate->name:''] as $key => $value) {
             // if(isset($value)) {
-                $this->pageTitle = str_replace($key, $value, $this->pageTitle);
-                $this->keyword = str_replace($key, $value, $this->keyword);
-                $this->description = str_replace($key, $value, $this->description);
+                $this->pageTitle && $this->pageTitle = str_replace($key, $value, $this->pageTitle);
+                $this->keyword && $this->keyword = str_replace($key, $value, $this->keyword);
+                $this->description && $this->description = str_replace($key, $value, $this->description);
             // }
         }
         
         } else {
             foreach (['{site}'=>'球布斯'] as $key => $value) {
             // if(isset($value)) {
-                $this->pageTitle = str_replace($key, $value, $this->pageTitle);
-                $this->keyword = str_replace($key, $value, $this->keyword);
-                $this->description = str_replace($key, $value, $this->description);
+                $this->pageTitle && $this->pageTitle = str_replace($key, $value, $this->pageTitle);
+                $this->keyword && $this->keyword = str_replace($key, $value, $this->keyword);
+                $this->description && $this->description = str_replace($key, $value, $this->description);
             // }
         }
             }?>

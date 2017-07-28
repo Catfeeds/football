@@ -21,6 +21,25 @@ $this->breadcrumbs = array('资讯分类管理', $this->pageTitle);
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'name') ?></div>
 </div>
+<?php $seo = json_decode($article->seo,true) ?>
+<div class="form-group">
+    <label class="col-md-2 control-label">seo标题<span class="required" aria-required="true">*</span></label>
+    <div class="col-md-4">
+        <input type="text" name="<?=get_class($article).'[seo_title]'?>" class="form-control" value="<?=isset($seo['t'])?$seo['t']:''?>">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-2 control-label">seo简介<span class="required" aria-required="true">*</span></label>
+    <div class="col-md-4">
+        <input type="text" name="<?=get_class($article).'[seo_desc]'?>" class="form-control" value="<?=isset($seo['d'])?$seo['d']:''?>">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-2 control-label">seo关键词<span class="required" aria-required="true">*</span></label>
+    <div class="col-md-4">
+        <input type="text" name="<?=get_class($article).'[seo_key]'?>" class="form-control" value="<?=isset($seo['k'])?$seo['k']:''?>">
+    </div>
+</div>
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
     <div class="col-md-4">

@@ -52,11 +52,11 @@ function um_check_login(){
 
 // 清理百度分享多余代码
 
-window.onload=function(){
+// window.onload=function(){
 
-  $('#bdshare_s').html('');
+//   $('#bdshare_s').html('');
 
-};
+// };
 
 
 

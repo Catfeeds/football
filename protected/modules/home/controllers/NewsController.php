@@ -34,25 +34,38 @@ class NewsController extends HomeController{
 	}
 	public function actionList($cid='',$kw='',$tag='')
 	{
-		$t = SiteExt::getAttr('seo','home_news_list_title');
-        $k = SiteExt::getAttr('seo','home_news_list_keyword');
-        $d = SiteExt::getAttr('seo','home_news_list_desc');
-        $t && $this->pageTitle = $t;
-        $k && $this->keyword = $k;
-        $d && $this->description = $d;
 		$criteria = new CDbCriteria;
 		if($kw) {
 			$criteria->addSearchCondition('title',$kw);
 			$this->kw = $kw;
 		}
 		if($cid) {
-			$cid = ArticleCateExt::getIdByPinyin($cid);
+			$cate = ArticleCateExt::model()->find(['condition'=>"pinyin='$cid'"]);
+			$seo = json_decode($cate->seo,true);
+			if(isset($seo['t']) && $seo['t'])
+				$this->pageTitle = $seo['t'];
+			if(isset($seo['d']) && $seo['d'])
+				$this->description = $seo['d'];
+			if(isset($seo['k']) && $seo['k'])
+				$this->keyword = $seo['k'];
 			$criteria->addCondition('cid=:cid');
-			$criteria->params[':cid'] = $cid;
+			$criteria->params[':cid'] = $cate->id;
+			$cid = $cate->id;
 		}
 		if($tag) {
-			$tag = TagExt::getIdByPinyin($tag);
-			$datas = ArticleTagExt::findNewsByTag($tag,20);
+			$tag = TagExt::model()->find(['condition'=>"pinyin='$tag'"]);
+			$tagName = $tag->name;
+			$t = SiteExt::getAttr('seo','home_news_tag_title');
+	        $k = SiteExt::getAttr('seo','home_news_tag_keyword');
+	        $d = SiteExt::getAttr('seo','home_news_tag_desc');
+
+	        foreach (['{site}'=>'球布斯','{tag}'=>$tagName] as $key => $value) {
+	        	$t && $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $this->keyword = str_replace($key, $value, $k);
+		        $d && $this->description = str_replace($key, $value, $d);
+	        }
+			
+			$datas = ArticleTagExt::findNewsByTag($tag->id,20);
 		} else {
 			$datas = ArticleExt::model()->normal()->getList($criteria,20);
 		}

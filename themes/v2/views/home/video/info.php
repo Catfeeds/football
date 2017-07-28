@@ -140,7 +140,7 @@
                 </div>
             </div>
             <aside class="sidebar">
-                <?php $this->widget('CommonRightWidget',$rights)?>
+                <?php $this->widget('NewsRightWidget')?>
             </aside>
         </section>
         <script type="text/javascript">

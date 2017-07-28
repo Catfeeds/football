@@ -1,6 +1,4 @@
-<?php
-  $this->pageTitle = '首页';
-?>
+
 <?php 
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-index.css");
     // Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/match-common.css");

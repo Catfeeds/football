@@ -35,7 +35,15 @@ class AlbumcateController extends AdminController{
 	{
 		$info = $id ? TkCateExt::model()->findByPk($id) : new TkCateExt;
 		if(Yii::app()->request->getIsPostRequest()) {
-			$info->attributes = Yii::app()->request->getPost('TkCateExt',[]);
+			$values = Yii::app()->request->getPost('TkCateExt',[]);
+			$title = $values['seo_title'];
+			$desc = $values['seo_desc'];
+			$key = $values['seo_key'];	
+			$info->seo = json_encode(['t'=>$title,'d'=>$desc,'k'=>$key]);
+			unset($values['seo_title']);
+			unset($values['seo_desc']);
+			unset($values['seo_key']);
+			$info->attributes = $values;
 
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);
