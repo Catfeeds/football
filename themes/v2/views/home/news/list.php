@@ -11,7 +11,12 @@
                     <div class="archive-header">
                         <div class="dao_nav">
                             <div class="dao_nav1">
-                            <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px;margin-left: 20px"><?=($cid?ArticleCateExt::model()->findByPk($cid)->name:(isset($_GET['tag'])?(TagExt::model()->find("pinyin='".$_GET['tag']."'")->name):'资讯列表'))?></h1></div>
+                            <?php if(isset($_GET['tag'])) {
+                                $nowtag = TagExt::model()->find("pinyin='".$_GET['tag']."'")->name;
+                                } else {
+                                    $nowtag = '';
+                                    }?>
+                            <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px;margin-left: 20px"><?=($cid?ArticleCateExt::model()->findByPk($cid)->name:($nowtag?($nowtag):'资讯列表'))?></h1></div>
                             <div class="dao_nav1_r fr"><span>
                             <?php if($cates) foreach ($cates as $key => $value) {?>
                                 <?php if($key!=$cid):?><a href="<?=$this->createUrl('list',['cid'=>Pinyin::get($value)])?>"><?=$value?></a> | <?php endif;?>
@@ -45,7 +50,7 @@
                                 <span class="note">标签：
                                 <?php $tags = explode(' ', $tags);
                                 foreach ($tags as $k => $v) {?>
-                                    <a href="<?=$this->createUrl('list',['tag'=>Pinyin::get($v)])?>" class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
+                                    <a href="<?=$this->createUrl('list',['tag'=>Pinyin::get($v)])?>" class="biaoqian<?=$nowtag?($v==$nowtag?2:1):($k==0?'2':'1')?>"><?=$v?></a>
                                 <?php }?>
                                 </span>
                                 <?php }?>
