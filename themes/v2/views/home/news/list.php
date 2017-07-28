@@ -11,7 +11,7 @@
                     <div class="archive-header">
                         <div class="dao_nav">
                             <div class="dao_nav1">
-                            <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px"><?=$cid?ArticleCateExt::model()->findByPk($cid)->name:'资讯列表'?></h1></div>
+                            <div class="dao_nav1_l fl"> <h1 style="font-size: 20px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px"><?=($cid?ArticleCateExt::model()->findByPk($cid)->name:(isset($_GET['tag'])?('标签：'.TagExt::model()->find("pinyin='".$_GET['tag']."'")->name):'资讯列表'))?></h1></div>
                             <div class="dao_nav1_r fr"><span>
                             <?php if($cates) foreach ($cates as $key => $value) {?>
                                 <?php if($key!=$cid):?><a href="<?=$this->createUrl('list',['cid'=>Pinyin::get($value)])?>"><?=$value?></a> | <?php endif;?>
@@ -20,13 +20,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php if(isset($_GET['tag']) &&  ($tag = TagExt::model()->find("pinyin='".$_GET['tag']."'")->name )) {?>
-                       <span style="margin-top: 10px">相关标签： <h1 style="font-size:16px;width: auto;opacity: .70;filter: alpha(opacity=80);color: #fff;background-color: #09a8c5;display: inline-block;margin: 6px 5px 5px 0;padding: 2px 6px;line-height: 24px;">
-                            <?=$tag?>
-                        </h1></span>
-                    <?php }
-
-                    ?>
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
                         <header>
@@ -52,7 +45,7 @@
                                 <span class="note">标签：
                                 <?php $tags = explode(' ', $tags);
                                 foreach ($tags as $k => $v) {?>
-                                    <a class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
+                                    <a href="<?=$this->createUrl('list',['tag'=>Pinyin::get($v)])?>" class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
                                 <?php }?>
                                 </span>
                                 <?php }?>

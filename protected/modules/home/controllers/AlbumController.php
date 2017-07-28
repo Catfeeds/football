@@ -1,4 +1,7 @@
 <?php
+/**
+ * 相册控制器
+ */
 class AlbumController extends HomeController{
 
 	public $cates = [];

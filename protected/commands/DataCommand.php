@@ -6,6 +6,12 @@
  */
 class DataCommand extends CConsoleCommand
 {
+	/**
+	 * [actionLeague 联赛脚本]
+	 * @param  integer $id   [description]
+	 * @param  integer $page [description]
+	 * @return [type]        [description]
+	 */
 	public function actionLeague($id=0,$page=0)
 	{
 		begin:
@@ -40,6 +46,12 @@ class DataCommand extends CConsoleCommand
 		}
 	}
 
+	/**
+	 * [actionNews 资讯]
+	 * @param  integer $id   [description]
+	 * @param  string  $date [description]
+	 * @return [type]        [description]
+	 */
 	public function actionNews($id=0,$date='')
 	{
 		$page = 0;
@@ -101,6 +113,12 @@ class DataCommand extends CConsoleCommand
 		// $this->end();
 	}
 
+	/**
+	 * [actionTeam 球队]
+	 * @param  integer $id   [description]
+	 * @param  integer $page [description]
+	 * @return [type]        [description]
+	 */
 	public function actionTeam($id=0,$page=0)
 	{
 		begin:

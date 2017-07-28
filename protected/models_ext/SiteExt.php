@@ -269,6 +269,12 @@ class SiteExt extends Site{
         return $this;
     }
 
+    /**
+     * [getAttr 获取配置]
+     * @param  string $cate [类别]
+     * @param  string $attr [属性]
+     * @return [type]       [description]
+     */
     public static function getAttr($cate='',$attr='')
     {
         if(!in_array($attr, array_keys(SiteExt::$cates)))

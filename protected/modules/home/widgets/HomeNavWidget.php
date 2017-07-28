@@ -13,6 +13,9 @@ class HomeNavWidget extends CWidget
 		$path = Yii::app()->request->getPathInfo();
 		// var_dump($path);exit;
 		$path = ltrim($path,'/');
+		if(strstr($path,'tag')) {
+			$path = 'news';
+		}
 		$menus = $this->owner->getHomeMenu();
 		$html = "";
 		foreach ($menus as $key => $value) {

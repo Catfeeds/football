@@ -1,4 +1,7 @@
 <?php
+/**
+ * 资讯控制器
+ */
 class NewsController extends HomeController{
 
 	public $cates = [];
@@ -12,25 +15,15 @@ class NewsController extends HomeController{
 		parent::init();
 		$this->cates = CHtml::listData(ArticleCateExt::model()->normal()->findAll(),'id','name');
 		// 热门推荐
-        $rmtjs = RecomExt::getObjFromCate(2,6);
+        // $rmtjs = RecomExt::getObjFromCate(2,6);
         // 三个联赛
-        $leas = LeagueExt::model()->normal()->findAll(['limit'=>3]);
+        // $leas = LeagueExt::model()->normal()->findAll(['limit'=>3]);
         // 积分
         $points = [];
-        if($leas) {
-            foreach ($leas as $key => $value) {
-                $criteria = new CDbCriteria;
-                $criteria->addCondition('lid=:lid');
-                $criteria->params[':lid'] = $value->id;
-                $criteria->order = 'points desc';
-                $criteria->limit = 10;
-                $points[] = PointsExt::model()->findAll($criteria);
-
-            }
-        }
+        
         // 十个评论
-        $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
-        $this->rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
+        // $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
+        // $this->rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms];
 	}
 	public function actionList($cid='',$kw='',$tag='')
 	{
@@ -40,6 +33,7 @@ class NewsController extends HomeController{
 			$this->kw = $kw;
 		}
 		if($cid) {
+			// 拼音转换+栏目seo
 			$cate = ArticleCateExt::model()->find(['condition'=>"pinyin='$cid'"]);
 			$seo = json_decode($cate->seo,true);
 			if(isset($seo['t']) && $seo['t'])
@@ -53,6 +47,7 @@ class NewsController extends HomeController{
 			$cid = $cate->id;
 		}
 		if($tag) {
+			// 拼音转换+标签seo
 			$tag = TagExt::model()->find(['condition'=>"pinyin='$tag'"]);
 			$tagName = $tag->name;
 			$t = SiteExt::getAttr('seo','home_news_tag_title');
@@ -71,6 +66,7 @@ class NewsController extends HomeController{
 		}
 		$infos = $datas->data;
 		$pager = $datas->pagination;
+		// 存列表cookie 用于上下篇
 		if($infos) {
 			$ids = '';
 			foreach ($infos as $key => $value) {
@@ -79,13 +75,14 @@ class NewsController extends HomeController{
 			setCookie('news_list_ids',trim($ids));
 		}
         // var_dump($this->cates);exit;
-		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
+		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates]);
 	}
 
 	public function actionInfo($id='')
 	{
 		$info = ArticleExt::model()->findByPk($id);
 		$this->obj = $info;
+		// 详情页seo
 		$t = SiteExt::getAttr('seo','home_news_info_title');
         $k = SiteExt::getAttr('seo','home_news_info_keyword');
         $d = SiteExt::getAttr('seo','home_news_info_desc');
@@ -97,6 +94,7 @@ class NewsController extends HomeController{
 		$info->hits += 1;
 		$info->save();
 		$nextid = $preid = '';
+		// 取列表cookie 用于上下篇
 		$lists = $_COOKIE['news_list_ids'];
 		if(isset($lists) && $lists) {
 			$lists = explode(',', $lists);
@@ -107,9 +105,13 @@ class NewsController extends HomeController{
 				}
 			}
 		}
-		$this->render('info',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
+		$this->render('info',['info'=>$info,'nextid'=>$nextid,'preid'=>$preid]);
 	}
-
+	/**
+	 * [actionSetPraise 点赞操作]
+	 * @param  string $id [description]
+	 * @return [type]     [description]
+	 */
 	public function actionSetPraise($id='')
 	{
 		if(!$this->user) {

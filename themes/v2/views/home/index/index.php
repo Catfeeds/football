@@ -1,6 +1,7 @@
 
 <?php 
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-index.css");
+    Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-newslist.css");
     // Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/match-common.css");
 ?>
 <section class="container">
@@ -98,9 +99,22 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,200)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,160)?>
                             
                         </span>
+                        <br>
+                        <div class="detail_title_nav_r ">
+                        
+                            <?php if($tags = $value->getTagString()) {?>
+                                <span class="note">标签：
+                                <?php $tags = explode(' ', $tags);
+                                foreach ($tags as $k => $v) {?>
+                                    <a href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($v)])?>" class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
+                                <?php }?>
+                                </span>
+                                <?php }?>
+                           
+                        </div>
                 </article>
                    <?php  } ?>
                     
@@ -149,6 +163,7 @@
         </aside>
     </section>
     <script type="text/javascript">
+        // 换tab
         function changeA(obj) {
             $('.zxcate').attr('class','');
             cid = $(obj).data('id');

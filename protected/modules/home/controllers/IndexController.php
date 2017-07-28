@@ -1,8 +1,12 @@
 <?php
+/**
+ * 首页控制器
+ */
 class IndexController extends HomeController
 {
     public function actionIndex($cid=0)
     {
+        // seo
         $t = SiteExt::getAttr('seo','home_index_index_title');
         $k = SiteExt::getAttr('seo','home_index_index_keyword');
         $d = SiteExt::getAttr('seo','home_index_index_desc');
