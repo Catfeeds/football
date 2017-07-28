@@ -109,7 +109,7 @@
                                 <span class="note">标签：
                                 <?php $tags = explode(' ', $tags);
                                 foreach ($tags as $k => $v) {?>
-                                    <a href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($v)])?>" class="biaoqian<?=$k==0?2:1?>"><?=$v?></a>
+                                    <a href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($v)])?>" class="biaoqian2"><?=$v?></a>
                                 <?php }?>
                                 </span>
                                 <?php }?>
