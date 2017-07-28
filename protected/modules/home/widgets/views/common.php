@@ -1,18 +1,4 @@
-<!-- <div class="widget d_postlist">
 
-                <div class="title">
-                    <h2><sapn class="title_span">热门推荐</span></h2></div>
-                <ul>
-                <?php if($rmtjs) foreach ($rmtjs as $key => $v) {  $value = $v->getObj();  if($value): ?>
-                   <li>
-                   <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>">
-                   <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,93,64)?>" /></span>
-                   <span class="text"><?=$value->title?></span>
-                   <span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span>
-                   </a></li>
-                <?php endif; } ?>
-                </ul>
-            </div> -->
             <?php if($matchs): ?>
             <div class="widget d_textbanner"><a class="style01" style="color: #00b7ee" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong style="background-color:#00b7ee ">近期比赛</strong>
             <div style="margin-bottom: 11px">
@@ -68,7 +54,21 @@
             </div>
             </a></div><?php endif;?>
 <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
-            
+            <div class="widget d_postlist">
+
+                <div class="title">
+                    <h2><sapn class="title_span">热门推荐</span></h2></div>
+                <ul>
+                <?php if($rmtjs) foreach ($rmtjs as $key => $v) {  $value = $v->getObj();  if($value): ?>
+                   <li>
+                   <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>" style="padding-bottom: 0">
+                   <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" /></span>
+                   <span class="text"><?=$value->title?></span>
+                   <span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span>
+                   </a></li>
+                <?php endif; } ?>
+                </ul>
+            </div>
             <style type="text/css">
                         .fa{
                                 line-height: initial;
@@ -94,6 +94,7 @@
                         border: none !important;
                        }
                    </style>
+
             <div class="widget widget_categories d_textbanner"><strong class="str1">积分榜</strong>
                <div class="row" style="width: 90%;margin:0 auto">
                    <ul class="nav nav-tabs" style="margin-bottom: 0px;">
