@@ -13,6 +13,8 @@ class HomeNavWidget extends CWidget
 		$path = Yii::app()->request->getPathInfo();
 		// var_dump($path);exit;
 		$path = ltrim($path,'/');
+		if(!$path)
+			$path = 'index';
 		if(strstr($path,'tag')) {
 			$path = 'news';
 		}

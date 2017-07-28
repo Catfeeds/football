@@ -175,7 +175,7 @@ class HomeController extends Controller
             $username = $this->user->name;
         }
         return [
-            ['name'=>'首页','url'=>'home/index/index','active'=>''],
+            ['name'=>'首页','url'=>'home/index/index','active'=>'index'],
             ['name'=>'比赛','url'=>'match','active'=>'match'],
             ['name'=>'资讯','url'=>'news','active'=>'news'],
             ['name'=>'视频','url'=>'videos','active'=>'video'],
