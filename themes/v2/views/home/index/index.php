@@ -99,7 +99,7 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,160)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,156)?>
                             
                         </span>
                         <br>
