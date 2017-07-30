@@ -67,6 +67,7 @@ class AdminController extends Controller
                 ['label' => '资讯列表', 'url' => ['/admin/news/list'],'active'=>$this->route=='admin/news/edit'],
                 ['label' => '资讯分类', 'url' => ['/admin/newscate/list'],'active'=>$this->route=='admin/newscate/edit'],
             ]],
+            ['label'=>'视频管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
             ['label' => '图库管理', 'icon' => 'icon-speedometer', 'items' => [
                 ['label' => '图库列表', 'url' => ['/admin/album/list'],'active'=>$this->route=='admin/album/edit'],
                 ['label' => '图库分类', 'url' => ['/admin/albumcate/list'],'active'=>$this->route=='admin/albumcate/edit'],
@@ -79,7 +80,7 @@ class AdminController extends Controller
             ]],
             // ['label'=>'球员管理','icon'=>'icon-speedometer','url'=>['/admin/player/list'],'active'=>$this->route=='admin/player/edit'],
             ['label'=>'比赛管理','icon'=>'icon-speedometer','url'=>['/admin/match/list'],'active'=>$this->route=='admin/match/edit'],
-            ['label'=>'直播管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
+            // ['label'=>'直播管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
             ['label'=>'评论管理','icon'=>'icon-speedometer','url'=>['/admin/comment/list'],'active'=>$this->route=='admin/comment/edit'],
             ['label'=>'积分管理','icon'=>'icon-speedometer','url'=>['/admin/points/list'],'active'=>$this->route=='admin/points/edit'],
             ['label'=>'友链管理','icon'=>'icon-speedometer','url'=>['/admin/link/list'],'active'=>$this->route=='admin/link/edit'],

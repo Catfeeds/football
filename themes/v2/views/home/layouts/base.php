@@ -75,24 +75,28 @@
 
 </style>
 <?php if(!($this->iswap)):?>
-<div class="content indexnav kj">
+<div class="content indexnav kj" >
         <div class="top">
             <div id="top">
                 <img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" alt="" />
-                <div class="nav fl">
+                
+                <div class="nav fl" >
                     <ul class="nav_menu">
+                    <?php if(!($this->iswap)):?>
                         <?php $this->widget('HomeNavWidget')?>
+                    <?php endif;?>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-<?php else:?>
+ <?php endif;?>
 
     <header id="masthead" class="site-header">
-        <div id="nav-header">
+        <div id="nav-header" style="<?=$this->iswap?'':'height: 0'?>">
             <div id="top-menu">
                 <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
+                <?php if($this->iswap):?>
                     <hgroup class="logo-site">
                         <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="" /></a></h1>
                     </hgroup>
@@ -105,15 +109,16 @@
                             </div>
                         </nav>
                     </div>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
         <nav>
-            <ul class="nav_sj" style="margin-top: 0" id="nav-search_1"><?php $this->widget('HomeNavWidget',['type'=>'wap'])?>
+            <ul class="nav_sj" style="margin-top: 0" id="nav-search_1"><?php if($this->iswap):?><?php $this->widget('HomeNavWidget',['type'=>'wap'])?><?php endif;?>
             </ul>
         </nav>
     </header>
-    <?php endif;?>
+    
     <div id="search-main" style="display: <?=isset($this->kw)?'block':'none'?>">
         <div id="searchbar">
             <form id="searchform" action="<?=$this->createUrl('/home/news/list')?>" method="get">
@@ -124,7 +129,7 @@
         <div class="clear"></div>
     </div>
     <?=$content?>
-    <footer class="footer" style="bottom:0px;left:0px;">
+    <footer class="footer">
         <div class="footer-inner">
             <p>
                 <a href="" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器&nbsp;&nbsp; </p>

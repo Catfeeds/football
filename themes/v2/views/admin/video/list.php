@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle = $this->controllerName.'列表';
+$this->pageTitle = '资讯列表';
 $this->breadcrumbs = array($this->pageTitle);
 ?>
 <div class="table-toolbar">
@@ -14,29 +14,25 @@ $this->breadcrumbs = array($this->pageTitle);
             <div class="form-group">
                 <?php echo CHtml::dropDownList('time_type',$time_type,array('created'=>'添加时间','updated'=>'修改时间'),array('class'=>'form-control','encode'=>false)); ?>
             </div>
-            <div class="form-group">
-                <?php echo CHtml::dropDownList('cate',$cate,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择比赛--')); ?>
-            </div>
             <?php Yii::app()->controller->widget("DaterangepickerWidget",['time'=>$time,'params'=>['class'=>'form-control chose_text']]);?>
+            
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>
         </form>
     </div>
     <div class="pull-right">
         <a href="<?php echo $this->createAbsoluteUrl('edit') ?>" class="btn blue">
-            添加<?=$this->controllerName?> <i class="fa fa-plus"></i>
+            添加列表 <i class="fa fa-plus"></i>
         </a>
     </div>
 </div>
    <table class="table table-bordered table-striped table-condensed flip-content table-hover">
     <thead class="flip-content">
     <tr>
+        <th></th>
         <th class="text-center">排序</th>
         <th class="text-center">ID</th>
-        <th class="text-center">比赛</th>
-        <th class="text-center">直播链接</th>
-        <th class="text-center">直播平台</th>
-        <!-- <th class="text-center">球队</th> -->
+        <th class="text-center">标题</th>
         <th class="text-center">添加时间</th>
         <th class="text-center">修改时间</th>
         <th class="text-center">状态</th>
@@ -46,29 +42,30 @@ $this->breadcrumbs = array($this->pageTitle);
     <tbody>
     <?php foreach($infos as $k=>$v): ?>
         <tr>
+            <td style="text-align:center;vertical-align: middle"><input type="checkbox" name="item[]" value="<?php echo $v['id'] ?>"
+                                           class="checkboxes"></td>
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><?php $value = $v->match; $wd = '';
-                $value->league && $wd = $wd.$value->league->name.' ';
-                $wd .= $value->home_name.'vs'.$value->visitor_name.' ';
-                $wd .= date('Y-d-d H:i:s',$value->time); echo $wd;?></td>
-            <td class="text-center"><?=$v->link?></td>
-            <td class="text-center"><?=$v->name?></td>   
+            <td class="text-center"><?=$v->title?></td>           
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
             <td class="text-center"><?=date('Y-m-d',$v->updated)?></td>
             <td class="text-center"><?php echo CHtml::ajaxLink(ArticleExt::$status[$v->status],$this->createUrl('changeStatus'), array('type'=>'get', 'data'=>array('id'=>$v->id,'class'=>get_class($v)),'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-sm '.ArticleExt::$statusStyle[$v->status])); ?></td>
 
             <td style="text-align:center;vertical-align: middle">
-                <a href="<?php echo $this->createUrl('edit',array('id'=>$v->id)); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a>
+                <a href="<?php echo $this->createUrl('edit',array('id'=>$v->id,'page'=>isset($_GET['page'])?$_GET['page']:'1')); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a>
                 <?php echo CHtml::htmlButton('删除', array('data-toggle'=>'confirmation', 'class'=>'btn btn-xs red', 'data-title'=>'确认删除？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true,'ajax'=>array('url'=>$this->createUrl('del'),'type'=>'get','success'=>'function(data){location.reload()}','data'=>array('id'=>$v->id,'class'=>get_class($v)))));?>
-
+                <a class="btn btn-xs blue" href="<?=$this->createUrl('/admin/recom/edit',['rid'=>$v->id,'type'=>1])?>">推荐</a>
 
             </td>
         </tr>
     <?php endforeach;?>
     </tbody>
 </table>
+<div class="form-group">
+    <button type="button" class="btn btn-success btn-sm group-checkable" data-set=".checkboxes">全选/反选</button>
+    <?php echo CHtml::ajaxButton('删除所选', $this->createUrl('del'), array('data' => array('id' => 'js:getChecked()','class'=>'ArticleExt'), 'type' => 'post', 'success' => 'function(data){location.reload()}', 'beforeSend' => 'function(){if(!getChecked()){toastr.error("请至少选择一项！");return false;}}'), array('class' => 'btn btn-success btn-sm')); ?>
+</div>
 <?php $this->widget('VipLinkPager', array('pages'=>$pager)); ?>
 
 <script>
@@ -87,7 +84,7 @@ $this->breadcrumbs = array($this->pageTitle);
         });
     }
     function set_sort(_this, id, sort){
-            $.getJSON('<?php echo $this->createUrl('/admin/league/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
+            $.getJSON('<?php echo $this->createUrl('/admin/news/setSort')?>',{id:id,sort:sort,class:'<?=isset($infos[0])?get_class($infos[0]):''?>'},function(dt){
                 location.reload();
             });
         }

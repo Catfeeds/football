@@ -53,7 +53,9 @@ class DataController extends HomeController{
 				# code...
 				break;
 		}
-		
-		$this->render('index',['leas'=>$leas,'lid'=>$lid,'points'=>$points,'type'=>$type?$type:array_keys($liarr)[0],'liarr'=>$liarr,'land'=>$land]);
+		if($this->iswap==0)
+			$this->render('index',['leas'=>$leas,'lid'=>$lid,'points'=>$points,'type'=>$type?$type:array_keys($liarr)[0],'liarr'=>$liarr,'land'=>$land]);
+		else
+			$this->render('wapindex',['leas'=>$leas,'lid'=>$lid,'points'=>$points,'type'=>$type?$type:array_keys($liarr)[0],'liarr'=>$liarr,'land'=>$land]);
 	}
 }

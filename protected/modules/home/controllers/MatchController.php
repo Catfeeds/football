@@ -23,6 +23,9 @@ class MatchController extends HomeController{
 			$criteria->params[':lid'] = $lid;
 		}
 		$matchs = MatchExt::model()->normal()->findAll($criteria);
-		$this->render('index',['matchs'=>$matchs,'time'=>$time,'lid'=>$lid]);
+		if($this->iswap)
+			$this->render('wapindex',['matchs'=>$matchs,'time'=>$time,'lid'=>$lid]);
+		else
+			$this->render('index',['matchs'=>$matchs,'time'=>$time,'lid'=>$lid]);
 	}
 }

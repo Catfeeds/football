@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * 后台验证登录类
  * @author tivon

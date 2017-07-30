@@ -57,13 +57,13 @@ $this->breadcrumbs = array('资讯管理', $this->pageTitle);
         <span class="help-block">建议尺寸：430*230</span> 
     </div>
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
     <label class="col-md-2 control-label">视频地址<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
         <?php echo $form->textField($article, 'video', array('class' => 'form-control')); ?>
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'video') ?></div>
-</div>
+</div> -->
 <div class="form-group">
     <label class="col-md-2 control-label">标签<span class="required" aria-required="true">*</span></label>
     <div class="col-md-4">
@@ -71,20 +71,20 @@ $this->breadcrumbs = array('资讯管理', $this->pageTitle);
     </div>
     <div class="col-md-2"><span class="help-inline">多个请用空格隔开</span></div>
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
     <label class="col-md-2 control-label">是否头条</label>
     <div class="col-md-4">
         <?php echo $form->radioButtonList($article, 'is_top', ArticleExt::$keywordsSwitch, array('separator' => '')); ?>
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'is_top') ?></div>
-</div>
-<div class="form-group">
+</div> -->
+<!-- <div class="form-group">
     <label class="col-md-2 control-label">是否视频</label>
     <div class="col-md-4">
         <?php echo $form->radioButtonList($article, 'is_top_video', ArticleExt::$keywordsSwitch, array('separator' => '')); ?>
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'is_top_video') ?></div>
-</div>
+</div> -->
 <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
     <div class="col-md-4">
