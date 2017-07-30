@@ -59,7 +59,7 @@
                                 
                             </ul>
                     </div>
-                    <section class="cms" style="padding-top: 202px">
+                    <section class="cms" style="padding-top: 198px">
                         <ul>
                         <?php if($cates) foreach ($cates as $key => $value) { if($newss = $value->getNews('7')) { ?>
                             <li>
