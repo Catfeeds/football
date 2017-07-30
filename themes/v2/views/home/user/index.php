@@ -1,9 +1,9 @@
 <?php 
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-common.css");
 
-	$this->iswap==0&&Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-left.css");
-	$this->iswap==0&&Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-set.css");
-	$this->iswap==0&&Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
+	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-left.css");
+	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-set.css");
+	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
 <section class="container" >
 <div class="content-wrap">
