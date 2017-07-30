@@ -62,11 +62,19 @@
         "timthumb": ""
     };
     </script>
+    <?php if($this->iswap):?>
+        <style>
+            .nav_sj a {
+                background-color: rgba(51,51,51,.8);
+            }
+        </style>
+    <?php endif;?>
 </head>
 <body class="home blog">
 <style>
 
 </style>
+<?php if(!($this->iswap)):?>
 <div class="content indexnav kj">
         <div class="top">
             <div id="top">
@@ -79,12 +87,14 @@
             </div>
         </div>
     </div>
+<?php else:?>
+
     <header id="masthead" class="site-header">
-        <div id="nav-header" style="height: 0;">
+        <div id="nav-header">
             <div id="top-menu">
-                <div id="top-menu_1"><span class="nav-search" style="    margin-top: -36px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
-                    <!-- <hgroup class="logo-site">
-                        <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:50px" alt="" /></a></h1>
+                <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
+                    <hgroup class="logo-site">
+                        <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="" /></a></h1>
                     </hgroup>
                     <div id="site-nav-wrap">
                         <nav id="site-nav" class="main-nav">
@@ -94,7 +104,7 @@
                                 </ul>
                             </div>
                         </nav>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,6 +113,7 @@
             </ul>
         </nav>
     </header>
+    <?php endif;?>
     <div id="search-main" style="display: <?=isset($this->kw)?'block':'none'?>">
         <div id="searchbar">
             <form id="searchform" action="<?=$this->createUrl('/home/news/list')?>" method="get">

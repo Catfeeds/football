@@ -95,7 +95,7 @@ class NewsController extends HomeController{
 		$info->save();
 		$nextid = $preid = '';
 		// 取列表cookie 用于上下篇
-		$lists = $_COOKIE['news_list_ids'];
+		isset($_COOKIE['news_list_ids']) && $lists = $_COOKIE['news_list_ids'];
 		if(isset($lists) && $lists) {
 			$lists = explode(',', $lists);
 			foreach ($lists as $key => $value) {

@@ -100,4 +100,12 @@ class ArticleCateExt extends ArticleCate{
     {
         return ArticleCateExt::model()->find("pinyin='$value'")->id;
     }
+
+    public function getNews($limit='6')
+    {
+        $criteria = new CDbCriteria;
+        $criteria->limit = $limit;
+        $criteria->addCondition("cid=".$this->id);
+        return ArticleExt::model()->normal()->findAll($criteria);
+    }
 }

@@ -2,7 +2,7 @@
 <?php 
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-index.css");
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-newslist.css");
-    // Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/match-common.css");
+    Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/cms.css");
 ?>
 <section class="container">
         <!-- <div class="speedbar" style="height: 25px;line-height: 25px">
@@ -39,6 +39,55 @@
                     <div class="ws_shadow"></div>
                 </div>
                 <?php if($jpdds):?>
+                    <?php if($this->iswap):?>
+                        <h4 style="line-height: 16px">热门<span style="font-size: 16px"> NEWS</span></h4>
+                        <div class="cms_4" style="    margin: 10px -9px;">
+                            <ul style="    padding: 0 !important;margin: 0 !important;list-style: none !important;">
+                            <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
+                                <li>
+                                    <div class="cms_4_div">
+                                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
+                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: 194px;height: 146px" /> </a>
+                                        <header class="cms_4_a">
+                                            <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
+    <?=Tools::u8_title_substr($obj->title,24)?> </a>
+                                        </header>
+                                    </div>
+                                </li>
+                            
+                        <?php } ?>
+                                
+                            </ul>
+                    </div>
+                    <section class="cms" style="padding-top: 202px">
+                        <ul>
+                        <?php if($cates) foreach ($cates as $key => $value) { if($newss = $value->getNews('7')) { ?>
+                            <li>
+                                <article class="cate-post left">
+                                    <div class="cate-title"> <i class="fa fa-bars"></i> <a href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>"><?=$value->name?></a> </div>
+                                    <?php if($newss) { $top = $newss[0];$list = array_slice($newss, 1,6); ?>
+                                        <div class="post-thumb">
+                                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$top['id']])?>">
+                                            <img src="<?=ImageTools::fixImage($top['image'],339,150)?>" style="display: inline;" /> </a>
+                                        <header class="post-head">
+                                            <h2> <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$top['id']])?>"><?=$top['title']?> </a> </h2>
+                                        </header>
+                                    </div>
+                                    <ul class="cate-list">
+                                    <?php if($list) foreach ($list as $v) {?>
+                                        <li>
+                                            <h2><a href="<?=$this->createUrl('/home/news/info',['id'=>$v['id']])?>" rel="bookmark" target="_blank" ><?=$v->title?> </a> </h2>
+                                            <span class="cate-time"><?=date('m-d',$v->updated)?> </span> </li>
+                                    <?php } ?>
+
+                                   <?php  }?>
+                                    </ul>
+                                </article>
+                            </li>
+                        <?php } }?>
+                        </ul>
+                    </section>
+                    <?php else:?>
                 <div class="daodu clr">
                     <div class="tip">
                         <h4>热门<span style="font-size: 16px"> NEWS</span> <span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/news/list')?>">更多资讯 ></a></span></h4>
@@ -77,6 +126,8 @@
                     </div>
                 </div>
             <?php endif;?>
+            <?php endif;?>
+                <?php if($this->iswap==0):?>
                 <div class="zixun1">
                 <?php if($cates) foreach ($cates as $key => $value) {?>
                    <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
@@ -119,6 +170,29 @@
                    <?php  } ?>
                     
                    <?php } ?>
+               
+               <?php endif;?>
+               <?php if($this->iswap):?>
+                <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
+                <div class="cms_4" style="    margin: 10px -2px;">
+                            <ul style="    padding: 0 !important;margin: 0 !important;list-style: none !important;">
+                            <?php if($album) foreach ($album as $key => $value) { ?>
+                                <li>
+                                    <div class="cms_4_div">
+                                        <a target="_blank" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
+                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>" style="display: inline;width: 194px;height: 146px" /> </a>
+                                        <header class="cms_4_a">
+                                            <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
+    <?=Tools::u8_title_substr($value->title,24)?> </a>
+                                        </header>
+                                    </div>
+                                </li>
+                            
+                        <?php } ?>
+                                
+                            </ul>
+                    </div>
+               <?php else:?>
                    <header class="archive-header">
                     <h4><span style="color:#00b7ee;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
                     </h4></header>
@@ -145,6 +219,7 @@
                     <?php } ?>
                         
                     </ul>
+                <?php endif;?>
             </div>
         </div>
 

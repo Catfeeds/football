@@ -15,6 +15,8 @@ class Controller extends CController
 
 	public $imgstyle = 'height:390px';
 
+	public $iswap = 0;
+
 	/**
 	 * 初始化操作
 	 */
@@ -26,6 +28,7 @@ class Controller extends CController
 		if($this->redirectWap())
 		{
 			$this->imgstyle = '';
+			$this->iswap = 1;
 		// 	if(Yii::app()->request->getUrl() == '/')
 		// 		$this->redirect('/wap');
 		// 	else
