@@ -34,6 +34,7 @@
                             </span>
                         <?php } ?>
                     <?php endif;?>
+                    <?php if($this->iswap==0):?>
                     <div class="zoombox">
                     <ul id="slideshow">
                     <?php if($imgs) foreach ($imgs as $key => $value) {?>
@@ -68,6 +69,7 @@
     </div>
     <?php endif;?>
 </div>
+<?php endif;?>
                     <style>
                     .popover-content a {
     color: white !important;

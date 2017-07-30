@@ -18,7 +18,7 @@
                     <ul class="slick" style="<?=$this->imgstyle?>">
                     <?php $objs = RecomExt::getObjFromCate('3','3');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image;?>
                         <li>
-                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: 0px;font: 700 20px/40px 'Microsoft Yahei';"><?=$obj->title?></span>
+                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: 0px;font: 700 <?=$this->iswap?'16px':'20px'?>/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';"><?=$obj->title?></span>
                         </li>
                     <?php } ?>
                     </ul>
@@ -47,7 +47,7 @@
                                 <li>
                                     <div class="cms_4_div">
                                         <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: 194px;height: 146px" /> </a>
+                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: 194px;height: 120px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
     <?=Tools::u8_title_substr($obj->title,24)?> </a>
@@ -59,7 +59,7 @@
                                 
                             </ul>
                     </div>
-                    <section class="cms" style="padding-top: 190px">
+                    <section class="cms" style="padding-top: 166px">
                         <ul>
                         <?php if($cates) foreach ($cates as $key => $value) { if($newss = $value->getNews('7')) { ?>
                             <li>
@@ -100,7 +100,7 @@
                                 <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
                                     <img src="<?=ImageTools::fixImage($img?$img:$nopic,200,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
-                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: 40px;bottom: -150px;font: 700 15px/40px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: -150px;font: 700 15px/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
                         </li>
                    <?php } ?>
                         
@@ -181,7 +181,7 @@
                                 <li>
                                     <div class="cms_4_div">
                                         <a target="_blank" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
-                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>" style="display: inline;width: 194px;height: 146px" /> </a>
+                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>" style="display: inline;width: 194px;height: 120px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
     <?=Tools::u8_title_substr($value->title,24)?> </a>

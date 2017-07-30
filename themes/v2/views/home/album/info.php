@@ -8,7 +8,7 @@
 <div class="inner-main" style="margin-left: 0;width: 760px;padding-right: 10px">
 <div class="left-con" style="width: 100%">
         <div class="swp-wrap">
-        <ol class="breadcrumb container" style="width: 96%;">
+        <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 96%;'?>">
                         <li class="home"><a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;</li>
                         <li class="active"> <a href="<?=$this->createUrl('/image/'.Pinyin::get($info->cate->name))?>"><?=$info->cate->name?></a> &gt; <?=$info->title?></li>

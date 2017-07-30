@@ -1,18 +1,26 @@
 <?php 
     Yii::app()->clientScript->registerCssFile("/wp-content/themes/sky1.0/share.css");
 ?>
+<?php if($this->iswap):?>
+    <style type="text/css">
+        img{
+            float: left !important;
+            width: auto !important;
+        }
+    </style>
+    <?php endif;?>
 <section class="container">
            <!--  <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
             </div> -->
             <div class="content-wrap">
                 <div class="content">
-                    <ol class="breadcrumb container" style="width: 96%;">
+                    <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 96%;'?>">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/news/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
-                        <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
+                        <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px"><?=$info->title?></h1>
                         <br>
                         <div class="meta">
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <a href=""><?=$info->author?></a></span><?php endif;?>

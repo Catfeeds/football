@@ -28,7 +28,7 @@
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
                         <header>
-                            <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?40:56)?></a></h2>
+                            <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?36:56)?></a></h2>
                         </header>
                         <div class="focus">
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
@@ -40,7 +40,7 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,$this->iswap?70:200)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,$this->iswap?60:200)?>
                             
                         </span>
                         <?php if($this->iswap==0):?>
