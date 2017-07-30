@@ -3,10 +3,12 @@ class UserController extends HomeController{
 	public function init()
 	{
 		parent::init();
-		
 	}
 	public function actionIndex($type='info')
 	{
+		if($this->iswap){
+			$this->fixedFooter = 'position:fixed;bottom:0px;';
+		}
 		if(!$this->user) {
 			$this->redirect('login');
 		}

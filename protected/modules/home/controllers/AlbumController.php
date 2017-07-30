@@ -82,7 +82,6 @@ class AlbumController extends HomeController{
         $t && $this->pageTitle = $t;
         $k && $this->keyword = $k;
         $d && $this->description = $d;
-		$this->styleowner = 0;
 		// var_dump($this->user);exit;
 		$info = TkExt::model()->findByPk($id);
 		// $info->save();

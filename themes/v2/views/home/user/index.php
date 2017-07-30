@@ -6,19 +6,33 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
 <section class="container" >
-<div class="clearfix-row m-t-55 m-b-55">
-    <div class="content">
-        <div class="nav-left">
+<div class="clearfix-row m-t-55 m-b-55" style="<?=$this->iswap?'margin-top: 20px':''?>">
+    <div class="content" style="<?=$this->iswap?'width: auto;min-width: auto;':''?>">
+        <div class="nav-left" style="<?=$this->iswap?'width: auto;float: none':''?>">
             <div class="user-panel">
                 <div class="user-icon">
                     <div class="user-icon-img box-none" style="background-image: url(&quot;<?=ImageTools::fixImage($this->user->image)?>&quot;);"></div>
+
                 </div>
-                <div class="clearfix-row color-block f-s-16 m-b-15"><span class="tip vip hide">VIP</span> <span class="name o-hidden"><?=$this->user->name?></span></div><a class="vip-status button" href="<?=$this->createUrl('logout')?>">退出登录</a></div>
+                <div class="clearfix-row color-block f-s-16 m-b-15"><span class="tip vip hide">VIP</span> <span class="name o-hidden"><?=$this->user->name?></span></div>
+                               <?php if($this->iswap):?><center> <?php $this->widget('FileUpload',array('model'=>$this->user,'attribute'=>'image','inputName'=>'img','width'=>200,'height'=>200,'words'=>'修改头像','style'=>'width:200px','preview'=>false,'noremove'=>1,'callback'=>'function(data){callback(data);}')); ?></center><br><br>
+                                <form method="post" id="wapform">
+                                    <input type="hidden" value="<?=$this->user->id?>" name="UserExt[id]">
+                                </form>
+                               <?php endif;?>
+
+                <a class="vip-status button" href="<?=$this->createUrl('logout')?>">退出登录</a><?php if($this->iswap):?><br><br><?php endif;?> </div>
+               
             <div class="nav-list m-t-10" style="padding-left: 0;
     padding-right: 0;">
+    <?php if($this->iswap==0):?>
             <a class="link <?=strstr(Yii::app()->request->getPathInfo(),'user/index')?'active':''?>" href="<?=$this->createUrl('index')?>"><b class="iconfont icon-inputbox-user"></b> <span class="text">我的资料</span></a>
-            <a class="link <?=strstr(Yii::app()->request->getPathInfo(),'user/msg')?'active':''?>" href="<?=$this->createUrl('msg')?>"><i class="iconfont icon-ico-user-info"></i> <span class="text">我的互动</span> </a></div>
+            <a class="link <?=strstr(Yii::app()->request->getPathInfo(),'user/msg')?'active':''?>" href="<?=$this->createUrl('msg')?>"><i class="iconfont icon-ico-user-info"></i> <span class="text">我的互动</span> </a>
+        <?php endif;?>
+            </div>
+
         </div>
+        <?php if($this->iswap==0): ?>
         <div class="nav-right">
             <div class="clearfix-row">
                 <div class="right-header">
@@ -68,6 +82,16 @@
                 </div>
             </div>
         </div>
+    <?php endif;?>
     </div>
 </div>
 </section>
+<script type="text/javascript">
+    function callback(data){
+        // 指定区域出现图片
+        var html = "";
+        image_html = "<input type='hidden' class='trans_img' name='UserExt[image]' value='"+data.msg.pic+"'></input>";
+        $('#wapform').append(image_html);
+        $('#wapform').submit();
+}
+</script>

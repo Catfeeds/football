@@ -40,7 +40,7 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,$this->iswap?60:200)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,$this->iswap?50:200)?>
                             
                         </span>
                         <?php if($this->iswap==0):?>

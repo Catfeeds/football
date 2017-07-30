@@ -113,7 +113,7 @@
 
                         $criteria->order = 'hits desc';
                         $criteria->limit = 10;
-                         $nowInfos = ArticleExt::model()->findAll($criteria); if($nowInfos) {?>
+                         $nowInfos = ArticleExt::model()->normal()->findAll($criteria); if($nowInfos) {?>
                          <ul style="margin-top: 18px">
                          <?php  foreach ($nowInfos as $key => $value) {?>
                          <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>

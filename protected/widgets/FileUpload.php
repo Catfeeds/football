@@ -67,6 +67,7 @@ class FileUpload extends CWidget
 	public $preview = true;
 	public $words = '选择文件';
 	public $style = '';
+	public $noremove = 0;
 	/**
 	 * 初始化小物件
 	 */
@@ -92,8 +93,10 @@ class FileUpload extends CWidget
 					return;
 				}";
 
-
-			$this->callback .= "$('#singlePic".$this->id."').html('').append('".$this->getRemoveButtonHtml()."').append('<img src=\'\'/>').find('img').attr('src',data.msg.url).show();";
+			if($this->noremove)
+				$this->callback .= "$('#singlePic".$this->id."').html('').append('<img src=\'\'/>').find('img').attr('src',data.msg.url).show();";
+			else
+				$this->callback .= "$('#singlePic".$this->id."').html('').append('".$this->getRemoveButtonHtml()."').append('<img src=\'\'/>').find('img').attr('src',data.msg.url).show();";
 
 			$inputId = CHtml::getIdByName(CHtml::resolveName($this->model, $this->attribute));
 			$this->callback .= "$('#singlePic".$this->id."').append('".CHtml::activeHiddenField($this->model,$this->attribute)."');
@@ -111,7 +114,7 @@ class FileUpload extends CWidget
 	public function run()
 	{
 		//为兼容IE浏览器，不使用第一个模板了
-		$this->render('fileupload',['words'=>$this->words,'style'=>$this->style]);
+		$this->render('fileupload',['words'=>$this->words,'style'=>$this->style,'noremove'=>$this->noremove]);
 	}
 
 	public function getRemoveButtonHtml()

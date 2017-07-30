@@ -15,6 +15,7 @@ class HomeController extends Controller
     private $kw;
     //实体 详细页用
     public $obj;
+    public $fixedFooter = '';
 
     //描述
     private $description;

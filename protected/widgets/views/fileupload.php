@@ -21,13 +21,15 @@ Yii::app()->clientScript->registerScriptFile('/static/global/plugins/webuploader
         $value = (string)CHtml::resolveValue($this->model, $this->attribute);
     }
     if(isset($value)&&!empty($value)): ?>
+    <?php if($noremove==0):?>
         <?=$this->getRemoveButtonHtml(); ?>
+        <?php endif;?>
         <?php if($this->preview): ?>
             <a class="mix-preview fancybox-button" href="<?php echo ImageTools::fixImage($value); ?>" title="原图" data-rel="fancybox-button">
     			<img src="<?php echo ImageTools::fixImage($value, $this->width,$this->height,$this->mode) ?>" >
     		</a>
         <?php else: ?>
-            <img src="<?php echo ImageTools::fixImage($value, $this->width,$this->height,$this->mode) ?>" >
+           
         <?php endif; ?>
 		<?php echo CHtml::activeHiddenField($this->model,$this->attribute) ?>
 	<?php endif; ?>

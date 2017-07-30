@@ -1,19 +1,26 @@
 <?php 
     Yii::app()->clientScript->registerCssFile("/wp-content/themes/sky1.0/share.css");
-    Yii::app()->clientScript->registerCssFile("/themes/v2/static/album/css/style.css");
+    if($this->iswap==0)
+        Yii::app()->clientScript->registerCssFile("/themes/v2/static/album/css/style.css");
 ?>
-<section class="container">
+<style type="text/css">
+    #slider{
+        width: 100% !important;
+    }
+    .
+</style>
+<section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">
            <!--  <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
             </div> -->
             <div class="content-wrap">
                 <div class="content">
-                    <ol class="breadcrumb container" style="width: 96%;">
+                    <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 760px !important;'?>">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/album/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
-                        <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
+                        <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px;word-wrap:break-word;word-break: normal;";><?=$info->title?></h1>
                         <br>
                         <div class="meta">
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> </span><?php endif;?>
@@ -39,9 +46,9 @@
                     <ul id="slideshow">
                     <?php if($imgs) foreach ($imgs as $key => $value) {?>
                         <li>
-                            <h3><?=$info->title?></h3>
+                            <h3></h3>
                             <span><?=ImageTools::fixImage($value->url)?></span>
-                            <p><?=$value->name?></p>
+                            <p><span style="font-weight: bold;"><?=$value->name?></span></p>
                             <a href="<?=ImageTools::fixImage($value->url)?>" target="_blank"><img src="<?=ImageTools::fixImage($value->url)?>" /></a>
                         </li>
                     <?php }  ?>
@@ -62,7 +69,7 @@
         <div id="thumbnails">
             <div id="slideleft" title="Slide Left"></div>
             <div id="slidearea">
-                <div id="slider"></div>
+                <div id="slider" style="width: 100%"></div>
             </div>
             <div id="slideright" title="Slide Right"></div>
         </div>
@@ -155,5 +162,8 @@
             slideshow.active="#fff";
             slideshow.init("slideshow","image","imgprev","imgnext","imglink");
         }
+        document.ready(function() {
+            $('#slider').css('width','100%');
+        });
         </script>
     <?php endif;?>
