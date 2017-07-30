@@ -6,6 +6,7 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
 <section class="container" >
+<div class="content-wrap">
 <div class="clearfix-row m-t-55 m-b-55" style="<?=$this->iswap?'margin-top: 20px':''?>">
     <div class="content" style="<?=$this->iswap?'width: auto;min-width: auto;':''?>">
         <div class="nav-left" style="<?=$this->iswap?'width: auto;float: none':''?>">
@@ -84,7 +85,7 @@
         </div>
     <?php endif;?>
     </div>
-</div>
+</div></div>
 </section>
 <script type="text/javascript">
     function callback(data){
