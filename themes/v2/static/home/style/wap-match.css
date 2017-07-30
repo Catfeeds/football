@@ -75,7 +75,7 @@ div.banner-tab a.active { background:#fff}
   line-height: .53rem;
   color: #888;
 }
-.list-tab { position:absolute; bottom:0; right:0; color:#fff; font-size:0.75rem; width:28px; height:14px; background:#1fab14; text-align:center; line-height:14px; border-radius:2px; -webkit-border-radius:2px;}
+.list-tab { position:absolute; bottom:0; right:0; color:#fff; font-size:0.75rem; width:28px; height:14px; background:#00b7ee; text-align:center; line-height:14px; border-radius:2px; -webkit-border-radius:2px;}
 .more-btn {
   background: #f7f7f7;
   font-size: 0;
@@ -133,7 +133,7 @@ a.app{display:-webkit-box; width:100%; height:65px; position:relative;}
 .match-module { position:relative; display:box; display:-webkit-box}
 .match-end, .match-start { position:relative; -webkit-box-flex:1; -box-flex:1; font-size:0.75rem;}
 .match-end { margin-right:10px;}
-.match-module h5 { padding:4px; border-bottom:1px solid #1fab14; position:relative;}
+.match-module h5 { padding:4px; border-bottom:1px solid #00b7ee; position:relative;}
 .match-module span { color:#499862; float:right}
 .match-group { display:box; display:-webkit-box; margin-top:5px; padding-left:5px;}
 .match-img { width:16px; height:21px;}
@@ -145,7 +145,7 @@ a.app{display:-webkit-box; width:100%; height:65px; position:relative;}
 .match-box { position:relative; width:0; -webkit-box-flex:1; -box-flex:1; font-size:0.75rem}
 .match-box-img img{ position:relative; width:16px; height:21px; margin:0 auto}
 .match-box p { text-align:center; padding-top:5px;}
-.match-score { font-size:1.125rem; color:#1fab14; font-weight:bold}
+.match-score { font-size:1.125rem; color:#00b7ee; font-weight:bold}
 
 /*积分榜*/
 #score-nav { position:relative;}
