@@ -20,7 +20,7 @@
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
                         <header>
-                            <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?40:56)?></a></h2>
+                            <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?36:56)?></a></h2>
                         </header>
                         <div class="focus">
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
