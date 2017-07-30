@@ -18,6 +18,7 @@ class HomeLinkPager extends CLinkPager
 		$this->lastPageLabel = '尾页';
 		$this->header = '共'.$this->pageCount.'页,'.$this->itemCount.'条记录,每页'.$this->pageSize.'条';
 		$this->internalPageCssClass = '';
+		$this->maxButtonCount = $this->owner->iswap==0?8:4;
 	}
 
 	public function run()
@@ -34,6 +35,23 @@ class HomeLinkPager extends CLinkPager
 			}
 		echo $this->footer;
 		echo '</ul></div>';
+	}
+
+	/**
+	 * @return array the begin and end pages that need to be displayed.
+	 */
+	protected function getPageRange()
+	{
+		$currentPage=$this->getCurrentPage();
+		$pageCount=$this->getPageCount();
+
+		$beginPage=max(0, $currentPage-(int)($this->maxButtonCount/2));
+		if(($endPage=$beginPage+$this->maxButtonCount-1)>=$pageCount)
+		{
+			$endPage=$pageCount-1;
+			$beginPage=max(0,$endPage-$this->maxButtonCount+1);
+		}
+		return array($beginPage,$endPage);
 	}
 
 	/**
@@ -58,8 +76,9 @@ class HomeLinkPager extends CLinkPager
 		// $buttons[]=$this->createPageButton($this->prevPageLabel,$page,$this->previousPageCssClass,$currentPage<=0,false);
 
 		// internal pages
-		for($i=$beginPage;$i<=$endPage;++$i)
+		for($i=$beginPage;$i<=$endPage;++$i) {
 			$buttons[]=$this->createPageButton($i+1,$i,$this->internalPageCssClass,false,$i==$currentPage);
+		}
 
 		// next page
 		if(($page=$currentPage+1)>=$pageCount-1)
