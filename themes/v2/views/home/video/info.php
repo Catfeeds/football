@@ -18,55 +18,16 @@
                     </header>
                     <article class="article-content" id="content_img">
                     <center><a href="<?=$info->video?>" target="_blank">
+                    <?php if($this->iswap==0):?>
                         <div style='width: 600px;height: 400px; '><img src="<?=ImageTools::fixImage($info->image,600,400)?>" style ="width: 600px;height: 400px" width="600px" height="400px"></div>
+                    <?php else:?>
+                        <img class="alignnone size-full wp-image-160" src="<?=ImageTools::fixImage($info->image)?>" width="697" height="502" sizes="(max-width: 697px) 100vw, 697px">
+                    <?php endif;?>
                         <p>点击播放视频</p>
                     </a></center>
                     </video>
                     <?=$info->content?>
                     </article>
-                    <!-- <footer class="article-footer">
-                    </footer>
-                    <nav class="article-nav">
-                        <span class="article-nav-prev"><i class="fa fa-angle-double-left"></i> <a href="http://demo3.ledkongzhiqi.com/jquery/111.html" rel="prev">最受欢迎JavaScript库：jQuery已经10岁啦！</a></span>
-                        <span class="article-nav-next"><a href="http://demo3.ledkongzhiqi.com/mysql/119.html" rel="next">DTCC 2016:MySQL中国组主席谈DBA的炼成</a> <i class="fa fa-angle-double-right"></i></span>
-                    </nav>
-                    <div class="related_top">
-                        <div class="related_posts">
-                            <ul class="related_img">
-                                <h2>猜您还喜欢</h2>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/zhuti/95.html" title="精简页面的样式文件，去掉不用的样式" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo3.ledkongzhiqi.com/wp-content/uploads/2016/02/20160227113231_59344.jpg&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="精简页面的样式文件，去掉不用的样式">
-                                        <br><span class="r_title">精简页面的样式文件，去掉不用的样式</span></a>
-                                </li>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/zhuti/77.html" title="HTML5响应式网站给我们的生活带来哪些改变" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo3.ledkongzhiqi.com/wp-content/uploads/2016/01/cui.jpg&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="HTML5响应式网站给我们的生活带来哪些改变">
-                                        <br><span class="r_title">HTML5响应式网站给我们的生活带来哪些改变</span></a>
-                                </li>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/php/73.html" title="如何看待HTML5抓住微信应用号千亿级市场！" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo3.ledkongzhiqi.com/wp-content/uploads/2016/02/QQ截图20160403172438.jpg&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="如何看待HTML5抓住微信应用号千亿级市场！">
-                                        <br><span class="r_title">如何看待HTML5抓住微信应用号千亿级市场！</span></a>
-                                </li>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/zhuti/65.html" title="微商城和微店有什么区别" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo5.ledkongzhiqi.com/wp-content/uploads/2016/01/QQ截图20160403161243.jpg&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="微商城和微店有什么区别">
-                                        <br><span class="r_title">微商城和微店有什么区别</span></a>
-                                </li>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/zhuti/61.html" title="为何要学HTML5开发?HTML5发展前景如何？" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo3.ledkongzhiqi.com/wp-content/uploads/2016/01/QQ截图20160118112108.png&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="为何要学HTML5开发?HTML5发展前景如何？">
-                                        <br><span class="r_title">为何要学HTML5开发?HTML5发展前景如何？</span></a>
-                                </li>
-                                <li class="related_box">
-                                    <a href="http://demo3.ledkongzhiqi.com/php/46.html" title="兄弟连PHP培训：如何从崛起走向IT巅峰" target="_blank">
-                                        <img src="http://demo3.ledkongzhiqi.com/wp-content/themes/rivers1.0/timthumb.php?src=http://demo3.ledkongzhiqi.com/wp-content/uploads/2016/01/QQ截图20160115152804.png&amp;h=110&amp;w=185&amp;q=90&amp;zc=1&amp;ct=1" alt="兄弟连PHP培训：如何从崛起走向IT巅峰">
-                                        <br><span class="r_title">兄弟连PHP培训：如何从崛起走向IT巅峰</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                     <div id="respond" class="no_webshot">
                         <form action="" method="post" id="commentform">
@@ -96,20 +57,7 @@
                                         <span class="muted comt-mailme"><label for="comment_mail_notify" class="checkbox inline" style="padding-top:0"><input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked"/>有人回复时邮件通知我</label></span>
                                     </div>
                                 </div>
-                                <!-- <div class="comt-comterinfo" id="comment-author-info" style="display:none">
-                                    <h4>Hi，您需要填写昵称和邮箱！</h4>
-                                    <ul>
-                                        <li class="form-inline">
-                                            <label class="hide" for="author">昵称</label>
-                                            <input class="ipt" type="text" name="author" id="author" value="tivon" tabindex="2" placeholder="昵称"><span class="help-inline">昵称 (必填)</span></li>
-                                        <li class="form-inline">
-                                            <label class="hide" for="email">邮箱</label>
-                                            <input class="ipt" type="text" name="email" id="email" value="123@11.com" tabindex="3" placeholder="邮箱"><span class="help-inline">邮箱 (必填)</span></li>
-                                        <li class="form-inline">
-                                            <label class="hide" for="url">网址</label>
-                                            <input class="ipt" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址"><span class="help-inline">网址</span></li>
-                                    </ul>
-                                </div> -->
+                                
                             </div>
                         </form>
                     </div>

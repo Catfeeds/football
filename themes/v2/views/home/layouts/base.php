@@ -124,7 +124,7 @@
         <div class="clear"></div>
     </div>
     <?=$content?>
-    <footer class="footer">
+    <footer class="footer" style="position:fixed;bottom:0px;left:0px;">
         <div class="footer-inner">
             <p>
                 <a href="" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器&nbsp;&nbsp; </p>

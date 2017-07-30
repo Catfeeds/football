@@ -68,7 +68,10 @@ class AlbumController extends HomeController{
 		}
 		
         // var_dump($this->cates);exit;
-		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
+        if($this->iswap)
+			$this->render('alist',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
+		else
+			$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates,'rights'=>$this->rights]);
 	}
 
 	public function actionInfo($id='')

@@ -174,7 +174,8 @@
                <?php endif;?>
                <?php if($this->iswap):?>
                 <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
-                <div class="cms_4" style="    margin: 10px -2px;">
+                <h4 style="line-height: 16px">热门<span style="font-size: 16px"> 图库</span></h4>
+                <div class="cms_4" style="    margin: 10px -5px;">
                             <ul style="    padding: 0 !important;margin: 0 !important;list-style: none !important;">
                             <?php if($album) foreach ($album as $key => $value) { ?>
                                 <li>

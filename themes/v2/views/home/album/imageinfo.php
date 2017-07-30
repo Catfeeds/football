@@ -10,7 +10,7 @@
                 <div class="content">
                     <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
-                        <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/news/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
+                        <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/album/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
                     <header class="article-header">
                         <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
@@ -24,10 +24,19 @@
                             color: #00b7ee !important; 
                         }</style>
                     <article class="article-content" id="content_img">
+                    <?php $imgs =  $info->album;?>
                     <?=$info->descpt?>
+                    <?php if($this->iswap):?>
+                        <?php if($imgs) foreach ($imgs as $key => $value) {?>
+                            <img class="alignnone size-full wp-image-160" src="<?=ImageTools::fixImage($value->url)?>" width="697" height="502" sizes="(max-width: 697px) 100vw, 697px">
+                            <span>
+                                <?=$value['name']?>
+                            </span>
+                        <?php } ?>
+                    <?php endif;?>
                     <div class="zoombox">
                     <ul id="slideshow">
-                    <?php if($albums = $info->album); foreach ($albums as $key => $value) {?>
+                    <?php if($imgs) foreach ($imgs as $key => $value) {?>
                         <li>
                             <h3><?=$info->title?></h3>
                             <span><?=ImageTools::fixImage($value->url)?></span>
@@ -37,7 +46,7 @@
                     <?php }  ?>
                         
                     </ul>
-    
+    <?php if($this->iswap==0):?>
     <div id="wrapper">
         <div id="fullsize">
             <div id="imgprev" class="imgnav" title="Previous Image"></div>
@@ -57,7 +66,7 @@
             <div id="slideright" title="Slide Right"></div>
         </div>
     </div>
-
+    <?php endif;?>
 </div>
                     <style>
                     .popover-content a {
@@ -125,6 +134,7 @@
         }
             
         </script>
+        <?php if($this->iswap==0):?>
         <script type="text/javascript" src="/themes/v2/static/album/js/compressed.js"></script>
         <script type="text/javascript">
         $('slideshow').style.display='none';
@@ -144,3 +154,4 @@
             slideshow.init("slideshow","image","imgprev","imgnext","imglink");
         }
         </script>
+    <?php endif;?>
