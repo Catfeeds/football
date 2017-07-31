@@ -152,6 +152,7 @@
         function check_uid() {
             <?php if(!$this->user):?>
                 alert('请先登录！');
+                window.location.href = '<?=$this->createUrl('/home/user/index')?>';
                 $('textarea').attr('disabled','disabled');
             <?php endif;?>
         }

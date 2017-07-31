@@ -8,6 +8,8 @@ class HomeNavWidget extends CWidget
 {
 	public $type = 'home';
 
+	public $limit = '';
+
 	public function run()
 	{
 		$path = Yii::app()->request->getPathInfo();
@@ -18,16 +20,30 @@ class HomeNavWidget extends CWidget
 		if(strstr($path,'tag')) {
 			$path = 'news';
 		}
+		if(in_array($path, ['regis','login','findpwd'])) {
+			$path = 'user';
+		}
 		$menus = $this->owner->getHomeMenu();
+		
 		$html = "";
+		$licss = $this->type == 'home'?'nav_menu-item':'swiper-slide';
+		$aclass = $this->type == 'home'?'':'top_nav_item';
+		if($this->limit)
+			foreach ($menus as $key => $value) {
+				if(strstr($path, $value['active']))  {
+					if($key>=$this->limit) {
+						$menus = array_slice($menus, $key-$this->limit+1,$this->limit);
+					}
+				}
+			}
 		foreach ($menus as $key => $value) {
 			// var_dump($path);exit;
 			!isset($value['active']) && $value['active'] = '';
 			$url = $this->owner->createUrl('/'.$value['url']);
 			if($value['active']) {
-				if(strstr($path, $value['active']))
-					// $active = 'current-menu-item ';
-					$active = 'headMenuNow';
+				if(strstr($path, $value['active']))  {
+					$active = $this->type == 'home'?'headMenuNow':'top_nav_item_now';
+				}
 				else
 					$active = '';
 			}else
@@ -37,7 +53,7 @@ class HomeNavWidget extends CWidget
 			// if($this->type == 'home')
 			// 	$html .= '<li class="nav_menu-item">'.$name.'</a></li>';
 			// else
-				$html .= '<li class="nav_menu-item"><a '.(strstr($path,'user')?'rel="nofollow"':'').' class="'.$active.'" href="'.$url.'"><p>'.$name.'</p></a></li>';
+				$html .= '<li class="'.$licss.'"><a '.(strstr($path,'user')?'rel="nofollow"':'').' class="'.($active?$active:$aclass).'" href="'.$url.'"><p>'.$name.'</p></a></li>';
 			// if($this->type == 'home')
 			// 	$html .= '<li id="menu-item-'.$key.'" class="menu-item menu-item-type-custom menu-item-object-custom '.$active.' menu-item-home menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
 			// else

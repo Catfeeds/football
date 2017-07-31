@@ -40,7 +40,7 @@
                 </div>
                 <?php if($jpdds):?>
                     <?php if($this->iswap):?>
-                        <h4 style="line-height: 16px">热门<span style="font-size: 16px"> NEWS</span></h4>
+                       <!--  <h4 style="line-height: 16px">热门<span style="font-size: 16px"> NEWS</span></h4>
                         <div class="cms_4" style="    margin: 10px -9px;">
                             <ul style="    padding: 0 !important;margin: 0 !important;list-style: none !important;">
                             <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
@@ -58,8 +58,8 @@
                         <?php } ?>
                                 
                             </ul>
-                    </div>
-                    <section class="cms" style="padding-top: 166px">
+                    </div> -->
+                    <section class="cms">
                         <ul>
                         <?php if($cates) foreach ($cates as $key => $value) { if($newss = $value->getNews('7')) { ?>
                             <li>

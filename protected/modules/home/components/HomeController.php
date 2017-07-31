@@ -176,13 +176,13 @@ class HomeController extends Controller
             $username = $this->user->name;
         }
         return [
-            ['name'=>'首页','url'=>'home/index/index','active'=>'index'],
+            ['name'=>'首页','url'=>'/home/index/index','active'=>'index'],
             ['name'=>'比赛','url'=>'match','active'=>'match'],
             ['name'=>'资讯','url'=>'news','active'=>'news'],
             ['name'=>'视频','url'=>'videos','active'=>'video'],
             ['name'=>'图库','url'=>'image','active'=>'image'],
             ['name'=>'数据','url'=>'data','active'=>'data'],
-            ['name'=>$username,'url'=>'home/user/index','active'=>'user'],
+            ['name'=>$username,'url'=>'user','active'=>'user'],
         ];
     }
 

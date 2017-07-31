@@ -186,6 +186,10 @@ $config1 = array(
                 'image'=>'home/album/list',
                 'image/<id:\d+>.html'=>'home/album/info',
                 'image/<cid:\w+>'=>'home/album/list',
+                'user'=>'home/user/index',
+                'login'=>'home/user/login',
+                'regis'=>'home/user/regis',
+                'findpwd'=>'home/user/findpwd',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
 

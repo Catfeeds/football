@@ -107,3 +107,7 @@
             -moz-transition: -moz-transform .3s linear;
     -o-transition: -o-transform .3s linear;
 }
+.swiper-slide {
+    padding: 0 15px;
+    width: auto !important;
+}
