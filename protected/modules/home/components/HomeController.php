@@ -182,7 +182,7 @@ class HomeController extends Controller
             ['name'=>'视频','url'=>'videos','active'=>'video'],
             ['name'=>'图库','url'=>'image','active'=>'image'],
             ['name'=>'数据','url'=>'data','active'=>'data'],
-            ['name'=>$username,'url'=>'home/user/index'],
+            ['name'=>$username,'url'=>'home/user/index','active'=>'user'],
         ];
     }
 

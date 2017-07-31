@@ -50,7 +50,7 @@
                                             <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-    <?=Tools::u8_title_substr($obj->title,24)?> </a>
+    <?=Tools::u8_title_substr($obj->title)?> </a>
                                         </header>
                                     </div>
                                 </li>
@@ -130,7 +130,7 @@
                 <?php if($this->iswap==0):?>
                 <div class="zixun1">
                 <?php if($cates) foreach ($cates as $key => $value) {?>
-                   <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a>
+                   <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><h2 style="font-size: 18px"><?=$value->name?></h2></a>
                 <?php } ?>
                     </div>
                     <?php if($news) foreach ($news as $key => $values) { if($values) foreach ($values as $k => $value) {?>
@@ -184,7 +184,7 @@
                                             <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>"  style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
-    <?=Tools::u8_title_substr($value->title,24)?> </a>
+    <?=Tools::u8_title_substr($value->title)?> </a>
                                         </header>
                                     </div>
                                 </li>
