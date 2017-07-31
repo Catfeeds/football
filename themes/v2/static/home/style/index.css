@@ -111,3 +111,109 @@
     padding: 0 15px;
     width: auto !important;
 }
+#nav-header.shadow {
+    height: auto;
+}
+#nav-header {
+    height: auto;
+}
+<style>
+header{
+    display: -moz-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    background:#eee;
+    height:60px;
+}
+header>.logo{
+    width:130px;
+    text-indent:-9999px;
+    padding:0;
+    margin:0;
+}
+header>.logo>a{
+    display:block;
+    width:130px;
+    height:60px;
+    background-size: contain;
+}
+header>.logo>a:active{
+    opacity:.6;
+}
+header>.control{
+    display: -moz-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex:1 0 auto;
+    padding:15px 10px 0;
+}
+header>.control>a.ctrl{
+    border: 1px solid #d2d2d2;
+    height: 30px;
+    text-align: center;
+    color: #333;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 12px;
+    background-color: #fff;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex:1 0 auto;
+    display:block;
+}
+header>.control>a:active{
+    opacity:.6;
+}
+header>.control>.usercenter.ctrl{
+    border-radius: 5px 0 0px 5px;
+}
+header>.control>.reg.ctrl {
+    border-left: 0;
+    border-right: 0;
+}
+header>.control>.write.ctrl{
+    border-radius: 0 5px 5px 0;
+}
+
+.swiperImg{
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    height: 30px;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    margin: 0 auto;
+    padding: 0 10px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 30px;
+}
+
+.bottom_download{
+    background:#ffffff;
+    position:fixed;
+    bottom:0px;
+    width:100%;
+    height: auto;
+    z-index:100;
+}
+</style>

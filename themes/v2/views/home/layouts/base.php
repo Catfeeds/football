@@ -98,8 +98,8 @@
  <?php endif;?>
 
     <header id="masthead" class="site-header">
-        <div id="nav-header" style="<?=$this->iswap?'height: auto':'height: 0'?>">
-            <div id="top-menu">
+        <div id="nav-header" style="<?=$this->iswap?'':'height: 0'?>">
+            <div id="top-menu" style="height:100%">
                 <!-- <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span> -->
                 <?php if($this->iswap):?>
                     <!-- <hgroup class="logo-site">
@@ -115,44 +115,55 @@
                         </nav>
                     </div> -->
                         <div id="div_menu1">
-        <nav style="position:fixed;width:100%;z-index:9999;left:0;top:0;margin:0;padding:0;">
-            <div class="top_navs">
-                <a href="javascript:;" id="head_wzxl">
-                    <div class="top_navs_rig" style="translateX(35px);" onclick="show()"></div>
-                </a>
-                <ul class="swiper-wrapper">
-                <?php $this->widget('HomeNavWidget',['type'=>'wap','limit'=>4])?>
-                    
-                </ul>
-            </div>
-        </nav>
-        <div class="home_wzxl" style="display:none;">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <?php for ($i=0; $i < count($this->getHomeMenu())/4; $i++) { ?>
-                <tr height="50" align="center">
-                <?php foreach (array_slice($this->getHomeMenu(), $i*4,4) as $key => $value) {?>
-                   <td width="25%"><a href="<?=$this->createUrl('/'.$value['url'])?>" class="whitechar"><?=$value['name']?></a></td>
-                <?php }?>
-                </tr>
-            <?php }?>
-            </table>
-            <!-- <div class="k15"></div>
-            <hr class="hr1">
-            <div class="k30"></div>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr height="50" align="center">
-                    <td><a href="/user/login" id="head_Center" class="home_btxl">登录</a></td>
-                    <td><a href="/match/show?passType=YP" name="editRecommend" class="home_btxl">写推荐</a></td>
-                    <td><a rel="nofollow" data='WEB' name="jumpPlatform" href="http://www.fox008.com" class="home_btxl">电脑版</a></td>
-                    <td><a href="http://www.fox008.com/mobile/app/code?v=1" class="home_btxl">下载APP</a></td>
-                </tr>
-            </table> -->
-            <div class=" k30"></div>
-            <div class="home_close" onclick="closeit()"></div>
-        </div>
-        <div class="k10"></div>
-        <div class="k30"></div>
-    </div>
+                            <nav style="position:fixed;width:100%;z-index:9999;left:0;top:0;margin:0;padding:0;">
+                                <div class="top_navs">
+                                    <a href="javascript:;" id="head_wzxl">
+                                        <div class="top_navs_rig" style="translateX(35px);" onclick="show()"></div>
+                                    </a>
+                                    <ul class="swiper-wrapper">
+                                    <?php $this->widget('HomeNavWidget',['type'=>'wap','limit'=>4])?>
+                                        
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="home_wzxl" style="display:none;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <?php for ($i=0; $i < count($this->getHomeMenu())/4; $i++) { ?>
+                                    <tr height="50" align="center">
+                                    <?php foreach (array_slice($this->getHomeMenu(), $i*4,4) as $key => $value) {?>
+                                       <td width="25%"><a href="<?=$this->createUrl('/'.$value['url'])?>" class="whitechar"><?=$value['name']?></a></td>
+                                    <?php }?>
+                                    </tr>
+                                <?php }?>
+                                </table>
+                                <!-- <div class="k15"></div>
+                                <hr class="hr1">
+                                <div class="k30"></div>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr height="50" align="center">
+                                        <td><a href="/user/login" id="head_Center" class="home_btxl">登录</a></td>
+                                        <td><a href="/match/show?passType=YP" name="editRecommend" class="home_btxl">写推荐</a></td>
+                                        <td><a rel="nofollow" data='WEB' name="jumpPlatform" href="http://www.fox008.com" class="home_btxl">电脑版</a></td>
+                                        <td><a href="http://www.fox008.com/mobile/app/code?v=1" class="home_btxl">下载APP</a></td>
+                                    </tr>
+                                </table> -->
+                                <div class=" k30"></div>
+                                <div class="home_close" onclick="closeit()"></div>
+                            </div>
+                            <div class="k10"></div>
+                            <div class="k30"></div>
+                        </div>
+                        <header>
+                            <h1 class="logo"><a href="javascript:;" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,36)?>') no-repeat center;">球布斯</a></h1>
+                            <div class="control" style="margin-top:-55px;width:<?=Yii::app()->user->getIsGuest()?'50':'30'?>%;float:right; margin-right: 5px; border-bottom:0;">
+                            <?php if(Yii::app()->user->getIsGuest()):?>
+                                <a href="<?=$this->createUrl('/home/user/index')?>" class="usercenter ctrl" id="loginDiv">登录</a>
+                                <a  rel="nofollow" href="<?=$this->createUrl('/home/user/regis')?>" class="write ctrl" id="regDiv" style="">注册</a>
+                                <?php else:?>
+                                    <a href="<?=$this->createUrl('/home/user/index')?>" class="write ctrl" id="loginDiv"><?=$this->user->name.'的个人中心'?></a>
+                                <?php endif;?>
+                            </div>
+                        </header>
                     <?php endif;?>
                 </div>
             </div>

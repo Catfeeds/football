@@ -45,8 +45,7 @@ class NewsController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate->id;
 			$cid = $cate->id;
-		}
-		if($tag) {
+		} else if($tag) {
 			// 拼音转换+标签seo
 			$tag = TagExt::model()->find(['condition'=>"pinyin='$tag'"]);
 			$tagName = $tag->name;
@@ -62,6 +61,15 @@ class NewsController extends HomeController{
 			
 			$datas = ArticleTagExt::findNewsByTag($tag->id,20);
 		} else {
+			$t = SiteExt::getAttr('seo','home_news_list_title');
+	        $k = SiteExt::getAttr('seo','home_news_list_keyword');
+	        $d = SiteExt::getAttr('seo','home_news_list_desc');
+
+	        foreach (['{site}'=>'球布斯'] as $key => $value) {
+	        	$t && $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $this->keyword = str_replace($key, $value, $k);
+		        $d && $this->description = str_replace($key, $value, $d);
+	        }
 			$datas = ArticleExt::model()->normal()->getList($criteria,20);
 		}
 		$infos = $datas->data;

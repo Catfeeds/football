@@ -44,8 +44,8 @@
                             
                         </span>
                         <?php if($this->iswap==0):?>
-                        <br><br>
-                        <div class="detail_title_nav_r ">
+                        
+                        <div class="detail_title_nav_r " style="margin-top: 10px">
                         
                             <?php if($tags = $value->getTagString()) {?>
                                 <span class="note">标签：

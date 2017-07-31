@@ -150,11 +150,11 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,156)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,150)?>
                             
                         </span>
-                        <br>
-                        <div class="detail_title_nav_r ">
+                        <!-- <br> -->
+                        <div class="detail_title_nav_r " style="margin-top: 5px">
                         
                             <?php if($tags = $value->getTagString()) {?>
                                 <span class="note">标签：
