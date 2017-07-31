@@ -58,6 +58,7 @@ class AlbumController extends AdminController{
 			$info->attributes = $values;
 			// $info->is_album = 1;
 			// var_dump($album);exit;
+			!$info->status && $info->status = 1;
 			if($info->save()) {
 				AlbumExt::model()->deleteAllByAttributes(['aid'=>$info->id]);
 				if($album) {

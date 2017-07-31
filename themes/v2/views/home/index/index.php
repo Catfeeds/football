@@ -47,7 +47,7 @@
                                 <li>
                                     <div class="cms_4_div">
                                         <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: 194px;height: 120px" /> </a>
+                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
     <?=Tools::u8_title_substr($obj->title,24)?> </a>
@@ -181,7 +181,7 @@
                                 <li>
                                     <div class="cms_4_div">
                                         <a target="_blank" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
-                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>" style="display: inline;width: 194px;height: 120px" /> </a>
+                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>"  style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
     <?=Tools::u8_title_substr($value->title,24)?> </a>
@@ -228,7 +228,7 @@
         <?php $this->widget('CommonRightWidget',$rights)?>
         <div class="widget widget_text">
                 <div class="title">
-                    <h2><sapn class="title_span">友情链接</span></h2></div>
+                    <span class="title_span">友情链接</span></div>
                 <div class="textwidget" style="margin-top: 10px"><div class="d_tags_1">
                 <?php $links = LinkExt::model()->normal()->findAll(['limit'=>10]); if($links) foreach ($links as $key => $value) {?>
                    <a target="_blank" href="<?=$value['url']?>"><?=$value['name']?></a>

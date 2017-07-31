@@ -62,12 +62,13 @@ class VideoController extends AdminController{
 		if(Yii::app()->request->getIsPostRequest()) {
 			$info->attributes = Yii::app()->request->getPost($modelName,[]);
 			$info->is_top_video = 1;
-			if(!$info->image && $info->video) {
-				$this->getVideoCover($info->video,1,'video.jpg');
-				$info->image = Yii::app()->file->fetch('/upload/image/video.jpg');
-				var_dump($info->image);exit;
-				unlink('/upload/image/video.jpg');
-			}
+			// if(!$info->image && $info->video) {
+			// 	$this->getVideoCover($info->video,1,'video.jpg');
+			// 	$info->image = Yii::app()->file->fetch('/upload/image/video.jpg');
+			// 	var_dump($info->image);exit;
+			// 	unlink('/upload/image/video.jpg');
+			// }
+			!$info->status && $info->status = 1;
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);
 			} else {

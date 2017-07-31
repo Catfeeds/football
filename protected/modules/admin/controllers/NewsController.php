@@ -73,6 +73,7 @@ class NewsController extends AdminController{
 				}
 			}
 			$info->updated = time();
+			!$info->status && $info->status = 1;
 			if($info->save()) {
 				if($tags) {
 					ArticleTagExt::model()->deleteAllByAttributes(['aid'=>$info->id]);

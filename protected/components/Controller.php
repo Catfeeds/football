@@ -17,6 +17,8 @@ class Controller extends CController
 
 	public $iswap = 0;
 
+	public $ispad = 0;
+
 	/**
 	 * 初始化操作
 	 */
@@ -115,7 +117,9 @@ class Controller extends CController
 	{
         require_once Yii::getPathOfAlias('application.vendor') . DIRECTORY_SEPARATOR . 'Mobile_Detect.php';
         $detect = new Mobile_Detect();
-		return $this->getIsInQianFan() || ($detect->isMobile() && !$detect->isTablet() && !$this->getStayInPc() && $this->getModule()->id!='wap');
+        if($detect->isTablet())
+        	$this->ispad = 1;
+		return $this->getIsInQianFan() || ($detect->isMobile() || $detect->isTablet() && (!$this->getStayInPc() && $this->getModule()->id!='wap'));
     }
 
 	/**

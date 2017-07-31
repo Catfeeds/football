@@ -5,7 +5,7 @@ class UserController extends HomeController{
 		parent::init();
 		
 		if($this->iswap){
-			$this->fixedFooter = 'position:fixed;bottom:0px;';
+			$this->fixedFooter = 'position:fixed;bottom:0px;width:100%';
 		}
 	}
 	public function actionIndex($type='info')

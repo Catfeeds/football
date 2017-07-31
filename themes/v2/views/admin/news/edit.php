@@ -85,13 +85,13 @@ $this->breadcrumbs = array('资讯管理', $this->pageTitle);
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'is_top_video') ?></div>
 </div> -->
-<div class="form-group">
+<!-- <div class="form-group">
     <label class="col-md-2 control-label">状态</label>
     <div class="col-md-4">
         <?php echo $form->radioButtonList($article, 'status', ArticleExt::$status, array('separator' => '')); ?>
     </div>
     <div class="col-md-2"><?php echo $form->error($article, 'status') ?></div>
-</div>
+</div> -->
 <div class="form-actions">
     <div class="row">
         <div class="col-md-offset-3 col-md-9">

@@ -104,6 +104,11 @@ class NewsController extends HomeController{
 					isset($lists[$key-1]) && $preid = $lists[$key-1];
 				}
 			}
+		} else {
+			$nx = ArticleExt::model()->normal()->find('id>'.$id);
+			$nx && $nextid = $nx->id;
+			$be = ArticleExt::model()->normal()->find('id<'.$id);
+			$be && $preid = $be->id;
 		}
 		$this->render('info',['info'=>$info,'nextid'=>$nextid,'preid'=>$preid]);
 	}
