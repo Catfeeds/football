@@ -78,7 +78,7 @@
 <div class="content indexnav kj" >
         <div class="top">
             <div id="top">
-                <img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" alt="" />
+                <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" alt="球布斯足球资讯" /></a>
                 
                 <div class="nav fl" >
                     <ul class="nav_menu">
@@ -98,7 +98,7 @@
                 <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
                 <?php if($this->iswap):?>
                     <hgroup class="logo-site">
-                        <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="" /></a></h1>
+                        <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="球布斯足球资讯" /></a></h1>
                     </hgroup>
                     <div id="site-nav-wrap">
                         <nav id="site-nav" class="main-nav">
@@ -132,7 +132,7 @@
     <footer class="footer" style="<?=$this->fixedFooter?>">
         <div class="footer-inner">
             <p>
-                <a href="" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器&nbsp;&nbsp; </p>
+                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器&nbsp;&nbsp; </p>
         </div>
     </footer>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/um.js?ver=4.5.9'></script>
