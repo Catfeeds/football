@@ -19,6 +19,8 @@ class Controller extends CController
 
 	public $ispad = 0;
 
+	public $hideloginhead = 0;
+
 	/**
 	 * 初始化操作
 	 */

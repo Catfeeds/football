@@ -7,6 +7,7 @@ class UserController extends HomeController{
 		if($this->iswap){
 			$this->fixedFooter = 'position:fixed;bottom:0px;width:100%';
 		}
+		$this->hideloginhead = 1;
 	}
 	public function actionIndex($type='info')
 	{
