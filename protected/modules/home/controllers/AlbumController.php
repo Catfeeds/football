@@ -55,6 +55,16 @@ class AlbumController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate->id;
 			$cid = $cate->id;
+		} else {
+			$t = SiteExt::getAttr('seo','home_album_list_title');
+	        $k = SiteExt::getAttr('seo','home_album_list_keyword');
+	        $d = SiteExt::getAttr('seo','home_album_list_desc');
+
+	        foreach (['{site}'=>'球布斯'] as $key => $value) {
+	        	$t && $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $this->keyword = str_replace($key, $value, $k);
+		        $d && $this->description = str_replace($key, $value, $d);
+	        }
 		}
 		$datas = TkExt::model()->normal()->getList($criteria,18);
 		$infos = $datas->data;
