@@ -155,7 +155,7 @@
                         </div>
                         <?php if($this->hideloginhead==0):?>
                         <header>
-                            <h1 class="logo"><a href="javascript:;" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,36)?>') no-repeat center;">球布斯</a></h1>
+                            <h1 class="logo"><a href="<?=$this->createUrl('/home/index/index')?>" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,36)?>') no-repeat center;">球布斯</a></h1>
                             <div class="control" style="margin-top:-55px;width:<?=Yii::app()->user->getIsGuest()?'50':'30'?>%;float:right; margin-right: 5px; border-bottom:0;">
                             <?php if(Yii::app()->user->getIsGuest()):?>
                                 <a href="<?=$this->createUrl('/home/user/index')?>" class="usercenter ctrl" id="loginDiv">登录</a>

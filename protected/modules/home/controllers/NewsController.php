@@ -45,6 +45,7 @@ class NewsController extends HomeController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate->id;
 			$cid = $cate->id;
+			$datas = ArticleExt::model()->normal()->getList($criteria,20);
 		} else if($tag) {
 			// 拼音转换+标签seo
 			$tag = TagExt::model()->find(['condition'=>"pinyin='$tag'"]);
