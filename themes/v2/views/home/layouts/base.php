@@ -115,7 +115,7 @@
                         </nav>
                     </div> -->
                         <div id="div_menu1">
-                            <nav style="position:fixed;width:100%;z-index:9999;left:0;top:0;margin:0;padding:0;">
+                            <nav>
                                 <div class="top_navs">
                                     <a href="javascript:;" id="head_wzxl">
                                         <div class="top_navs_rig" style="translateX(35px);" onclick="show()"></div>
@@ -150,8 +150,8 @@
                                 <div class=" k30"></div>
                                 <div class="home_close" onclick="closeit()"></div>
                             </div>
-                            <div class="k10"></div>
-                            <div class="k30"></div>
+                            <!-- <div class="k10"></div> -->
+                            <!-- <div class="k30"></div> -->
                         </div>
                         <header>
                             <h1 class="logo"><a href="javascript:;" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,36)?>') no-repeat center;">球布斯</a></h1>
