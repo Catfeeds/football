@@ -2,8 +2,8 @@
 /* CSS Document by lilei */
 
 #top { position:relative; background:#dadada; height:44px; margin-top:75px;}
-.logo { width:105px; height:30px; position:absolute; left:10px; top:7px;}
-.logo img { width:100%;}
+/*.logo { width:105px; height:30px; position:absolute; left:10px; top:7px;}*/
+/*.logo img { width:100%;}*/
 .logo-info { position:absolute; font-size:0.75rem; top:19px; left:120px; font-weight:bold}
 
 #top-title { position:relative; background:#00b7ee; height: 40px; color:#fff; font-size:0.75rem}
