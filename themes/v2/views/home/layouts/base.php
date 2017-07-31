@@ -114,7 +114,7 @@
                             </div>
                         </nav>
                     </div> -->
-                        <div id="div_menu1" style="position:fixed;">
+                        <div id="div_menu1">
                             <nav style="position:fixed;width:100%;z-index:9999;left:0;top:0;margin:0;padding:0;">
                                 <div class="top_navs">
                                     <a href="javascript:;" id="head_wzxl">
