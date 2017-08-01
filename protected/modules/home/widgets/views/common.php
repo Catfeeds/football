@@ -22,8 +22,7 @@
                                 padding-top: 20px
                             }
                             .p1{
-                                padding-left: 0;padding-right: 0 !important;
-                                padding-right: 0 !important;
+                                padding-left: 0 !important;padding-right: 0 !important;
                                 font-family: -webkit-pictograph;
                             }
                         </style>
