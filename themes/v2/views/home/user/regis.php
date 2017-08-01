@@ -6,12 +6,13 @@
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
 <script src="/themes/v2/static/home/js/md5.js"></script>
-
+<?php if($this->iswap==0):?>
 <style type="text/css">
     .step-panel .table .lab-left {
         width: 380px
     }
 </style>
+<?php endif;?>
 <?php if($this->iswap):?>
                 <style>
                 .line-h-40{
