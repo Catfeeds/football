@@ -12,7 +12,7 @@
 </style>
 <section class="container" style="margin-top: 40px">
 <div class="content-wrap">
-<div class="content">
+<div class="content" style="width: auto;min-width: auto;">
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
