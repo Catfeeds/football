@@ -148,6 +148,7 @@ class NewsController extends HomeController{
 	}
 	public function actionAlltag()
 	{
+		$this->pageTitle = '标签列表-球布斯';
 		$tags = TagExt::model()->findAll();
 		$this->render('alltag',['tags'=>$tags]);
 	}

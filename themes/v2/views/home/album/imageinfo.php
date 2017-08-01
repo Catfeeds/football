@@ -37,7 +37,7 @@
                     <?=$info->descpt?>
                     <?php if($this->iswap):?>
                         <?php if($imgs) foreach ($imgs as $key => $value) {?>
-                            <img class="alignnone size-full wp-image-160" src="<?=ImageTools::fixImage($value->url)?>" width="697" height="502" sizes="(max-width: 697px) 100vw, 697px">
+                            <img class="alignnone size-full wp-image-160" src="<?=ImageTools::fixImage($value->url)?>" width="697" height="502" sizes="(max-height: 697px) 100vw, 697px">
                             <span>
                                 <?=$value['name']?>
                             </span>
