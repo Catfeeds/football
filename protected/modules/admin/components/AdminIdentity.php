@@ -13,7 +13,7 @@ class AdminIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		//内置帐号
-		if($this->username=='admin' && ($this->password=='admin123'))
+		if($this->username=='qiubusi' && ($this->password=='qiubusi20170801!@#'))
 		{
 			$this->errorCode = self::ERROR_NONE;
 			$this->setState('id',1);
