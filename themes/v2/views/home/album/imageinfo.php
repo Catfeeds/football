@@ -99,7 +99,14 @@
                     <?php if($rels = $info->getRelAlbum()) {?>
                     <div class="related_top">
             <div class="related_posts"><ul class="related_img">
-    <h2>相关图库</h2>
+    <span style="   
+     text-align: left;
+    display: block;
+    font-size: 130%;
+    /* font-weight: inherit !important; */
+    margin: 5px 0;
+    font-weight: blod;
+    line-height: 35px;">相关图库</span>
 
     <?php foreach ($rels as $key => $value) {?>
        <li class="related_box">
