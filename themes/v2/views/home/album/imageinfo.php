@@ -1,13 +1,15 @@
 <?php 
     Yii::app()->clientScript->registerCssFile("/wp-content/themes/sky1.0/share.css");
     if($this->iswap==0)
-        Yii::app()->clientScript->registerCssFile("/themes/v2/static/album/css/style.css");
+        Yii::app()->clientScript->registerCssFile("/themes/v2/static/albumnew/css/zzsc.css");
 ?>
 <style type="text/css">
-    #slider{
-        width: <?=(int)(count($info->album)>0?(count($info->album)/4+1):1)?>00% !important;
+    .article-content li:before {
+        content: none !important;
     }
-    .
+    .ps-current ul{
+        margin-left: 0 !important;
+    }
 </style>
 <section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">
            <!--  <div class="speedbar">
@@ -44,41 +46,15 @@
                         <?php } ?>
                     <?php endif;?>
                     <?php if($this->iswap==0):?>
-                    <div class="zoombox">
-                    <ul id="slideshow">
-                    <?php if($imgs) foreach ($imgs as $key => $value) {?>
-                        <li>
-                            <h3></h3>
-                            <span><?=ImageTools::fixImage($value->url)?></span>
-                            <p><span style="font-weight: bold;"><?=$value->name?></span></p>
-                            <a href="<?=ImageTools::fixImage($value->url)?>" target="_blank"><img src="<?=ImageTools::fixImage($value->url)?>" /></a>
-                        </li>
-                    <?php }  ?>
-                        
-                    </ul>
-    <?php if($this->iswap==0):?>
-    <div id="wrapper">
-        <div id="fullsize">
-            <div id="imgprev" class="imgnav" title="Previous Image"></div>
-            <div id="imglink"></div>
-            <div id="imgnext" class="imgnav" title="Next Image"></div>
-            <div id="image"></div>
-            <div id="information">
-                <h3></h3>
-                <p></p>
-            </div>
-        </div>
-        <div id="thumbnails">
-            <div id="slideleft" title="Slide Left"></div>
-            <div id="slidearea">
-                <div id="slider" style="width: 100%"></div>
-            </div>
-            <div id="slideright" title="Slide Right"></div>
-        </div>
-    </div>
-    <?php endif;?>
-</div>
-<?php endif;?>
+
+                    <div class="cntr mt20">
+                            <ul class="pgwSlideshow" >
+                            <?php if($imgs) foreach ($imgs as $key => $value) {?>
+                                <li><img src="<?=ImageTools::fixImage($value['url'])?>" data-description="<?=$value['name']?>"></li>
+                            <?php } ?>
+                            </ul>
+                        </div>
+                <?php endif;?>
                     <style>
                     .popover-content a {
     color: white !important;
@@ -153,26 +129,5 @@
             
         </script>
         <?php if($this->iswap==0):?>
-        <script type="text/javascript" src="/themes/v2/static/album/js/compressed.js"></script>
-        <script type="text/javascript">
-        $('slideshow').style.display='none';
-        $('wrapper').style.display='block';
-        var slideshow=new TINY.slideshow("slideshow");
-        window.onload=function(){
-            slideshow.auto=true;
-            slideshow.speed=5;
-            slideshow.link="linkhover";
-            slideshow.info="information";
-            slideshow.thumbs="slider";
-            slideshow.left="slideleft";
-            slideshow.right="slideright";
-            slideshow.scrollSpeed=4;
-            slideshow.spacing=5;
-            slideshow.active="#fff";
-            slideshow.init("slideshow","image","imgprev","imgnext","imglink");
-        }
-        document.ready(function() {
-            $('#slider').css('width','100%');
-        });
-        </script>
+            <script src="/themes/v2/static/albumnew/js/jquery.min.js" type="text/javascript"></script>
     <?php endif;?>
