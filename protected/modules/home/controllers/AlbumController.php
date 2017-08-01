@@ -96,7 +96,7 @@ class AlbumController extends HomeController{
 		$info = TkExt::model()->findByPk($id);
 		// $info->save();
 		$nextid = $preid = '';
-		$lists = $_COOKIE['album_list_ids'];
+		isset($_COOKIE['album_list_ids']) && $lists = $_COOKIE['album_list_ids'];
 		if(isset($lists) && $lists) {
 			$lists = explode(',', $lists);
 			foreach ($lists as $key => $value) {
@@ -105,6 +105,11 @@ class AlbumController extends HomeController{
 					isset($lists[$key-1]) && $preid = $lists[$key-1];
 				}
 			}
+		} else {
+			$nx = TkExt::model()->normal()->find('id>'.$id);
+			$nx && $nextid = $nx->id;
+			$be = TkExt::model()->normal()->find('id<'.$id);
+			$be && $preid = $be->id;
 		}
 		// $this->render('info',['info'=>$info,'rights'=>$this->rights]);
 		$this->render('imageinfo',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
