@@ -12,6 +12,7 @@
 </style>
 <section class="container" style="margin-top: 40px">
 <div class="content-wrap">
+<div class="content">
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
@@ -40,7 +41,7 @@
         </div>
     </div>
     </form>
-</div></div>
+</div></div></div>
 </section>
 <script type="text/javascript">
 	function ckit(obj) {
