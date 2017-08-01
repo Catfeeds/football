@@ -190,6 +190,10 @@ $config1 = array(
                 'login'=>'home/user/login',
                 'regis'=>'home/user/regis',
                 'findpwd'=>'home/user/findpwd',
+                'addOne'=>'home/user/addOne',
+                'checkPhone'=>'home/user/checkPhone',
+                'checkCode'=>'home/user/checkCode',
+                'checkOld'=>'home/user/checkOld',
                 'alltag'=>'home/news/alltag',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',
