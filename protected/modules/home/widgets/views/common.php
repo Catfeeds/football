@@ -1,6 +1,6 @@
 
             <?php if($matchs): ?>
-            <div class="widget d_textbanner"><a class="style01" style="color: #00b7ee" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong style="background-color:#00b7ee ">近期比赛</strong>
+            <div class="widget d_textbanner"><a class="style01" style="color: #00b7ee" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong style="background-color:#00b7ee;margin-top: 5px" >近期比赛</strong>
             <div style="margin-bottom: 11px">
                 <ul>
                 <?php foreach ($matchs as $key => $value) {?>
@@ -22,7 +22,7 @@
                                 padding-top: 20px
                             }
                             .p1{
-                                padding-left: 0 !important;
+                                padding-left: 0;padding-right: 0 !important;
                                 padding-right: 0 !important;
                                 font-family: -webkit-pictograph;
                             }
@@ -53,11 +53,41 @@
                 </ul>
             </div>
             </a></div><?php endif;?>
+            <div class="widget widget_categories d_textbanner"><strong class="str1" style="margin-top: 5px">积分榜</strong>
+               <div class="row" style="width: 90%;margin:0 auto">
+                   <ul class="nav nav-tabs" style="margin-bottom: 0px;">
+                   <?php if($leas) foreach ($leas as $key => $value) {?>
+                       <li class="<?=$key==0?'active':''?> tabli1">
+                            <a class="tab1" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
+                            <center><?=$value->name?> </center></a>
+                        </li>
+                  <?php  } ?>
+                    </ul>
+                    <div class="tab-content">
+                    <?php foreach ($points as $key => $value) {?>
+                        <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
+                        <?php if($value): ?>
+                            <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
+                                <?php foreach ($value as $r => $v) {?>
+                                    <tr>
+                                            <td align='center'><?=$r+1?></td>
+                                            <td align='center' style="width: 40%"><?=Tools::u8_title_substr($v->team->name,12) ?></td>
+                                            <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
+                                            <td align='center'><?=$v->points?></td>
+                                        </tr>
+                                <?php } ?>
+                                    </table>
+                                <?php endif; ?>
+                        </div>
+                    <?php } ?>
+                    </div>
+               </div>
+            </div>
 <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
             <div class="widget d_postlist">
 
                 <div class="title">
-                    <h2><sapn class="title_span">热门推荐</span></h2></div>
+                    <span class="title_span" style="padding-left: 0;padding-right: 0"><strong style="background-color:#00b7ee;color: white;padding: 4px 15px;">热门推荐</strong></span></div>
                 <ul>
                 <?php if($rmtjs) foreach ($rmtjs as $key => $v) {  $value = $v->getObj();  if($value): ?>
                    <li>
@@ -90,41 +120,12 @@
                        .tab1{
                         margin-left: 0!important;
                         padding-right: 0!important;
-                        padding-left: 0!important;
+                        padding-left: 0;padding-right: 0!important;
                         border: none !important;
                        }
                    </style>
 
-            <div class="widget widget_categories d_textbanner"><strong class="str1">积分榜</strong>
-               <div class="row" style="width: 90%;margin:0 auto">
-                   <ul class="nav nav-tabs" style="margin-bottom: 0px;">
-                   <?php if($leas) foreach ($leas as $key => $value) {?>
-                       <li class="<?=$key==0?'active':''?> tabli1">
-                            <a class="tab1" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
-                            <center><?=$value->name?> </center></a>
-                        </li>
-                  <?php  } ?>
-                    </ul>
-                    <div class="tab-content">
-                    <?php foreach ($points as $key => $value) {?>
-                        <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
-                        <?php if($value): ?>
-                            <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
-                                <?php foreach ($value as $r => $v) {?>
-                                    <tr>
-                                            <td align='center'><?=$r+1?></td>
-                                            <td align='center' style="width: 40%"><?=Tools::u8_title_substr($v->team->name,12) ?></td>
-                                            <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
-                                            <td align='center'><?=$v->points?></td>
-                                        </tr>
-                                <?php } ?>
-                                    </table>
-                                <?php endif; ?>
-                        </div>
-                    <?php } ?>
-                    </div>
-               </div>
-            </div>
+            
             <!-- <div class="widget d_comment">
                 <div class="title">
                     <h2><sapn class="title_span">热门评论</span></h2></div>

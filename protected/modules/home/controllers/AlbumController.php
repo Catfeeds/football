@@ -89,11 +89,15 @@ class AlbumController extends HomeController{
 		$t = SiteExt::getAttr('seo','home_album_info_title');
         $k = SiteExt::getAttr('seo','home_album_info_keyword');
         $d = SiteExt::getAttr('seo','home_album_info_desc');
-        $t && $this->pageTitle = $t;
-        $k && $this->keyword = $k;
-        $d && $this->description = $d;
+        $info = TkExt::model()->findByPk($id);
+       foreach (['{site}'=>'球布斯','{cate}'=>$info->cate?$info->cate->name:'','{title}'=>$info->title] as $key => $value) {
+	        	$t && $t = $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $k = $this->keyword = str_replace($key, $value, $k);
+		        $d && $d = $this->description = str_replace($key, $value, $d);
+	        }
+
 		// var_dump($this->user);exit;
-		$info = TkExt::model()->findByPk($id);
+		
 		// $info->save();
 		$nextid = $preid = '';
 		isset($_COOKIE['album_list_ids']) && $lists = $_COOKIE['album_list_ids'];

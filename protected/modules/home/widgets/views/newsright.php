@@ -1,6 +1,6 @@
 <div class="widget d_postlist">
                 <div class="title">
-                    <h2><sapn class="title_span">热门文章</span></h2></div>
+                    <h2><sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门文章</strong></span></h2></div>
                 <ul>
                 <?php if($news) foreach ($news as $key => $value) {?>
                     <li><a style="    height: 90px;
@@ -11,7 +11,7 @@
             </div>
             <div class="widget d_tag">
                 <div class="title">
-                    <h2><sapn class="title_span">热门图库</span></h2></div>
+                    <h2><sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门图库</strong></span></h2></div>
                 <div class="d_tags">
                 <?php if($albums) foreach ($albums as $key => $value) { ?>
                     <a title="<?=$value->title?>" href="<?=$this->owner->createUrl('/home/album/info',['id'=>$value->id])?>" style="padding: 0;height: 80px;width: 48%;opacity: 1">
@@ -23,10 +23,11 @@
             </div>
             <div class="widget d_tag">
                 <div class="title">
-                    <h2><sapn class="title_span">热门搜索</span></h2></div>
-                <div class="d_tags"m  style="width: 86%">
+                    <h2><sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门搜索</strong></span></h2></div>
+                <div class="d_tags"  style="width: 86%">
                 <?php if($tags) foreach ($tags as $key => $value) {?>
                     <a title="<?=$value['ct']?>个话题" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?> (<?=$value['ct']?>)</a>
                 <?php } ?> 
+                <a href="<?=$this->owner->createUrl('/home/news/alltag')?>" >查看更多</a>
                 </div>
             </div>

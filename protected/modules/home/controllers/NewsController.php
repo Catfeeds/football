@@ -55,9 +55,9 @@ class NewsController extends HomeController{
 	        $d = SiteExt::getAttr('seo','home_news_tag_desc');
 
 	        foreach (['{site}'=>'球布斯','{tag}'=>$tagName] as $key => $value) {
-	        	$t && $this->pageTitle = str_replace($key, $value, $t);
-		        $k && $this->keyword = str_replace($key, $value, $k);
-		        $d && $this->description = str_replace($key, $value, $d);
+	        	$t && $t = $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $k = $this->keyword = str_replace($key, $value, $k);
+		        $d && $d = $this->description = str_replace($key, $value, $d);
 	        }
 			
 			$datas = ArticleTagExt::findNewsByTag($tag->id,20);
@@ -145,5 +145,10 @@ class NewsController extends HomeController{
 				echo json_encode(['num'=>$info->praise,'s'=>'success']);
 			}
 		}
+	}
+	public function actionAlltag()
+	{
+		$tags = TagExt::model()->findAll();
+		$this->render('alltag',['tags'=>$tags]);
 	}
 }

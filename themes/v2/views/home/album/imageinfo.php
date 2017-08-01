@@ -15,10 +15,12 @@
             </div> -->
             <div class="content-wrap">
                 <div class="content">
+                <?php if($this->iswap==0):?>
                     <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 760px !important;'?>">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/album/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
+                    <?php endif;?>
                     <header class="article-header">
                         <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px;word-wrap:break-word;word-break: normal;";><?=$info->title?></h1>
                         <br>

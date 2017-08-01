@@ -70,3 +70,6 @@ ul.pic-list li {
     margin: 0 1%;
     float: left;
 }
+strong{
+    font-weight: normal !important;
+}

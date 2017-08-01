@@ -57,12 +57,15 @@ class VideoController extends HomeController{
 		$t = SiteExt::getAttr('seo','home_video_info_title');
         $k = SiteExt::getAttr('seo','home_video_info_keyword');
         $d = SiteExt::getAttr('seo','home_video_info_desc');
-        $t && $this->pageTitle = $t;
-        $k && $this->keyword = $k;
-        $d && $this->description = $d;
-		// var_dump($this->user);exit;
-		$info = ArticleExt::model()->findByPk($id);
+        $info = ArticleExt::model()->findByPk($id);
 		$info->hits += 1;
+        foreach (['{site}'=>'球布斯','{title}'=>$info->title] as $key => $value) {
+	        	$t && $t = $this->pageTitle = str_replace($key, $value, $t);
+		        $k && $k = $this->keyword = str_replace($key, $value, $k);
+		        $d && $d = $this->description = str_replace($key, $value, $d);
+	        }
+		// var_dump($this->user);exit;
+		
 		$info->save();
 		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
 	}

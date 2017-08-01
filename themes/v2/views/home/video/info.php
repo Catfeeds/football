@@ -4,10 +4,12 @@
             </div> -->
             <div class="content-wrap">
                 <div class="content">
+                <?php if($this->iswap==0):?>
                     <ol class="breadcrumb container" style="width: 96%;">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/video/list')?>">视频列表</a> &gt; <?=$info->title?></li>
                     </ol>
+                    <?php endif;?>
                     <header class="article-header">
                         <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
                         <div class="meta">

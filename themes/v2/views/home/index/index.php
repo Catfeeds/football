@@ -90,7 +90,7 @@
                     <?php else:?>
                 <div class="daodu clr">
                     <div class="tip">
-                        <h4>热门<span style="font-size: 16px"> NEWS</span> <span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/news/list')?>">更多资讯 ></a></span></h4>
+                        <h4><span style="font-size: 16px"> <strong style="background-color:#00b7ee;color:white;padding: 5px">热门资讯</strong></span> <span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/news/list')?>">更多资讯 ></a></span></h4>
 
                     </div>
                     <ul class="dd-list">
@@ -195,7 +195,7 @@
                     </div>
                <?php else:?>
                    <header class="archive-header">
-                    <h4><span style="color:#00b7ee;margin-left: 10px">精彩</span><span>视频</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
+                    <h4><strong style="background-color:#00b7ee;color:white;padding: 5px">精彩视频</strong><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/video/list')?>">更多视频 ></a></span>
                     </h4></header>
                     <ul class="dd-list" style="background-color: white">
                     <?php if($videos) foreach ($videos as $key => $value) {?>
@@ -209,7 +209,7 @@
                     <?php } ?>
                     </ul>
                     <header class="archive-header" style="margin-top: 210px">
-                    <h4><span style="color:#00b7ee;margin-left: 10px">精彩</span><span>图库</span><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
+                    <h4><strong style="background-color:#00b7ee;color:white;padding: 5px">精彩图库</strong><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
                     </h4></header>
                     <ul class="pic-list">
                     <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
@@ -228,7 +228,7 @@
         <?php $this->widget('CommonRightWidget',$rights)?>
         <div class="widget widget_text">
                 <div class="title">
-                    <span class="title_span">友情链接</span></div>
+                    <span class="title_span" style="padding-left: 0"><strong style="background-color:#00b7ee;color: white;padding: 4px 15px;">友情链接</strong></span></div>
                 <div class="textwidget" style="margin-top: 10px"><div class="d_tags_1">
                 <?php $links = LinkExt::model()->normal()->findAll(['limit'=>10]); if($links) foreach ($links as $key => $value) {?>
                    <a target="_blank" href="<?=$value['url']?>"><?=$value['name']?></a>

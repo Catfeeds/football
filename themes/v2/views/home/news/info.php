@@ -15,10 +15,12 @@
             </div> -->
             <div class="content-wrap">
                 <div class="content">
+                    <?php if($this->iswap==0):?>
                     <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 96%;'?>">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/news/list')?>">资讯列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/home/news/list',['cid'=>$cate->pinyin])?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
+                    <?php endif;?>
                     <header class="article-header">
                         <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px"><?=$info->title?></h1>
                         <br>
@@ -59,7 +61,14 @@
                     <?php if($rels = $info->getRelNews()) {?>
                     <div class="related_top">
             <div class="related_posts"><ul class="related_img">
-    <h2>相关文章</h2>
+    <span style="   
+     text-align: left;
+    display: block;
+    font-size: 130%;
+    /* font-weight: inherit !important; */
+    margin: 5px 0;
+    font-weight: blod;
+    line-height: 35px;">相关文章</span>
 
     <?php foreach ($rels as $key => $value) {?>
        <li class="related_box">
