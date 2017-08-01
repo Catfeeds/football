@@ -5,11 +5,13 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-login.css");
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
+<?php if($this->wap==0):?>
 <style type="text/css">
 	.step-panel .table .lab-left {
 		width: 380px
 	}
 </style>
+<?php endif;?>
 <section class="container" style="margin-top: 40px">
 <div class="content-wrap">
 <div class="content" style="width: auto;min-width: auto;">
