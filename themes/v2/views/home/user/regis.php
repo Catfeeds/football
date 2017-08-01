@@ -26,7 +26,7 @@
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
-        <center><h3><img style="height: 50px" src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>">&nbsp;&nbsp;球布斯注册</h3></center>
+        <center><h3><img style="height: 50px" src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>">&nbsp;&nbsp;注册</h3></center>
     </div>
     <div class="clearfix-row">
         <div id="register-bind" class="table">

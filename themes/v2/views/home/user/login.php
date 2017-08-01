@@ -11,10 +11,11 @@
 	}
 </style>
 <section class="container" style="margin-top: 40px">
+<div class="content-wrap">
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
-        <center><h3><img style="height: 50px" src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>">&nbsp;&nbsp;球布斯登录</h3></center>
+        <center><h3><img style="height: 50px" src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>">&nbsp;&nbsp;登录</h3></center>
     </div>
     <form id="fm1" method="post">
     <div class="clearfix-row" >
@@ -39,7 +40,7 @@
         </div>
     </div>
     </form>
-</div>
+</div></div>
 </section>
 <script type="text/javascript">
 	function ckit(obj) {
