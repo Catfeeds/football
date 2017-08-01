@@ -11,6 +11,7 @@
     .step-panel .table .lab-left {
         width: 380px
     }
+
 </style>
 <?php endif;?>
 <?php if($this->iswap):?>
@@ -19,7 +20,17 @@
                     float: left;margin-left: 10px;
                 }
                 .text-box{
+                    width: 86%;
                     margin-left: 10px
+                }
+                .lab-right {
+                    width: 100% !important;
+                }
+                .w-308 {
+                    width: 100% !important;
+                }
+                .w-263 {
+                    width: 84% !important;
                 }
                 </style>
             <?php endif;?>
