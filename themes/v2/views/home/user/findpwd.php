@@ -5,11 +5,33 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-login.css");
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
+<?php if($this->iswap==0):?>
 <style type="text/css">
 	.step-panel .table .lab-left {
 		width: 380px
 	}
 </style>
+<?php endif;?>
+<?php if($this->iswap):?>
+                <style>
+                .line-h-40{
+                    float: left;margin-left: 10px;
+                }
+                .text-box{
+                    width: 86%;
+                    margin-left: 10px
+                }
+                .lab-right {
+                    width: 100% !important;
+                }
+                .w-308 {
+                    width: 100% !important;
+                }
+                .w-263 {
+                    width: 84% !important;
+                }
+                </style>
+            <?php endif;?>
 <section class="container" style="margin-top: 40px">
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
