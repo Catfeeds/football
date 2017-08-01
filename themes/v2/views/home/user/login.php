@@ -5,7 +5,7 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-login.css");
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/user-wap.css");
 ?>
-<?php if($this->wap==0):?>
+<?php if($this->iswap==0):?>
 <style type="text/css">
 	.step-panel .table .lab-left {
 		width: 380px
