@@ -212,7 +212,7 @@ a:active{color:#df0301;}
 .home_orgchar20{color:#EE8E00;font-size:20px;font-family:Arial;}
 .home_bluechar20{color:#3C8FFF;font-size:20px;font-family:Arial;}
 .home_graychar20{color:#C6C6C6;font-size:20px;font-family:Arial;}
-.pagination{position:absolute;z-index:20;width:66px;text-align:center;margin-top:-30px;}
+/*.pagination{position:absolute;z-index:20;width:66px;text-align:center;margin-top:-30px;}*/
 .swiper-pagination-bullet{display:inline-block;width:5px;height:5px;border-radius:5px;background:#fff;margin:0 2px;opacity:0.8;}
 .swiper-pagination-bullet-active{background:#ff6600;}
 #slide_x{width:100%;overflow:hidden;position:relative;}

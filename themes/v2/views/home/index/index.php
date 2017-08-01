@@ -181,7 +181,7 @@
                                 <li>
                                     <div class="cms_4_div">
                                         <a target="_blank" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
-                                            <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>"  style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
+                                            <img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic)?>"  style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
                                         <header class="cms_4_a">
                                             <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>">
     <?=Tools::u8_title_substr($value->title)?> </a>
