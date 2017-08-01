@@ -15,7 +15,7 @@
                 <div class="d_tags">
                 <?php if($albums) foreach ($albums as $key => $value) { ?>
                     <a title="<?=$value->title?>" href="<?=$this->owner->createUrl('/home/album/info',['id'=>$value->id])?>" style="padding: 0;height: 80px;width: 48%;opacity: 1">
-                        <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>"  style="width: 127px;height: 80px" >
+                        <img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:'')?>"  style="width: 127px;height: 80px" >
                     </a>
                <?php  } ?>
                 

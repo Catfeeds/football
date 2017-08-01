@@ -5,7 +5,7 @@
 ?>
 <style type="text/css">
     #slider{
-        width: 100% !important;
+        width: <?=(int)(count($info->album)>0?(count($info->album)/4+1):1)?>00% !important;
     }
     .
 </style>
@@ -111,7 +111,7 @@
     <?php foreach ($rels as $key => $value) {?>
        <li class="related_box">
         <a href="<?=$this->createUrl('info',['id'=>$value->id])?>" title="<?=$value->title?>" target="_blank">
-        <img src="<?=ImageTools::fixImage($value->album[0]['url'])?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
+        <img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:'')?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
         </li>
     <?php }?>
     </ul>
