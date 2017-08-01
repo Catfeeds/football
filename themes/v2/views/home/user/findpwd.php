@@ -201,6 +201,10 @@
         }
     }
     function sendS(phone) {
+        var br = '';
+        <?php if($this->iswap):?>
+        br = '<br>';
+        <?php endif;?>
         // alert(1);
         $.ajax({
             'type':'get',
@@ -244,6 +248,10 @@
         }
     }
     function ckcode(obj) {
+        var br = '';
+        <?php if($this->iswap):?>
+        br = '<br>';
+        <?php endif;?>
         $('#codeafter').remove();
         var code = $('#code').val();
         $.ajax({
