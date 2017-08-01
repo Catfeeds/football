@@ -73,3 +73,7 @@ ul.pic-list li {
 strong{
     font-weight: normal !important;
 }
+.widgetRoller {
+    top:0 !important;
+    position: relative !important;
+}
