@@ -35,8 +35,10 @@
                 </style>
             <?php endif;?>
 <section class="container" >
+<?php if($this->iswap):?>
 <div class="content-wrap">
 <div class="content" style="width: auto;min-width: auto;">
+<?php endif;?>
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
@@ -92,7 +94,10 @@
             </form>
         </div>
     </div>
-</div></div></div>
+</div>
+<?php if($this->iswap):?>
+</div></div>
+<?php endif;?>
 </section>
 <script>
     function ckname(obj) {

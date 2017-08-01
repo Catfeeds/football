@@ -13,8 +13,10 @@
 </style>
 <?php endif;?>
 <section class="container" style="margin-top: 40px">
+<?php if($this->iswap):?>
 <div class="content-wrap">
 <div class="content" style="width: auto;min-width: auto;">
+<?php endif;?>
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
@@ -43,7 +45,10 @@
         </div>
     </div>
     </form>
-</div></div></div>
+</div>
+<?php if($this->iswap):?>
+</div></div>
+<?php endif;?>
 </section>
 <script type="text/javascript">
 	function ckit(obj) {
