@@ -24,6 +24,8 @@
                 </style>
             <?php endif;?>
 <section class="container" >
+<div class="content-wrap">
+<div class="content" style="width: auto;min-width: auto;">
 <div class="step-panel register-panel" style="width: 100%">
     <div class="clearfix-row">
     <br><br>
@@ -79,7 +81,7 @@
             </form>
         </div>
     </div>
-</div>
+</div></div></div>
 </section>
 <script>
     function ckname(obj) {
