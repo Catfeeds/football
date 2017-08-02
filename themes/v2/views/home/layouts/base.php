@@ -168,7 +168,7 @@
         <div class="footer-inner">
         
             <p>
-                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器<?=SiteExt::getAttr('qjpz','footCoder')?></p>
+                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器<?=SiteExt::getAttr('qjpz','footCode')?></p>
         </div>
     </footer>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/um.js?ver=4.5.9'></script>
