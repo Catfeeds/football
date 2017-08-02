@@ -150,7 +150,7 @@
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                             // var_dump($html);exit;
                             $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,150)?>
+                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,140)?>
                             
                         </span>
                         <!-- <br> -->

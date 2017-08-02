@@ -107,11 +107,11 @@ class ArticleExt extends Article{
             ),
             'normal' => array(
                 'condition' => "{$alias}.status=1 and {$alias}.deleted=0 and {$alias}.is_top_video=0",
-                'order'=>"{$alias}.day desc,{$alias}.sort desc",
+                'order'=>"{$alias}.day desc,{$alias}.sort desc,{$alias}.updated desc",
             ),
             'undeleted' => array(
                 'condition' => "{$alias}.deleted=0",
-                // 'order'=>"{$alias}.sort desc,{$alias}.updated desc",
+                'order'=>"{$alias}.updated desc",
             ),
             'isvideo'=>array(
                 'condition' => "{$alias}.status=1 and {$alias}.is_top_video=1 and {$alias}.deleted=0",

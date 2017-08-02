@@ -21,7 +21,7 @@ class HomeIdentity extends CUserIdentity
 		// 	return $this->errorCode;
 		// }
 		// var_dump(2);exit;
-		if($info = UserExt::model()->find("phone='{$this->username}'")) {
+		if($info = UserExt::model()->normal()->find("phone='{$this->username}'")) {
 
 			if($info->pwd!=md5($this->password)) {
 				$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;

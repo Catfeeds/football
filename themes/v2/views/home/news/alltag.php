@@ -1,6 +1,12 @@
 <?php 
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/home-newslist.css");
 ?>
+<style>
+    .d_tags a:hover{
+        color: #00b7ee !important;
+        border: 1px #00b7ee solid !important;
+    }
+</style>
 <section class="container">
             <!-- <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
@@ -22,7 +28,7 @@
                     <h2>标签列表</h2></div> -->
                 <div class="d_tags"  style="width: 86%">
                 <?php if($tags) foreach ($tags as $key => $value) {?>
-                    <a style="width: auto" href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?></a>
+                    <a style="width: auto !important;border: 1px #999 solid;background: white;color: #080808;height: 22px;    border-radius: 3px;"  href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?></a>
                 <?php } ?> 
                 </div>
             </div>

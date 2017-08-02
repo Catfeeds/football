@@ -1,3 +1,10 @@
+<?php if($this->iswap==0):?>
+<style>
+    iframe{
+        width: auto !important;
+    }
+</style>
+<?php endif;?>
 <section class="container">
             <!-- <div class="speedbar">
                 <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
@@ -19,16 +26,8 @@
                             <span class="muted"><i class="fa fa-comments-o"></i> <a href="http://demo3.ledkongzhiqi.com/php/114.html#respond"><?=$info->comment_num?>评论</a></span> </div>
                     </header>
                     <article class="article-content" id="content_img">
-                    <center><a href="<?=$info->video?>" target="_blank">
-                    <?php if($this->iswap==0):?>
-                        <div style='width: 600px;height: 400px; '><img src="<?=ImageTools::fixImage($info->image,600,400)?>" style ="width: 600px;height: 400px" width="600px" height="400px"></div>
-                    <?php else:?>
-                        <img class="alignnone size-full wp-image-160" src="<?=ImageTools::fixImage($info->image)?>" width="697" height="502" sizes="(max-width: 697px) 100vw, 697px">
-                    <?php endif;?>
-                        <p>点击播放视频</p>
-                    </a></center>
-                    </video>
                     <?=$info->content?>
+
                     </article>
                     
                     <div id="respond" class="no_webshot">
@@ -48,7 +47,7 @@
                                         <div class="comt-tips pull-right">
                                             <input type='hidden' name='comment_post_ID' value='<?=$info->id?>' id='comment_post_ID' />
                                             <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                                            <p style="display: none;">
+                                            <p style="display: none;">  
                                                 <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1c0ce1ceba" />
                                             </p>
                                             <p style="display: none;">

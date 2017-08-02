@@ -100,7 +100,9 @@
     <header id="masthead" class="site-header">
         <div id="nav-header" style="<?=$this->iswap?'':'height: 0'?>">
             <div id="top-menu" style="height:100%">
-                <!-- <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span> -->
+            <?php if($this->iswap==0):?>
+                <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
+            <?php endif;?>
                 <?php if($this->iswap):?>
                     <!-- <hgroup class="logo-site">
                         <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="球布斯足球资讯" /></a></h1>
@@ -155,7 +157,7 @@
                         </div>
                         <?php if($this->hideloginhead==0):?>
                         <header>
-                            <h1 class="logo"><a href="<?=$this->createUrl('/home/index/index')?>" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,36)?>') no-repeat center;">球布斯</a></h1>
+                            <h1 class="logo"><a href="<?=$this->createUrl('/home/index/index')?>" style="background:url('<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'),90,32)?>') no-repeat center;">球布斯</a></h1>
                             <div class="control" style="margin-top:-55px;width:<?=Yii::app()->user->getIsGuest()?'50':'30'?>%;float:right; margin-right: 5px; border-bottom:0;">
                             <?php if(Yii::app()->user->getIsGuest()):?>
                                 <a href="<?=$this->createUrl('/home/user/index')?>" class="usercenter ctrl" id="loginDiv">登录</a>
@@ -167,7 +169,9 @@
                         </header>
                         <?php endif;?>
                     <?php endif;?>
+                    <?php if($this->iswap==0):?>
                 </div>
+                <?php endif;?>
             </div>
         </div>
         <nav>

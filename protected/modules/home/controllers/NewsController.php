@@ -76,13 +76,13 @@ class NewsController extends HomeController{
 		$infos = $datas->data;
 		$pager = $datas->pagination;
 		// 存列表cookie 用于上下篇
-		if($infos) {
-			$ids = '';
-			foreach ($infos as $key => $value) {
-				$ids .= $value->id.',';
-			}
-			setCookie('news_list_ids',trim($ids));
-		}
+		// if($infos) {
+		// 	$ids = '';
+		// 	foreach ($infos as $key => $value) {
+		// 		$ids .= $value->id.',';
+		// 	}
+		// 	setCookie('news_list_ids',trim($ids));
+		// }
         // var_dump($this->cates);exit;
 		$this->render('list',['infos'=>$infos,'pager'=>$pager,'cid'=>$cid,'cates'=>$this->cates]);
 	}
@@ -104,21 +104,25 @@ class NewsController extends HomeController{
 		$info->save();
 		$nextid = $preid = '';
 		// 取列表cookie 用于上下篇
-		isset($_COOKIE['news_list_ids']) && $lists = $_COOKIE['news_list_ids'];
-		if(isset($lists) && $lists) {
-			$lists = explode(',', $lists);
-			foreach ($lists as $key => $value) {
-				if($id==$value) {
-					isset($lists[$key+1]) && $nextid = $lists[$key+1];
-					isset($lists[$key-1]) && $preid = $lists[$key-1];
-				}
-			}
-		} else {
-			$nx = ArticleExt::model()->normal()->find('id>'.$id);
-			$nx && $nextid = $nx->id;
-			$be = ArticleExt::model()->normal()->find('id<'.$id);
-			$be && $preid = $be->id;
-		}
+		// isset($_COOKIE['news_list_ids']) && $lists = $_COOKIE['news_list_ids'];
+		// if(isset($lists) && $lists) {
+		// 	$lists = explode(',', $lists);
+		// 	foreach ($lists as $key => $value) {
+		// 		if($id==$value) {
+		// 			isset($lists[$key+1]) && $nextid = $lists[$key+1];
+		// 			isset($lists[$key-1]) && $preid = $lists[$key-1];
+		// 		}
+		// 	}
+		// } else {
+		// 	$nx = ArticleExt::model()->normal()->find('id>'.$id);
+		// 	$nx && $nextid = $nx->id;
+		// 	$be = ArticleExt::model()->normal()->find('id<'.$id);
+		// 	$be && $preid = $be->id;
+		// }
+		$nx = ArticleExt::model()->normal()->find('id>'.$id);
+		$nx && $nextid = $nx->id;
+		$be = ArticleExt::model()->normal()->find('id<'.$id);
+		$be && $preid = $be->id;
 		$this->render('info',['info'=>$info,'nextid'=>$nextid,'preid'=>$preid]);
 	}
 	/**

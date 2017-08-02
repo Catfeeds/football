@@ -69,13 +69,13 @@ class AlbumController extends HomeController{
 		$datas = TkExt::model()->normal()->getList($criteria,18);
 		$infos = $datas->data;
 		$pager = $datas->pagination;
-		if($infos) {
-			$ids = '';
-			foreach ($infos as $key => $value) {
-				$ids .= $value->id.',';
-			}
-			setCookie('album_list_ids',trim($ids));
-		}
+		// if($infos) {
+		// 	$ids = '';
+		// 	foreach ($infos as $key => $value) {
+		// 		$ids .= $value->id.',';
+		// 	}
+		// 	setCookie('album_list_ids',trim($ids));
+		// }
 		
         // var_dump($this->cates);exit;
         if($this->iswap)
@@ -100,21 +100,25 @@ class AlbumController extends HomeController{
 		
 		// $info->save();
 		$nextid = $preid = '';
-		isset($_COOKIE['album_list_ids']) && $lists = $_COOKIE['album_list_ids'];
-		if(isset($lists) && $lists) {
-			$lists = explode(',', $lists);
-			foreach ($lists as $key => $value) {
-				if($id==$value) {
-					isset($lists[$key+1]) && $nextid = $lists[$key+1];
-					isset($lists[$key-1]) && $preid = $lists[$key-1];
-				}
-			}
-		} else {
-			$nx = TkExt::model()->normal()->find('id>'.$id);
-			$nx && $nextid = $nx->id;
-			$be = TkExt::model()->normal()->find('id<'.$id);
-			$be && $preid = $be->id;
-		}
+		// isset($_COOKIE['album_list_ids']) && $lists = $_COOKIE['album_list_ids'];
+		// if(isset($lists) && $lists) {
+		// 	$lists = explode(',', $lists);
+		// 	foreach ($lists as $key => $value) {
+		// 		if($id==$value) {
+		// 			isset($lists[$key+1]) && $nextid = $lists[$key+1];
+		// 			isset($lists[$key-1]) && $preid = $lists[$key-1];
+		// 		}
+		// 	}
+		// } else {
+		// 	$nx = TkExt::model()->normal()->find('id>'.$id);
+		// 	$nx && $nextid = $nx->id;
+		// 	$be = TkExt::model()->normal()->find('id<'.$id);
+		// 	$be && $preid = $be->id;
+		// }
+		$nx = TkExt::model()->normal()->find('id>'.$id);
+		$nx && $nextid = $nx->id;
+		$be = TkExt::model()->normal()->find('id<'.$id);
+		$be && $preid = $be->id;
 		// $this->render('info',['info'=>$info,'rights'=>$this->rights]);
 		$this->render('imageinfo',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
 	}
