@@ -26,7 +26,7 @@
     <div class="clearfix-row" >
         <div id="register-bind" class="table">
             <div class="clearfix-row m-t-72" style="margin-top: 50px">
-                <div class="lab-left"><span class="line-h-40" style="<?=$this->iswap?'float:left;margin-left:10px':''?>">手机号：</span></div>
+                <div class="lab-left"><span class="line-h-40" style="<?=$this->iswap?'float:left;margin-left:10px':''?>">手机号/昵称：</span></div>
                 <div class="lab-right"  style="<?=$this->iswap?'width: 100%':''?>">
                     <div class="text-box" style="<?=$this->iswap?'width: 100%':''?>">
                         <input class="text <?=$this->iswap?'':'w-308'?>" style="<?=$this->iswap?'width: 90%;margin-left:10px ':''?>" id="username" value="<?=$phone?>"  name="name" type="text" placeholder="" onblur="ckit(this)">

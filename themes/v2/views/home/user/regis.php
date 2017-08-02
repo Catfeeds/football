@@ -108,9 +108,21 @@
         var name = $(obj).val();
         $('#nameafter').remove();
         var reg = /^[A-Za-z0-9-_\u4e00-\u9fa5]{4,30}$/;
-        if (!reg.test(name) || name.length < 5 || name.length > 20) {
-            $(obj).after(br+'<span id="nameafter" class="bad" style="margin-left:5px;color:red;font-size:10px">5-20个字符，支持中英文、数字下划线</span>');
-        } 
+        var reg1 =  /^[0-9]*$/;
+        if (!reg.test(name) || name.length < 5 || name.length > 20 || reg1.test(name)) {
+            $(obj).after(br+'<span id="nameafter" class="bad" style="margin-left:5px;color:red;font-size:10px">5-20个字符，不支持纯数字，支持中英文、数字下划线</span>');
+        } else {
+            $.ajax({
+                'type':'get',
+                'url':'checkName',
+                'dataType':'json',
+                'data':{'name':name},
+                'success':function(e) {
+                    if(e.s=='error') 
+                        $(obj).after(br+'<span id="nameafter" class="bad" style="margin-left:5px;color:red;font-size:10px">该昵称已注册</span>');
+                }
+            });
+        }
 
     }
     function cknew() {

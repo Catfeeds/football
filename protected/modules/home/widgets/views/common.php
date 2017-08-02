@@ -67,6 +67,15 @@
                         <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
                         <?php if($value): ?>
                             <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
+                            <?php for ($i=0; $i < count($value); $i++) { 
+                                for ($j=$i+1; $j < count($value); $j++) { 
+                                    if($value[$j]['points']>$value[$i]['points']) {
+                                        $t = $value[$i];
+                                        $value[$i] = $value[$j];
+                                        $value[$j] = $t;
+                                    }
+                                }
+                            } ?>
                                 <?php foreach ($value as $r => $v) { $team = $v->team; ?>
                                     <tr>
                                             <td align='center'><?=$r+1?></td>
@@ -123,20 +132,4 @@
                         border: none !important;
                        }
                    </style>
-
-            
-            <!-- <div class="widget d_comment">
-                <div class="title">
-                    <h2><sapn class="title_span">热门评论</span></h2></div>
-                <ul>
-                <?php if($comms) foreach ($comms as $key => $value) { $user = $value->user?>
-                <li>
-                        <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->major_id])?>" ><img alt='' src='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-36 pehoto'  height='36' width='36' />
-                            <div class="muted"><i><?=$user->name?></i>&nbsp;&nbsp;于 <?=Tools::friendlyDate($value->created)?> 说：
-                                <br/><?=Tools::u8_title_substr($value->content,40) ?></div>
-                        </a>
-                    </li>
-               <?php } ?>
-                </ul>
-            </div> -->
             

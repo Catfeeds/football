@@ -193,6 +193,7 @@ $config1 = array(
                 'addOne'=>'home/user/addOne',
                 'checkPhone'=>'home/user/checkPhone',
                 'checkCode'=>'home/user/checkCode',
+                'checkName'=>'home/user/checkName',
                 'checkOld'=>'home/user/checkOld',
                 'alltag'=>'home/news/alltag',
                 //百度编辑器

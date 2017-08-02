@@ -94,7 +94,7 @@ class DataCommand extends CConsoleCommand
 						$league->$k = $value[$v];
 					}
 					$league->created = strtotime($league->created);
-					$league->status = 0;
+					$league->status = 1;
 					// var_dump($cid);exit;
 					$cid && $league->cid = $cid;
 					// var_dump($league->attributes);exit;
@@ -129,25 +129,32 @@ class DataCommand extends CConsoleCommand
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
 			if($data) {
 				foreach ($data as $key => $value) {
+					if(Yii::app()->db->createCommand("select id from points where old_id=".$value['no'])->queryScalar())
+						continue;
 					// var_dump($value);exit;
 					$name = $value['name'];
-					if(Yii::app()->db->createCommand("select id from team where name='$name'")->queryScalar()) {
-						continue;
-					} 
-					$team = new TeamExt;
-					$team->old_id = $value['no'];
-					foreach (['name','city','coach','image'] as $v) {
-						$team->$v = $value[$v];
+					$criteria = new CDbCriteria;
+					$criteria->addCondition("name=':name'");
+					$criteria->params[':name'] = $name;
+
+					if(!($team = TeamExt::model()->find($criteria))) {
+						$team = new TeamExt;
+						$team->old_id = $value['no'];
+						$team->status = 1;
+						foreach (['name','city','coach','image'] as $v) {
+							$team->$v = $value[$v];
+						}
 					}
 					if($team->save()) {
 						$tid = $team->id;
 						$points = new PointsExt;
-						foreach (['lose_ball'=>'goal','score_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw'] as $k => $v) {
+						foreach (['score_ball'=>'goal','lose_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw','year'=>'schedule','old_id'=>'no'] as $k => $v) {
 							$points->$k = $value[$v];
 						}
 						$oldlid = $value['league'];
 						$points->lid = Yii::app()->db->createCommand("select id from league where old_id=$oldlid")->queryScalar();
 						$points->tid = $tid;
+						$points->status = 1;
 						// var_dump($points->attributes);exit;
 						if(!$points->save()) {
 							echo current(current($points->getErrors()));

@@ -56,6 +56,7 @@ class IndexController extends HomeController
 
             }
         }
+        // var_dump($points[0]);exit;
         // 十个评论
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms,'matchs'=>$matchs];

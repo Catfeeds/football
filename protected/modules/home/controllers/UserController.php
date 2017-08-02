@@ -130,9 +130,13 @@ class UserController extends HomeController{
 		return SmsExt::addOne($phone);
 	}
 
-	public function actioncheckCode($phone='',$code='')
+	public function actionCheckCode($phone='',$code='')
 	{
 		return SmsExt::checkPhone($phone,$code);
+	}
+	public function actionCheckName($name='')
+	{
+		echo UserExt::model()->find("name='$name'")?json_encode(['s'=>'error']):json_encode(['s'=>'success']);
 	}
 
 	public function actionCheckPhone($phone='')

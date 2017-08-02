@@ -15,6 +15,7 @@
  * @property string $year
  * @property integer $lid
  * @property integer $tid
+ * @property integer $old_id
  * @property integer $status
  * @property integer $deleted
  * @property integer $sort
@@ -40,11 +41,11 @@ class Points extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('lose_ball, score_ball, lose, same, win, lid, tid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('lose_ball, score_ball, lose, same, win, lid, tid, old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('points, round, year', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, points, lose_ball, score_ball, lose, same, win, round, year, lid, tid, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, points, lose_ball, score_ball, lose, same, win, round, year, lid, tid, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +77,7 @@ class Points extends CActiveRecord
 			'year' => 'Year',
 			'lid' => 'Lid',
 			'tid' => 'Tid',
+			'old_id' => 'Old',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
 			'sort' => 'Sort',
@@ -113,6 +115,7 @@ class Points extends CActiveRecord
 		$criteria->compare('year',$this->year,true);
 		$criteria->compare('lid',$this->lid);
 		$criteria->compare('tid',$this->tid);
+		$criteria->compare('old_id',$this->old_id);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);
 		$criteria->compare('sort',$this->sort);
