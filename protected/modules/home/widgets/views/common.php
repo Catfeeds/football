@@ -67,10 +67,10 @@
                         <div class="tab-pane fade <?=$key==0?'active':''?> in" id="tab_1_<?=$key+1?>">
                         <?php if($value): ?>
                             <table class="table table-striped table-hover" style="margin-top: -1px;font-size: 12px">
-                                <?php foreach ($value as $r => $v) {?>
+                                <?php foreach ($value as $r => $v) { $team = $v->team; ?>
                                     <tr>
                                             <td align='center'><?=$r+1?></td>
-                                            <td align='center' style="width: 40%"><?=Tools::u8_title_substr($v->team->name,12) ?></td>
+                                            <td align='center' style="width: 40%"><img src="<?=ImageTools::fixImage($team->image)?>" style="width: 20px;height:20px;float: left" alt="">&nbsp;<?=Tools::u8_title_substr($team->name,12) ?></td>
                                             <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
                                             <td align='center'><?=$v->points?></td>
                                         </tr>

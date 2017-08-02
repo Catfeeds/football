@@ -77,6 +77,9 @@ class IndexController extends HomeController
     }
     public function actionTest()
     {
-        var_dump(Yii::app()->mns->run('13861242596','1234'));exit;
+        $tags = TagExt::model()->findAll();
+        foreach ($tags as $key => $value) {
+            ArticleTagExt::model()->deleteAllByAttributes(['tid'=>$value->id]);
+        }
     }
 }

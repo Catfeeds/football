@@ -19,7 +19,7 @@
             <div class="widget d_tag">
                 <div class="title">
                     <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门图库</strong></span></div>
-                <div class="d_tags">
+                <div class="d_tags" style="width: 88%">
                 <?php if($albums) foreach ($albums as $key => $value) { ?>
                     <a title="<?=$value->title?>" href="<?=$this->owner->createUrl('/home/album/info',['id'=>$value->id])?>" style="padding: 0;background-color:white;height: 82px;width: 48%;opacity: 1">
                         <img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,127,80)?>"  style="width: 127px;height: 80px" >

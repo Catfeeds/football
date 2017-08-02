@@ -13,9 +13,7 @@
     }
 </style>
 <section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">
-           <!--  <div class="speedbar">
-                <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
-            </div> -->
+           
             <div class="content-wrap">
                 <div class="content">
                 <?php if($this->iswap==0):?>
@@ -28,7 +26,7 @@
                         <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px;word-wrap:break-word;word-break: normal;";><?=$info->title?></h1>
                         <br>
                         <div class="meta">
-                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cid])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> </span><?php endif;?>
+                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/album/list',['cid'=>$info->cate->pinyin])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> </span><?php endif;?>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
                     </header>
                     <style type="text/css">

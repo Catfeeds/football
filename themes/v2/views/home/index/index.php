@@ -118,7 +118,7 @@
                          <?php  foreach ($nowInfos as $key => $value) {?>
                          <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
                              </li><?php else:?>
-                             <li class="l11"><a style="color: #848484;" class="lia" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,54)?></a>
+                             <li class="l11"><a style="color: #848484;" class="lia" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,48)?>&nbsp;&nbsp;<span style="font-size: 12px;color: #aaa"><?=date('m-d',$value->updated)?></span></a>
                              </li><?php endif;?>
                         <?php  } ?>
                         </ul>

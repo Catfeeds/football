@@ -53,7 +53,7 @@ class HomeNavWidget extends CWidget
 			// if($this->type == 'home')
 			// 	$html .= '<li class="nav_menu-item">'.$name.'</a></li>';
 			// else
-				$html .= '<li class="'.$licss.'"><a '.(strstr($path,'user')?'rel="nofollow"':'').' class="'.($active?$active:$aclass).'" href="'.$url.'"><p>'.$name.'</p></a></li>';
+				$html .= '<li class="'.$licss.'"><a '.($key+1==count($menus)||strstr($path,'user')?'rel="nofollow"':'').' class="'.($active?$active:$aclass).'" href="'.$url.'"><p>'.$name.'</p></a></li>';
 			// if($this->type == 'home')
 			// 	$html .= '<li id="menu-item-'.$key.'" class="menu-item menu-item-type-custom menu-item-object-custom '.$active.' menu-item-home menu-item-'.$key.'"><a href="'.$url.'">'.$name.'</a></li>';
 			// else

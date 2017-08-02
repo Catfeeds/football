@@ -20,10 +20,10 @@
                     <header class="article-header">
                         <h1 class="article-title" style="font-size: 26px"><?=$info->title?></h1>
                         <div class="meta">
-                            <span class="muted"><i class="fa fa-user"></i> <a href=""><?=$info->author?></a></span>
+                            <span class="muted"><i class="fa fa-user"></i> <?=$info->author?></span>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
-                            <span class="muted"><i class="fa fa-comments-o"></i> <a href="http://demo3.ledkongzhiqi.com/php/114.html#respond"><?=$info->comment_num?>评论</a></span> </div>
+                            <span class="muted"><i class="fa fa-comments-o"></i> <?=$info->comment_num?>评论</span> </div>
                     </header>
                     <article class="article-content" id="content_img">
                     <?=$info->content?>
