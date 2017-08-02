@@ -22,7 +22,7 @@
                     <h2>标签列表</h2></div> -->
                 <div class="d_tags"  style="width: 86%">
                 <?php if($tags) foreach ($tags as $key => $value) {?>
-                    <a style="width: 15%" href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?></a>
+                    <a style="width: auto" href="<?=$this->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?></a>
                 <?php } ?> 
                 </div>
             </div>

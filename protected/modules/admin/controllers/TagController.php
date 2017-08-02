@@ -123,6 +123,7 @@ class TagController extends AdminController{
             $id = Yii::app()->request->getPost('id', 0);
             if($tag = TagExt::model()->findByPk($id)) {
                 if($tag->delete()){
+                    
                     $this->setMessage('删除成功','success');
                 }
             }

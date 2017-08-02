@@ -38,7 +38,7 @@
                     <?=$info->content?>
                     <p>
                         当前标签：<span><?php if($tags = $info->tags):  foreach ($tags as $key => $value) {?>
-                            <?='<a href="'.$this->createUrl('list',['tag'=>$value->id]).'">'.$value->name.'</a> '?>
+                            <?='<a href="'.$this->createUrl('list',['tag'=>Pinyin::get($value->name)]).'">'.$value->name.'</a> '?>
                        <?php  } else :?>暂无<?php endif;?></span>      
                     </p>
                     <style>

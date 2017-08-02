@@ -130,7 +130,7 @@ class TagExt extends Tag
      */
     public function deleteAllByTagId()
     {
-        TagRelExt::deleteAllByTagId($this->id);
+        ArticleTagExt::model()->deleteAllByAttributes(['tid'=>$this->id]);
     }
 
     /**
@@ -290,5 +290,13 @@ class TagExt extends Tag
     public static function getIdByPinyin($value='')
     {
         return TagExt::model()->find("pinyin='$value'")->id;
+    }
+
+    public function afterSave()
+    {
+        parent::afterSave();
+        $name = $this->name;
+        $id = $this->id;
+        Yii::app()->db->createCommand("update article_tag set name='$name' where tid=$id")->execute();
     }
 }

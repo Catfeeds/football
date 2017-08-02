@@ -26,7 +26,7 @@
                     <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门搜索</strong></span></div>
                 <div class="d_tags"  style="width: 86%">
                 <?php if($tags) foreach ($tags as $key => $value) {?>
-                    <a title="<?=$value['ct']?>个话题" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?> (<?=$value['ct']?>)</a>
+                    <a title="<?=$value['ct']?>个话题" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=Tools::u8_title_substr($value['name'],12)?> (<?=$value['ct']?>)</a>
                 <?php } ?> 
                 <a href="<?=$this->owner->createUrl('/home/news/alltag')?>" >查看更多</a>
                 </div>
