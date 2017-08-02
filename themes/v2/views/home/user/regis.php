@@ -195,8 +195,8 @@
             }
         });
         if($("#sendSMS").text()=='发送验证码') {
-            $("#sendSMS").text('剩余'+'10');
-            var time=parseInt(10);
+            $("#sendSMS").text('剩余'+'60');
+            var time=parseInt(60);
             setTime=setInterval(function(){
                 
                 if(time<=0){
