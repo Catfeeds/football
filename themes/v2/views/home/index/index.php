@@ -5,11 +5,6 @@
     Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/cms.css");
 ?>
 <section class="container">
-        <!-- <div class="speedbar" style="height: 25px;line-height: 25px">
-            <div class="top-tip">
-                <strong class="text-success"><i class="fa fa-volume-up"></i> </strong><?=SiteExt::getAttr('qjpz','pcIndexGun')?>
-            </div>
-        </div> -->
         <?php $nopic = SiteExt::getAttr('qjpz','newsImg')?>
         <div class="content-wrap">
             <div class="content">
@@ -40,25 +35,6 @@
                 </div>
                 <?php if($jpdds):?>
                     <?php if($this->iswap):?>
-                       <!--  <h4 style="line-height: 16px">热门<span style="font-size: 16px"> NEWS</span></h4>
-                        <div class="cms_4" style="    margin: 10px -9px;">
-                            <ul style="    padding: 0 !important;margin: 0 !important;list-style: none !important;">
-                            <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
-                                <li>
-                                    <div class="cms_4_div">
-                                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-                                            <img src="<?=ImageTools::fixImage($img?$img:$nopic)?>" style="display: inline;width: <?=$this->ispad?'360':'194'?>px;height: <?=$this->ispad?'230':'120'?>px" /> </a>
-                                        <header class="cms_4_a">
-                                            <a target="_blank" rel="bookmark" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
-    <?=Tools::u8_title_substr($obj->title)?> </a>
-                                        </header>
-                                    </div>
-                                </li>
-                            
-                        <?php } ?>
-                                
-                            </ul>
-                    </div> -->
                     <section class="cms">
                         <ul>
                         <?php if($cates) foreach ($cates as $key => $value) { if($newss = $value->getNews('7')) { ?>

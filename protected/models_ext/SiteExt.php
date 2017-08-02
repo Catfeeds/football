@@ -94,6 +94,8 @@ class SiteExt extends Site{
         'home_news_tag_title'=>'',
         'home_news_tag_desc'=>'',
         'home_news_tag_keyword'=>'',
+        'headCode'=>'',
+        'footCode'=>'',
 
 
     ];
@@ -129,6 +131,8 @@ class SiteExt extends Site{
             // 'pcContactTop'=>['type'=>'image','max'=>1,'name'=>'pc联系列表头图'],
             'userImg'=>['type'=>'image','max'=>1,'name'=>'用户默认头像'],
             'newsImg'=>['type'=>'image','max'=>1,'name'=>'资讯默认封面图'],
+            'headCode'=>['type'=>'text','name'=>'头部代码'],
+            'footCode'=>['type'=>'text','name'=>'底部代码'],
             // 'pcTeamTop'=>['type'=>'image','max'=>1,'name'=>'pc团队列表头图'],
             // 'productNoPic'=>['type'=>'image','max'=>1,'name'=>'产品默认图'],
             // 'houseNoPic'=>['type'=>'image','max'=>1,'name'=>'酒庄默认图'],

@@ -74,6 +74,7 @@
             }
         </style>
     <?php endif;?>
+    <?=SiteExt::getAttr('qjpz','headCode')?>
 </head>
 <body class="home blog">
 <style>
@@ -104,18 +105,6 @@
                 <div id="top-menu_1"><span class="nav-search" style="    margin-top: <?=$this->iswap?'24':'-36'?>px;"><i class="fa fa-search" style="    position: initial;"></i></span> <span class="nav-search_1"><a href="#nav-search_1"><i class="fa fa-navicon"></i></a></span>
             <?php endif;?>
                 <?php if($this->iswap):?>
-                    <!-- <hgroup class="logo-site">
-                        <h1 class="site-title"> <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="height:<?=$this->iswap?40:50?>px" alt="球布斯足球资讯" /></a></h1>
-                    </hgroup>
-                    <div id="site-nav-wrap">
-                        <nav id="site-nav" class="main-nav">
-                            <div>
-                                <ul class="down-menu nav-menu">
-                                <?php $this->widget('HomeNavWidget')?>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div> -->
                         <div id="div_menu1">
                             <nav>
                                 <div class="top_navs">
@@ -138,22 +127,9 @@
                                     </tr>
                                 <?php }?>
                                 </table>
-                                <!-- <div class="k15"></div>
-                                <hr class="hr1">
-                                <div class="k30"></div>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr height="50" align="center">
-                                        <td><a href="/user/login" id="head_Center" class="home_btxl">登录</a></td>
-                                        <td><a href="/match/show?passType=YP" name="editRecommend" class="home_btxl">写推荐</a></td>
-                                        <td><a rel="nofollow" data='WEB' name="jumpPlatform" href="http://www.fox008.com" class="home_btxl">电脑版</a></td>
-                                        <td><a href="http://www.fox008.com/mobile/app/code?v=1" class="home_btxl">下载APP</a></td>
-                                    </tr>
-                                </table> -->
                                 <div class=" k30"></div>
                                 <div class="home_close" onclick="closeit()"></div>
                             </div>
-                            <!-- <div class="k10"></div> -->
-                            <!-- <div class="k30"></div> -->
                         </div>
                         <?php if($this->hideloginhead==0):?>
                         <header>
@@ -175,8 +151,6 @@
             </div>
         </div>
         <nav>
-            <!-- <ul class="nav_sj" style="margin-top: 0" id="nav-search_1"><?php if($this->iswap):?><?php $this->widget('HomeNavWidget',['type'=>'wap'])?><?php endif;?>
-            </ul> -->
         </nav>
     </header>
     
@@ -192,8 +166,9 @@
     <?=$content?>
     <footer class="footer" style="<?=$this->fixedFooter?>">
         <div class="footer-inner">
+        
             <p>
-                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器&nbsp;&nbsp; </p>
+                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器<?=SiteExt::getAttr('qjpz','footCoder')?></p>
         </div>
     </footer>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/um.js?ver=4.5.9'></script>

@@ -76,11 +76,14 @@ class IndexController extends HomeController
         // var_dump($info->attributes);exit;
         $this->render('contact',['info'=>$info]);
     }
-    public function actionTest()
+    public function actionTest($name='')
     {
-        $tags = TagExt::model()->findAll();
-        foreach ($tags as $key => $value) {
-            ArticleTagExt::model()->deleteAllByAttributes(['tid'=>$value->id]);
-        }
+        Yii::app()->db->createCommand("delete from article_tag where name='$name' or name='测试'")->execute();
+    }
+
+    public function actionError()
+    {
+        // $this->layout = '/layouts/nobase';
+        $this->render('error');
     }
 }

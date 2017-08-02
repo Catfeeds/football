@@ -10,9 +10,6 @@
     </style>
     <?php endif;?>
 <section class="container">
-           <!--  <div class="speedbar">
-                <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?=SiteExt::getAttr('qjpz','pcIndexGun')?></div>
-            </div> -->
             <div class="content-wrap">
                 <div class="content">
                     <?php if($this->iswap==0):?>
@@ -110,19 +107,6 @@
                                         <span class="muted comt-mailme"><label for="comment_mail_notify" class="checkbox inline" style="padding-top:0"><input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked"/>有人回复时邮件通知我</label></span>
                                     </div>
                                 </div>
-                                <!-- <div class="comt-comterinfo" id="comment-author-info" style="display:none">
-                                    <h4>Hi，您需要填写昵称和邮箱！</h4>
-                                    <ul>
-                                        <li class="form-inline">
-                                            <label class="hide" for="author">昵称</label>
-                                            <input class="ipt" type="text" name="author" id="author" value="tivon" tabindex="2" placeholder="昵称"><span class="help-inline">昵称 (必填)</span></li>
-                                        <li class="form-inline">
-                                            <label class="hide" for="email">邮箱</label>
-                                            <input class="ipt" type="text" name="email" id="email" value="123@11.com" tabindex="3" placeholder="邮箱"><span class="help-inline">邮箱 (必填)</span></li>
-                                        <li class="form-inline">
-                                            <label class="hide" for="url">网址</label>
-                                            <input class="ipt" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址"><span class="help-inline">网址</span></li>
-                                    </ul>
                                 </div> -->
                             </div>
                         </form>

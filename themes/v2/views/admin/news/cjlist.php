@@ -29,6 +29,7 @@ $this->breadcrumbs = array($this->pageTitle);
         <a href="<?php echo $this->createAbsoluteUrl('edit') ?>" class="btn blue">
             添加列表 <i class="fa fa-plus"></i>
         </a>
+        <?php echo CHtml::ajaxLink('获取资讯',$this->createUrl('getNews'), array('type'=>'get', 'success'=>'function(data){location.reload()}'), array('class'=>'btn yellow')); ?>
     </div>
 </div>
    <table class="table table-bordered table-striped table-condensed flip-content table-hover">
@@ -65,6 +66,7 @@ $this->breadcrumbs = array($this->pageTitle);
 
             <td style="text-align:center;vertical-align: middle">
                 <a href="<?php echo $this->createUrl('/admin/news/edit',array('id'=>$v->id,'page'=>isset($_GET['page'])?$_GET['page']:'1')); ?>" class="btn default btn-xs green"><i class="fa fa-edit"></i> 修改 </a>
+                <?php echo CHtml::ajaxLink('发布',$this->createUrl('publish'), array('type'=>'get','data'=>['id'=>$v->id], 'success'=>'function(data){location.reload()}'), array('class'=>'btn btn-xs yellow')); ?>
                 <?php echo CHtml::htmlButton('删除', array('data-toggle'=>'confirmation', 'class'=>'btn btn-xs red', 'data-title'=>'确认删除？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true,'ajax'=>array('url'=>$this->createUrl('del'),'type'=>'get','success'=>'function(data){location.reload()}','data'=>array('id'=>$v->id,'class'=>get_class($v)))));?>
                 <a class="btn btn-xs blue" href="<?=$this->createUrl('/admin/recom/edit',['rid'=>$v->id,'type'=>1])?>">推荐</a>
 

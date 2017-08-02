@@ -65,6 +65,7 @@ class AdminController extends Controller
             ['label'=>'管理中心','icon'=>'icon-settings','url'=>'/admin/common/index','active'=>$this->route=='vip/common/index'],
             ['label' => '资讯管理', 'icon' => 'icon-speedometer', 'items' => [
                 ['label' => '资讯列表', 'url' => ['/admin/news/list'],'active'=>$this->route=='admin/news/edit'],
+                ['label' => '采集列表', 'url' => ['/admin/news/cjlist'],'active'=>$this->route=='admin/news/cjedit'],
                 ['label' => '资讯分类', 'url' => ['/admin/newscate/list'],'active'=>$this->route=='admin/newscate/edit'],
             ]],
             ['label'=>'视频管理','icon'=>'icon-speedometer','url'=>['/admin/video/list'],'active'=>$this->route=='admin/video/edit'],
