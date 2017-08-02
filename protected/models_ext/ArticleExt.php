@@ -143,16 +143,16 @@ class ArticleExt extends Article{
         );
     }
 
-    public function getTagString()
+    public function getTagString($di=' ')
     {
         $res = '';
         $tags = $this->tags;
         if($tags) {
             foreach ($tags as $key => $value) {
-                $res .= $value['name'].' ';
+                $res .= $value['name'].$di;
             }
         }
-        return trim($res);
+        return trim($res,$di);
     }
 
     public function getRelNews()

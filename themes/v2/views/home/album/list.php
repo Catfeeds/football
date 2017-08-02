@@ -21,7 +21,7 @@
 </div>
         <div id="listing" class="container-fluid masonry" style="position: relative; height: 1403px;padding-left: 0;padding-right: 0;margin-right: 0;width: 100%">
         <?php if($infos) foreach ($infos as $key => $value) {?>
-        <?php $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->descpt);
+        <?php $wd = ''; $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->descpt);
             if($html) {
                 $html = preg_replace("/\<\/[a-z]+\>/","",$html);
                 // var_dump($html);exit;

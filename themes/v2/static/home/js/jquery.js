@@ -536,7 +536,7 @@ eval(function(h, b, i, d, g, f) { g = function(a) {
          a(".comt-loading").show();
             $submit.attr("disabled", true).fadeTo("slow", 0.5);
             if (o) { a("#comment").after('<input type="text" name="edit_id" id="edit_id" value="' + o + '" style="display:none;" />') }
-            a.ajax({ url: "/home/comment/add", data: a(this).serialize(), type: a(this).attr("method"), error: function(w) { a(".comt-loading").hide();
+            a.ajax({ url: "/home/comment/add", dataType:'json',data: a(this).serialize(), type: a(this).attr("method"), error: function(w) { a(".comt-loading").hide();
                     a(".comt-error").show().html(w.responseText);
                     setTimeout(function() { $submit.attr("disabled", false).fadeTo("slow", 1);
                         a(".comt-error").fadeOut() }, 3000) }, success: function(B) {
@@ -565,7 +565,8 @@ eval(function(h, b, i, d, g, f) { g = function(a) {
                     // a("#new_comm_" + k + " li").append('');
                     // debugger;
                     // a("#new_comm_" + k).fadeIn(4000);
-                    alert('提交成功！');
+                    // console.log(B);
+                    alert(B.msg);
                     // a(".comt-tips").append('提交成功！');
                     window.location.reload();
                     $body.animate({ scrollTop: a("#new_comm_" + k).offset().top - 200 }, 500);

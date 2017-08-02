@@ -190,7 +190,7 @@
                     <ul class="pic-list">
                     <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
                     <?php if($album) foreach ($album as $key => $value) {?>
-                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>"><img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,372,212)?>" alt="">
+                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>"><img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,372,212)?>" alt="" style="width: 100%;height: 100%">
                             <span style="    margin-bottom: -114px;margin-top: 0;margin-left: 0;background-color: rgba(0,0,0,0.5);height: 52px;bottom: 40px;font: 700 20px/54px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:100%;margin-left: 5px"><?=Tools::u8_title_substr($value->title,30)?></label></span></a>
                         </li>
                     <?php } ?>

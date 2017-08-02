@@ -73,15 +73,15 @@ class DataCommand extends CConsoleCommand
 						continue;
 					$cname = $value['league'];
 					
-					$cid = Yii::app()->db->createCommand("select id from article_cate where name='$cname' and status=1 and deleted=0")->queryScalar();
+					// $cid = Yii::app()->db->createCommand("select id from article_cate where name='$cname' and status=1 and deleted=0")->queryScalar();
 
-					if(!$cid && $cname) {
-						$catemodel = new ArticleCateExt;
-						$catemodel->name = $cname;
-						$catemodel->status = 1;
-						$catemodel->save();
-						$cid = $catemodel->id;
-					}
+					// if(!$cid && $cname) {
+					// 	$catemodel = new ArticleCateExt;
+					// 	$catemodel->name = $cname;
+					// 	$catemodel->status = 1;
+					// 	$catemodel->save();
+					// 	$cid = $catemodel->id;
+					// }
 
 					$no =  $value['no'];
 					if(Yii::app()->db->createCommand("select id from article where old_id=$no")->queryScalar())
@@ -96,7 +96,7 @@ class DataCommand extends CConsoleCommand
 					$league->created = strtotime($league->created);
 					$league->status = 1;
 					// var_dump($cid);exit;
-					$cid && $league->cid = $cid;
+					// $cid && $league->cid = $cid;
 					// var_dump($league->attributes);exit;
 					// $league->attributes = $value;
 					if(!$league->save()) {

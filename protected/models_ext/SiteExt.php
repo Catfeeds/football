@@ -96,12 +96,14 @@ class SiteExt extends Site{
         'home_news_tag_keyword'=>'',
         'headCode'=>'',
         'footCode'=>'',
+        'sen'=>'',
 
 
     ];
     public static $cateName = [
         'qjpz' => '全局配置',
         'seo'=>'seo配置',
+        'sen'=>'敏感词配置',
     ];
 
     // 属性分类
@@ -173,6 +175,9 @@ class SiteExt extends Site{
             'home_news_tag_title'=>['type'=>'text','name'=>'标签页详情标题'],
             'home_news_tag_desc'=>['type'=>'text','name'=>'标签页详情简介'],
             'home_news_tag_keyword'=>['type'=>'text','name'=>'标签页详情关键词'],
+        ],
+        'sen'=>[
+            'sen'=>['type'=>'text','name'=>'敏感词'],
         ],
     ];
 

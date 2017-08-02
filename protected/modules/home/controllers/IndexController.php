@@ -83,7 +83,14 @@ class IndexController extends HomeController
 
     public function actionError()
     {
-        // $this->layout = '/layouts/nobase';
-        $this->render('error');
+        if($error=Yii::app()->errorHandler->error)
+        {
+            if($error['code']==404){
+                $this->redirect(array('/home/index/index'));
+            }else{
+                echo $error['code'];
+            }
+        } 
+        
     }
 }

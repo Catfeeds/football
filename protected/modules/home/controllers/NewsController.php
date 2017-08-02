@@ -35,6 +35,9 @@ class NewsController extends HomeController{
 		if($cid) {
 			// 拼音转换+栏目seo
 			$cate = ArticleCateExt::model()->find(['condition'=>"pinyin='$cid'"]);
+			if(!$cate) {
+				$this->redirect('/home/index/error');
+			}
 			$seo = json_decode($cate->seo,true);
 			if(isset($seo['t']) && $seo['t'])
 				$this->pageTitle = $seo['t'];
@@ -49,6 +52,9 @@ class NewsController extends HomeController{
 		} else if($tag) {
 			// 拼音转换+标签seo
 			$tag = TagExt::model()->find(['condition'=>"pinyin='$tag'"]);
+			if(!$tag) {
+				$this->redirect('/home/index/error');
+			}
 			$tagName = $tag->name;
 			$t = SiteExt::getAttr('seo','home_news_tag_title');
 	        $k = SiteExt::getAttr('seo','home_news_tag_keyword');
@@ -89,7 +95,10 @@ class NewsController extends HomeController{
 
 	public function actionInfo($id='')
 	{
-		$info = ArticleExt::model()->findByPk($id);
+		$info = ArticleExt::model()->normal()->findByPk($id);
+		if(!$info){
+			$this->redirect('/home/index/error');
+		}
 		$this->obj = $info;
 		// 详情页seo
 		$t = SiteExt::getAttr('seo','home_news_info_title');

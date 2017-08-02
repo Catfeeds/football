@@ -107,7 +107,7 @@
                                         <span class="muted comt-mailme"><label for="comment_mail_notify" class="checkbox inline" style="padding-top:0"><input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked"/>有人回复时邮件通知我</label></span>
                                     </div>
                                 </div>
-                                </div> -->
+                                </div>
                             </div>
                         </form>
                     </div>

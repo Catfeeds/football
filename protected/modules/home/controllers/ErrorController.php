@@ -13,11 +13,12 @@ class ErrorController extends HomeController
     {
         if($error=Yii::app()->errorHandler->error)
 		{
-			if($error['code']==404){
-                $this->redirect(array('/home/index/error'));
-            }else{
-                echo $error['code'];
-            }
+            $this->render('error',['code'=>$error['code']]);
+			// if($error['code']==404){
+   //              $this->redirect(array('/home/index/error'));
+   //          }else{
+   //              echo $error['code'];
+   //          }
 		}
     }
 }

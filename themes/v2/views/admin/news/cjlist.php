@@ -56,7 +56,7 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$v->id])?>"><?=$v->title?></a></td>
+            <td class="text-center"><?=$v->title?></td>
             <td class="text-center"><?=$v->author?></td>
             <td class="text-center"><?=$v->cid?$v->cate->name:'-'?></td> 
             <td class="text-center"><?=$v->getTagString()?></td>            
