@@ -217,7 +217,7 @@ $config1 = array(
                 'wap/<py:[a-z0-9]+>/faq' => 'wap/plot/index',//v2临时改造
                 'wap/<py:[a-z0-9]+>/dianping' => 'wap/plot/comment',//v2临时改造
                 'wap/<py:[a-z0-9]+>/<_a:\w+>' => 'wap/plot/<_a>',
-                '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
+                // '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
 
                 // //PC楼盘
                 // '<py:[a-z0-9]+>' => 'home/plot/index',
