@@ -1,4 +1,4 @@
-<?php if($this->iswap==0):?>
+<?php if($this->iswap):?>
 <style>
     iframe{
         width: auto !important;
