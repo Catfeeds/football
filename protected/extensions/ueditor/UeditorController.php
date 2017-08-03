@@ -200,38 +200,38 @@ class UeditorController extends CExtController{
      * 获取远程图片
      */
     public function actionCatchImage(){
-        set_time_limit(0);
-        /* 上传配置 */
-        $config = array(
-            "pathFormat" => $this->config['catcherPathFormat'],
-            "maxSize" => $this->config['catcherMaxSize'],
-            "allowFiles" => $this->config['catcherAllowFiles'],
-            "oriName" => "remote.png"
-        );
-        $fieldName = $this->config['catcherFieldName'];
-        /* 抓取远程图片 */
-        $list = array();
-        if (isset($_POST[$fieldName])) {
-            $source = $_POST[$fieldName];
-        } else {
-            $source = $_GET[$fieldName];
-        }
-        foreach ($source as $imgUrl) {
-            $item = new Uploader($imgUrl, $config, "remote");
-            $info = $item->getFileInfo();
-            $info['thumbnail'] = $this->imageHandle($info['url']);
-            $list[] = array(
-                "state" => $info["state"],
-                "url" => $info["url"],
-                "source" => $imgUrl
-            );
-        }
-        /* 返回抓取数据 */
-        $result = json_encode(array(
-            'state'=> count($list) ? 'SUCCESS':'ERROR',
-            'list'=> $list
-        ));
-        $this->show($result);
+        // set_time_limit(0);
+        // /* 上传配置 */
+        // $config = array(
+        //     "pathFormat" => $this->config['catcherPathFormat'],
+        //     "maxSize" => $this->config['catcherMaxSize'],
+        //     "allowFiles" => $this->config['catcherAllowFiles'],
+        //     "oriName" => "remote.png"
+        // );
+        // $fieldName = $this->config['catcherFieldName'];
+        // /* 抓取远程图片 */
+        // $list = array();
+        // if (isset($_POST[$fieldName])) {
+        //     $source = $_POST[$fieldName];
+        // } else {
+        //     $source = $_GET[$fieldName];
+        // }
+        // foreach ($source as $imgUrl) {
+        //     $item = new Uploader($imgUrl, $config, "remote");
+        //     $info = $item->getFileInfo();
+        //     $info['thumbnail'] = $this->imageHandle($info['url']);
+        //     $list[] = array(
+        //         "state" => $info["state"],
+        //         "url" => $info["url"],
+        //         "source" => $imgUrl
+        //     );
+        // }
+        // /* 返回抓取数据 */
+        // $result = json_encode(array(
+        //     'state'=> count($list) ? 'SUCCESS':'ERROR',
+        //     'list'=> $list
+        // ));
+        // $this->show($result);
     }
 
     /**

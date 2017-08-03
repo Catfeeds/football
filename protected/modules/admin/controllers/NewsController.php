@@ -65,23 +65,7 @@ class NewsController extends AdminController{
 			$tags = $values['tags'];
 			unset($values['tags']);
 			$info->attributes = $values;
-			if(strstr($info->content,'<img')) {
-				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
-				// var_dump($match);exit;
-				if(isset($match[1]) && $match[1]) {
-					$ym = Yii::app()->file->host;
-					foreach ($match[1] as $key => $value) {
-						if(strstr($value,$ym))
-							continue;
-						if(!strstr($value,'http')){
-							$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
-							unlink(Yii::app()->basePath.'/..'.$value);
-						}elseif($nowkey = ImageTools::fixImage(Yii::app()->file->fetch($value)))
-							$info->content = str_replace($value, $nowkey, $info->content);
-					}
-					
-				}
-			}
+			
 			$info->updated = time();
 			!$info->status && $info->status = 1;
 			if($info->save()) {
