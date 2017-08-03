@@ -36,6 +36,8 @@
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/style.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/style_1.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='style-css' href='<?=Yii::app()->theme->baseUrl?>/static/home/style/index.css' type='text/css' media='all' />
+    <link rel="shortcut icon" href="http://cdn.qiubs.cn/201707031317" />
+    <link rel="bookmark" href="http://cdn.qiubs.cn/201707031317" />
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/jquery.min.js?ver=1.0'></script>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/jquery.js?ver=1.0'></script>
     <?php if($this->iswap):?>
@@ -168,7 +170,8 @@
         <div class="footer-inner">
         
             <p>
-                <a href="/" title="球布斯资讯站">球布斯资讯站</a> 版权所有，保留一切权利© 2017 · 托管于阿里云服务器<?=SiteExt::getAttr('qjpz','footCode')?></p>
+            <a href="/" title="球布斯">球布斯</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a rel="nofollow" href="<?=$this->createUrl('/home/index/about')?>" title="关于我们">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a rel="nofollow" href="<?=$this->createUrl('/home/index/contact')?>" title="联系我们">联系我们</a><br>
+                球布斯版权所有，保留一切权利© 2017 · 托管于阿里云服务器<?=SiteExt::getAttr('qjpz','footCode')?></p>
         </div>
     </footer>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/um.js?ver=4.5.9'></script>

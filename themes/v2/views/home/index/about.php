@@ -1,41 +1,26 @@
-<?php
-  $this->pageTitle = '弘钢机械设备-公司介绍';
-?>
-<div class="npagePage pageEditor" id="page_about">
-            <div id="banner">
-                <div style="background-image:url(<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcGsjs'))?>);"></div>
-            </div>
-            <div class="content">
-                <div class="mpageEditor module">
-                    <div class="module_container">
-                        <div class="container_header wow">
-                            <p class="title"><?=$info->title?></p>
-                            <p class="subtitle"><?=$info->sub_title?></p>
-                        </div>
-                        <div class="container_content">
-                            <div class="content_wrapper">
-                                <div class="postbody">
-                                    <table>
-                                        <tbody>
-                                            <tr class="firstRow">
-                                                <td valign="top" colspan="1" rowspan="1" width="450"><img src="<?=ImageTools::fixImage($info->image)?>" width="500" height="267" border="0" vspace="0" title="undefined" alt="undefined" />
-                                                    <br/>
-                                                </td>
-                                                <td width="40" valign="top" style="word-break: break-all;">
-                                                    <br/>
-                                                </td>
-                                                <td style="word-break: break-all;" width="" valign="top"><?=$info->content?>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p>
-                                        <br/>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<section class="container">
+            <div class="content-wrap">
+                <div class="content">
+                    <ol class="breadcrumb container" style="width: auto;">
+                        <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">球布斯&nbsp;&gt;&nbsp;</a></li>
+                        <li class="active"> 关于我们</li>
+                    </ol>
+                    <article class="article-content" id="content_img">
+                    <?=$info?>
+
+                    </article>
+                    
                 </div>
             </div>
-        </div>
+            <aside class="sidebar">
+                <div class="widget d_tag">
+                <div class="title">
+                    <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">栏目</strong></span></div>
+                <div class="d_tags tag1"  style="width: 86%">
+                <a style="width: 80%" href="<?=$this->createUrl('/home/index/about')?>"><?='关于我们'?></a>
+                <a style="width: 80%" href="<?=$this->createUrl('/home/index/contact')?>"><?='联系我们'?></a>
+                <a style="width: 80%"  href="<?=$this->createUrl('/home/news/alltag')?>" >所有标签</a>
+                </div>
+            </div>
+            </aside>
+        </section>

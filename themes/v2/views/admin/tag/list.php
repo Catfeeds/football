@@ -25,8 +25,8 @@ $this->breadcrumbs = array($this->pageTitle);
                             <i class="fa fa-tag font-blue-hoki"></i><?php echo $cateName; ?>
                         </div>
                         <div class="actions">
-                            <?php echo CHtml::ajaxLink('一键禁用', $this->createUrl('/admin/tag/ajaxStatus'), ['data'=>['cate'=>$catePinyin,'status'=>1], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['class'=>'btn btn-default btn-sm']); ?>
-                            <?php echo CHtml::ajaxLink('一键启用', $this->createUrl('/admin/tag/ajaxStatus'), ['data'=>['cate'=>$catePinyin,'status'=>0], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['class'=>'btn btn-default btn-sm']); ?>
+                            <!-- <?php echo CHtml::ajaxLink('一键禁用', $this->createUrl('/admin/tag/ajaxStatus'), ['data'=>['cate'=>$catePinyin,'status'=>1], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['class'=>'btn btn-default btn-sm']); ?>
+                            <?php echo CHtml::ajaxLink('一键启用', $this->createUrl('/admin/tag/ajaxStatus'), ['data'=>['cate'=>$catePinyin,'status'=>0], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['class'=>'btn btn-default btn-sm']); ?> -->
 
                             <a href="<?=$this->createUrl('/admin/tag/edit',['cate'=>$catePinyin]); ?>" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i>新增标签</a>
                         </div>
@@ -34,10 +34,11 @@ $this->breadcrumbs = array($this->pageTitle);
                     <div class="portlet-body sort_item">
                         <?php if(isset($list[$catePinyin])): ?>
                             <?php foreach($list[$catePinyin] as $v): ?><div class="btn-group" style="margin-bottom:5px;margin-right:5px;" data-id="<?=$v->id; ?>">
-                                <?php echo CHtml::ajaxLink($v->name, $this->createUrl('ajaxStatus'), array('data'=>array('id'=>$v->id, 'status'=>$v->status), 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'), array('class'=>TagExt::$statusStyle[$v->status])); ?>
+                                <?php echo CHtml::ajaxLink($v->name.'('.$v->anum.')', $this->createUrl('ajaxStatus'), array('data'=>array('id'=>$v->id, 'status'=>$v->status), 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'), array('class'=>TagExt::$statusStyle[$v->status])); ?>
                                 <a class="<?=TagExt::$statusStyle[$v->status];?> dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu">
         							<li><?=CHtml::link('编辑', ['/admin/tag/edit','id'=>$v->id]); ?></li>
+                                    <li><?=CHtml::link('查看文章', ['/admin/news/list','tag'=>$v->name]); ?></li>
                                     <li><?php echo CHtml::ajaxLink('删除', $this->createUrl('/admin/tag/ajaxDel'), ['data'=>['id'=>$v->id], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['data-toggle'=>'confirmation', 'data-placement'=>'right','data-title'=>'是否确认要删除“'.$v->name.'”？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true, 'href'=>'javascript:;']); ?></li>
         						</ul>
                             </div><?php endforeach; ?>

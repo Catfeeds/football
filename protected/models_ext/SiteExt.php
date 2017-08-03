@@ -97,6 +97,8 @@ class SiteExt extends Site{
         'headCode'=>'',
         'footCode'=>'',
         'sen'=>'',
+        'about'=>'',
+        'contact'=>'',
 
 
     ];
@@ -133,8 +135,10 @@ class SiteExt extends Site{
             // 'pcContactTop'=>['type'=>'image','max'=>1,'name'=>'pc联系列表头图'],
             'userImg'=>['type'=>'image','max'=>1,'name'=>'用户默认头像'],
             'newsImg'=>['type'=>'image','max'=>1,'name'=>'资讯默认封面图'],
-            'headCode'=>['type'=>'text','name'=>'头部代码'],
-            'footCode'=>['type'=>'text','name'=>'底部代码'],
+            'headCode'=>['type'=>'textarea','name'=>'头部代码'],
+            'footCode'=>['type'=>'textarea','name'=>'底部代码'],
+            'about'=>['type'=>'textarea','name'=>'关于我们'],
+            'contact'=>['type'=>'textarea','name'=>'联系我们'],
             // 'pcTeamTop'=>['type'=>'image','max'=>1,'name'=>'pc团队列表头图'],
             // 'productNoPic'=>['type'=>'image','max'=>1,'name'=>'产品默认图'],
             // 'houseNoPic'=>['type'=>'image','max'=>1,'name'=>'酒庄默认图'],

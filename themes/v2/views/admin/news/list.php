@@ -19,7 +19,7 @@ $this->breadcrumbs = array($this->pageTitle);
                 <?php echo CHtml::dropDownList('cate',$cate,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择栏目--')); ?>
             </div>
             <div class="form-group">
-                <?php echo CHtml::dropDownList('tag',$tagName,$tags,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择标签--')); ?>
+               <?php echo CHtml::textField('tag',$tag,array('class'=>'form-control chose_text','placeholder'=>'请输入标签')) ?>
             </div>
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>

@@ -107,15 +107,15 @@ class ArticleTagExt extends ArticleTag{
     {
         $aids = [];
         $ids = Yii::app()->db->createCommand("select aid from article_tag where tid=$tag")->queryAll();
-        if($ids) {
+        if($ids) 
             foreach ($ids as $key => $value) {
                 $aids[] = $value['aid'];
             }
             $criteria = new CDbCriteria;
             $criteria->addInCondition('id',$aids);
             return ArticleExt::model()->normal()->getList($criteria,$limit);
-        } else {
-            return [];
-        }
+        // } else {
+        //     return [];
+        // }
     }
 }

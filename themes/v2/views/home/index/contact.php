@@ -1,62 +1,26 @@
-<?php
-  $this->pageTitle = '弘钢机械设备-联系我们';
-?>
-<div class="npagePage pageEditor" id="page_contact">
-            <div id="banner">
-                <div style="background-image:url(<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcContact'))?>);"></div>
-            </div>
-            <div class="content">
-                <div class="mpageEditor module">
-                    <div class="module_container">
-                        <div class="container_header wow">
-                            <p class="title">联系我们</p>
-                            <p class="subtitle">Contact</p>
-                        </div>
-                        <div class="container_content">
-                            <div class="content_wrapper">
-                                <div class="postbody">
-                                    <p>
-                                        <br/>
-                                    </p>
-                                    <p>
-                                        <div id="mcontact" class="module" style="">
-                                            <div class="module_container">
-                                                <div class="container_content">
-                                                    <div class="content_wrapper">
-                                                        <div id="contactlist">
-                                                            <div id="contactinfo" class="wow">
-                                                            <?=$info->content?>
-                                                            </div>
-                                                            <!-- <div id="contactform" class="wow">
-                                                                <form action="http://mo005-1400.mo5.line1.uemo.net/service/message" method="post">
-                                                                    <p>
-                                                                        <input type="text" class="inputtxt" name="name" placeholder="姓名" autocomplete="off" />
-                                                                    </p>
-                                                                    <p>
-                                                                        <input type="text" class="inputtxt" name="email" placeholder="邮箱" autocomplete="off" />
-                                                                    </p>
-                                                                    <p>
-                                                                        <input type="text" class="inputtxt" name="tel" placeholder="电话" autocomplete="off" />
-                                                                    </p>
-                                                                    <p>
-                                                                        <textarea class="inputtxt" name="content" placeholder="内容" autocomplete="off"></textarea>
-                                                                    </p>
-                                                                    <p>
-                                                                        <input class="inputtxt submit" type="submit" value="提交" />
-                                                                    </p>
-                                                                </form>
-                                                            </div> -->
-                                                            <div class="clear"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<section class="container">
+            <div class="content-wrap">
+                <div class="content">
+                    <ol class="breadcrumb container" style="width: auto;">
+                        <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">球布斯&nbsp;&gt;&nbsp;</a></li>
+                        <li class="active"> 联系我们</li>
+                    </ol>
+                    <article class="article-content" id="content_img">
+                    <?=$info?>
+
+                    </article>
+                    
                 </div>
             </div>
-        </div>
+            <aside class="sidebar">
+                <div class="widget d_tag">
+                <div class="title">
+                    <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">栏目</strong></span></div>
+                <div class="d_tags tag1"  style="width: 86%">
+                <a style="width: 80%" href="<?=$this->createUrl('/home/index/about')?>"><?='关于我们'?></a>
+                <a style="width: 80%" href="<?=$this->createUrl('/home/index/contact')?>"><?='联系我们'?></a>
+                <a style="width: 80%"  href="<?=$this->createUrl('/home/news/alltag')?>" >所有标签</a>
+                </div>
+            </div>
+            </aside>
+        </section>

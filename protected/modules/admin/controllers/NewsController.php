@@ -39,9 +39,11 @@ class NewsController extends AdminController{
 		}
 		$criteria->order = 'day desc,sort desc';
 		if($tag) {
-			$tagName = TagExt::model()->findByPk($tag)->name;
+
+			$tid = Yii::app()->db->createCommand("select id from tag where name='$tag'")->queryScalar();
+			!$tid && $tid = 0;
 			// $tag = TagExt::getIdByPinyin($tag);
-			$infos = ArticleTagExt::findNewsByTag($tag,20);
+			$infos = ArticleTagExt::findNewsByTag($tid,20);
 		} else {
 			$infos = ArticleExt::model()->undeleted()->getList($criteria,20);
 		}
@@ -52,7 +54,7 @@ class NewsController extends AdminController{
 				$tagArr[$v['tid']] = $v['name'];
 			}
 		}
-		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,'tags'=>$tagArr,'tagName'=>$tagName]);
+		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,'tag'=>$tag]);
 	}
 
 	public function actionEdit($id='',$page='')
@@ -68,8 +70,12 @@ class NewsController extends AdminController{
 				// var_dump($match);exit;
 				if(isset($match[1]) && $match[1]) {
 					foreach ($match[1] as $key => $value) {
-						if(ImageTools::fixImage(Yii::app()->file->fetch($value)))
-							$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+						if(strstr($value,'qiubs'))
+							continue;
+						if(!strstr($value,'http')){
+							$info->content = str_replace($value, ImageTools::fixImage($value), $info->content);
+						}elseif($nowkey = ImageTools::fixImage(Yii::app()->file->fetch($value)))
+							$info->content = str_replace($value, $nowkey, $info->content);
 					}
 					
 				}
@@ -186,16 +192,6 @@ class NewsController extends AdminController{
 	public function actionPublish($id='')
 	{
 		if($info = ArticleExt::model()->findByPk($id)) {
-			if(strstr($info->content,'<img')) {
-				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
-				// var_dump($match);exit;
-				if(isset($match[1]) && $match[1]) {
-					foreach ($match[1] as $key => $value) {
-						$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
-					}
-					
-				}
-			}
 			$info->old_id = 0;
 			$info->save();
 			$this->setMessage('操作成功');

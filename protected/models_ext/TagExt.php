@@ -51,6 +51,7 @@ class TagExt extends Tag
     public function relations()
     {
         return array(
+            'anum'=>array(self::STAT, 'ArticleTagExt', 'tid'),
             // 'plot_rel' => array(self::HAS_MANY, 'TagRelExt', 'tag_id', 'joinType'=>'INNER JOIN'),//关联中间表，一对多
         );
     }

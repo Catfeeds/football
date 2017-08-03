@@ -65,14 +65,14 @@ class IndexController extends HomeController
 
     public function actionAbout()
     {
-        $info = ArticleExt::model()->getJs()->normal()->find();
-        // var_dump($info->attributes);exit;
+        $info = SiteExt::getAttr('qjpz','about');
+        // var_dump($info);exit;
         $this->render('about',['info'=>$info]);
     }
 
     public function actionContact()
     {
-        $info = ArticleExt::model()->getLx()->normal()->find();
+        $info = SiteExt::getAttr('qjpz','contact');
         // var_dump($info->attributes);exit;
         $this->render('contact',['info'=>$info]);
     }
