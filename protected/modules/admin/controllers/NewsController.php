@@ -68,7 +68,8 @@ class NewsController extends AdminController{
 				// var_dump($match);exit;
 				if(isset($match[1]) && $match[1]) {
 					foreach ($match[1] as $key => $value) {
-						$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+						if(ImageTools::fixImage(Yii::app()->file->fetch($value)))
+							$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
 					}
 					
 				}
