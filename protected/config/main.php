@@ -184,7 +184,6 @@ $config1 = array(
                 'videos/<cid:\d+>'=>'home/video/list',
                 'videos'=>'home/video/list',
                 'image'=>'home/album/list',
-                'image/<id:\d+>.html'=>'home/album/info',
                 'image/<cid:\w+>'=>'home/album/list',
                 'user'=>'home/user/index',
                 'login'=>'home/user/login',
@@ -196,6 +195,7 @@ $config1 = array(
                 'checkCode'=>'home/user/checkCode',
                 'checkName'=>'home/user/checkName',
                 'checkOld'=>'home/user/checkOld',
+                'add'=>'home/comment/add',
                 'alltag'=>'home/news/alltag',
                 //百度编辑器
                 'ueditor/<a:\w+>' => 'ueditor/<a>',

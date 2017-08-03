@@ -36,6 +36,7 @@ class FileController extends ApiController
 			$mode = Yii::app()->request->getPost('mode', 2);
 			$wm = Yii::app()->request->getPost('wm', 0);
 			$file = Yii::app()->file;
+			// var_dump($file,$name);exit;
 			$url = $file->upload($name);
 			if($wm){
 				$url = $file->waterMark($url);

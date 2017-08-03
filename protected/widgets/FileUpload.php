@@ -55,7 +55,7 @@ class FileUpload extends CWidget
 	/**
 	 * @var integer 允许上传文件大小，单位B，默认5M
 	 */
-	public $fileSize = 5000000;
+	public $fileSize = 50000000;
 	/**
 	 * @var boolean 是否对在该调用场景上传的图片打水印
 	 */

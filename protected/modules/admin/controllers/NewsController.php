@@ -69,8 +69,9 @@ class NewsController extends AdminController{
 				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
 				// var_dump($match);exit;
 				if(isset($match[1]) && $match[1]) {
+					$ym = Yii::app()->file->host;
 					foreach ($match[1] as $key => $value) {
-						if(strstr($value,'qiubs'))
+						if(strstr($value,$ym))
 							continue;
 						if(!strstr($value,'http')){
 							$info->content = str_replace($value, ImageTools::fixImage($value), $info->content);
