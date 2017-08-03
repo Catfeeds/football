@@ -10,7 +10,7 @@
   <div class="container clearfix">
     <div class="error_pic"></div>
     <div class="error_info">
-      <h1><?php echo '400'; ?></h1>
+      <h1><?php echo '404'; ?></h1>
       <h2>
         <p>对不起，您访问的页面不存在！</p>
       </h2>

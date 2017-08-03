@@ -293,8 +293,7 @@ class SiteExt extends Site{
         if(!in_array($attr, array_keys(SiteExt::$cates)))
             return '';
         $model = self::model()->getSiteByCate($cate)->find();
-        return $model->$attr&&$model->$attr?$model->$attr:'';
-
+return isset($model)&&$model->$attr?$model->$attr:'';
     }
 
 }

@@ -185,6 +185,7 @@ $config1 = array(
                 'videos'=>'home/video/list',
                 'image'=>'home/album/list',
                 'image/<cid:\w+>'=>'home/album/list',
+                'image/<id:\d+>.html'=>'home/album/info',
                 'user'=>'home/user/index',
                 'login'=>'home/user/login',
                 'regis'=>'home/user/regis',
