@@ -27,55 +27,56 @@
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <span class="muted"><i class="fa fa-comments-o"></i> <?=$info->comment_num?>评论</span> </div>
                     </header>
-                    <style type="text/css">
-                    .article-content a {
-                            color: #00b7ee !important; 
-                        }</style>
+                        <style type="text/css">
+                        .article-content a {
+                                color: #00b7ee !important; 
+                            }</style>
                     <article class="article-content" id="content_img">
-                    <?=$info->content?>
-                    <p>
-                        当前标签：<span><?php if($tags = $info->tags):  foreach ($tags as $key => $value) {?>
-                            <?='<a href="'.$this->createUrl('list',['tag'=>Pinyin::get($value->name)]).'">'.$value->name.'</a> '?>
-                       <?php  } else :?>暂无<?php endif;?></span>      
-                    </p>
-                    <style>
-                    .popover-content a {
-    color: white !important;
-}
-                    </style> 
-                    <span style="font-size: 10px;color: gray">
-                        <center> 严禁商业机构或公司转载，违者必究；球迷转载请注明来源“球布斯”</center> 
-                        <div class="article-social">
-          <span class="action action-share bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1499305983388"><i class="fa fa-share-alt"></i>分享 <div class="action-popover"><div class="popover top in"><div class="arrow"></div><div class="popover-content"><a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a><a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a><a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a><a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a><a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a><a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a><a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a></div><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></div></div></span>   
-</div></span>
-<?php if($preid):?>
-    上一篇：<a href="<?=$this->createUrl('info',['id'=>$preid])?>"><?=ArticleExt::model()->findByPk($preid)->title?></a><br>
-    <?php endif;?>
-    <?php if($nextid):?>
-    下一篇：<a href="<?=$this->createUrl('info',['id'=>$nextid])?>"><?=ArticleExt::model()->findByPk($nextid)->title?></a><br>
-    <?php endif;?>
+                            <?=$info->content?>
+                            <p>
+                                当前标签：<span><?php if($tags = $info->tags):  foreach ($tags as $key => $value) {?>
+                                    <?='<a href="'.$this->createUrl('list',['tag'=>Pinyin::get($value->name)]).'">'.$value->name.'</a> '?>
+                               <?php  } else :?>暂无<?php endif;?></span>      
+                            </p>
+                            <style>
+                            .popover-content a {
+                                    color: white !important;
+                                }
+                            </style> 
+                            <span style="font-size: 10px;color: gray">
+                                <center> 严禁商业机构或公司转载，违者必究；球迷转载请注明来源“球布斯”</center> 
+                                <div class="article-social">
+                                    <span class="action action-share bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1499305983388"><i class="fa fa-share-alt"></i>分享 <div class="action-popover"><div class="popover top in"><div class="arrow"></div><div class="popover-content"><a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a><a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a><a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a><a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a><a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a><a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a><a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a></div><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></div></div></span>   
+                        </div></span>
+                        <?php if($preid):?>
+                            上一篇：<a href="<?=$this->createUrl('info',['id'=>$preid])?>"><?=ArticleExt::model()->findByPk($preid)->title?></a><br>
+                            <?php endif;?>
+                            <?php if($nextid):?>
+                            下一篇：<a href="<?=$this->createUrl('info',['id'=>$nextid])?>"><?=ArticleExt::model()->findByPk($nextid)->title?></a><br>
+                            <?php endif;?>
                     </article>
                     <?php if($rels = $info->getRelNews()) {?>
                     <div class="related_top">
-            <div class="related_posts"><ul class="related_img">
-    <span style="   
-     text-align: left;
-    display: block;
-    font-size: 130%;
-    /* font-weight: inherit !important; */
-    margin: 5px 0;
-    font-weight: blod;
-    line-height: 35px;">相关文章</span>
+                        <div class="related_posts"><ul class="related_img">
+                            <span style="   
+                             text-align: left;
+                            display: block;
+                            font-size: 130%;
+                            /* font-weight: inherit !important; */
+                            margin: 5px 0;
+                            font-weight: blod;
+                            line-height: 35px;">相关文章</span>
 
-    <?php foreach ($rels as $key => $value) {?>
-       <li class="related_box">
-        <a href="<?=$this->createUrl('info',['id'=>$value->id])?>" title="<?=$value->title?>" target="_blank">
-        <img src="<?=ImageTools::fixImage($value->image)?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
-        </li>
-    <?php }?>
-    </ul>
-</div>      </div>
-   <?php  }?>
+                            <?php foreach ($rels as $key => $value) {?>
+                               <li class="related_box">
+                                <a href="<?=$this->createUrl('info',['id'=>$value->id])?>" title="<?=$value->title?>" target="_blank">
+                                <img src="<?=ImageTools::fixImage($value->image)?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
+                                </li>
+                            <?php }?>
+                            </ul>
+                        </div>      
+                    </div>
+                    <?php  }?>
     
     
                     
@@ -111,7 +112,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="postcomments">
+                    <div id="postcomments" style="<?=$this->iswap==0?'width: 760px':''?>">
                         <div id="comments">
                             <i class="fa fa-comments-o"></i> <b> (<?=$info->comment_num?>)</b>个小伙伴在吐槽
                         </div>
@@ -153,7 +154,7 @@
             var id = $(obj).data('id');
             $.ajax({
                 'type':'get',
-                'url':'setPraise',
+                'url':'/setPraise',
                 'dataType':'json',
                 'data':{'id':id},
                 'success':function(e) {

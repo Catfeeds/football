@@ -70,7 +70,7 @@ class ArticleExt extends Article{
                 // var_dump($html);exit;
                 $wd = $html;
             }
-            $this->descpt = substr($wd, 0,400);
+            $this->descpt = substr($this->content, 0,400);
         }  
         if(!$this->image){
             preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$this->content,$match);

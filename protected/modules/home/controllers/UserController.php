@@ -118,6 +118,7 @@ class UserController extends HomeController{
 			// $pwd = $this->cleanXss(Yii::app()->request->getPost('pwd'));
 			$model = new UserExt;
 			$model->attributes = $infos;
+			$model->status = 1;
 			// $model->password = $pwd;
 			if($model->save())
 				$this->redirect('/home/user/login');

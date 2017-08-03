@@ -63,7 +63,16 @@ class NewsController extends AdminController{
 			$tags = $values['tags'];
 			unset($values['tags']);
 			$info->attributes = $values;
-			
+			if(strstr($info->content,'<img')) {
+				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
+				// var_dump($match);exit;
+				if(isset($match[1]) && $match[1]) {
+					foreach ($match[1] as $key => $value) {
+						$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+					}
+					
+				}
+			}
 			$info->updated = time();
 			!$info->status && $info->status = 1;
 			if($info->save()) {
@@ -176,6 +185,16 @@ class NewsController extends AdminController{
 	public function actionPublish($id='')
 	{
 		if($info = ArticleExt::model()->findByPk($id)) {
+			if(strstr($info->content,'<img')) {
+				preg_match_all('/<img.*?src="(.*?)".*?>/is',$info->content,$match);
+				// var_dump($match);exit;
+				if(isset($match[1]) && $match[1]) {
+					foreach ($match[1] as $key => $value) {
+						$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+					}
+					
+				}
+			}
 			$info->old_id = 0;
 			$info->save();
 			$this->setMessage('操作成功');

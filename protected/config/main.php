@@ -191,6 +191,7 @@ $config1 = array(
                 'regis'=>'home/user/regis',
                 'findpwd'=>'home/user/findpwd',
                 'addOne'=>'home/user/addOne',
+                'setPraise'=>'home/news/setPraise',
                 'checkPhone'=>'home/user/checkPhone',
                 'checkCode'=>'home/user/checkCode',
                 'checkName'=>'home/user/checkName',
