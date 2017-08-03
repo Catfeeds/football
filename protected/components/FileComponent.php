@@ -151,7 +151,7 @@ class FileComponent extends CApplicationComponent
             return $this->localFetch($url);
     }
 
-	/**
+    /**
      * 上传单个文件
      * @param CUploadedFile $file 一个CUploadedFile实例，包含上传的文件的信息
      * @return string|null   上传文件失败时返回null，上传单个文件成功时返回文件相对路径string
@@ -217,6 +217,7 @@ class FileComponent extends CApplicationComponent
         $filename = $this->getRandFileName();
         $ext = $file->extensionName;
         $key = $path . $filename .'.'. $ext;
+
         $auth = new Auth($this->accessKey, $this->secretKey);
         $token = $auth->uploadToken($this->bucket,null,$this->authExpire);
         $uploadMgr = New UploadManager();
@@ -298,13 +299,13 @@ class FileComponent extends CApplicationComponent
     {
         $url = $this->getHost() . $key;
         if(SM::waterMarkConfig()->enable()&&SM::waterMarkConfig()->waterMarkPic())
-		{
+        {
             $baseUrl = Qiniu\base64_urlSafeEncode($this->getHost().SM::waterMarkConfig()->waterMarkPic());
-			if(SM::waterMarkConfig()->position())
-				$gravity = SM::waterMarkConfig()->position();
-			else
-				$gravity = 'SouthEast';
-			$waterMark = 'watermark/1/image/'.$baseUrl.'/gravity/'.$gravity;
+            if(SM::waterMarkConfig()->position())
+                $gravity = SM::waterMarkConfig()->position();
+            else
+                $gravity = 'SouthEast';
+            $waterMark = 'watermark/1/image/'.$baseUrl.'/gravity/'.$gravity;
 
             $auth = new Auth($this->accessKey, $this->secretKey);
             $url = str_replace(array('http://','https://'),array(),$url);

@@ -74,7 +74,8 @@ class NewsController extends AdminController{
 						if(strstr($value,$ym))
 							continue;
 						if(!strstr($value,'http')){
-							$info->content = str_replace($value, ImageTools::fixImage($value), $info->content);
+							$info->content = str_replace($value, ImageTools::fixImage(Yii::app()->file->fetch($value)), $info->content);
+							unlink(Yii::app()->basePath.'/..'.$value);
 						}elseif($nowkey = ImageTools::fixImage(Yii::app()->file->fetch($value)))
 							$info->content = str_replace($value, $nowkey, $info->content);
 					}

@@ -10,7 +10,7 @@ $this->breadcrumbs = array('资讯管理', $this->pageTitle);
         'directionalityltr','directionalityrtl','indent','|'],
         ['justifyleft','justifycenter','justifyright','justifyjustify','|','link','unlink','|',
         'insertimage','emotion','scrawl','insertvideo','music','attachment','map',
-        'insertcode','wordimage','|',
+        'insertcode','|',
         'horizontal','inserttable','|',
         'print','preview','searchreplace']]")); ?>
 <?php $form = $this->beginWidget('HouseForm', array('htmlOptions' => array('class' => 'form-horizontal'))) ?>
