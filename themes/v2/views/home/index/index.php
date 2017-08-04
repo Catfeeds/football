@@ -87,21 +87,14 @@
                         
                     </ul>
                     <div style="height: 400px;width: 460px;margin-left: 290px;margin-top: -400px;">
-                        <?php $criteria = new CDbCriteria;
-                        $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
-                        $criteria->params[':be'] = TimeTools::getDayBeginTime(time()-86400*7);
-                        $criteria->params[':en'] = time();
-
-                        $criteria->order = 'hits desc';
-                        $criteria->limit = 10;
-                         $nowInfos = ArticleExt::model()->normal()->findAll($criteria); if($nowInfos) {?>
+                        <?php if($rights['rmtjs']) {?>
                          <ul style="margin-top: 18px">
-                         <?php  foreach ($nowInfos as $key => $value) {?>
+                         <?php  foreach ($rights['rmtjs'] as $key => $value) { $value = $value->getObj();  if($value):  ?>
                          <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
                              </li><?php else:?>
                              <li class="l11"><a style="color: #848484;" class="lia" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,48)?>&nbsp;&nbsp;<span style="font-size: 12px;color: #aaa"><?=date('m-d',$value->updated)?></span></a>
                              </li><?php endif;?>
-                        <?php  } ?>
+                        <?php endif; } ?>
                         </ul>
                         <?php } ?>
                     </div>

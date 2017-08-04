@@ -31,7 +31,7 @@
                     <a href="<?=$this->createUrl('info',['id'=>$value->id])?>"> <img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,250,166)?>" alt=""></a>
                     <div class="textarea">
                         <h3><a href="javascript:;"><?=Tools::u8_title_substr($value->title,28)?></a></h3>
-                        <p><?=Tools::u8_title_substr($wd,38)?>                        </p>
+                        <p><?=Tools::u8_title_substr($wd,36)?>                        </p>
                     </div>
                     <!-- <div class="share-box">
                         <div>

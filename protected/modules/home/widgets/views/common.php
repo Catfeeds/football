@@ -97,14 +97,21 @@
                 <div class="title">
                     <span class="title_span" style="padding-left: 0;padding-right: 0"><strong style="background-color:#00b7ee;color: white;padding: 4px 15px;">热门推荐</strong></span></div>
                 <ul>
-                <?php if($rmtjs) foreach ($rmtjs as $key => $v) {  $value = $v->getObj();  if($value): ?>
+                <?php $criteria = new CDbCriteria;
+                        $criteria->addCondition('status=1 and deleted=0 and created>=:be and created<=:en');
+                        $criteria->params[':be'] = TimeTools::getDayBeginTime(time()-86400*7);
+                        $criteria->params[':en'] = time();
+
+                        $criteria->order = 'hits desc';
+                        $criteria->limit = 6;
+                        $nowInfos = ArticleExt::model()->normal()->findAll($criteria);  if($nowInfos) foreach ($nowInfos as $key => $value) {  ?>
                    <li>
                    <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>" style="padding-bottom: 0">
-                   <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" /></span>
+                   <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" style="width: 100px;height: 60px" /></span>
                    <span class="text"><?=$value->title?></span>
                    <span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span>
                    </a></li>
-                <?php endif; } ?>
+                <?php } ?>
                 </ul>
             </div>
             <style type="text/css">

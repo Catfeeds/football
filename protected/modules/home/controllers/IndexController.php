@@ -36,7 +36,7 @@ class IndexController extends HomeController
         // 精品导读
         $jpdds = RecomExt::getObjFromCate(1,2);
         // 热门推荐
-        $rmtjs = RecomExt::getObjFromCate(2,6);
+        $rmtjs = RecomExt::getObjFromCate(2,10);
         
         // $news = ArticleExt::model()->normal()->findAll($criteria);
         // 三个联赛
