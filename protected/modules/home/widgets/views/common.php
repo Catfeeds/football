@@ -57,8 +57,8 @@
                    <ul class="nav nav-tabs" style="margin-bottom: 0px;">
                    <?php if($leas) foreach ($leas as $key => $value) {?>
                        <li class="<?=$key==0?'active':''?> tabli1">
-                            <a class="tab1" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
-                            <center><?=$value->name?> </center></a>
+                            <a class="tab11" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
+                            <center><?=Tools::u8_title_substr($value->name, 6,'')?> </center></a>
                         </li>
                   <?php  } ?>
                     </ul>
@@ -76,11 +76,17 @@
                                     }
                                 }
                             } ?>
+                            <tr>
+                                <td align='center' style="font-weight: bold;">排名</td>
+                                <td align='center' style="font-weight: bold;" style="width: 40%">球队</td>
+                                <td align='center' style="font-weight: bold;">胜/平/负</td>
+                                <td align='center' style="font-weight: bold;">积分</td>
+                            </tr>
                                 <?php foreach ($value as $r => $v) { $team = $v->team; ?>
                                     <tr>
                                             <td align='center'><?=$r+1?></td>
                                             <td align='center' style="width: 40%"><img src="<?=ImageTools::fixImage($team->image)?>" style="width: 20px;height:20px;float: left" alt="">&nbsp;<?=Tools::u8_title_substr($team->name,12) ?></td>
-                                            <td  align='center'>胜<?=$v->win?>负<?=$v->lose?></td>
+                                            <td  align='center'><?=$v->win?>/<?=$v->same?>/<?=$v->lose?></td>
                                             <td align='center'><?=$v->points?></td>
                                         </tr>
                                 <?php } ?>
@@ -130,12 +136,19 @@
                     </style>
             <style type="text/css">
                        .tabli1{
-                        width: 33% !important;
+                        width: 20% !important;
                        }
                        .tab1{
                         margin-left: 0!important;
                         padding-right: 0!important;
                         padding-left: 0;padding-right: 0!important;
+                        border: none !important;
+                       }
+                       .tab11{
+                        margin: 0 !important;
+                        padding: 0 !important;
+                       }
+                       .nav-tabs .active a {
                         border: none !important;
                        }
                    </style>
