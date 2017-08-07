@@ -43,6 +43,7 @@ class RecomController extends AdminController{
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
+		$criteria->order = 'updated desc';
 		// $criteria->params[':cid'] = $cate1;
 		$infos = $modelName::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['cate'=>$cate,'cate1'=>$cate1,'infos'=>$infos->data,'cates'=>$this->cates,'cates1'=>$this->cates1,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
