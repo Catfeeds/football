@@ -14,6 +14,7 @@
  * @property integer $home_id
  * @property integer $time
  * @property integer $lid
+ * @property integer $old_id
  * @property string $image
  * @property integer $status
  * @property integer $deleted
@@ -40,11 +41,11 @@ class Match extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('visitor_score, home_score, visitor_id, home_id, time, lid, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('visitor_score, home_score, visitor_id, home_id, time, lid, old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('visitor_name, ext, home_name, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, visitor_score, home_score, visitor_name, visitor_id, ext, home_name, home_id, time, lid, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, visitor_score, home_score, visitor_name, visitor_id, ext, home_name, home_id, time, lid, old_id, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +76,7 @@ class Match extends CActiveRecord
 			'home_id' => 'Home',
 			'time' => 'Time',
 			'lid' => 'Lid',
+			'old_id' => 'Old',
 			'image' => 'Image',
 			'status' => 'Status',
 			'deleted' => 'Deleted',
@@ -112,6 +114,7 @@ class Match extends CActiveRecord
 		$criteria->compare('home_id',$this->home_id);
 		$criteria->compare('time',$this->time);
 		$criteria->compare('lid',$this->lid);
+		$criteria->compare('old_id',$this->old_id);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('deleted',$this->deleted);

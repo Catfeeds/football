@@ -52,6 +52,7 @@ class TagExt extends Tag
     {
         return array(
             'anum'=>array(self::STAT, 'ArticleTagExt', 'tid'),
+            'arel'=>array(self::HAS_MANY, 'ArticleTagExt', 'tid'),
             // 'plot_rel' => array(self::HAS_MANY, 'TagRelExt', 'tag_id', 'joinType'=>'INNER JOIN'),//关联中间表，一对多
         );
     }
@@ -298,6 +299,13 @@ class TagExt extends Tag
         parent::afterSave();
         $name = $this->name;
         $id = $this->id;
+        if($rels = $this->arel) {
+        	foreach ($rels as $key => $value) {
+        		if(!Yii::app()->db->createCommand("select id from article where deleted=0 and old_id=0 and id=".$value->aid)->queryScalar()) {
+        			Yii::app()->db->createCommand("delete from article_tag where id=".$value->id)->execute();
+        		}
+        	}
+        }
         Yii::app()->db->createCommand("update article_tag set name='$name' where tid=$id")->execute();
     }
 }

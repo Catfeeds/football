@@ -171,4 +171,44 @@ class DataCommand extends CConsoleCommand
 			echo "finished==================\n";
 		}
 	}
+
+	public function actionMatch($id=0,$page=0)
+	{
+		begin:
+
+		$url = SiteExt::getAttr('qjpz','matchApi');
+		// if($id)
+		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page);
+		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
+			if($data) {
+				foreach ($data as $key => $value) {
+					if(Yii::app()->db->createCommand("select id from match where old_id=".$value['no'])->queryScalar())
+						continue;
+					if(!($lid = Yii::app()->db->createCommand("select id from league where old_id=".$value['league'])->queryScalar()))
+						continue;
+					if(!($home = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['home_id'])->queryRow()))
+						continue;
+					if(!($visit = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['visitor_id'])->queryRow()))
+						continue;
+					$model = new MatchExt;
+					$model->lid = $lid;
+					$model->home_id = $home['id'];
+					$model->home_name = $home['name'];
+					$model->visitor_id = $visit['id'];
+					$model->visitor_name = $visit['name'];
+					foreach (['visitor_score','home_score','time'] as $k => $v) {
+						$model->$v = $value[$v];
+					}
+					if(!$model->save()) { 
+						echo current(current($model->getErrors()));
+					}
+				}
+			}
+			echo "finishing 100*$page=============\n";
+			$page++;
+			goto begin;
+		} else {
+			echo "finished==================\n";
+		}
+	}
 }

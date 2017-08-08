@@ -10,6 +10,12 @@
     .ps-current ul{
         margin-left: 0 !important;
         margin-top: 0 !important;
+        padding-bottom: 46px !important;
+    }
+    .ps-caption {
+        background-color: white;
+        color: black;
+        text-align: center;
     }
 </style>
 <section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">

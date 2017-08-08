@@ -61,6 +61,8 @@ class SiteExt extends Site{
         'teamApi'=>'',
         // 球员调用接口地址
         'playerApi'=>'',
+        // 比赛调用接口地址
+        'matchApi'=>'',
         'title'=>'',
         'desc'=>'',
         'keyword'=>'',
@@ -126,6 +128,7 @@ class SiteExt extends Site{
             'leagueApi'=>['type'=>'text','name'=>'联赛调用接口地址'],
             'teamApi'=>['type'=>'text','name'=>'球队调用接口地址'],
             'playerApi'=>['type'=>'text','name'=>'球员调用接口地址'],
+            'matchApi'=>['type'=>'text','name'=>'比赛调用接口地址'],
             'newsApi'=>['type'=>'text','name'=>'资讯调用接口地址'],
             // 'pcGsjs'=>['type'=>'image','max'=>1,'name'=>'pc公司介绍头图'],
             // 'pcLxwm'=>['type'=>'image','max'=>1,'name'=>'pc联系我们广告图'],
