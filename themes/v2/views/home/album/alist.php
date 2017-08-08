@@ -31,7 +31,7 @@
                             <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?36:56)?></a></h2>
                         </header>
                         <div class="focus">
-                            <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->album[0]['url']?$value->album[0]['url']:$nopic,200,123)?>" /></a>
+                            <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage(isset($value->album[0]['url'])?$value->album[0]['url']:$nopic,200,123)?>" /></a>
                         </div>
                         <span class="note">
                     <?php if(!$value->descpt) {

@@ -10,12 +10,6 @@
     .ps-current ul{
         margin-left: 0 !important;
         margin-top: 0 !important;
-        padding-bottom: 46px !important;
-    }
-    .ps-caption {
-        background-color: white;
-        color: black;
-        text-align: center;
     }
 </style>
 <section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">
@@ -56,6 +50,7 @@
                             <ul class="pgwSlideshow" >
                             <?php if($imgs) foreach ($imgs as $key => $value) {?>
                                 <li><img src="<?=ImageTools::fixImage($value['url'])?>" data-description="<?=$value['name']?>"></li>
+                                <span style="display: none"><?=$value['name']?></span>
                             <?php } ?>
                             </ul>
                         </div>

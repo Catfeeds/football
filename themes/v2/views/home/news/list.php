@@ -18,7 +18,7 @@
                                     }?>
                             <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px;margin-left: 20px"><?=($cid?ArticleCateExt::model()->findByPk($cid)->name:($nowtag?($nowtag):'资讯列表'))?></h1></div>
                             <div class="dao_nav1_r fr"><span>
-                            <?php if($cates) foreach ($cates as $key => $value) {?>
+                            <?php if($cates&&!isset($_GET['tag'])) foreach ($cates as $key => $value) {?>
                                 <?php if($key!=$cid):?><a href="<?=$this->createUrl('list',['cid'=>Pinyin::get($value)])?>"><?=$value?></a> | <?php endif;?>
                             <?php } ?>
                             </span></div>

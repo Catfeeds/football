@@ -33,13 +33,6 @@
                         <h3><a href="javascript:;"><?=Tools::u8_title_substr($value->title,28)?></a></h3>
                         <p><?=Tools::u8_title_substr($wd,36)?>                        </p>
                     </div>
-                    <!-- <div class="share-box">
-                        <div>
-                            <a href="javascript:;"><i class="icon-icon-like"></i>点赞</a>
-                            <a href="javascript:;"><i class="icon-icon-comment"></i>0</a>
-                            <a href="javascript:;" class="last-body"><i class="icon-icon-share"></i>分享</a>
-                        </div>
-                    </div> -->
                 </div>
         <?php } ?>
         <?php $this->widget('HomeLinkPager',['pages'=>$pager])?>            
