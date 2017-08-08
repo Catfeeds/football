@@ -34,13 +34,7 @@
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage(isset($value->album[0]['url'])?$value->album[0]['url']:$nopic,200,123)?>" /></a>
                         </div>
                         <span class="note">
-                    <?php if(!$value->descpt) {
-                        $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->content);
-                        if($html) {
-                            $html = preg_replace("/\<\/[a-z]+\>/","",$html);
-                            // var_dump($html);exit;
-                            $wd = $html;
-                        }} else { $wd = $value->descpt;} echo Tools::u8_title_substr($wd,$this->iswap?60:200)?>
+                    <?php  echo Tools::u8_title_substr($value->descpt,$this->iswap?42:200)?>
                             
                         </span>
                         <?php if($this->iswap==0):?>
