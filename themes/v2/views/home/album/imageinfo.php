@@ -11,6 +11,9 @@
         margin-left: 0 !important;
         margin-top: 0 !important;
     }
+    .notshow {
+        display: none;
+    }
 </style>
 <section class="container" style="<?=$this->iswap?'padding-left: 15px;padding-right: 15px;':''?>">
            
@@ -50,7 +53,7 @@
                             <ul class="pgwSlideshow" >
                             <?php if($imgs) foreach ($imgs as $key => $value) {?>
                                 <li><img src="<?=ImageTools::fixImage($value['url'])?>" data-description="<?=$value['name']?>"></li>
-                                <span style="display: none"><?=$value['name']?></span>
+                                <span class="notshow"><?=$value['name']?></span>
                             <?php } ?>
                             </ul>
                         </div>
@@ -67,15 +70,6 @@
                                     <span class="action action-share bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1499305983388"><i class="fa fa-share-alt"></i>分享 <div class="action-popover">
                                     <div class="popover top in"><div class="arrow"></div>
                                         <div class="popover-content">
-
-                                            <!-- <a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a>
-                                            <a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a>
-                                            <a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a>
-                                            <a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a>
-                                            <a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a>
-                                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a>
-                                            <a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a>
-                                            <a href=" " class="bds_more" data-cmd="more"></a> -->
 
                                             <a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="分享到QQ空间"></a>
                                             <a href="#" class="bds_tsina sinaweibo fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
