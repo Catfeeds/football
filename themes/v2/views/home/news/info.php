@@ -117,7 +117,7 @@
                             line-height: 35px;">相关文章</span>
 
                             <?php foreach ($rels as $key => $value) {?>
-                               <li class="related_box" style="<?=$key%2?'margin-left:2%':'margin-left: 0'>">
+                               <li class="related_box">
                                 <a href="<?=$this->createUrl('info',['id'=>$value->id])?>" title="<?=$value->title?>" target="_blank">
                                 <img src="<?=ImageTools::fixImage($value->image)?>" style="width: 185px;height: 110px" ><br><span class="r_title"><?=Tools::u8_title_substr($value->title,40)?></span></a>
                                 </li>
