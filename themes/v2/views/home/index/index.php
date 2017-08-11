@@ -185,11 +185,11 @@
                     <header class="archive-header" style="margin-top: 210px">
                     <h4><strong style="background-color:#00b7ee;color:white;padding: 5px">精彩图库</strong><span style="float: right;font-size: 14px;margin-right: 5px"><a href="<?=$this->createUrl('/home/album/list')?>">更多图片 ></a></span>
                     </h4></header>
-                    <ul class="pic-list">
-                    <?php $album = TkExt::model()->normal()->findAll(['limit'=>4]);?>
+                    <ul class="pic-list" style="height: 366px">
+                    <?php $album = TkExt::model()->normal()->findAll(['limit'=>6]);?>
                     <?php if($album) foreach ($album as $key => $value) {?>
-                        <li <?php if($key%2!=0) {echo 'style="margin-left: 15px"';}  ?>><a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>"><img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,372,212)?>" alt="" style="width: 100%;height: 100%">
-                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: 0;background-color: rgba(0,0,0,0.5);height: 52px;bottom: 40px;font: 700 20px/54px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:100%;margin-left: 5px"><?=Tools::u8_title_substr($value->title,30)?></label></span></a>
+                        <li style="<?=$key>1?'width: 180px;height: 120px;':''?><?=$key==1 || $key==4?'margin-left: 15px':''?><?=$key==3 || $key==5?'margin-left: 12px':''?>"><a href="<?=$this->createUrl('/home/album/info',['id'=>$value->id])?>"><img src="<?=ImageTools::fixImage($value->album?$value->album[0]['url']:$nopic,372,212)?>" alt="" style="width: 100%;height: 100%">
+                            <span style="    margin-bottom: -114px;margin-top: 0;margin-left: 0;background-color: rgba(0,0,0,0.5);height: 52px;bottom: 40px;font: 700 20px/54px 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:100%;margin-left: 5px"><?=Tools::u8_title_substr($value->title,$key==2 || $key==4?'14':'30')?></label></span></a>
                         </li>
                     <?php } ?>
                         

@@ -5,7 +5,10 @@
     <style type="text/css">
         img{
             float: left !important;
-            width: auto !important;
+            width: 100% !important;
+        }
+        .related_box{
+            margin-left: 0 !important;
         }
     </style>
     <?php endif;?>
@@ -143,6 +146,7 @@
                                         <div class="comt-tips pull-right">
                                             <input type='hidden' name='comment_post_ID' value='<?=$info->id?>' id='comment_post_ID' />
                                             <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                            <input type='hidden' name='type' id='type' value='1' />
                                             <p style="display: none;">
                                                 <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1c0ce1ceba" />
                                             </p>

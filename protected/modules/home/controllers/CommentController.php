@@ -6,7 +6,7 @@ class CommentController extends HomeController{
 			$info = new CommentExt;
 			$info->uid = $this->user->id;
 			$info->username = $this->user->name;
-			$info->type = 1;
+			$info->type = Yii::app()->request->getPost('type','1');
 			$info->status = 1;
 			$info->content = Yii::app()->request->getPost('comment','');
 			$info->major_id = Yii::app()->request->getPost('comment_post_ID','');
