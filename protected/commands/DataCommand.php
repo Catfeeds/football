@@ -23,8 +23,8 @@ class DataCommand extends CConsoleCommand
 			if($data) {
 				foreach ($data as $key => $value) {
 					// var_dump($value);exit;
-					$name = $value['name'];
-					if(Yii::app()->db->createCommand("select id from league where name='$name'")->queryScalar()) {
+					$no = $value['no'];
+					if(Yii::app()->db->createCommand("select id from league where old_id=$no")->queryScalar()) {
 						continue;
 					} 
 					$league = new LeagueExt;
@@ -126,33 +126,49 @@ class DataCommand extends CConsoleCommand
 		$url = SiteExt::getAttr('qjpz','teamApi');
 		// if($id)
 		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page);
+	        if($res['content'] === '"continue"') {
+                        $page++;
+                        goto begin;
+                }
+	        if($res['content'] === '"finish"') {
+                        $page++;
+                        exit;
+		}
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
 			if($data) {
 				foreach ($data as $key => $value) {
-					if(Yii::app()->db->createCommand("select id from points where old_id=".$value['no'])->queryScalar())
-						continue;
 					// var_dump($value);exit;
-					$name = $value['name'];
+					$no = $value['no'];
 					$criteria = new CDbCriteria;
-					$criteria->addCondition("name=':name'");
-					$criteria->params[':name'] = $name;
+					$criteria->addCondition("old_id=:no");
+					$criteria->params[':no'] = $no;
 
 					if(!($team = TeamExt::model()->find($criteria))) {
 						$team = new TeamExt;
 						$team->old_id = $value['no'];
 						$team->status = 1;
-						foreach (['name','city','coach','image'] as $v) {
-							$team->$v = $value[$v];
-						}
+					}
+					foreach (['name','city','coach','image'] as $v) {
+						$team->$v = $value[$v];
 					}
 					if($team->save()) {
-						$tid = $team->id;
-						$points = new PointsExt;
-						foreach (['score_ball'=>'goal','lose_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw','year'=>'schedule','old_id'=>'no'] as $k => $v) {
+						$oldlid = $value['league'];
+						$lid = Yii::app()->db->createCommand("select id from league where old_id=$oldlid")->queryScalar();
+		  				$tid = $team->id;
+					        $criteria = new CDbCriteria;
+        	                                $criteria->addCondition("old_id=:no");
+	                                        $criteria->params[':no'] = $no;
+        	                                $criteria->addCondition("lid=:lid");
+	                                        $criteria->params[':lid'] = $lid;
+        	                                $criteria->addCondition("year=:schedule");
+	                                        $criteria->params[':schedule'] = $value['schedule'];
+						if(!($points = PointsExt::model()->find($criteria))) {
+							$points = new PointsExt;
+						}
+						foreach (['score_ball'=>'goal','lose_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw','year'=>'schedule','old_id'=>'no','lid'=>'league'] as $k => $v) {
 							$points->$k = $value[$v];
 						}
-						$oldlid = $value['league'];
-						$points->lid = Yii::app()->db->createCommand("select id from league where old_id=$oldlid")->queryScalar();
+						$points->lid = $lid;
 						$points->tid = $tid;
 						$points->status = 1;
 						// var_dump($points->attributes);exit;
