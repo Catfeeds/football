@@ -20,7 +20,7 @@
             <div class="content-wrap">
                 <div class="content">
                 <?php if($this->iswap==0):?>
-                    <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 760px !important;'?>">
+                    <ol class="breadcrumb container" style="<?=$this->iswap?'':'width: 730px !important;'?>">
                         <li class="home"><i class="fa fa-home"></i> <a href="<?=$this->createUrl('/home/index/index')?>">首页&nbsp;&gt;&nbsp;</a></li>
                         <li class="active"> <a href="<?=$this->createUrl('/home/album/list')?>">图库列表</a> &gt;<?php if($cate = $info->cate):?><a href="<?=$this->createUrl('/image/'.Pinyin::get($cate->name))?>"><?=$cate->name?></a> &gt;<?php endif;?> <?=$info->title?></li>
                     </ol>
@@ -203,6 +203,7 @@
         function check_uid() {
             <?php if(!$this->user):?>
                 alert('请先登录！');
+                window.location.href = '<?=$this->createUrl('/home/user/index')?>';
                 $('textarea').attr('disabled','disabled');
             <?php endif;?>
         }
