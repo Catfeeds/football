@@ -94,7 +94,7 @@ class DataCommand extends CConsoleCommand
 						$league->$k = $value[$v];
 					}
 					$league->created = strtotime($league->created);
-					$league->status = 1;
+					// $league->status = 1;
 					// var_dump($cid);exit;
 					// $cid && $league->cid = $cid;
 					// var_dump($league->attributes);exit;
