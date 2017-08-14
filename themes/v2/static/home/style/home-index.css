@@ -77,3 +77,12 @@ strong{
     top:0 !important;
     position: relative !important;
 }
+.originh2 {
+    display: inline;
+    font-size: 20px;
+    margin: 0;
+    font-weight: normal;
+    position: relative;
+    top: 1px;
+    line-height: 25px;
+}
