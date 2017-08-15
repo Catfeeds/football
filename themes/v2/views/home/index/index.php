@@ -104,7 +104,7 @@
                 <?php if($this->iswap==0):?>
                 <div class="zixun1">
                 <?php if($cates) foreach ($cates as $key => $value) {?>
-                   <a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><h2 style="font-size: 18px"><?=$value->name?></h2></a>
+                   <h2 style="font-size: 18px"><a onmouseover="changeA(this)" href="<?=$this->createUrl('/home/news/list',['cid'=>$value->pinyin])?>" data-id="<?=$value->id?>" class="zxcate <?=$key==0?'zixun_sk':''?>" id=""><?=$value->name?></a></h2>
                 <?php } ?>
                     </div>
                     <?php if($news) foreach ($news as $key => $values) { if($values) foreach ($values as $k => $value) {?>
@@ -112,9 +112,9 @@
                     <div class="focus">
                         <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" alt="<?=$value->title?>" /></a>
                     </div>
-                    <header>
+                    <div style="margin: 0 10px 15px 0;">
                         <span class="originh2"><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></span>
-                    </header>
+                    </div>
                     <p class="auth-span">
                         <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
                     <span class="note">
