@@ -25,7 +25,7 @@
                         <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px"><?=$info->title?></h1>
                         <br>
                         <div class="meta">
-                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cate->pinyin])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <?=$info->author?></span><?php endif;?>
+                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cate->pinyin])?>"> <?=$info->cate->name?></a></span> <!-- <span class="muted"><i class="fa fa-user"></i> <?=$info->author?></span> --><?php endif;?>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <span class="muted"><i class="fa fa-comments-o"></i> <?=$info->comment_num?>评论</span> </div>

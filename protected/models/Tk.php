@@ -8,6 +8,7 @@
  * @property string $title
  * @property string $descpt
  * @property integer $cid
+ * @property integer $hits
  * @property integer $status
  * @property integer $sort
  * @property integer $deleted
@@ -33,11 +34,12 @@ class Tk extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('cid, status, sort, deleted, created, updated', 'numerical', 'integerOnly'=>true),
-			array('title, descpt', 'length', 'max'=>255),
+			array('cid, hits, status, sort, deleted, created, updated', 'numerical', 'integerOnly'=>true),
+			array('title', 'length', 'max'=>255),
+			array('descpt', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, descpt, cid, status, sort, deleted, created, updated', 'safe', 'on'=>'search'),
+			array('id, title, descpt, cid, hits, status, sort, deleted, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class Tk extends CActiveRecord
 			'title' => 'Title',
 			'descpt' => 'Descpt',
 			'cid' => 'Cid',
+			'hits' => 'Hits',
 			'status' => 'Status',
 			'sort' => 'Sort',
 			'deleted' => 'Deleted',
@@ -92,6 +95,7 @@ class Tk extends CActiveRecord
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('descpt',$this->descpt,true);
 		$criteria->compare('cid',$this->cid);
+		$criteria->compare('hits',$this->hits);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('deleted',$this->deleted);

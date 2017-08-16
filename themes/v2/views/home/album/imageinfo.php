@@ -29,7 +29,8 @@
                         <h1 class="article-title" style="font-size: <?=$this->iswap?'20':'26'?>px;word-wrap:break-word;word-break: normal;";><?=$info->title?></h1>
                         <br>
                         <div class="meta">
-                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/image/'.Pinyin::get($info->cate->name))?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> </span><?php endif;?>
+                            <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/image/'.Pinyin::get($info->cate->name))?>"> <?=$info->cate->name?></a></span> <!-- <span class="muted"><i class="fa fa-user"></i> </span> --><?php endif;?>
+                            <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
                     </header>
                     <style type="text/css">

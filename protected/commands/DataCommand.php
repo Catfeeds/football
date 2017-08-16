@@ -200,11 +200,11 @@ class DataCommand extends CConsoleCommand
 				foreach ($data as $key => $value) {
 					if(Yii::app()->db->createCommand("select id from match where old_id=".$value['no'])->queryScalar())
 						continue;
-					if(!($lid = Yii::app()->db->createCommand("select id from league where old_id=".$value['league'])->queryScalar()))
+					if(!($lid = Yii::app()->db->createCommand("select id from league where old_id=".$value['leagueId'])->queryScalar()))
 						continue;
-					if(!($home = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['home_id'])->queryRow()))
+					if(!($home = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['homeId'])->queryRow()))
 						continue;
-					if(!($visit = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['visitor_id'])->queryRow()))
+					if(!($visit = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['visitorId'])->queryRow()))
 						continue;
 					$model = new MatchExt;
 					$model->lid = $lid;
@@ -212,7 +212,8 @@ class DataCommand extends CConsoleCommand
 					$model->home_name = $home['name'];
 					$model->visitor_id = $visit['id'];
 					$model->visitor_name = $visit['name'];
-					foreach (['visitor_score','home_score','time'] as $k => $v) {
+					$model->old_id = $value['no'];
+					foreach (['visitorScore','homeScore','time'] as $k => $v) {
 						$model->$v = $value[$v];
 					}
 					if(!$model->save()) { 

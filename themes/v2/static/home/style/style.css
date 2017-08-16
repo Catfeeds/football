@@ -103,8 +103,8 @@ input,textarea,.uneditable-input{width:206px}textarea{height:auto}textarea,input
 	.nav-search{margin:24px 2px 0px;padding:0 8px 0px}
 	.nav-search_1{margin:24px 2px 0px;padding:0 8px 0px; display:block;}
 	#top-menu_1 span:nth-child(1n){ margin-right:12px;}
-	.meta span:nth-child(1),.meta span:nth-child(2){ display:none;}
-	.excerpt .muted,.article-header .muted,.article-header .cate{margin-right:7px}
+/*	.meta span:nth-child(1),.meta span:nth-child(2){ display:none;}
+*/	.excerpt .muted,.article-header .muted,.article-header .cate{margin-right:7px}
 	.nav-menu{ display:none;}
 	#search-main {background: #fff none repeat scroll 0 0; border: 1px solid #ddd; border-radius: 2px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04); display: none; margin: 10px auto 5px; padding:2%; text-align: center; width: 96%;}
 	#searchbar {margin: 4px auto 0; width: 94%;}

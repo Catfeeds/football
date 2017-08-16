@@ -97,8 +97,8 @@ class AlbumController extends HomeController{
 	        }
 
 		// var_dump($this->user);exit;
-		
-		// $info->save();
+		$info->hits += 1;
+		$info->save();
 		$nextid = $preid = '';
 		// isset($_COOKIE['album_list_ids']) && $lists = $_COOKIE['album_list_ids'];
 		// if(isset($lists) && $lists) {
