@@ -215,10 +215,11 @@ class DataCommand extends CConsoleCommand
 					$model->visitor_name = $visit['name'];
 					$model->old_id = $value['no'];
 					$model->status = 1;
-					// $model->time = $value['bsTime'];
+					$model->time = substr($value['time'], 0,-3);
+					// var_dump($model->time);exit;
 					$value['visitor_score'] = $value['visitorScore'];
 					$value['home_score'] = $value['homeScore'];
-					foreach (['visitor_score','home_score','time'] as $k => $v) {
+					foreach (['visitor_score','home_score'] as $k => $v) {
 						$model->$v = $value[$v];
 					}
 					if(!$model->save()) { 
