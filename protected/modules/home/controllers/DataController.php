@@ -26,7 +26,7 @@ class DataController extends HomeController{
 					$criteria->addCondition('lid=:lid');
 					$criteria->params[':lid'] = $lid;
 				}
-				$criteria->order = 'points desc';
+				$criteria->order = 'ranking asc';
 				$points = PointsExt::model()->normal()->findAll($criteria);
 				break;
 			case 's':
