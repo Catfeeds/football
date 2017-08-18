@@ -50,7 +50,7 @@ class IndexController extends HomeController
                 $criteria = new CDbCriteria;
                 $criteria->addCondition('lid=:lid');
                 $criteria->params[':lid'] = $value->id;
-                $criteria->order = 'points desc';
+                $criteria->order = 'ranking asc';
                 $criteria->limit = 10;
                 $points[] = PointsExt::model()->findAll($criteria);
 
