@@ -165,7 +165,7 @@ class DataCommand extends CConsoleCommand
 						if(!($points = PointsExt::model()->find($criteria))) {
 							$points = new PointsExt;
 						}
-						foreach (['score_ball'=>'goal','lose_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw','year'=>'schedule','old_id'=>'no','lid'=>'league'] as $k => $v) {
+						foreach (['ranking'=>'ranking','score_ball'=>'goal','lose_ball'=>'fumble','points'=>'score','win'=>'win','lose'=>'lose','same'=>'draw','year'=>'schedule','old_id'=>'no','lid'=>'league'] as $k => $v) {
 							$points->$k = $value[$v];
 						}
 						$points->lid = $lid;

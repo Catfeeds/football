@@ -41,11 +41,11 @@ class Points extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created', 'required'),
-			array('lose_ball, score_ball, lose, same, win, lid, tid, old_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
+			array('lose_ball, score_ball, lose, same, win, lid, tid, old_id, status, deleted, sort, created, updated, ranking', 'numerical', 'integerOnly'=>true),
 			array('points, round, year', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, points, lose_ball, score_ball, lose, same, win, round, year, lid, tid, old_id, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),
+			array('id, points, lose_ball, score_ball, lose, same, win, round, year, lid, tid, old_id, status, deleted, sort, created, updated,ranking', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +83,7 @@ class Points extends CActiveRecord
 			'sort' => 'Sort',
 			'created' => 'Created',
 			'updated' => 'Updated',
+			'ranking' => 'Ranking'
 		);
 	}
 
@@ -121,6 +122,7 @@ class Points extends CActiveRecord
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
+		$criteria->compare('raning',$this->raning);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
