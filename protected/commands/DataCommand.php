@@ -188,17 +188,18 @@ class DataCommand extends CConsoleCommand
 		}
 	}
 
-	public function actionMatch($id=0,$page=0)
+	public function actionMatch($date='')
 	{
 		begin:
-
+		!$date && $date = date('Ymd',time());
 		$url = SiteExt::getAttr('qjpz','matchApi');
 		// if($id)
-		$res = HttpHelper::get($url.'?id='.$id.'&page='.$page);
+		$res = HttpHelper::get($url.'?date='.$date);
+		// var_dump($url.'?date='.$date);exit;
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
 			if($data) {
 				foreach ($data as $key => $value) {
-					if(Yii::app()->db->createCommand("select id from match where old_id=".$value['no'])->queryScalar())
+					if(Yii::app()->db->createCommand("select id from `match` where old_id=".$value['no'])->queryScalar())
 						continue;
 					if(!($lid = Yii::app()->db->createCommand("select id from league where old_id=".$value['leagueId'])->queryScalar()))
 						continue;
@@ -213,7 +214,12 @@ class DataCommand extends CConsoleCommand
 					$model->visitor_id = $visit['id'];
 					$model->visitor_name = $visit['name'];
 					$model->old_id = $value['no'];
-					foreach (['visitorScore','homeScore','time'] as $k => $v) {
+					$model->status = 1;
+					$model->time = substr($value['time'], 0,-3);
+					// var_dump($model->time);exit;
+					$value['visitor_score'] = $value['visitorScore'];
+					$value['home_score'] = $value['homeScore'];
+					foreach (['visitor_score','home_score'] as $k => $v) {
 						$model->$v = $value[$v];
 					}
 					if(!$model->save()) { 
@@ -221,9 +227,9 @@ class DataCommand extends CConsoleCommand
 					}
 				}
 			}
-			echo "finishing 100*$page=============\n";
-			$page++;
-			goto begin;
+			echo "finished===============\n";
+			// $page++;
+			// goto begin;
 		} else {
 			echo "finished==================\n";
 		}
