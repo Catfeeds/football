@@ -85,7 +85,7 @@
                                 <?php foreach ($value as $r => $v) { $team = $v->team; ?>
                                     <tr>
                                             <td align='center'><?=$r+1?></td>
-                                            <td align='center' style="width: 40%"><img src="<?=ImageTools::fixImage($team->image)?>" style="width: 20px;height:20px;float: left" alt="">&nbsp;<?=Tools::u8_title_substr($team->name,12) ?></td>
+                                            <td align='center' style="width: 40%"><img src="<?=ImageTools::fixImage($team->image)?>" style="width: 20px;height:20px;float: left">&nbsp;<?=Tools::u8_title_substr($team->name,12) ?></td>
                                             <td  align='center'><?=$v->win?>/<?=$v->same?>/<?=$v->lose?></td>
                                             <td align='center'><?=$v->points?></td>
                                         </tr>
@@ -112,7 +112,7 @@
                         $criteria->limit = 6;
                         $nowInfos = ArticleExt::model()->normal()->findAll($criteria);  if($nowInfos) foreach ($nowInfos as $key => $value) {  ?>
                    <li>
-                   <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>" style="padding-bottom: 0">
+                   <a href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" style="padding-bottom: 0">
                    <span class="thumbnail" style="border: none"><img src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" style="width: 100px;height: 60px" /></span>
                    <span class="text"><?=$value->title?></span>
                    <span class="muted"><?=date('Y-m-d',$value->updated)?></span><span class="muted_1"><?=$value->comment_num?>评论</span>

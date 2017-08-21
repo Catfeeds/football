@@ -18,7 +18,7 @@
                     <ul class="slick" style="<?=$this->imgstyle?>">
                     <?php $objs = RecomExt::getObjFromCate('3','4');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image;?>
                         <li>
-                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>" alt=""><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: 0px;font: 700 <?=$this->iswap?'16px':'20px'?>/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';"><?=$obj->title?></span>
+                            <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>"><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: 0px;font: 700 <?=$this->iswap?'16px':'20px'?>/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';"><?=$obj->title?></span>
                         </li>
                     <?php } ?>
                     </ul>
@@ -78,7 +78,7 @@
                     <?php if($jpdds) foreach ($jpdds as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image; ?>
                         <li style="width:98%">
                             <figure class="dd-img">
-                                <a title="<?=$obj->title?>" target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
+                                <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>">
                                     <img src="<?=ImageTools::fixImage($img?$img:$nopic,200,180)?>" style="display: inline;height: 180px;width: 250px" /> </a>
                             </figure>
                             <span style="    margin-bottom: -114px;margin-top: 0;margin-left: -250px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: -150px;font: 700 15px/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';position: relative;color: white;"><label style="display: inline-block;width:245px;margin-left: 5px"><?=Tools::u8_title_substr($obj->title,30)?></label></span>
@@ -110,10 +110,10 @@
                     <?php if($news) foreach ($news as $key => $values) { if($values) foreach ($values as $k => $value) {?>
                         <article class="excerpt <?=isset($cates[0])&&$key==$cates[0]['id']?'show':'noshow'?>" data-cid="<?=$key?>">
                     <div class="focus">
-                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" alt="<?=$value->title?>" /></a>
+                        <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><img style="width: 180px"  class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic)?>" /></a>
                     </div>
                     <div style="margin: 0 10px 15px 0;">
-                        <span class="originh2"><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><?=Tools::u8_title_substr($value->title,40)?> </a></span>
+                        <span class="originh2"><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,40)?> </a></span>
                     </div>
                     <p class="auth-span">
                         <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>

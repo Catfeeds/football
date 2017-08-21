@@ -32,6 +32,7 @@
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/image/'.Pinyin::get($info->cate->name))?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> </span><?php endif;?>
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$info->created)?></time>
+                            <span class="muted"><i class="fa fa-comments-o"></i> <?=$info->comment_num?>评论</span> </div>
                     </header>
                     <style type="text/css">
                     .article-content a {
