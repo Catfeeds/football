@@ -27,9 +27,9 @@
                     </div>
                     <?php if($infos) foreach ($infos as $key => $value) {?>
                     <article class="excerpt">
-                        <header>
+                        <div style="margin:0 10px 15px 0;">
                             <h2><a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,$this->iswap?36:56)?></a></h2>
-                        </header>
+                        </div>
                         <div class="focus">
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
                         </div>

@@ -13,7 +13,7 @@
         <div class="dao_nav1_l fl"> <h1 style="font-size: 24px;margin-bottom:0;color: #00b7ee;border-bottom: 2px #00b7ee solid;padding-bottom: 8px;margin-left: 20px"><?=$cid?TkCateExt::model()->findByPk($cid)->name:'图库列表'?></h1></div>
         <div class="dao_nav1_r fr"><span>
         <?php if($cates) foreach ($cates as $key => $value) {?>
-            <?php if($key!=$cid):?><a href="<?='/image/'.Pinyin::get($value)?>"><?=$value?></a> | <?php endif;?>
+            <?php if($key!=$cid):?><a href="<?=$this->createUrl('/image/'.Pinyin::get($value))?>"><?=$value?></a> | <?php endif;?>
         <?php } ?>
         </span></div>
         </div>

@@ -53,11 +53,13 @@ class AlbumController extends AdminController{
 			$values = Yii::app()->request->getPost($modelName,[]);
 			$album = $values['album'];
 			$des = $values['image_des'];
+			$sortarr = $values['sort'];
 			unset($values['album']);
 			unset($values['image_des']);
+			unset($values['sort']);
 			$info->attributes = $values;
 			// $info->is_album = 1;
-			// var_dump($album);exit;
+			// var_dump($sortarr,$album);
 			!$info->status && $info->status = 1;
 			if($info->save()) {
 				AlbumExt::model()->deleteAllByAttributes(['aid'=>$info->id]);
@@ -67,6 +69,9 @@ class AlbumController extends AdminController{
 						$albu->aid = $info->id;
 						$albu->name = isset($des[$key]) && $des[$key]?$des[$key]:'';
 						$albu->url = $value;
+						// var_dump(1);exit;
+						$albu->sort = (int)(isset($sortarr[$key]) && $sortarr[$key]?$sortarr[$key]:0);
+
 						$albu->save();
 					}
 				}
