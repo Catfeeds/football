@@ -34,7 +34,7 @@
                             <a target="_blank" href="<?=$this->createUrl('info',['id'=>$value->id])?>"><img style="width: 180px" class="thumb" src="<?=ImageTools::fixImage($value->image?$value->image:$nopic,200,123)?>" /></a>
                         </div>
                         <span class="note">
-                    <?php if(!$value->descpt) {
+                    <?php $wd = ''; if(!$value->descpt) {
                         $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->content);
                         if($html) {
                             $html = preg_replace("/\<\/[a-z]+\>/","",$html);
