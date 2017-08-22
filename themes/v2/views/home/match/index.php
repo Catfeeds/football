@@ -3,7 +3,7 @@
 	Yii::app()->clientScript->registerCssFile("/themes/v2/static/home/style/match-common.css");
 ?>
 <section class="container">
-<div class="ls-recommand" id="ls-recommand" style="height: 600px">
+<div class="ls-recommand" id="ls-recommand" style="height: auto;">
         <div class="recom-wrap wrap">
             <div class="recom-border">
                 <div class="recom-content" style="padding-top: 20px">

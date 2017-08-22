@@ -14,6 +14,7 @@ $this->breadcrumbs = array($this->pageTitle);
             <div class="form-group">
                 <?php echo CHtml::dropDownList('time_type',$time_type,array('time'=>'比赛时间'),array('class'=>'form-control','encode'=>false)); ?>
             </div>
+            <?php Yii::app()->controller->widget("DaterangepickerWidget",['time'=>$time,'params'=>['class'=>'form-control chose_text']]);?>
             <div class="form-group">
                 <?php echo CHtml::dropDownList('lea',$lea,$leas,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择联赛--')); ?>
             </div>
@@ -23,7 +24,6 @@ $this->breadcrumbs = array($this->pageTitle);
             <div class="form-group">
                 <?php echo CHtml::dropDownList('cate1',$cate1,$cates,array('class'=>'form-control chose_select','encode'=>false,'prompt'=>'--选择客队--')); ?>
             </div>
-            <?php Yii::app()->controller->widget("DaterangepickerWidget",['time'=>$time,'params'=>['class'=>'form-control chose_text']]);?>
             <button type="submit" class="btn blue">搜索</button>
             <a class="btn yellow" onclick="removeOptions()"><i class="fa fa-trash"></i>&nbsp;清空</a>
         </form>
