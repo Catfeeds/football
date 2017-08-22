@@ -86,7 +86,7 @@
 <div class="content indexnav kj" >
         <div class="top">
             <div id="top">
-                <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" alt="球布斯足球资讯" /></a>
+                <a href="/"><img src="<?=ImageTools::fixImage(SiteExt::getAttr('qjpz','pcLogo'))?>" style="    float: left;height: 40px;margin-left: -43px;margin-right: 30px;margin-top: 5px;" /></a>
                 
                 <div class="nav fl" >
                     <ul class="nav_menu">

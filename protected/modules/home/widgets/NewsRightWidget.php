@@ -10,8 +10,10 @@ class NewsRightWidget extends CWidget
 		$criteria = new CDbCriteria;
 		$criteria->limit = 6;
 		$criteria->order = 'hits desc';
-		$criteria->addCondition('id<>:id');
-		$criteria->params[':id'] = $this->infoid;
+		if($this->infoid) {
+			$criteria->addCondition('id<>:id');
+			$criteria->params[':id'] = $this->infoid;
+		}
 		if($this->cid) {
 			$criteria->addCondition('cid=:cid');
 			$criteria->params[':cid'] = $this->cid;

@@ -33,13 +33,27 @@ $this->breadcrumbs = array($this->pageTitle);
                     </div>
                     <div class="portlet-body sort_item">
                         <?php if(isset($list[$catePinyin])): ?>
-                            <?php foreach($list[$catePinyin] as $v): ?><div class="btn-group" style="margin-bottom:5px;margin-right:5px;" data-id="<?=$v->id; ?>">
-                                <?php echo CHtml::ajaxLink($v->name.'('.$v->anum.')', $this->createUrl('ajaxStatus'), array('data'=>array('id'=>$v->id, 'status'=>$v->status), 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'), array('class'=>TagExt::$statusStyle[$v->status])); ?>
-                                <a class="<?=TagExt::$statusStyle[$v->status];?> dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
+                            <?php $lists = []; foreach ($list[$catePinyin] as $obj) {
+                                $lists[] = ['id'=>$obj->id,'name'=>$obj->name,'status'=>$obj->status,'num'=>$obj->anum];
+                            } 
+                            if($lists)
+                                for ($i=0; $i < count($lists); $i++) { 
+                                    for ($j=$i+1; $j < count($lists); $j++) { 
+                                        if($lists[$j]['num']>$lists[$i]['num']) {
+                                            $t = $lists[$i];
+                                            $lists[$i] = $lists[$j];
+                                            $lists[$j] = $t;
+                                        }
+                                    }
+                                } 
+                             ?>
+                            <?php if($lists) foreach($lists as $v): ?><div class="btn-group" style="margin-bottom:5px;margin-right:5px;" data-id="<?=$v['id']; ?>">
+                                <?php echo CHtml::ajaxLink($v['name'].'('.$v['num'].')', $this->createUrl('ajaxStatus'), array('data'=>array('id'=>$v['id'], 'status'=>$v['status']), 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'), array('class'=>TagExt::$statusStyle[$v['status']])); ?>
+                                <a class="<?=TagExt::$statusStyle[$v['status']];?> dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu">
-        							<li><?=CHtml::link('编辑', ['/admin/tag/edit','id'=>$v->id]); ?></li>
-                                    <li><?=CHtml::link('查看文章', ['/admin/news/list','tag'=>$v->name]); ?></li>
-                                    <li><?php echo CHtml::ajaxLink('删除', $this->createUrl('/admin/tag/ajaxDel'), ['data'=>['id'=>$v->id], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['data-toggle'=>'confirmation', 'data-placement'=>'right','data-title'=>'是否确认要删除“'.$v->name.'”？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true, 'href'=>'javascript:;']); ?></li>
+        							<li><?=CHtml::link('编辑', ['/admin/tag/edit','id'=>$v['id']]); ?></li>
+                                    <li><?=CHtml::link('查看文章', ['/admin/news/list','tag'=>$v['name']]); ?></li>
+                                    <li><?php echo CHtml::ajaxLink('删除', $this->createUrl('/admin/tag/ajaxDel'), ['data'=>['id'=>$v['id']], 'type'=>'post', 'success'=>'js:function(d){if(d.code){location.reload();}else{toastr.error(d.msg);}}'],['data-toggle'=>'confirmation', 'data-placement'=>'right','data-title'=>'是否确认要删除“'.$v['name'].'”？', 'data-btn-ok-label'=>'确认', 'data-btn-cancel-label'=>'取消', 'data-popout'=>true, 'href'=>'javascript:;']); ?></li>
         						</ul>
                             </div><?php endforeach; ?>
                         <?php else: ?>

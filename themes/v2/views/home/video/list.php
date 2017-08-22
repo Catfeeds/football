@@ -51,7 +51,19 @@
                 </div>
             </div>
             <aside class="sidebar">
-
+            <?php if($news = ArticleExt::model()->normal()->findAll(['order'=>'hits desc','limit'=>6])): ?>
+<div class="widget d_postlist">
+                <div class="title">
+                    <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门文章</strong></span></div>
+                <ul>
+                <?php foreach ($news as $key => $value) {?>
+                    <li><a style="    height: 90px;
+    padding-bottom: 0;" href="<?=$this->owner->createUrl('/home/news/info',['id'=>$value->id])?>" title="<?=$value->title?>"><span class="thumbnail"  style="border: none"><img src="<?=ImageTools::fixImage($value->image)?>" style="width: 93px;height: 64px" /></span><span class="text"><?=Tools::u8_title_substr($value->title,40)?></span><span class="muted"><?=date('Y-m-d',$value->updated)?></span></a></li>
+                <?php } ?>
+                   
+                </ul>
+            </div>
+        <?php endif;?>
             <?php $this->widget('NewsRightWidget')?>
             </aside>
         </section>
