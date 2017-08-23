@@ -199,15 +199,16 @@ class DataCommand extends CConsoleCommand
 		if(isset($res['content']) && $data = json_decode($res['content'],true)) {
 			if($data) {
 				foreach ($data as $key => $value) {
-					if(Yii::app()->db->createCommand("select id from `match` where old_id=".$value['no'])->queryScalar())
-						continue;
+					if(!($model = MatchExt::model()->find("old_id=".$value['no']))) {
+						$model = new MatchExt;
+					}
 					if(!($lid = Yii::app()->db->createCommand("select id from league where old_id=".$value['leagueId'])->queryScalar()))
 						continue;
 					if(!($home = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['homeId'])->queryRow()))
 						continue;
 					if(!($visit = Yii::app()->db->createCommand("select id,name from team where old_id=".$value['visitorId'])->queryRow()))
 						continue;
-					$model = new MatchExt;
+					
 					$model->lid = $lid;
 					$model->home_id = $home['id'];
 					$model->home_name = $home['name'];
