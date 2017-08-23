@@ -191,7 +191,7 @@ class DataCommand extends CConsoleCommand
 	public function actionMatch($date='')
 	{
 		begin:
-		!$date && $date = date('Ymd',time());
+		!$date && $date = date('Ymd',strtotime("-1 day"));
 		$url = SiteExt::getAttr('qjpz','matchApi');
 		// if($id)
 		$res = HttpHelper::get($url.'?date='.$date);
