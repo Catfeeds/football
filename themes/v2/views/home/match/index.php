@@ -21,7 +21,7 @@
                                         <div class="recom-list-now">
                                             <i class="icon-line_vertical_r"></i>
                                             <div class="compet-name">
-                                                <span><b><?=date('h:s',$value->time)?></b><b><?=date('m-d',$value->time)?></b></span><span><b><i class="icon-matchflag_Country" style="background-image:url(<?=ImageTools::fixImage($league->image)?>)"></i><?=$league->name?></b></span><a href="javascript:;"><i><?=$d?></i><span class="no-border vs-name"><i></i><?=$value->home_name?> &nbsp;&nbsp;<?php if($value->time>time()):?>未开赛<?php else:?><?=$value->home_score?> : <?=$value->visitor_score?><?php endif;?>&nbsp;&nbsp; <?=$value->visitor_name?></span></a>
+                                                <span><b><?=date('H:s',$value->time)?></b><b><?=date('m-d',$value->time)?></b></span><span><b><i class="icon-matchflag_Country" style="background-image:url(<?=ImageTools::fixImage($league->image)?>)"></i><?=$league->name?></b></span><a href="javascript:;"><i><?=$d?></i><span class="no-border vs-name"><i></i><?=$value->home_name?> &nbsp;&nbsp;<?php if($value->time>time()):?>未开赛<?php else:?><?=$value->home_score?> : <?=$value->visitor_score?><?php endif;?>&nbsp;&nbsp; <?=$value->visitor_name?></span></a>
                                             </div>
                                             <div class="btn-wrap" style="margin-right: 20px">
                                                 <span class="no-border now-time"></span><?php if($videos = $value->videos) foreach ($videos as $k => $v) {?>
