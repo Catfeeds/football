@@ -52,6 +52,7 @@ class MatchController extends AdminController{
 			$criteria->addCondition('lid=:cid');
 			$criteria->params[':cid'] = $lea;
 		}
+		$criteria->order = 'time desc';
 		$infos = $modelName::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,'cate1'=>$cate1,'leas'=>$this->leas,'lea'=>$lea]);
 	}
