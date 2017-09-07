@@ -25,7 +25,7 @@ class IndexController extends HomeController
         if($cates) {
             foreach ($cates as $key => $value) {
                 $criteria = new CDbCriteria;
-                $criteria->limit = 5;
+                $criteria->limit = 4;
                 $criteria->addCondition('cid=:cid');
                 $criteria->params[':cid'] = $value['id'];
                 if($infos = ArticleExt::model()->normal()->findAll($criteria))

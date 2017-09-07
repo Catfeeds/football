@@ -90,7 +90,7 @@
                         <?php if($rights['rmtjs']) {?>
                          <ul style="margin-top: 18px">
                          <?php  foreach ($rights['rmtjs'] as $key => $value) { $value = $value->getObj();  if($value):  ?>
-                         <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->title?></a>
+                         <?php if($key==5):?><br><li class="l11"><a style="color: #848484" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,48)?>&nbsp;&nbsp;<span style="font-size: 12px;color: #aaa"><?=date('m-d',$value->updated)?></span></a>
                              </li><?php else:?>
                              <li class="l11"><a style="color: #848484;" class="lia" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=Tools::u8_title_substr($value->title,48)?>&nbsp;&nbsp;<span style="font-size: 12px;color: #aaa"><?=date('m-d',$value->updated)?></span></a>
                              </li><?php endif;?>
@@ -116,7 +116,7 @@
                         <span class="originh2"><a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>" ><?=Tools::u8_title_substr($value->title,40)?> </a></span>
                     </div>
                     <p class="auth-span">
-                        <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="<?=$this->createUrl('/home/news/info',['id'=>$value->id])?>"><?=$value->comment_num?>评论</a></span></p>
+                        <span class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d',$value->updated)?></span> <span class="muted"><i class="fa fa-eye"></i> <?=$value->hits?></span> <span class="muted"><i class="fa fa-comments-o"></i> <?=$value->comment_num?>评论</span></p>
                     <span class="note">
                     <?php if(!$value->descpt) {
                         $html = preg_replace("/<([a-z]+)[^>]*>/i","",$value->content);
