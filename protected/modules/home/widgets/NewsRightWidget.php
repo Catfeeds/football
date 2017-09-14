@@ -20,7 +20,7 @@ class NewsRightWidget extends CWidget
 		}
 		$news = ArticleExt::model()->normal()->findAll($criteria);
 		$albums = TkExt::model()->normal()->findAll(['limit'=>10]);
-		$tags = Yii::app()->db->createCommand("select tid,name,count(tid) as ct from article_tag group by tid order by ct desc limit 20")->queryAll();
+		$tags = Yii::app()->db->createCommand("select tid,name,count(tid) as ct from article_tag where group by tid order by ct desc limit 20")->queryAll();
 		// $tagsArr = [];
 		// if($tags) {
 		// 	foreach ($tags as $key => $value) {

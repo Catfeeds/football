@@ -34,7 +34,7 @@
                 <div class="title">
                     <sapn class="title_span" style="padding-left: 0;padding-right: 0"><strong  style="font-weight:normal !important;background-color:#00b7ee;color: white;padding: 4px 15px;">热门搜索</strong></span></div>
                 <div class="d_tags tag1"  style="width: 86%">
-                <?php if($tags) foreach ($tags as $key => $value) {?>
+                <?php if($tags) foreach ($tags as $key => $value) { if(!$value['name']) continue; ?>
                     <a style="width: auto !important;border: 1px #999 solid;background: white;color: #080808;height: 22px;    border-radius: 3px;" href="<?=$this->owner->createUrl('/home/news/list',['tag'=>Pinyin::get($value['name'])])?>"><?=$value['name']?></a>
                 <?php } ?> 
                 <a style="width: auto !important;border: 1px #999 solid;background: white;color: #080808;height: 22px;    border-radius: 3px;"  href="<?=$this->owner->createUrl('/home/news/alltag')?>" >查看更多</a>
