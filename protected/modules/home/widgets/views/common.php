@@ -1,5 +1,5 @@
 
-            <?php if($matchs): ?>
+            <?php $matchs=[]; if($matchs): ?>
             <div class="widget d_textbanner"><a class="style01" style="color: #00b7ee" href="<?=$this->owner->createUrl('/home/match/index')?>"><strong style="background-color:#00b7ee;margin-top: 5px" >热门比赛</strong>
             <div style="margin-bottom: 11px">
                 <ul>
