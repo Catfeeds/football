@@ -119,6 +119,7 @@ class AlbumController extends HomeController{
 		$nx && $nextid = $nx->id;
 		$be = TkExt::model()->normal()->find('id<'.$id);
 		$be && $preid = $be->id;
+		$this->ldimage = ImageTools::fixImage($info->album[0]['url']);
 		// $this->render('info',['info'=>$info,'rights'=>$this->rights]);
 		$this->render('imageinfo',['info'=>$info,'rights'=>$this->rights,'nextid'=>$nextid,'preid'=>$preid]);
 	}

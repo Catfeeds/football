@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+    <link rel="canonical" href="<?=$this->canonical?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <?php if(isset($this->obj) && get_class($this->obj)=='ArticleExt') {
         foreach (['{site}'=>'球布斯','{title}'=>$this->obj->title,'{tag}'=>$this->obj->getTagString(','),'{descpt}'=>$this->obj->descpt,'{cate}'=>isset($this->obj->cate->name)?$this->obj->cate->name:''] as $key => $value) {
@@ -186,6 +187,17 @@
             $('.home_wzxl').css('display','none');
         }
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+            "@id": "<?=Yii::app()->request->getHostInfo().Yii::app()->request->getUrl()?>",
+            "title": "<?=trim($this->pageTitle)?>",
+            "images": ["<?=$this->ldimage?>"],
+            "description": "",
+            "pubDate": "2017-06-15T08:00:01"
+        }
+    </script>
+
 </body>
 
 </html>

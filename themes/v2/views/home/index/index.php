@@ -16,7 +16,7 @@
                 <div class="slick_bor">
                     <script src="<?=Yii::app()->theme->baseUrl?>/static/home/js/responsiveslides.min.js"></script>
                     <ul class="slick" style="<?=$this->imgstyle?>">
-                    <?php $objs = RecomExt::getObjFromCate('3','4');if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image;?>
+                    <?php $objs = $banner;if($objs) foreach ($objs as $key => $value) { $obj = $value->getObj(); $img = $value->image?$value->image:$obj->image;?>
                         <li>
                             <a href="<?=$this->createUrl('/home/news/info',['id'=>$obj->id])?>"><img style="<?=$this->imgstyle?>" class="img_855x300" src="<?=ImageTools::fixImage($img,855,390)?>"><span></span></a><span style="width: 100%;padding-left:  10px;background-color: rgba(0,0,0,0.5);height: <?=$this->iswap?'30px':'40px'?>;bottom: 0px;font: 700 <?=$this->iswap?'16px':'20px'?>/<?=$this->iswap?'30px':'40px'?> 'Microsoft Yahei';"><?=$obj->title?></span>
                         </li>

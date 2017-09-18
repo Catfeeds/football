@@ -60,7 +60,10 @@ class IndexController extends HomeController
         // 十个评论
         $comms = CommentExt::model()->normal()->findAll(['limit'=>10,'order'=>'praise desc, created asc']);
         $rights = ['leas'=>$leas,'points'=>$points,'rmtjs'=>$rmtjs,'comms'=>$comms,'matchs'=>$matchs];
-        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights,'videos'=>$videos]);
+        $banner = RecomExt::getObjFromCate('3','4');
+        $this->ldimage = ImageTools::fixImage($banner[0]['image']?$banner[0]['image']:$banner[0]->getObj()->image);
+        // var_dump($this->lbimage);exit;
+        $this->render('index',['matchs'=>$matchs,'cates'=>$cates,'cid'=>$cid,'news'=>$news,'jpdds'=>$jpdds,'rights'=>$rights,'videos'=>$videos,'banner'=>$banner]);
     }
 
     public function actionAbout()

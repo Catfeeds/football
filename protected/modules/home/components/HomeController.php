@@ -6,6 +6,8 @@
  */
 class HomeController extends Controller
 {
+    public $canonical = '';
+    public $ldimage = '';
     public $styleowner = 1;
     //关键字
     private $keyword;
@@ -68,6 +70,7 @@ class HomeController extends Controller
         // var_dump($user->id);exit;
         if(!$user->getIsGuest()) 
             $this->user = UserExt::model()->findByPk($user->id);
+        $this->canonical = Yii::app()->request->getHostInfo().Yii::app()->request->getUrl();
         // var_dump( $this->user);exit;
     }
 
