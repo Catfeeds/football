@@ -178,6 +178,9 @@
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/um.js?ver=4.5.9'></script>
     <script type='text/javascript' src='<?=Yii::app()->theme->baseUrl?>/static/home/js/wp-embed.min.js?ver=4.5.9'></script>
     <script>
+    $(document).ready(function() {
+        $('.rollto button').removeAttr('title');
+    });
         function show() {
             $('.home_wzxl').attr('class','home_wzxl visible');
             $('.home_wzxl').css('display','block');
@@ -194,11 +197,10 @@
             "title": "<?=trim($this->pageTitle)?>",
             "images": ["<?=$this->ldimage?>"],
             "description": "",
-            "pubDate": "2017-06-15T08:00:01"
+            "pubDate": "<?=$this->pbtime?>"
         }
     </script>
-    <script src="//msite.baidu.com/sdk/c.js?appid=1575865585900764"></script>
-    <script>cambrian.render('head')</script>
+    <script src="//msite.baidu.com/sdk/c.js?appid=1578412332922322"></script>
 </body>
-
+<script>cambrian.render('head')</script>
 </html>

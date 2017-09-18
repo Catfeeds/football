@@ -67,6 +67,7 @@ class VideoController extends HomeController{
 		// var_dump($this->user);exit;
 		
 		$info->save();
+		$this->pbtime = date(DATE_ATOM,$info->updated);
 		$this->render('info',['info'=>$info,'rights'=>$this->rights]);
 	}
 }

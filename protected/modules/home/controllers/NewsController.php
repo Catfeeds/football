@@ -132,6 +132,7 @@ class NewsController extends HomeController{
 		$be = ArticleExt::model()->normal()->find('id<'.$id);
 		$be && $preid = $be->id;
 		$this->ldimage = ImageTools::fixImage($info->image);
+		$this->pbtime = date(DATE_ATOM,$info->updated);
 		$this->render('info',['info'=>$info,'nextid'=>$nextid,'preid'=>$preid]);
 	}
 	/**

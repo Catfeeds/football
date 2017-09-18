@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public $canonical = '';
     public $ldimage = '';
+    public $pbtime = '';
     public $styleowner = 1;
     //关键字
     private $keyword;
