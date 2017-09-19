@@ -78,8 +78,14 @@
         </style>
     <?php endif;?>
     <?=SiteExt::getAttr('qjpz','headCode')?>
+    <?php if($this->iswap):?>
+        <script src="//msite.baidu.com/sdk/c.js?appid=1578412332922322"></script>
+    <?php endif;?>
 </head>
 <body class="home blog">
+<?php if($this->iswap):?>
+<script>cambrian.render('head')</script>
+<?php endif;?>
 <style>
 
 </style>
@@ -200,7 +206,6 @@
             "pubDate": "<?=$this->pbtime?>"
         }
     </script>
-    <script src="//msite.baidu.com/sdk/c.js?appid=1578412332922322"></script>
+    
 </body>
-<script>cambrian.render('head')</script>
 </html>
