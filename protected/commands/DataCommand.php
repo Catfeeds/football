@@ -149,6 +149,8 @@ class DataCommand extends CConsoleCommand
 						$team->status = 1;
 					}
 					foreach (['name','city','coach','image'] as $v) {
+						if($v === 'image' && empty($value[$v]) || false != strpos($team->image, "qiniu"))
+							continue;
 						$team->$v = $value[$v];
 					}
 					if($team->save()) {
