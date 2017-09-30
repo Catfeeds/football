@@ -43,6 +43,9 @@ class CommentExt extends Comment{
     }
 
     public function beforeValidate() {
+        if(!$this->username && $this->uid) {
+            $this->username = UserExt::model()->findByPk($this->uid)->name;
+        }
         if($this->getIsNewRecord())
             $this->created = $this->updated = time();
         else

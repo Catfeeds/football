@@ -41,6 +41,7 @@ class CommentController extends AdminController{
 			$criteria->addCondition('t.cid=:cid');
 			$criteria->params[':cid'] = $cate;
 		}
+		$criteria->order = 'updated desc';
 		$infos = $modelName::model()->undeleted()->getList($criteria,20);
 		$this->render('list',['cate'=>$cate,'infos'=>$infos->data,'cates'=>$this->cates,'pager'=>$infos->pagination,'type' => $type,'value' => $value,'time' => $time,'time_type' => $time_type,]);
 	}
@@ -51,7 +52,8 @@ class CommentController extends AdminController{
 		$info = $id ? $modelName::model()->findByPk($id) : new $modelName;
 		if(Yii::app()->request->getIsPostRequest()) {
 			$info->attributes = Yii::app()->request->getPost($modelName,[]);
-
+			!$info->status&&$info->status = 1;
+			$info->type = 1;
 			if($info->save()) {
 				$this->setMessage('操作成功','success',['list']);
 			} else {
