@@ -40,7 +40,7 @@ $this->breadcrumbs = array($this->pageTitle);
             <td style="text-align:center;vertical-align: middle" class="warning sort_edit"
                 data-id="<?php echo $v['id'] ?>"><?php echo $v['sort'] ?></td>
             <td style="text-align:center;vertical-align: middle"><?php echo $v->id; ?></td>
-            <td class="text-center"><?=$v->name?></td>
+            <td class="text-center"><?=$v->name.($v->pwd==md5('zheshigemajia')?'[马甲]':'')?></td>
             <td class="text-center"><?=$v->phone?></td>
              <td class="text-center"><?=$v->wx?></td>         
             <td class="text-center"><?=date('Y-m-d',$v->created)?></td>
