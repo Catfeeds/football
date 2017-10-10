@@ -83,9 +83,7 @@
     <?php endif;?>
 </head>
 <body class="home blog">
-<?php if($this->iswap):?>
-<script>cambrian.render('head')</script>
-<?php endif;?>
+
 <style>
 
 </style>
@@ -200,12 +198,16 @@
         {
             "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
             "@id": "<?=Yii::app()->request->getHostInfo().Yii::app()->request->getUrl()?>",
-            "title": "<?=trim($this->pageTitle)?>",
+            "title": "<?php 
+            if(isset($this->obj) && get_class($this->obj)=='ArticleExt') {
+                echo trim($this->obj->title);
+            }else{
+                echo trim($this->pageTitle);
+            } ?>",
             "images": ["<?=$this->ldimage?>"],
             "description": "",
             "pubDate": "<?=$this->pbtime?>"
         }
     </script>
-    
 </body>
 </html>

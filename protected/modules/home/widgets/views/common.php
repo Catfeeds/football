@@ -58,7 +58,7 @@
                    <?php if($leas) foreach ($leas as $key => $value) {?>
                        <li class="<?=$key==0?'active':''?> tabli1">
                             <a class="tab11" style="font-size: 14px" href="#tab_1_<?=$key+1?>" data-toggle="tab">
-                            <center><?=Tools::u8_title_substr($value->name, 6,'')?> </center></a>
+                            <center><?=Tools::u8_title_substr($value->name, 4,'')?> </center></a>
                         </li>
                   <?php  } ?>
                     </ul>
@@ -136,7 +136,7 @@
                     </style>
             <style type="text/css">
                        .tabli1{
-                        width: 20% !important;
+                        width: 16.3% !important;
                        }
                        .tab1{
                         margin-left: 0!important;

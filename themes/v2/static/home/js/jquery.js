@@ -528,8 +528,8 @@ eval(function(h, b, i, d, g, f) { g = function(a) {
         	 	alert('评论内容不能为空');
         	 	return false;
         	 }
-        	 if(tt.length > 200) {
-        	 	alert('评论内容不能超过200字符');
+        	 if(tt.length > 400) {
+        	 	alert('评论内容不能超过400字符');
         	 	return false;
         	 }
         	// debugger;

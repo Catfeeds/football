@@ -3,7 +3,7 @@
 ?>
 <?php if($this->iswap):?>
     <style type="text/css">
-        img{
+        article img{
             float: left !important;
             width: 100% !important;
         }
@@ -104,6 +104,10 @@
                             下一篇：<a href="<?=$this->createUrl('info',['id'=>$nextid])?>"><?=ArticleExt::model()->findByPk($nextid)->title?></a><br>
                             <?php endif;?>
                     </article>
+
+                    <?php if($this->iswap):?>
+                    <script>cambrian.render('tail')</script>
+                    <?php endif;?>
                     <?php if($rels = $info->getRelNews()) {?>
                     <div class="related_top">
                         <div class="related_posts"><ul class="related_img">

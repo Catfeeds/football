@@ -40,7 +40,7 @@ class IndexController extends HomeController
         
         // $news = ArticleExt::model()->normal()->findAll($criteria);
         // 三个联赛
-        $leas = LeagueExt::model()->normal()->findAll(['limit'=>5]);
+        $leas = LeagueExt::model()->normal()->findAll(['limit'=>6]);
         // 三个视频
         $videos = ArticleExt::model()->isvideo()->findAll(['limit'=>3]);
         // 积分
