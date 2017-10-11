@@ -22,6 +22,8 @@ class CommentController extends HomeController{
 			}
 			if($info->save())
 				echo json_encode(['msg'=>'提交成功']);
+			else
+				echo json_encode(['msg'=>current(current($info->getErrors()))]);
 		}
 	}	
 }
