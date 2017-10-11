@@ -127,9 +127,9 @@ class NewsController extends HomeController{
 		// 	$be = ArticleExt::model()->normal()->find('id<'.$id);
 		// 	$be && $preid = $be->id;
 		// }
-		$nx = ArticleExt::model()->normal()->find('id>'.$id);
+		$nx = ArticleExt::model()->normal()->find(['condition'=>'id>'.$id,'order'=>'id asc']);
 		$nx && $nextid = $nx->id;
-		$be = ArticleExt::model()->normal()->find('id<'.$id);
+		$be = ArticleExt::model()->normal()->find(['condition'=>'id<'.$id,'order'=>'id desc']);
 		$be && $preid = $be->id;
 		$this->ldimage = ImageTools::fixImage($info->image);
 		$this->pbtime = date('Y-m-d',$info->updated).'T'.date('H:i:s',$info->updated);
