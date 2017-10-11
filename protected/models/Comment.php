@@ -40,7 +40,8 @@ class Comment extends CActiveRecord
 			array('created', 'required'),
 			array('praise, uid, type, comment_id, major_id, status, deleted, sort, created, updated', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>100),
-			array('content, image', 'length', 'max'=>255),
+			array('image', 'length', 'max'=>255),
+			array('content', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, praise, uid, content, type, comment_id, major_id, image, status, deleted, sort, created, updated', 'safe', 'on'=>'search'),

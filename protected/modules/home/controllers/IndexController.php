@@ -100,12 +100,12 @@ class IndexController extends HomeController
     {
         $page = 0;
         $lim = $page * 200;
-        $imgs = LeagueExt::model()->findAllBySql("select id,image from league where image like 'http%' limit 1");
-        // var_dump($imgs[0]);
+        $imgs = TeamExt::model()->findAllBySql("select id,image from team where image like 'http%' limit 1");
+        // var_dump($imgs[0]);exit;
         if($imgs) {
             foreach ($imgs as $key => $value) {
                 $value->image = Yii::app()->file->fetch($value->image);
-                LeagueExt::model()->updateByPk($value->id,['image'=>$value->image]);
+                TeamExt::model()->updateByPk($value->id,['image'=>$value->image]);
                 // var_dump($value->id,$value->image);exit;
             }
         } else {

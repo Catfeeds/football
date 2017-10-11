@@ -64,7 +64,7 @@ class ToolCommand extends CConsoleCommand
         $page = 0;
         begin:
         $lim = $page * 200;
-        $imgs = LeagueExt::model()->findAllBySql("select id,image from league where image like 'http%' limit $lim,200");
+        $imgs = TeamExt::model()->findAllBySql("select id,image from team where image like 'http%' limit $lim,200");
         // var_dump($imgs[0]);
         if($imgs) {
             foreach ($imgs as $key => $value) {
@@ -72,8 +72,10 @@ class ToolCommand extends CConsoleCommand
                     list($value->image,$a) = explode('?', $value->image);
                 }
                 $value->image = Yii::app()->file->fetch($value->image);
-                LeagueExt::model()->updateByPk($value->id,['image'=>$value->image]);
+                TeamExt::model()->updateByPk($value->id,['image'=>$value->image]);
             }
+            $page++;
+            goto begin;
         } else {
             echo "finished";
         }
