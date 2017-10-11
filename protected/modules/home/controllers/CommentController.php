@@ -9,6 +9,7 @@ class CommentController extends HomeController{
 			$info->type = Yii::app()->request->getPost('type','1');
 			$info->status = 1;
 			$info->content = Yii::app()->request->getPost('comment','');
+			str_replace('/\n/g', '<br>', $info->content);
 			$info->major_id = Yii::app()->request->getPost('comment_post_ID','');
 			$info->comment_id = Yii::app()->request->getPost('comment_parent','');
 			if($sens = SiteExt::getAttr('sen','sen')) {

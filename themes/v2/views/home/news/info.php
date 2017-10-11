@@ -27,7 +27,7 @@
                         <br>
                         <div class="meta">
                             <?php if($info->cid):?><span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="<?=$this->createUrl('/home/news/list',['cid'=>$info->cate->pinyin])?>"> <?=$info->cate->name?></a></span> <span class="muted"><i class="fa fa-user"></i> <?=$info->author?></span><?php endif;?>
-                            <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d H:i:s',$info->updated)?></time>
+                            <time class="muted"><i class="fa fa-clock-o"></i> <?=date('Y-m-d H:i:s',$info->created)?></time>
                             <span class="muted"><i class="fa fa-eye"></i><?=$info->hits?></span>
                             <span class="muted"><i class="fa fa-comments-o"></i> <?=$info->comment_num?>评论</span> </div>
                     </header>
@@ -175,7 +175,7 @@
                         <?php foreach ($info->comments as $key => $value) { $user = $value->user ?>
                             <li class="comment even thread-even depth-2" id="comment-<?=$value->id?>">
                                 <div class="c-avatar"><img alt='' srcset='<?=ImageTools::fixImage($user->image)?>' class='avatar avatar-54 photo' height='54' width='54' />
-                                    <div class="c-main" id="div-comment-<?=$value->id?>"><?=$value->content?>
+                                    <div class="c-main" id="div-comment-<?=$value->id?>"><?=str_replace('\/n', '<br/>', $value->content)?>
                                         <?php if($obj = $value->getObj()):?>
                                         <div style="    margin-left: 20px;background-color: #eee;padding-left: 10px;padding-top: 5px;color: #999;font-size: small">
                                             <?=$obj->content?>

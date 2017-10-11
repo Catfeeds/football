@@ -532,6 +532,7 @@ eval(function(h, b, i, d, g, f) { g = function(a) {
         	 	alert('评论内容不能超过400字符');
         	 	return false;
         	 }
+            a("#comment").val(tt.replace(/\n/g, '<br>'));
         	// debugger;
          a(".comt-loading").show();
             $submit.attr("disabled", true).fadeTo("slow", 0.5);

@@ -96,4 +96,20 @@ class IndexController extends HomeController
         } 
         
     }
+    public function actionInitImg()
+    {
+        $page = 0;
+        $lim = $page * 200;
+        $imgs = LeagueExt::model()->findAllBySql("select id,image from league where image like 'http%' limit 1");
+        // var_dump($imgs[0]);
+        if($imgs) {
+            foreach ($imgs as $key => $value) {
+                $value->image = Yii::app()->file->fetch($value->image);
+                LeagueExt::model()->updateByPk($value->id,['image'=>$value->image]);
+                // var_dump($value->id,$value->image);exit;
+            }
+        } else {
+            echo "finished";
+        }
+    }
 }
