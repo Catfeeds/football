@@ -6,6 +6,7 @@
         article img{
             float: left !important;
             width: 100% !important;
+            height: auto !important;
         }
         .related_box{
             width: 48%;
