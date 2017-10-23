@@ -65,7 +65,7 @@ class NewsController extends HomeController{
 		        $d && $d = $this->description = str_replace($key, $value, $d);
 	        }
 			
-			$datas = ArticleTagExt::findNewsByTag($tag->id,20);
+			$datas = ArticleTagExt::findNewsByTag($tag->id,10);
 		} else {
 			$t = SiteExt::getAttr('seo','home_news_list_title');
 	        $k = SiteExt::getAttr('seo','home_news_list_keyword');
